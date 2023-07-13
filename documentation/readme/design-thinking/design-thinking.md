@@ -20,4 +20,4 @@ To assist us in the next step, we have developed a Proof-of-Concept (PoC) mind m
 5. [Persona](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/persona.md)
 6. [Ideate](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/ideate.md)
 7. [Conclusion](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/conclusion.md)
-8. [Prototype](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/conclusion.md)
+8. [Prototype](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/prototype.md)
