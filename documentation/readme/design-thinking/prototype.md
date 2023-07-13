@@ -10,6 +10,6 @@ Explore our online preview and outline using the links provided below:
 
 - [Online Outline](https://gitmind.com/app/docs/m6w2km39?view=outline)
 
-Take a glance at our PoC through the image linked below:
+Take a glance at our PoC through the image below:
 
 ![PoC Prototype](https://github.com/plexoio/musa/blob/main/documentation/assets/img/design-thinking/poc-prototype.png)
