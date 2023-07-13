@@ -1,4 +1,4 @@
-## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/README.md)
+## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/design-thinking.md)
 
 # Persona
 
