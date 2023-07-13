@@ -12,4 +12,4 @@ Explore our online preview and outline using the links provided below:
 
 Take a glance at our PoC through the image linked below:
 
-![PoC Prototype](https://github.com/plexoio/musa/blob/main/documentation/assets/design-thinking/img/poc-prototype.png)
+![PoC Prototype](https://github.com/plexoio/musa/blob/main/documentation/assets/img/design-thinking/poc-prototype.png)
