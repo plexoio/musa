@@ -7,7 +7,7 @@
 6. [Ideate](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/ideate.md)
 7. [Conclusion](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/conclusion.md)
 8. [PoC Prototype](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/prototype.md)
-## 7. Conclusion
+# 7. Conclusion
 The development team has finalized the must-have features for both the front-end and back-end of the voting system. These include:
 
 **Front-End:**

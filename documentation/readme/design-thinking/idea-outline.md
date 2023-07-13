@@ -7,7 +7,7 @@
 6. [Ideate](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/ideate.md)
 7. [Conclusion](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/conclusion.md)
 8. [PoC Prototype](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/prototype.md)
-## 1. Idea Outline
+# 1. Idea Outline
 ### Hypothesis
 1. **Empathy: Your Opinion Matters**
     - **Trust's Significance:** A voting system denotes reliance on sophisticated and abstract mechanisms that are orchestrated to instill trust, foster economy, and enhance efficiency.

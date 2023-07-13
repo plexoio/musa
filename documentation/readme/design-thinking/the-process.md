@@ -7,7 +7,7 @@
 6. [Ideate](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/ideate.md)
 7. [Conclusion](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/conclusion.md)
 8. [PoC Prototype](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/prototype.md)
-## 2. Empathy
+# 2. Empathy
 ### The Process
 - **Perspective circle:** 3 different point of views
     - Civilians: 18-27, 27-35, 35 - ~ years old
