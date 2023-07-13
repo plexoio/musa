@@ -15,8 +15,7 @@
 - **Username**: musa
 - **Password**: test123
 
-## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/README.md)
-
+## [INDEX](https://github.com/plexoio/musa/blob/main/)
 1. [Design Thinking](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/design-thinking.md)
 2. [User-Centric Design](https://github.com/plexoio/musa/blob/main/documentation/readme/user-centric.md)
 3. [Agile Development](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/structure.md)

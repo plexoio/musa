@@ -13,7 +13,7 @@ Finally, we have identified our problems and solutions for this first iteration,
 
 To assist us in the next step, we have developed a Proof-of-Concept (PoC) mind map to illustrate what is expected for this iteration. Adhering to this will guarantee that we are meeting the expectations of real users and solving a real-life problem rather than relying on speculation or imagination.
 
-## Index
+## INDEX
 
 1. [Idea Outline](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/idea-outline.md)
 2. [Empathy](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/the-process.md)
