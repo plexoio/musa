@@ -1,7 +1,7 @@
 # Design Thinking
 We wanted to give it a try this time by implementing design thinking before even attempting to work on the user-centric design.
 
-We tested a total of 4 real people, which is not ideal, but the results were just as surprising as if we had tested more individuals.
+We tested a total of **4 real people**, which is not ideal, but the results were just as surprising as if we had tested more individuals.
 
 After conducting deductive reasoning, we found that the tested users agreed on the following problems and needs: transparency, better layout and presentation, motivation, reduction of external influences, KYC (Know Your Customer), security, anonymity, assistance, legality, traditional & modern technologies, inclusivity, and performance.
 
@@ -20,3 +20,4 @@ To assist us in the next step, we have developed a Proof-of-Concept (PoC) mind m
 5. [Persona](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/persona.md)
 6. [Ideate](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/ideate.md)
 7. [Conclusion](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/conclusion.md)
+8. [Prototype](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/conclusion.md)
