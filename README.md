@@ -17,7 +17,7 @@
 
 ## [HOME | Return](https://github.com/plexoio/musa/blob/main/README.md)
 
-1. [Design Thinking](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking.md)
+1. [Design Thinking](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/design-thinking.md)
 2. [User-Centric Design](https://github.com/plexoio/musa/blob/main/documentation/readme/user-centric.md)
 3. [Agile Development](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/structure.md)
 
