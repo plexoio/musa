@@ -17,8 +17,8 @@
 
 ## [INDEX](https://github.com/plexoio/musa/blob/main/)
 1. [Design Thinking](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/design-thinking.md)
-2. [User-Centric Design](https://github.com/plexoio/musa/blob/main/documentation/readme/user-centric.md)
-3. [Agile Development](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/structure.md)
+2. [User-Centric Design](https://github.com/plexoio/musa/blob/main/documentation/readme/user-centric/user-centric.md)
+3. [Agile Development](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md)
 4. [Credits](https://github.com/plexoio/musa/blob/main/documentation/readme/credits.md)
 
 ## Badges
