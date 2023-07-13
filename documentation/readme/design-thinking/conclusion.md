@@ -1,6 +1,13 @@
 ## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/design-thinking.md)
-
-## Conclusion
+1. [Idea Outline](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/idea-outline.md)
+2. [Empathy](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/the-process.md)
+3. [Personas](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/personas.md)
+4. [Definition](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/define.md)
+5. [Persona](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/persona.md)
+6. [Ideate](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/ideate.md)
+7. [Conclusion](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/conclusion.md)
+8. [PoC Prototype](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/prototype.md)
+## 7. Conclusion
 The development team has finalized the must-have features for both the front-end and back-end of the voting system. These include:
 
 **Front-End:**

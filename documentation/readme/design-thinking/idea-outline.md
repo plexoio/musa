@@ -1,6 +1,13 @@
 ## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/design-thinking.md)
-
-## Idea Outline
+1. [Idea Outline](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/idea-outline.md)
+2. [Empathy](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/the-process.md)
+3. [Personas](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/personas.md)
+4. [Definition](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/define.md)
+5. [Persona](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/persona.md)
+6. [Ideate](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/ideate.md)
+7. [Conclusion](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/conclusion.md)
+8. [PoC Prototype](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/prototype.md)
+## 1. Idea Outline
 ### Hypothesis
 1. **Empathy: Your Opinion Matters**
     - **Trust's Significance:** A voting system denotes reliance on sophisticated and abstract mechanisms that are orchestrated to instill trust, foster economy, and enhance efficiency.
