@@ -1,6 +1,6 @@
 ## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/design-thinking.md)
 
-# Persona
+# Personas (Real People)
 
 ## Persona 1: Anna
 - **Age:** 24 

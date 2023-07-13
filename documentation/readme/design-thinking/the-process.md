@@ -1,7 +1,7 @@
 ## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/design-thinking.md)
 
-## The Process
-### Empathy
+## Empathy
+### The Process
 - **Perspective circle:** 3 different point of views
     - Civilians: 18-27, 27-35, 35 - ~ years old
     - Government: Local government, national government, international government
@@ -20,8 +20,8 @@
         - Teams: NA
         - Businesses: Require operability, performance, reliability, social acceptance, economy, and legality.
 
-## Interviews Prior to Developing the Persona
-### (Real people)
+## Questionnaire Prior to Developing the Persona
+- To real people
 #### Questionnaire (Qualitative)
 1. What do you expect from a voting system?
 2. What problems have you mostly faced when it comes to voting?
