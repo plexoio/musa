@@ -38,7 +38,7 @@ The development team has finalized the must-have features for both the front-end
 
 The team will also design a database model for user and admin roles and highlights the importance of culture, engagement, and visual elements in shaping the user experience. This includes keywords, colors, progress bars, shapes, interactivity, Lottie files, and illustrations.
 
-PWA features, two-factor authentication, email verification, and internet and transportation map integrations will be considered. The next steps involve a proof-of-concept and designing a database model, with
+PWA features, two-factor authentication, email verification, and internet and transportation map integrations will be considered.
 
 By using Darek Cabrera's measure of difficulty, the product can be considered to evolve from being Complicated to Complex due to its multiple functionalities. Important factors to consider are making the platform global or local based on user preferences, providing users with filtering options for content customization, and making the product more user-friendly and less bureaucratic. All of these considerations aim to provide a more inclusive and user-friendly experience. 
 Next Steps:
