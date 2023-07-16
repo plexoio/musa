@@ -47,7 +47,7 @@ Our insights are grounded in sufficient research, supported by the accompanying 
 | User/Admin dashboard          | 5               | 5               | 1              |
 | Contact form                  | 5               | 5               | 1              |
 | Event Voting (Single-Page)    | 5               | 4               | 1              |
-| User Profile                  | 5               | 4               | 1              |
+| User Profile (roles)          | 5               | 4               | 1              |
 | System Status Page            | 5               | 4               | 1              |
 | FAQs                          | 5               | 4               | 1              |
 | Feedback after voting         | 5               | 4               | 1              |
