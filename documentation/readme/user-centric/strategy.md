@@ -61,7 +61,7 @@ Our insights are grounded in sufficient research, supported by the accompanying 
 | Results                       | 69              | 57              |                |
 | Percentage                    | 98.57% (Strategy) | 81.42% (Scope)|                |
 
-## Research Graphic
+### Research Graphic
 
 ![Table Graphic](https://github.com/plexoio/musa/blob/main/documentation/assets/img/user-centric/uc-table.png)
 
@@ -78,7 +78,7 @@ Despite being powerful features, their full implementation might be constrained 
 
 We should highlight that achieving most of the features described above doesn't necessarily mean they are all perfect or that the development process has come to an end. On the contrary, this MVP is the foundation for a much more robust and reliable voting system.
 
-## Key Results:
+### Key Results:
 
 - Items: 14
 - Strategy: 98.57%
