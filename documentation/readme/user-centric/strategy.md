@@ -29,10 +29,10 @@ For this iteration, we have identified the following core technologies to utiliz
 - Font Awesome
 - Lottie Files
 
-To address individual issues, tasks, or desires, please refer to the following resources:
+To address individual issues, tasks, or desires, please refer to the following resources (Design Thinking):
 
-- [Design-Thinking Conclusion](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/conclusion.md)
-- [Design-Thinking Prototype](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/prototype.md)
+- [Conclusion](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/conclusion.md)
+- [Prototype](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/prototype.md)
 
 Our insights are grounded in sufficient research, supported by the accompanying table and graphic:
 
