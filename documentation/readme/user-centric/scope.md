@@ -10,7 +10,7 @@
 
 On this plane, we must be realistic and carefully consider the features that will be implemented. We need to brainstorm and keep in mind that we have less than two weeks for the first iteration of our Minimum Viable Product (MVP). Time, technologies, and knowledge all play a crucial role in making the final decision.
 
-    It is important to clarify that in Agile Development, nothing is set in stone. We make flexible estimations that may change over time, either positively or negatively. We allow for changes at any stage of the development process.
+- It is important to clarify that in Agile Development, nothing is set in stone. We make flexible estimations that may change over time, either positively or negatively. We allow for changes at any stage of the development process.
 
 Fortunately, we are utilizing the `Django framework`, which aligns with the philosophy of "for perfectionists with deadlines." This framework empowers us to build a functional application within a remarkably short timeframe.
 
