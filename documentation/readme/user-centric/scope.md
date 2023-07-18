@@ -83,3 +83,5 @@ The following table is a well-equipped draft designed to facilitate the developm
 - [Raw data]('https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/raw_agile_start.md')
 
 - [Final User Story](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md)
+
+Consequently, we've aligned our scope with the insights gathered from our research in the `Strategy` plane. It's clear at this stage that our goal is to implement a Minimum Viable Product (MVP) iteration. This will effectively assist us in laying the groundwork for our next phase, the `Structure` stage.
