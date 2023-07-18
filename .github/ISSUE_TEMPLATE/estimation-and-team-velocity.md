@@ -34,3 +34,13 @@ assignees: plexoio
 - Get average time per iteration (A)
 - I * A = Get Estimated Time (W)
 - W = Days, Weeks, Months, Years...
+
+## Reminder
+
+The traditional Fibonacci sequence starts with 0 and 1, and each subsequent term is obtained by adding the two preceding terms:
+
+- 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+
+In the Modified Fibonacci sequence, we start with three initial terms instead of two, and each subsequent term is calculated by summing up the three preceding terms:
+
+- 0, 0, 1, 1, 2, 4, 7, 13, 24, 44, ...
