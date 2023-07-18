@@ -79,6 +79,7 @@ The following table is a well-equipped draft designed to facilitate the developm
 |                       | Develop System Status Page           | As a user, I want to go to the support page to find the system status page, to know the state of some functionalities in case something is not working properly on my side. |
 |                       | Assemble FAQ Section                 | As a user, I want to find a FAQ section on the support page, to see videos or articles for troubleshooting or other questions related to the voting system. |
 
+### Useful Links
 - [Raw data]('https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/raw_agile_start.md')
 
 - [Final User Story](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md)
