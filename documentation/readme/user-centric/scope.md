@@ -32,13 +32,15 @@ For this iteration, we have made the decision to incorporate features and functi
 
 The following table is a well-equipped draft designed to facilitate the development process. Some user stories may be disregarded, while new ones may be added. This table has been motivated and fed by the results of the `design thinking`, `strategy plane`, and `scope plane`, as well as some elements of agile philosophy.
 
-**User Story Count:** 35  
-**Capability:** 8 user stories per iteration  
-**Iteration Duration:** 1 day  
-**Estimation:** 8 user stories per day 
-**Total Duration:** 4.37 days
+- **User Story Count:** 35
+- **Capability:** 8 user stories per iteration  
+- **Iteration Duration:** 1 day  
+- **Estimation:** 8 user stories per day
+- **Total Duration:** 4.37 days
 
-- **Note:** This User Story table is not the same as the [**Final User Story**](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md) found in the `Agile Development` section.
+### **Note**
+
+- This User Story table is not the same as the [**Final User Story**](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md) found in the `Agile Development` section.
 
 
 | Theme                 | Epics                                | User Stories |
