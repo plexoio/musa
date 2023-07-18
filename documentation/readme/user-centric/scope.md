@@ -28,12 +28,18 @@ For this iteration, we have made the decision to incorporate features and functi
 
 - Regarding the last row, `Low leading rates & Non-functional`, incorporating the listed items will pose a challenge, and we will make an attempt to include them. However, due to the limited timeframe, we cannot make any promises about including all of them. These items will definitely be prioritized for the next iteration.
 
-The next User Story table will serve a brief helper for the developers when attempting just first iteration, the aim of this table is solely to provide a foundation and rapid adaptation. Following the Agile Development convention we expect:
+## User Stories
 
+The following table is a well-equipped draft designed to facilitate the development process. Some user stories may be disregarded, while new ones may be added. This table has been motivated and fed by the results of the `design thinking`, `strategy plane`, and `scope plane`, as well as some elements of agile philosophy.
 
-User Stories:
+**User Story Count:** 35  
+**Capability:** 8 user stories per iteration  
+**Iteration Duration:** 1 day  
+**Estimation:** 8 user stories per day 
+**Total Duration:** 4.37 days
 
-Absolutely, here's the revised table:
+- **Note:** This User Story table is not the same as the [**Final User Story**](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md) found in the `Agile Development` section.
+
 
 | Theme                 | Epics                                | User Stories |
 |-----------------------|--------------------------------------|--------------|
@@ -70,3 +76,7 @@ Absolutely, here's the revised table:
 |                       |                                      | As a user, I want to see extra information on the same page regarding the transportation system or internet accessibility near me, to increase my possibilities of participating in real life, if applicable. |
 |                       | Develop System Status Page           | As a user, I want to go to the support page to find the system status page, to know the state of some functionalities in case something is not working properly on my side. |
 |                       | Assemble FAQ Section                 | As a user, I want to find a FAQ section on the support page, to see videos or articles for troubleshooting or other questions related to the voting system. |
+
+- [Raw data]('https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/raw_agile_start.md')
+
+- [Final User Story](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md)
