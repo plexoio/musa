@@ -80,5 +80,5 @@ The following table is a well-equipped draft designed to facilitate the developm
 |                       | Assemble FAQ Section                 | As a user, I want to find a FAQ section on the support page, to see videos or articles for troubleshooting or other questions related to the voting system. |
 
 ### Useful Links
-- [Raw data]('https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/raw_agile_start.md')
 - [Final User Story](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md)
+- [Raw Data (user stories)](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/raw_agile_start.md)
