@@ -74,9 +74,7 @@ The following table is a well-equipped draft designed to facilitate the developm
 |                       | Authorize Publisher Role             | As a user, I want to get the publisher role once I verify my account legally, to create and publish events. | **5** |
 |                       |                                      | As a user with a publisher role, I want to create events once verified, but still need approval from the admin side, for my voting event to be published. | **6** |
 | Accountability        | Construct Contact Form               | As a user, I want a well-designed contact page to get in touch with the support team. | **2** |
-|                       |                                      | As a user, I want to see extra information on the same page regarding the transportation system or internet accessibility
-
- near me, to increase my possibilities of participating in real life, if applicable. | **1** |
+|                       |                                      | As a user, I want to see extra information on the same page regarding the transportation system or internet accessibility near me, to increase my possibilities of participating in real life, if applicable. | **1** |
 |                       | Develop System Status Page           | As a user, I want to go to the support page to find the system status page, to know the state of some functionalities in case something is not working properly on my side. | **2** |
 |                       | Assemble FAQ Section                 | As a user, I want to find a FAQ section on the support page, to see videos or articles for troubleshooting or other questions related to the voting system. | **1** |
 
