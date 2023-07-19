@@ -43,7 +43,7 @@ The following table is a well-equipped draft designed to facilitate the developm
 - This User Story table is not the same as the [**Final User Story**](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md) found in the `Agile Development` section.
 
 
-| Theme                 | Epics                                | User Stories | Difficulty |
+| Theme                 | Epics                                | User Stories | Story Point |
 |-----------------------|--------------------------------------|--------------|------------|
 | Homepage              | Design Header                        | As a user, I want a clean, user-friendly header at the top of the page so that I can easily navigate and access the key features of the system. | **2** |
 |                       | Arrange Mixed Campaign Cards in Row  | As a user, I want to see a general campaign section displayed prominently under the header, providing a recent mix of 'official' and 'community' created campaigns so that I can quickly overview current campaigns. | **4** |
