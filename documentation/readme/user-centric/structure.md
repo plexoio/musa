@@ -39,12 +39,12 @@ It is crucial to consider both `Interaction Experience Design (IXD)` and `Inform
 
 For more details on our Information Architecture Design (IAD) for the Musa's voting system, please refer to the attached mind map.
 
-![IAD Mindmap Initial](https://github.com/plexoio/musa/blob/main/documentation/assets/img/initial-IAD.png)
+![IAD Mindmap Initial](https://github.com/plexoio/musa/blob/main/documentation/assets/img/user-centric/initial-IAD.png)
 
 - [IAD Live Mindmap](https://gitmind.com/app/docs/mq5to2rs)
 
 - [IAD Live Outline](https://gitmind.com/app/docs/mq5to2rs?view=outline)
   
-![IAD Mindmap](https://github.com/plexoio/musa/blob/main/documentation/assets/img/IAD.png)
+![IAD Mindmap](https://github.com/plexoio/musa/blob/main/documentation/assets/img/user-centric/IAD.png)
 
 In this initial iteration, we have gained a clear understanding of our `desires`, `requirements`, and the elements that are beneficial for us in implementation. The integration of `IXD` and `IAD` has provided us with the necessary components to work with, empowering us to achieve our objectives with this remarkable project. With this solid foundation in place, we can now proceed to the `Skeleton` plane and start building from this point forward.
