@@ -25,10 +25,26 @@ At this point, we naturally address the difficulties faced by users. We have mad
 
 For more details on our `Interactive Experience Design (IXD)` for the `Musa's voting system`, please refer to the attached mind map.
 
-![IXD Mindmap Initial](https://github.com/plexoio/musa/main/documentation/assets/img/user-centric/initial-IXD.png)
+![IXD Mindmap Initial](https://github.com/plexoio/musa/blob/main/documentation/assets/img/user-centric/initial-IXD.png)
 
 - [IXD Live Mindmap](https://gitmind.com/app/docs/mebd8tio)
 
 - [IXD Live Outline](https://gitmind.com/app/docs/mebd8tio?view=outline)
 
 ![IXD Mindmap](https://github.com/plexoio/musa/blob/main/documentation/assets/img/user-centric/IXD.png)
+
+We have taken care to use familiar vocabulary for the different entries, selecting terms that are friendly, involving, or fulfilling, similar to Maslow's hierarchy.
+
+It is crucial to consider both `Interaction Experience Design (IXD)` and `Information Architecture Design (IAD)` to develop a comprehensive mental model of the product.
+
+For more details on our Information Architecture Design (IAD) for the Musa's voting system, please refer to the attached mind map.
+
+![IAD Mindmap Initial](https://github.com/plexoio/musa/blob/main/documentation/assets/img/initial-IAD.png)
+
+- [IAD Live Mindmap](https://gitmind.com/app/docs/mq5to2rs)
+
+- [IAD Live Outline](https://gitmind.com/app/docs/mq5to2rs?view=outline)
+  
+![IAD Mindmap](https://github.com/plexoio/musa/blob/main/documentation/assets/img/IAD.png)
+
+In this initial iteration, we have gained a clear understanding of our `desires`, `requirements`, and the elements that are beneficial for us in implementation. The integration of `IXD` and `IAD` has provided us with the necessary components to work with, empowering us to achieve our objectives with this remarkable project. With this solid foundation in place, we can now proceed to the `Skeleton` plane and start building from this point forward.
