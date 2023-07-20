@@ -25,7 +25,7 @@ At this point, we naturally address the difficulties faced by users. We have mad
 
 For more details on our `Interactive Experience Design (IXD)` for the `Musa's voting system`, please refer to the attached mind map.
 
-![IXD Mindmap Initial](https://github.com/musa/musa/blob/main/documentation/assets/img/user-centric/initial-IXD.png)
+![IXD Mindmap Initial](https://github.com/musa/blob/main/documentation/assets/img/user-centric/initial-IXD.png)
 
 - [IXD Live Mindmap](https://gitmind.com/app/docs/mebd8tio)
 
