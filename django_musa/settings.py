@@ -31,8 +31,8 @@ development = os.environ.get('DEVELOPMENT', False)
 DEBUG = development
 
 if development:
-    ALLOWED_HOSTS = ['8000-plexoio-musa-327b9ltgdbq.ws-eu102.gitpod.io']
-else: 
+    ALLOWED_HOSTS = ['8000-plexoio-musa-327b9ltgdbq.ws-eu102.gitpod.io', os.environ.get('HEROKU_HOSTNAME')]
+else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 # Application definition
