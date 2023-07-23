@@ -92,13 +92,13 @@ The content within this section isn't just a result of the author's expertise, b
 
 ### Dive Deeper:
 
-1. **[General Set up Instructions](https://github.com/plexoio/musa/blob/main/documentation/readme/developer/instructions.md)**: 
+1. **[General Set up Instructions](https://github.com/plexoio/musa/blob/main/documentation/developer/instructions.md)**: 
    Begin your journey here. This guide provides step-by-step procedures on setting up the project, ensuring you can get started without any hiccups.
 
-2. **[ERD Reminder](https://github.com/plexoio/musa/blob/main/documentation/readme/developer/reminder.md)**: 
+2. **[ERD Reminder](https://github.com/plexoio/musa/blob/main/documentation/developer/reminder.md)**: 
    Need a quick refresher on Entity-Relationship Diagrams (ERD) or want to grasp how they're utilized in our project? This reminder is tailored for you.
 
-3. **[ERD & Code recommendations](https://github.com/plexoio/musa/blob/main/documentation/readme/developer/recommendations.md)**:
+3. **[ERD & Code recommendations](https://github.com/plexoio/musa/blob/main/documentation/developer/recommendations.md)**:
    Drawing from our experiences and insights, we've compiled recommendations on how the ERD can be effectively implemented in code. If you're aiming to optimize your database interactions or seeking best practices, you'll find invaluable advice here.
 
 Whether you're a seasoned developer or someone just starting out, these resources are designed to provide clarity, guidance, and a deeper appreciation for the intricate workings of Django and its relational databases.
