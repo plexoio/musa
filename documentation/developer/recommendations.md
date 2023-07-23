@@ -1,6 +1,6 @@
 ## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/readme/erd/erd.md)
 
-# Voting System Architecture
+# ERD & Code recommendations & Voting System Architecture
 
 ## Model Relationships
 

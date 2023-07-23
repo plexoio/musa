@@ -1,5 +1,7 @@
 ## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/readme/erd/erd.md)
 
+# General Set up Instructions
+
 ## Project Setup Guide
 
 ### 1. Installation
