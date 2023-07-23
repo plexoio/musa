@@ -28,6 +28,7 @@ python3 manage.py startapp blog
 
 2. Execute initial migrations:
 ```bash
+python3 manage.py makemigrations --dry-run
 python3 manage.py migrate
 ```
 
