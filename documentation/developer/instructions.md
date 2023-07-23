@@ -1,8 +1,10 @@
+## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/developer/erd.md)
+
 ## Project Setup Guide
 
 ### 1. Installation
 
-#### Install Django and Essential Libraries
+### Install Django and Essential Libraries
 ```bash
 pip3 install 'django<4' gunicorn psycopg2
 ```

@@ -1,3 +1,7 @@
+## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/developer/erd.md)
+
+## Relationship type
+
 Yes, the nature of instances and how uniqueness is enforced largely determines the relationship type between tables in a relational database. Let's briefly go over the common relationship types and how they're determined by instances and uniqueness:
 
 1. **One-to-One (1:1)**:
