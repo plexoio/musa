@@ -1,4 +1,4 @@
-## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/developer/erd.md)
+## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/readme/erd/erd.md)
 
 ## Relationship type
 
