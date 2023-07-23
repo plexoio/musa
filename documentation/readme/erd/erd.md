@@ -95,7 +95,7 @@ In essence, Musa is harnessing the power of both Django and PostgreSQL to create
 
 Our intention is to deliver an intuitive and productive experience for developers diving into this project. With this aim, we've curated a specialized section dedicated to giving an in-depth understanding of the database model and, in the process, serving as a handy refresher for enthusiasts keen on deepening their grasp of Django's relational databases.
 
-The content within this section isn't just a result of the author's expertise, but also a collaborative effort. We enlisted the aid of advanced language models, specifically `ChatGPT` and `Bard`, to refine and clarify the concepts, ensuring that the information is both accurate and easily digestible.
+The content within this section isn't just a result of the author's expertise, but also a collaborative effort. We enlisted the aid of advanced language models, specifically ``ChatGPT`` and ``Bard``, to refine and clarify the concepts, ensuring that the information is both accurate and easily digestible.
 
 ### Dive Deeper:
 
