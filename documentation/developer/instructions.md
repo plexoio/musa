@@ -1,7 +1,3 @@
-Here's a more organized and polished version of the provided markdown:
-
----
-
 ## Project Setup Guide
 
 ### 1. Installation
@@ -87,5 +83,3 @@ heroku create musa-blogs
 - `HEROKU_HOSTNAME`
 
 **Additional Resources:** Check out the [Google Doc Guide](https://docs.google.com/document/d/1P5CWvS5cYalkQOLeQiijpSViDPogtKM7ZGyqK-yehhQ/edit) for a detailed walkthrough.
-
---- 
