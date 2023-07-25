@@ -3,6 +3,7 @@ cloudinary==1.33.0
 dj-database-url==2.0.0
 dj3-cloudinary-storage==0.0.6
 Django==3.2.20
+django-summernote==0.8.20.0
 gunicorn==21.2.0
 psycopg2==2.9.6
 pyscopg2==66.0.2

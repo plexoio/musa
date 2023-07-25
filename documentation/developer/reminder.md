@@ -88,3 +88,57 @@ However, consider the perks of setting up your distinct intermediate table like 
 If the only requirement was to show that users can vote on VoteCards, a direct ManyToMany field in one of the models would suffice. However, the desire to chronicle more details about each vote (attributes like `timestamp` or `elected_person`) justifies the use of an explicit `VoteRecord` table.
 
 To sum up, while it's feasible to depict a many-to-many tie without an overt table, such a method often proves restrictive once there's a need to detail more than just the relationship.
+
+### Related_name Reverse Access
+
+Let me explain the concept of reverse relationships and the purpose of the `related_name` attribute in Django's ORM (Object-Relational Mapping).
+
+In Django, when you define a ForeignKey or a ManyToManyField on a model, you're setting up a relationship between two models. This relationship allows you to navigate from one model instance to related instances of another model.
+
+Let's break it down using your models as an example.
+
+### ForeignKey Example:
+You have the following relationship in your `VoteCard` model:
+
+```python
+author = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="vote_cards")
+```
+
+Here, each `VoteCard` is related to a single `UserProfile` through its `author` attribute.
+
+1. **Forward Relationship**:
+   - If you have a `VoteCard` instance, you can access its associated `UserProfile` using:
+     ```python
+     vote_card_instance.author
+     ```
+
+2. **Reverse Relationship (where `related_name` comes into play)**:
+   - If you have a `UserProfile` instance, you can access all the `VoteCard` instances associated with that user using the `related_name`:
+     ```python
+     user_profile_instance.vote_cards.all()
+     ```
+
+Without the `related_name` attribute, Django would automatically create a reverse relationship using the lowercased name of the model and appending `_set`, e.g., `votecard_set`. The `related_name` attribute allows you to provide a more descriptive name for this reverse relationship.
+
+### ManyToManyField Example:
+In your `VoteCard` model, you have:
+
+```python
+vote_record = models.ManyToManyField(UserProfile, through='VoteRecord', related_name='user_votes', blank=True)
+```
+
+1. **Forward Relationship**:
+   - For a `VoteCard` instance, you can get all `UserProfile` instances related to it with:
+     ```python
+     vote_card_instance.vote_record.all()
+     ```
+
+2. **Reverse Relationship**:
+   - For a `UserProfile` instance, you can get all `VoteCard` instances related to it with:
+     ```python
+     user_profile_instance.user_votes.all()
+     ```
+
+The `related_name` is especially helpful in complex models and relationships, making the code more readable and expressive.
+
+In summary, `related_name` provides a way to name the reverse direction of a ForeignKey or ManyToManyField relationship, making queries from the related model more intuitive.
