@@ -3,18 +3,25 @@ from django.views import generic
 from .models import VoteCard, UserProfile
 
 
-class VoteCardUserDashboard(generic.ListView):
+class UserDashboard(generic.ListView):
     model = VoteCard
     queryset = VoteCard.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
+    template_name = 'backend/user-dashboard/index.html'
     paginate_by = 6
 
 
-class UserProfileLogin(generic.ListView):
+class UserSetting(generic.ListView):
     model = UserProfile
-    template_name = 'login.html'
+    template_name = 'backend/user-dashboard/settings.html'
 
 
-class UserProfileSettings(generic.ListView):
+class AdminDashboard(generic.ListView):
+    model = VoteCard
+    queryset = VoteCard.objects.filter(status=1).order_by('-created_on')
+    template_name = 'backend/admin-dashboard/index.html'
+    paginate_by = 6
+
+
+class AdminSetting(generic.ListView):
     model = UserProfile
-    template_name = 'settings.html'
+    template_name = 'backend/admin-dashboard/settings.html'

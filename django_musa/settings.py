@@ -18,7 +18,10 @@ if os.path.isfile('env.py'):
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = [os.path.join('templates/user')]
+TEMPLATES_DIR = [os.path.join('templates'),
+                 os.path.join('templates/backend/user-dashboard'),
+                 os.path.join('templates/backend/account'),
+                 os.path.join('templates/backend/admin-dashboard')]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -31,7 +34,8 @@ development = os.environ.get('DEVELOPMENT', False)
 DEBUG = development
 
 if development:
-    ALLOWED_HOSTS = ['8000-plexoio-musa-327b9ltgdbq.ws-eu102.gitpod.io', os.environ.get('HEROKU_HOSTNAME')]
+    ALLOWED_HOSTS = ['8000-plexoio-musa-327b9ltgdbq.ws-eu102.gitpod.io',
+                     os.environ.get('HEROKU_HOSTNAME')]
 else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
@@ -43,12 +47,23 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
     'django_summernote',
     'musa'
 ]
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/user'
+LOGOUT_REDIRECT_URL = '/account/login/'
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -96,7 +111,6 @@ else:
     DATABASES = {'default': dj_database_url.parse(
         os.environ.get("DATABASE_URL"))
     }
-
 
 
 # Password validation

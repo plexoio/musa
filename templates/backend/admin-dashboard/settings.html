@@ -23,12 +23,12 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'user_settings'%}">Settings</a></li>
+                    <li><a class="dropdown-item" href="{% url 'admin_settings'%}">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -39,7 +39,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="{% url 'user_dashboard' %}">
+                        <a class="nav-link" href="{% url 'admin_dashboard' %}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -116,7 +116,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">User Settings</h1>
+                    <h1 class="mt-4">Admin Settings</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active">Update your information or delete your account</li>
                     </ol>
