@@ -15,20 +15,24 @@ class BaseListView(generic.ListView):
 
 class UserDashboard(BaseListView):
     template_name = 'backend/user-dashboard/index.html'
+    context_object_name = 'user_cards'
 
 
 class UserSetting(generic.ListView):
     model = UserProfile
     template_name = 'backend/user-dashboard/settings.html'
+    context_object_name = 'user_setting'
 
 
 class AdminDashboard(BaseListView):
     template_name = 'backend/admin-dashboard/index.html'
+    context_object_name = 'admin_cards'
 
 
 class AdminSetting(generic.ListView):
     model = UserProfile
     template_name = 'backend/admin-dashboard/settings.html'
+    context_object_name = 'admin_setting'
 
 
 # Frontend Controllers
