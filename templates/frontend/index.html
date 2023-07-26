@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% for card in home_page %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ card.title }}</h2>
+                            <p class="card-text">{{ card.excerpt }}</p>
+                            <div class="image-container">
+                                {% if "placeholder" in card.event_image.url %}
+                                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                                    alt="code institute" class="card-img-top">
+                                {% else %}
+                                <img src="{{ card.event_image.url }}" alt="card image" class="card-img-top">
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="author"> Author: {{ card.author }}</p>
+                                    <p class="category"> Category: {{ card.category }}</p>
+                                    <p class="mission"> Mission: {{ card.mission }}</p>
+                                    <p class="location"> Location: {{ card.location }}</p>
+                                    <p class="description"> Description: {{ card.description }}</p>
+                                </div>
+                            </div>
+                            <a href="#" class="post-link"></a>
+                            <hr/>
+                            <p class="card-text text-muted h6"> {{ card.created_on }}
+                                <i class="far fa-heart"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

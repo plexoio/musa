@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = [os.path.join('templates'),
                  os.path.join('templates/backend/user-dashboard'),
                  os.path.join('templates/backend/account'),
-                 os.path.join('templates/backend/admin-dashboard')]
+                 os.path.join('templates/backend/admin-dashboard'),
+                 os.path.join('templates/frontend')]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
