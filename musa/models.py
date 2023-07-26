@@ -1,6 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from cloudinary.models import CloudinaryField
+from django.dispatch import receiver
 
 STATUS = (
     (0, 'Draft'),
@@ -11,6 +12,7 @@ STATUS = (
 ROLES = (
     (0, 'User'),
     (1, 'Publisher'),
+    (2, 'Admin')
 )
 
 
@@ -30,18 +32,17 @@ class Category(models.Model):
 # User Extended
 
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class UserProfile(AbstractUser):
     verified = models.BooleanField(default=False)
     role = models.IntegerField(choices=ROLES, default=0)
     vote_records = models.ManyToManyField(
         'VoteCard', through='VoteRecord', related_name='vote_records')
 
     class Meta:
-        ordering = ['user__username']
+        ordering = ['username']
 
     def __str__(self):
-        return self.user.username
+        return self.username
 
 # VoteCard Model
 

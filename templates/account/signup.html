@@ -17,7 +17,7 @@
                 <h3 class="text-center font-weight-light my-4">{% trans "Sign Up" %}</h3>
               </div>
               <div class="card-body">
-                <form method="POST" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                <form method="POST" id="signup_form" action="{% url 'account_signup' %}">
                   {% csrf_token %}
                   {% if redirect_field_value %}
                   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
@@ -28,6 +28,23 @@
                       maxlength="{{ form.username.field.max_length }}" required="" id="{{ form.username.auto_id }}"
                       class="form-control" {% if form.username.value %}value="{{ form.username.value }}" {% endif %}>
                     <label for="{{ form.username.auto_id }}">{{ form.username.label }}</label>
+                  </div>
+                  <!-- Custom First Name field -->
+                  <div class="form-floating mb-3">
+                    <input type="text" name="{{ form.first_name.name }}" placeholder="First Name"
+                      autocomplete="first_name" maxlength="{{ form.first_name.field.max_length }}" required=""
+                      id="{{ form.first_name.auto_id }}" class="form-control"
+                      {% if form.first_name.value %}value="{{ form.first_name.value }}" {% endif %}>
+                    <label for="{{ form.first_name.auto_id }}">{{ form.first_name.label }}</label>
+                  </div>
+
+                  <!-- Custom Last Name field -->
+                  <div class="form-floating mb-3">
+                    <input type="text" name="{{ form.last_name.name }}" placeholder="First Name"
+                      autocomplete="last_name" maxlength="{{ form.last_name.field.max_length }}" required=""
+                      id="{{ form.last_name.auto_id }}" class="form-control"
+                      {% if form.last_name.value %}value="{{ form.last_name.value }}" {% endif %}>
+                    <label for="{{ form.last_name.auto_id }}">{{ form.last_name.label }}</label>
                   </div>
                   <!-- Custom email field -->
                   <div class="form-floating mb-3">
