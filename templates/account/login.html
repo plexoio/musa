@@ -26,7 +26,7 @@
                                     {% endif %}
 
                                     <!-- Custom username field -->
-
+                                    <!-- Custom username field -->
                                     {% with login_field=form.login %}
                                     <div class="form-floating mb-3">
                                         <input type="text" name="{{ login_field.name }}"
@@ -47,36 +47,39 @@
                                             {% trans "Looks good!" %}
                                         </div>
                                         {% endif %}
-                                        {% endwith %}
+                                    </div>
+                                    {% endwith %}
 
-                                        <!-- Custom password field -->
-                                        {% with password_field=form.password %}
-                                        <div class="form-floating mb-3">
-                                            <input type="password" name="{{ password_field.name }}"
-                                                placeholder="{{ password_field.label }}" autocomplete="current-password"
-                                                maxlength="{{ password_field.field.max_length }}" required
-                                                id="{{ password_field.auto_id }}" class="form-control"
-                                                {% if password_field.value %} value="{{ password_field.value }}"
-                                                {% endif %}>
-                                            <label for="{{ password_field.auto_id }}">{{ password_field.label }}</label>
-                                        </div>
-                                        {% endwith %}
 
-                                        <!-- Remember password checkbox -->
-                                        {% with remember_field=form.remember%}
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" id="{{ remember_field.auto_id }}"
-                                                type="checkbox" name="{{ remember_field.name }}"
-                                                {% if remember_field.value %} checked {% endif %}>
-                                            <label class="form-check-label"
-                                                for="{{ remember_field.auto_id }}">{{ remember_field.label }}</label>
-                                        </div>
-                                        {% endwith %}
+                                    <!-- Custom password field -->
+                                    {% with password_field=form.password %}
+                                    <div class="form-floating mb-3">
+                                        <input type="password" name="{{ password_field.name }}"
+                                            placeholder="{{ password_field.label }}" autocomplete="current-password"
+                                            maxlength="{{ password_field.field.max_length }}" required
+                                            id="{{ password_field.auto_id }}" class="form-control"
+                                            {% if password_field.value %} value="{{ password_field.value }}"
+                                            {% endif %}>
+                                        <label for="{{ password_field.auto_id }}">{{ password_field.label }}</label>
+                                    </div>
+                                    {% endwith %}
 
-                                        <!-- Submit button -->
-                                        <div class="col-12 text-center">
-                                            <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
-                                        </div>
+
+                                    <!-- Remember password checkbox -->
+                                    {% with remember_field=form.remember%}
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" id="{{ remember_fieldauto_id }}" type="checkbox"
+                                            name="{{ remember_field.name }}" {% if remember_field.value %} checked
+                                            {% endif %}>
+                                        <label class="form-check-label"
+                                            for="{{ remember_field.auto_id }}">{{ remember_field.label }}</label>
+                                    </div>
+                                    {% endwith %}
+
+                                    <!-- Submit button -->
+                                    <div class="col-12 text-center">
+                                        <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+                                    </div>
                                 </form>
 
                             </div>
