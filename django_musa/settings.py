@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'musa'
 ]
 
+# Account Management
+
 ACCOUNT_FORMS = {
     'signup': 'musa.forms.CustomSignupForm',
 }
@@ -66,11 +68,11 @@ ACCOUNT_FORMS = {
 AUTH_USER_MODEL = 'musa.UserProfile'
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = '/user'
+LOGIN_REDIRECT_URL = 'role_redirect'
 LOGOUT_REDIRECT_URL = '/account/login/'
 
 ACCOUNT_LOGIN_ON_SIGNUP = True
-ACCOUNT_LOGIN_REDIRECT_URL = '/user'
+ACCOUNT_LOGIN_REDIRECT_URL = 'role_redirect'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 MIDDLEWARE = [

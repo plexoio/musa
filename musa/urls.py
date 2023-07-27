@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from . import views, role_redirect
 
 urlpatterns = [
     # Backend
@@ -9,6 +9,7 @@ urlpatterns = [
     path('office/', views.AdminDashboard.as_view(), name="admin_dashboard"),
     path('office/settings/', views.AdminSettings.as_view(), name="admin_settings"),
     path('office/password-change/', views.AdminPasswordChangeView.as_view(), name='admin_change'),
+    path('role_redirect/', role_redirect.RoleRedirectView.as_view(), name='role_redirect'),
 
 
     # Frontend
