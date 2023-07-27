@@ -1,3 +1,4 @@
+from django.contrib.auth.views import PasswordChangeView
 from allauth.account.views import LoginView
 from django.views import View, generic
 from django.urls import reverse_lazy, reverse
@@ -6,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import VoteCard, UserProfile, VoteRecord
 from django import forms
 from django.views.generic.edit import UpdateView
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 class VoteForCardView(View):
@@ -114,6 +116,20 @@ class AdminSettings(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+    def get_success_url(self):
+        return reverse('admin_settings')
+
+
+class AdminPasswordChangeForm(PasswordChangeForm):
+    class Meta:
+        fields = ['old_password', 'new_password1', 'new_password2']
+
+
+class AdminPasswordChangeView(AdminRequiredMixin, PasswordChangeView):
+    template_name = 'backend/admin-dashboard/password_change.html'
+    form_class = AdminPasswordChangeForm
+    context_object_name = 'admin_change'
 
     def get_success_url(self):
         return reverse('admin_settings')

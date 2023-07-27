@@ -22,36 +22,40 @@
                                 <form method="POST" action="{% url 'account_login' %}">
                                     {% csrf_token %}
                                     {% if redirect_field_value %}
-                                    <input type="hidden" name="{{ redirect_field_name }}"
-                                        value="{{ redirect_field_value }}" />
+                                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                                     {% endif %}
+                                
                                     <!-- Custom username field -->
                                     <div class="form-floating mb-3">
-                                        <input type="text" name="{{ form.login.name }}" placeholder="Username"
-                                            autocomplete="username" maxlength="{{ form.login.field.max_length }}"
-                                            required="" id="{{ form.login.auto_id }}" class="form-control"
-                                            {% if form.login.value %}value="{{ form.login.value }}" {% endif %}>
+                                        <input type="text" name="{{ form.login.name }}" placeholder="{{ form.login.label }}"
+                                               autocomplete="username" maxlength="{{ form.login.field.max_length }}" required
+                                               id="{{ form.login.auto_id }}" class="form-control"
+                                               {% if form.login.value %} value="{{ form.login.value }}" {% endif %}>
                                         <label for="{{ form.login.auto_id }}">{{ form.login.label }}</label>
                                     </div>
+                                
                                     <!-- Custom password field -->
                                     <div class="form-floating mb-3">
-                                        <input type="password" name="{{ form.password.name }}" placeholder="Password"
-                                            autocomplete="current-password"
-                                            maxlength="{{ form.password.field.max_length }}" required=""
-                                            id="{{ form.password.auto_id }}" class="form-control"
-                                            {% if form.password.value %}value="{{ form.password.value }}" {% endif %}>
+                                        <input type="password" name="{{ form.password.name }}" placeholder="{{ form.password.label }}"
+                                               autocomplete="current-password" maxlength="{{ form.password.field.max_length }}" required
+                                               id="{{ form.password.auto_id }}" class="form-control"
+                                               {% if form.password.value %} value="{{ form.password.value }}" {% endif %}>
                                         <label for="{{ form.password.auto_id }}">{{ form.password.label }}</label>
                                     </div>
+                                
+                                    <!-- Remember password checkbox -->
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" id="inputRememberPassword" type="checkbox"
-                                            value="" />
-                                        <label class="form-check-label" for="inputRememberPassword">Remember
-                                            Password</label>
+                                        <input class="form-check-input" id="{{ form.remember.auto_id }}" type="checkbox" name="{{ form.remember.name }}"
+                                               {% if form.remember.value %} checked {% endif %}>
+                                        <label class="form-check-label" for="{{ form.remember.auto_id }}">{{ form.remember.label }}</label>
                                     </div>
+                                
+                                    <!-- Submit button -->
                                     <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                         <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
                                     </div>
                                 </form>
+                                
                             </div>
                             <div class="card-footer text-center py-3">
                                 <div class="small">

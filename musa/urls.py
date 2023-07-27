@@ -8,6 +8,8 @@ urlpatterns = [
     path('user/settings/', views.UserSettings.as_view(), name="user_settings"),
     path('office/', views.AdminDashboard.as_view(), name="admin_dashboard"),
     path('office/settings/', views.AdminSettings.as_view(), name="admin_settings"),
+    path('office/password-change/', views.AdminPasswordChangeView.as_view(), name='admin_change'),
+
 
     # Frontend
     path('', views.HomePage.as_view(), name="homepage"),
