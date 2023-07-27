@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content%}
 
 <body class="sb-nav-fixed">
@@ -24,7 +25,6 @@
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="{% url 'admin_settings'%}">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
@@ -100,8 +100,8 @@
                             </nav>
                         </div>
 
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseRoles" aria-expanded="false" aria-controls="collapseRoles">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRoles"
+                            aria-expanded="false" aria-controls="collapseRoles">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Role Management
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -142,17 +142,16 @@
                         {% if admin_settings.role == 2 %}
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">First name</label>
-                            <input type="text" class="form-control"
-                                id="validationCustom01" value="{{ admin_settings.first_name}}" name="first_name"
-                                required>
+                            <input type="text" class="form-control" id="validationCustom01"
+                                value="{{ admin_settings.first_name}}" name="first_name" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom02" class="form-label">Last name</label>
-                            <input type="text" class="form-control"
-                                id="validationCustom02" value="{{ admin_settings.last_name}}" name="last_name" required>
+                            <input type="text" class="form-control" id="validationCustom02"
+                                value="{{ admin_settings.last_name}}" name="last_name" required>
 
                             <div class="valid-feedback">
                                 Looks good!
@@ -163,9 +162,9 @@
                             <label for="validationCustomUsername" class="form-label">Username</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                <input type="text" value="{{ admin_settings.username}}" class="form-control"
-                                    id="validationCustomUsername" name="username" aria-describedby="inputGroupPrepend"
-                                    required>
+                                <input type="text" value="{{ admin_settings.username}}"
+                                    class="form-control bg-light bg-gradient" id="validationCustomUsername"
+                                    name="username" aria-describedby="inputGroupPrepend" required readonly>
                                 <div class="invalid-feedback">
                                     Please choose a username.
                                 </div>
@@ -173,12 +172,20 @@
                         </div>
                         <div class="col-md-6">
                             <label for="validationCustom03" class="form-label">Email</label>
-                            <input type="email" value="{{ admin_settings.email}}" class="form-control"
+                            <input type="email" value="{{ admin_settings.email}}"
+                                class="form-control {% if form.errors.email %}is-invalid{% endif %}"
                                 id="validationCustom03" name="email" required>
-
+                            {% if form.errors.email %}
                             <div class="invalid-feedback">
-                                Please provide a valid email.
+                                {% for error in form.errors.email %}
+                                {{ error }}
+                                {% endfor %}
                             </div>
+                            {% else %}
+                            <div class="valid-feedback">
+                                {% trans "Looks good!" %}
+                            </div>
+                            {% endif %}
                         </div>
                         <div class="col-md-3">
                             <label for="validationCustom04" class="form-label">Role</label>
@@ -206,12 +213,26 @@
                         </div>
 
                         <div class="col-12 text-center">
-                            <button class="btn btn-danger">Delete Account</button>
-                        </div>
-
-                        <div class="col-12 text-center">
                             <a class="btn btn-primary" href="{% url 'admin_change' %}">Change Password</a>
                         </div>
+                        {% if admin_settings.user_votes.all %}
+                        <div class="col-12 text-center">
+                            <p>Since you have participated in some event you cannot yet delete your account.<br>
+                                Wait until the event is deleted or contact the support team.
+                            </p>
+                            <ul class="list-group d-inline-block">
+                                <li class="list-group-item bg-dark text-white" aria-current="true">Account Activity</li>
+                                {% for voter in admin_settings.voter_record.all %}
+                                <li class="list-group-item">Voted for <strong>{{ voter.vote_card }} </strong>at
+                                    {{ voter.timestamp }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% else %}
+                        <div class="col-12 text-center">
+                            <a class="btn btn-danger" href="{% url 'user_delete' %}">Delete Account</a>
+                        </div>
+                        {% endif %}
                     </form>
                 </div>
             </main>

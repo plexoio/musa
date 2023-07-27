@@ -24,7 +24,7 @@
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="{% url 'admin_settings'%}">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
@@ -45,6 +45,7 @@
                         </a>
                         <div class="sb-sidenav-menu-heading">Interface</div>
 
+                        <!-- User Management -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -59,12 +60,14 @@
                             </nav>
                         </div>
 
+                        <!--  Event Management -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Event Management
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
+
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
@@ -100,8 +103,9 @@
                             </nav>
                         </div>
 
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseRoles" aria-expanded="false" aria-controls="collapseRoles">
+                        <!--  Role -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRoles"
+                            aria-expanded="false" aria-controls="collapseRoles">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Role Management
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -113,6 +117,7 @@
                             </nav>
                         </div>
 
+                        <!--  Stats: -->
                         <div class="sb-sidenav-menu-heading">Stats</div>
                         <a class="nav-link" href="charts.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>

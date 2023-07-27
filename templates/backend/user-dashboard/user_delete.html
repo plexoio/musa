@@ -29,7 +29,7 @@
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="{% url 'user_settings'%}">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
@@ -142,18 +142,19 @@
                                 </div>
                                 <div class="card-body">
                                     <p>Are you sure you want to delete your account? This action cannot be undone.</p>
-                                    <ul class="list-group">
-                                        <li class="list-group-item active" aria-current="true">IMPORTANT</li>
+                                    <ul class="list-group my-4">
+                                        <li class="list-group-item text-center text-white bg-dark" aria-current="true">IMPORTANT</li>
                                         <li class="list-group-item">The User will be deleted</li>
-                                        <li class="list-group-item">Vote Cards will be deleted</li>
-                                        <li class="list-group-item">Vote Records will be deleted</li>
-                                        <li class="list-group-item">Any other related data will be deleted</li>
+                                        <li class="list-group-item">Events will be deleted if any</li>
+                                        <li class="list-group-item">Records will be deleted if any</li>
+                                        <li class="list-group-item">Any other related data will be deleted if any</li>
                                     </ul>
                                     <form method="post">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-danger">Yes, Delete My Account</button>
-                                        <a href="{% url 'user_settings' %}" class="btn btn-secondary">No, Take Me
-                                            Back</a>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <a href="{% url 'user_settings' %}" class="btn btn-secondary">Go back</a>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

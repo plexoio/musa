@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content%}
 
 <body class="sb-nav-fixed">
@@ -24,7 +25,7 @@
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="{% url 'user_settings'%}">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
@@ -186,12 +187,20 @@
                         </div>
                         <div class="col-md-6">
                             <label for="validationCustom03" class="form-label">Email</label>
-                            <input type="email" value="{{ user_settings.email}}" class="form-control"
+                            <input type="email" value="{{ user_settings.email}}"
+                                class="form-control {% if form.errors.email %}is-invalid{% endif %}"
                                 id="validationCustom03" name="email" required>
-
+                            {% if form.errors.email %}
                             <div class="invalid-feedback">
-                                Please provide a valid email.
+                                {% for error in form.errors.email %}
+                                {{ error }}
+                                {% endfor %}
                             </div>
+                            {% else %}
+                            <div class="valid-feedback">
+                                {% trans "Looks good!" %}
+                            </div>
+                            {% endif %}
                         </div>
                         <div class="col-md-3">
                             <label for="validationCustom04" class="form-label">Role</label>
@@ -200,7 +209,7 @@
 
 
                             <div class="invalid-feedback">
-                                Please select a valid state.
+                                Please select a valid role.
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -211,7 +220,7 @@
                                 required readonly>
 
                             <div class="invalid-feedback">
-                                Please provide a valid zip.
+                                Please provide a valid badge.
                             </div>
                         </div>
                         <div class="col-12 text-center">
@@ -226,9 +235,10 @@
                                 Wait until the event is deleted or contact the support team.
                             </p>
                             <ul class="list-group d-inline-block">
-                                <li class="list-group-item active" aria-current="true">Participation</li>
+                                <li class="list-group-item bg-dark text-white" aria-current="true">Account Activity</li>
                                 {% for voter in user_settings.voter_record.all %}
-                                <li class="list-group-item">Voted for <strong>{{ voter.vote_card }} </strong>at {{ voter.timestamp }}</li>
+                                <li class="list-group-item">Voted for <strong>{{ voter.vote_card }} </strong>at
+                                    {{ voter.timestamp }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
