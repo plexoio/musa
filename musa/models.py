@@ -32,8 +32,8 @@ class UserProfile(AbstractUser):
     """Extended user profile with custom attributes."""
     verified = models.BooleanField(default=False)
     role = models.IntegerField(choices=ROLES, default=0)
-    vote_records = models.ManyToManyField(
-        'VoteCard', through='VoteRecord', related_name='vote_records')
+    user_card = models.ManyToManyField(
+        'VoteCard', through='VoteRecord', related_name='user_cards')
 
     class Meta:
         ordering = ['username']
@@ -47,7 +47,7 @@ class VoteCard(models.Model):
     title = models.CharField(max_length=80, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-        UserProfile, on_delete=models.CASCADE, related_name="vote_cards")
+        UserProfile, on_delete=models.CASCADE, related_name="card_author")
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="categories")
     mission = models.CharField(max_length=80)
@@ -74,11 +74,11 @@ class VoteCard(models.Model):
 
 class VoteRecord(models.Model):
     """Model representing the record of a single vote by a user."""
-    voter = models.ForeignKey(UserProfile, on_delete=models.PROTECT)
+    voter = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="voter_record")
     vote_card = models.ForeignKey(
-        VoteCard, on_delete=models.PROTECT, related_name="votecard_record")
+        VoteCard, on_delete=models.CASCADE, related_name="votecard_record")
     elected_person = models.ForeignKey(
-        'ElectedPerson', on_delete=models.PROTECT, related_name="elected_record")
+        'ElectedPerson', on_delete=models.CASCADE, related_name="elected_record")
     timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:

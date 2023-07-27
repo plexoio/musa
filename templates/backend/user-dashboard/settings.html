@@ -4,7 +4,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Musa</a>
+        <a class="navbar-brand ps-3" href="{% url 'user_dashboard' %}">Musa</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -23,7 +23,7 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="{% url 'user_settings'%}">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li>
                         <hr class="dropdown-divider" />
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:  <strong>{{ user_dashboard.username }}</strong></div>
+                    <div class="small">Logged in as: <strong>{{ user_settings.username }}</strong></div>
                 </div>
             </nav>
         </div>
@@ -136,17 +136,16 @@
                         {% if user_settings.role == 0 %}
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">First name</label>
-                            <input readonly type="text" class="form-control"
-                                id="validationCustom01" value="{{ user_settings.first_name}}" name="first_name"
-                                required>
+                            <input type="text" class="form-control" id="validationCustom01"
+                                value="{{ user_settings.first_name}}" name="first_name" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom02" class="form-label">Last name</label>
-                            <input readonly type="text" class="form-control"
-                                id="validationCustom02" value="{{ user_settings.last_name}}" name="last_name" required>
+                            <input type="text" class="form-control" id="validationCustom02"
+                                value="{{ user_settings.last_name}}" name="last_name" required>
 
                             <div class="valid-feedback">
                                 Looks good!
@@ -177,9 +176,9 @@
                             <label for="validationCustomUsername" class="form-label">Username</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                <input type="text" value="{{ user_settings.username}}" class="form-control bg-light bg-gradient"
-                                    id="validationCustomUsername" name="username" aria-describedby="inputGroupPrepend"
-                                    readonly required>
+                                <input type="text" value="{{ user_settings.username}}"
+                                    class="form-control bg-light bg-gradient" id="validationCustomUsername"
+                                    name="username" aria-describedby="inputGroupPrepend" readonly required>
                                 <div class="invalid-feedback">
                                     Please choose a username.
                                 </div>
@@ -218,10 +217,26 @@
                         <div class="col-12 text-center">
                             <button class="btn btn-primary" type="submit">Update Account</button>
                         </div>
-
                         <div class="col-12 text-center">
-                            <button class="btn btn-danger">Delete Account</button>
+                            <a class="btn btn-primary" href="{% url 'user_change' %}">Change Password</a>
                         </div>
+                        {% if user_settings.user_votes.all %}
+                        <div class="col-12 text-center">
+                            <p>Since you have participated in some event you cannot yet delete your account.<br>
+                                Wait until the event is deleted or contact the support team.
+                            </p>
+                            <ul class="list-group d-inline-block">
+                                <li class="list-group-item active" aria-current="true">Participation</li>
+                                {% for voter in user_settings.voter_record.all %}
+                                <li class="list-group-item">Voted for <strong>{{ voter.vote_card }} </strong>at {{ voter.timestamp }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% else %}
+                        <div class="col-12 text-center">
+                            <a class="btn btn-danger" href="{% url 'user_delete' %}">Delete Account</a>
+                        </div>
+                        {% endif %}
                     </form>
                 </div>
             </main>

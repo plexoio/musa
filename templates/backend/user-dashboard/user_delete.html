@@ -1,10 +1,15 @@
-{% extends "base.html" %}
-{% block content%}
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Change Password" %}{% endblock %}
+
+{% block content %}
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{% url 'admin_dashboard' %}">Musa</a>
+        <a class="navbar-brand ps-3" href="{% url 'user_dashboard' %}">Musa</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -23,7 +28,7 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'admin_settings'%}">Settings</a></li>
+                    <li><a class="dropdown-item" href="{% url 'user_settings'%}">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li>
                         <hr class="dropdown-divider" />
@@ -39,7 +44,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="{% url 'admin_dashboard' %}">
+                        <a class="nav-link" href="{% url 'user_dashboard' %}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -100,8 +105,8 @@
                             </nav>
                         </div>
 
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseRoles" aria-expanded="false" aria-controls="collapseRoles">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRoles"
+                            aria-expanded="false" aria-controls="collapseRoles">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Role Management
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -124,95 +129,36 @@
                         </a>
                     </div>
                 </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as: <strong>{{ admin_settings.username }}</strong></div>
-                </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid px-5">
-                    <h1 class="mt-4">Admin Settings</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Update your information or delete your account</li>
-                    </ol>
-
-                    <form class="row g-3 needs-validation" method="POST" action="{% url 'admin_settings' %}" novalidate>
-                        {% csrf_token %}
-                        {% if admin_settings.role == 2 %}
-                        <div class="col-md-4">
-                            <label for="validationCustom01" class="form-label">First name</label>
-                            <input type="text" class="form-control"
-                                id="validationCustom01" value="{{ admin_settings.first_name}}" name="first_name"
-                                required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">Last name</label>
-                            <input type="text" class="form-control"
-                                id="validationCustom02" value="{{ admin_settings.last_name}}" name="last_name" required>
-
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        {% endif %}
-                        <div class="col-md-4">
-                            <label for="validationCustomUsername" class="form-label">Username</label>
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                <input type="text" value="{{ admin_settings.username}}" class="form-control"
-                                    id="validationCustomUsername" name="username" aria-describedby="inputGroupPrepend"
-                                    required>
-                                <div class="invalid-feedback">
-                                    Please choose a username.
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">{% trans "Delete Account" %}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+                                    <ul class="list-group">
+                                        <li class="list-group-item active" aria-current="true">IMPORTANT</li>
+                                        <li class="list-group-item">The User will be deleted</li>
+                                        <li class="list-group-item">Vote Cards will be deleted</li>
+                                        <li class="list-group-item">Vote Records will be deleted</li>
+                                        <li class="list-group-item">Any other related data will be deleted</li>
+                                    </ul>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">Yes, Delete My Account</button>
+                                        <a href="{% url 'user_settings' %}" class="btn btn-secondary">No, Take Me
+                                            Back</a>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="validationCustom03" class="form-label">Email</label>
-                            <input type="email" value="{{ admin_settings.email}}" class="form-control"
-                                id="validationCustom03" name="email" required>
-
-                            <div class="invalid-feedback">
-                                Please provide a valid email.
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="validationCustom04" class="form-label">Role</label>
-                            <input type="text" value="{{ admin_settings.get_role_display}}" name="role"
-                                class="form-control bg-light bg-gradient" id="validationCustom04" required readonly>
-
-
-                            <div class="invalid-feedback">
-                                Please select a valid state.
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="validationCustom05" class="form-label">Verified</label>
-                            <input type="text"
-                                value="{% if admin_settings.verified == 1 %} Verified {% else %} Not verified {% endif %}"
-                                name="verified" class="form-control bg-light bg-gradient" id="validationCustom05"
-                                required readonly>
-
-                            <div class="invalid-feedback">
-                                Please provide a valid zip.
-                            </div>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button class="btn btn-primary" type="submit">Update Account</button>
-                        </div>
-
-                        <div class="col-12 text-center">
-                            <button class="btn btn-danger">Delete Account</button>
-                        </div>
-
-                        <div class="col-12 text-center">
-                            <a class="btn btn-primary" href="{% url 'admin_change' %}">Change Password</a>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </main>
         </div>

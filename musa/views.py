@@ -6,8 +6,11 @@ from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import VoteCard, UserProfile, VoteRecord
 from django import forms
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import logout
+
+# GENERAL
 
 
 class VoteForCardView(View):
@@ -45,6 +48,8 @@ class CustomLoginView(LoginView):
         user_id = self.request.user.id
         return reverse_lazy('user_dashboard', kwargs={'pk': user_id})
 
+# USER
+
 
 class UserRequiredMixin(UserPassesTestMixin):
     """Mixin to check user roles for access control (either role 0 or 1)."""
@@ -81,7 +86,43 @@ class UserSettings(UpdateView):
         return self.request.user
 
     def get_success_url(self):
+        return reverse_lazy('user_settings')
+
+
+class UserDelete(UserRequiredMixin, DeleteView):
+    model = UserProfile
+    template_name = 'backend/user-dashboard/user_delete.html'
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_success_url(self):
+        # Redirect to login after deletion
+        return reverse_lazy('account_login')
+
+    def delete(self, request, *args, **kwargs):
+        response = super().delete(request, *args, **kwargs)
+
+        # Log the user out after deletion
+        logout(request)
+
+        return response
+
+
+class UserPasswordChangeForm(PasswordChangeForm):
+    class Meta:
+        fields = ['old_password', 'new_password1', 'new_password2']
+
+
+class UserPasswordChangeView(UserRequiredMixin, PasswordChangeView):
+    template_name = 'backend/user-dashboard/password_change.html'
+    form_class = UserPasswordChangeForm
+    context_object_name = 'user_change'
+
+    def get_success_url(self):
         return reverse('user_settings')
+
+# ADMIN
 
 
 class AdminRequiredMixin(UserPassesTestMixin):
@@ -133,6 +174,8 @@ class AdminPasswordChangeView(AdminRequiredMixin, PasswordChangeView):
 
     def get_success_url(self):
         return reverse('admin_settings')
+
+# HOMEPAGE
 
 
 class HomePage(BaseListView):
