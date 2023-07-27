@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from cloudinary.models import CloudinaryField
-from django.dispatch import receiver
+
 
 STATUS = (
     (0, 'Draft'),
@@ -16,10 +16,8 @@ ROLES = (
 )
 
 
-# Category Model
-
-
 class Category(models.Model):
+    """Model representing a voting category, like "Best Artist"."""
     category_name = models.CharField(max_length=50, unique=True)
 
     class Meta:
@@ -29,10 +27,9 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
 
-# User Extended
-
 
 class UserProfile(AbstractUser):
+    """Extended user profile with custom attributes."""
     verified = models.BooleanField(default=False)
     role = models.IntegerField(choices=ROLES, default=0)
     vote_records = models.ManyToManyField(
@@ -44,10 +41,9 @@ class UserProfile(AbstractUser):
     def __str__(self):
         return self.username
 
-# VoteCard Model
-
 
 class VoteCard(models.Model):
+    """Model representing a card where users can cast their votes."""
     title = models.CharField(max_length=80, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -72,12 +68,12 @@ class VoteCard(models.Model):
         return self.title
 
     def number_of_votes(self):
+        """Return the count of votes."""
         return self.vote_record.count()
-
-# VoteRecord model
 
 
 class VoteRecord(models.Model):
+    """Model representing the record of a single vote by a user."""
     voter = models.ForeignKey(UserProfile, on_delete=models.PROTECT)
     vote_card = models.ForeignKey(
         VoteCard, on_delete=models.PROTECT, related_name="votecard_record")
@@ -92,10 +88,8 @@ class VoteRecord(models.Model):
         return self.elected_person.name
 
 
-# ElectedPerson
-
-
 class ElectedPerson(models.Model):
+    """Model representing a person who can be elected in a vote."""
     name = models.CharField(max_length=80, unique=True)
     is_elected = models.BooleanField(default=False)
 

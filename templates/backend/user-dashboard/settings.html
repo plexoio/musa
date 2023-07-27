@@ -47,20 +47,21 @@
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Layouts
+                            Event Management
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                <a class="nav-link" href="layout-static.html">Create Event</a>
+                                <a class="nav-link" href="layout-static.html">My Events</a>
+                                <a class="nav-link" href="layout-sidenav-light.html">My Votes</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Pages
+                            Verification
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
@@ -69,34 +70,44 @@
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                     data-bs-target="#pagesCollapseAuth" aria-expanded="false"
                                     aria-controls="pagesCollapseAuth">
-                                    Authentication
+                                    KYC
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
                                     data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseError" aria-expanded="false"
-                                    aria-controls="pagesCollapseError">
-                                    Error
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
-                                    data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="401.html">401 Page</a>
-                                        <a class="nav-link" href="404.html">404 Page</a>
-                                        <a class="nav-link" href="500.html">500 Page</a>
+                                        <a class="nav-link" href="login.html">Badges</a>
+                                        <a class="nav-link" href="register.html">Email</a>
+                                        <a class="nav-link" href="password.html">KYC (coming soon)</a>
                                     </nav>
                                 </div>
                             </nav>
                         </div>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePrivacy" aria-expanded="false" aria-controls="collapsePrivacy">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Anonymity
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePrivacy" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="layout-static.html">My Privacy</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRole"
+                            aria-expanded="false" aria-controls="collapseRole">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Role
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseRole" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="layout-static.html">My Role</a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Stats</div>
                         <a class="nav-link" href="charts.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Charts
@@ -108,47 +119,110 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    
+                    <div class="small">Logged in as:  <strong>{{ user_dashboard.username }}</strong></div>
                 </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid px-4">
+                <div class="container-fluid px-5">
                     <h1 class="mt-4">User Settings</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active">Update your information or delete your account</li>
                     </ol>
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-area me-1"></i>
-                                    Area Chart Example
-                                </div>
-                                <div class="card-body"></div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-bar me-1"></i>
-                                    Bar Chart Example
-                                </div>
-                                <div class="card-body"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            DataTable Example
-                        </div>
-                        <div class="card-body">
 
+                    <form class="row g-3 needs-validation" method="POST" action="{% url 'user_settings' %}" novalidate>
+                        {% csrf_token %}
+                        {% if user_settings.role == 0 %}
+                        <div class="col-md-4">
+                            <label for="validationCustom01" class="form-label">First name</label>
+                            <input readonly type="text" class="form-control"
+                                id="validationCustom01" value="{{ user_settings.first_name}}" name="first_name"
+                                required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
                         </div>
-                    </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom02" class="form-label">Last name</label>
+                            <input readonly type="text" class="form-control"
+                                id="validationCustom02" value="{{ user_settings.last_name}}" name="last_name" required>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="col-md-4">
+                            <label for="validationCustom01" class="form-label">First name</label>
+                            <input type="text" class="form-control bg-light bg-gradient" id="validationCustom01"
+                                value="{{ user_settings.first_name}}" name="first_name" readonly required>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom02" class="form-label">Last name</label>
+                            <input type="text" class="form-control bg-light bg-gradient" id="validationCustom02"
+                                value="{{ user_settings.last_name}}" name="last_name" readonly required>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        {% endif %}
+                        <div class="col-md-4">
+                            <label for="validationCustomUsername" class="form-label">Username</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                <input type="text" value="{{ user_settings.username}}" class="form-control bg-light bg-gradient"
+                                    id="validationCustomUsername" name="username" aria-describedby="inputGroupPrepend"
+                                    readonly required>
+                                <div class="invalid-feedback">
+                                    Please choose a username.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom03" class="form-label">Email</label>
+                            <input type="email" value="{{ user_settings.email}}" class="form-control"
+                                id="validationCustom03" name="email" required>
+
+                            <div class="invalid-feedback">
+                                Please provide a valid email.
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="validationCustom04" class="form-label">Role</label>
+                            <input type="text" value="{{ user_settings.get_role_display}}" name="role"
+                                class="form-control bg-light bg-gradient" id="validationCustom04" required readonly>
+
+
+                            <div class="invalid-feedback">
+                                Please select a valid state.
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="validationCustom05" class="form-label">Verified</label>
+                            <input type="text"
+                                value="{% if user_settings.verified == 1 %} Verified {% else %} Not verified {% endif %}"
+                                name="verified" class="form-control bg-light bg-gradient" id="validationCustom05"
+                                required readonly>
+
+                            <div class="invalid-feedback">
+                                Please provide a valid zip.
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button class="btn btn-primary" type="submit">Update Account</button>
+                        </div>
+
+                        <div class="col-12 text-center">
+                            <button class="btn btn-danger">Delete Account</button>
+                        </div>
+                    </form>
                 </div>
             </main>
         </div>

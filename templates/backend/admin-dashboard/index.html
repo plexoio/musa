@@ -71,7 +71,7 @@
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                     data-bs-target="#pagesCollapseAuth" aria-expanded="false"
                                     aria-controls="pagesCollapseAuth">
-                                    User Events
+                                    All Events
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
@@ -125,15 +125,14 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    Musa's Management
+                    <div class="small">Logged in as: <strong>{{ admin_dashboard.username }}</strong></div>
                 </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Dashboard</h1>
+                    <h1 class="mt-4">Admin Dashboard</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
@@ -179,7 +178,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            Created Events
+                            Admin Created Events
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">
@@ -195,23 +194,23 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Location</th>
+                                        <th>Created On</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    {% for cards in admin_cards %}
+                                    {% for event in admin_dashboard.vote_cards.all %}
                                     <tr>
-                                        <td>{{ cards.title }}</td>
-                                        <td>{{ cards.author }}</td>
-                                        <td>{{ cards.category }}</td>
-                                        <td>{{ cards.status }}</td>
-                                        <td>{{ cards.location}}</td>
-                                        <td>{{ cards.created_on }}</td>
+                                        <td>{{ event.title }}</td>
+                                        <td>{{ event.author }}</td>
+                                        <td>{{ event.category.category_name }}</td>
+                                        <td>{{ event.get_status_display }}</td>
+                                        <td>{{ event.location }}</td>
+                                        <td>{{ event.created_on }}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
