@@ -19,62 +19,100 @@
               <div class="card-body">
                 <form method="POST" id="signup_form">
                   {% csrf_token %}
-                  {% if form.non_field_errors %}
-                  <div class="alert alert-danger">
-                    <ul>
-                      {% for error in form.non_field_errors %}
-                      <li>{{ error }}</li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                  {% endif %}
                   {% if redirect_field_value %}
                   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                   {% endif %}
                   <!-- Custom username field -->
                   <div class="form-floating mb-3">
                     <input type="text" name="{{ form.username.name }}" placeholder="Username" autocomplete="username"
-                      maxlength="{{ form.username.field.max_length }}" required="" id="{{ form.username.auto_id }}"
-                      class="form-control" {% if form.username.value %}value="{{ form.username.value }}" {% endif %}>
+                      maxlength="{{ form.username.field.max_length }}" required id="{{ form.username.auto_id }}"
+                      class="form-control {% if form.errors.username %}is-invalid{% endif %}"
+                      {% if form.username.value %}value="{{ form.username.value }}" {% endif %}>
                     <label for="{{ form.username.auto_id }}">{{ form.username.label }}</label>
+                    {% if form.errors.username %}
+                    <div class="invalid-feedback">
+                      {% for error in form.errors.username %}
+                      {{ error }}
+                      {% endfor %}
+                    </div>
+                    {% endif %}
                   </div>
                   <!-- Custom First Name field -->
                   <div class="form-floating mb-3">
                     <input type="text" name="{{ form.first_name.name }}" placeholder="First Name"
-                      autocomplete="first_name" maxlength="{{ form.first_name.field.max_length }}" required=""
-                      id="{{ form.first_name.auto_id }}" class="form-control"
+                      autocomplete="first_name" maxlength="{{ form.first_name.field.max_length }}" required
+                      id="{{ form.first_name.auto_id }}"
+                      class="form-control {% if form.errors.first_name %}is-invalid{% endif %}"
                       {% if form.first_name.value %}value="{{ form.first_name.value }}" {% endif %}>
                     <label for="{{ form.first_name.auto_id }}">{{ form.first_name.label }}</label>
+                    {% if form.errors.first_name %}
+                    <div class="invalid-feedback">
+                      {% for error in form.errors.first_name %}
+                      {{ error }}
+                      {% endfor %}
+                    </div>
+                    {% endif %}
                   </div>
 
                   <!-- Custom Last Name field -->
                   <div class="form-floating mb-3">
-                    <input type="text" name="{{ form.last_name.name }}" placeholder="First Name"
-                      autocomplete="last_name" maxlength="{{ form.last_name.field.max_length }}" required=""
-                      id="{{ form.last_name.auto_id }}" class="form-control"
-                      {% if form.last_name.value %}value="{{ form.last_name.value }}" {% endif %}>
+                    <input type="text" name="{{ form.last_name.name }}" placeholder="Last Name"
+                      autocomplete="last_name" maxlength="{{ form.last_name.field.max_length }}" required
+                      id="{{ form.last_name.auto_id }}"
+                      class="form-control {% if form.errors.last_name %}is-invalid{% endif %}">
                     <label for="{{ form.last_name.auto_id }}">{{ form.last_name.label }}</label>
+                    {% if form.errors.last_name %}
+                    <div class="invalid-feedback">
+                      {% for error in form.errors.last_name %}
+                      {{ error }}
+                      {% endfor %}
+                    </div>
+                    {% endif %}
                   </div>
                   <!-- Custom email field -->
                   <div class="form-floating mb-3">
                     <input type="email" name="{{ form.email.name }}" placeholder="Email address" autocomplete="email"
-                      maxlength="{{ form.email.field.max_length }}" required="" id="{{ form.email.auto_id }}"
-                      class="form-control" {% if form.email.value %}value="{{ form.email.value }}" {% endif %}>
+                      maxlength="{{ form.email.field.max_length }}" required id="{{ form.email.auto_id }}"
+                      class="form-control {% if form.errors.email %}is-invalid{% endif %}"
+                      {% if form.email.value %}value="{{ form.email.value }}" {% endif %}>
                     <label for="{{ form.email.auto_id }}">{{ form.email.label }}</label>
+                    {% if form.errors.email %}
+                    <div class="invalid-feedback">
+                      {% for error in form.errors.email %}
+                      {{ error }}
+                      {% endfor %}
+                    </div>
+                    {% endif %}
                   </div>
                   <!-- Custom password field -->
                   <div class="form-floating mb-3">
                     <input type="password" name="{{ form.password1.name }}" placeholder="Password"
-                      autocomplete="new-password" maxlength="{{ form.password1.field.max_length }}" required=""
-                      id="{{ form.password1.auto_id }}" class="form-control">
+                      autocomplete="new-password" maxlength="{{ form.password1.field.max_length }}" required
+                      id="{{ form.password1.auto_id }}"
+                      class="form-control {% if form.errors.password1 %}is-invalid{% endif %}">
                     <label for="{{ form.password1.auto_id }}">{{ form.password1.label }}</label>
+                    {% if form.errors.password1 %}
+                    <div class="invalid-feedback">
+                      {% for error in form.errors.password1 %}
+                      {{ error }}
+                      {% endfor %}
+                    </div>
+                    {% endif %}
                   </div>
                   <!-- Confirm password field -->
                   <div class="form-floating mb-3">
                     <input type="password" name="{{ form.password2.name }}" placeholder="Confirm Password"
-                      autocomplete="new-password" maxlength="{{ form.password2.field.max_length }}" required=""
-                      id="{{ form.password2.auto_id }}" class="form-control">
+                      autocomplete="new-password" maxlength="{{ form.password2.field.max_length }}" required
+                      id="{{ form.password2.auto_id }}"
+                      class="form-control {% if form.errors.password2 %}is-invalid{% endif %}">
                     <label for="{{ form.password2.auto_id }}">{{ form.password2.label }}</label>
+                    {% if form.errors.password2 %}
+                    <div class="invalid-feedback">
+                      {% for error in form.errors.password2 %}
+                      {{ error }}
+                      {% endfor %}
+                    </div>
+                    {% endif %}
                   </div>
                   <div class="col-12 text-center">
                     <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
@@ -95,4 +133,4 @@
   </div>
 </div>
 
-{% endblock %}
+{% endblock content %}

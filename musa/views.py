@@ -41,6 +41,8 @@ class BaseListView(generic.ListView):
         """Return VoteCards with a status of 1, ordered by creation date."""
         return VoteCard.objects.filter(status=1).order_by('-created_on')
 
+# LOGIN, SIGUNUP & LOGOUT
+
 
 class CustomLoginView(LoginView):
     """Custom login view that redirects users to their dashboard after login."""
