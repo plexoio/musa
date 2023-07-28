@@ -1,11 +1,12 @@
 from django.urls import path
 from . import views, role_redirect
 
-
 urlpatterns = [
     # Backend
-    path('accounts/login/', views.CustomLoginView.as_view(),
+    path('login/', views.CustomLoginView.as_view(),
          name='account_login'),
+    path('signup/', views.CustomSignupView.as_view(), name='account_signup'),
+    path('logout/', views.CustomLogoutView.as_view(), name='logout'),
     path('user/', views.UserDashboard.as_view(),
          name='user_dashboard'),
     path('user/settings/', views.UserSettings.as_view(),

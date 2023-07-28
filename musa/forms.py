@@ -1,4 +1,4 @@
-from allauth.account.forms import SignupForm
+from allauth.account.forms import LoginForm, SignupForm
 from django import forms
 
 
@@ -14,3 +14,6 @@ class CustomSignupForm(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.save()  # Save the first_name to the user instance
         return user
+
+
+CustomLoginForm = LoginForm

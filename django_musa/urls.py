@@ -20,5 +20,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('', include('musa.urls'), name='voting_system'),
-    path('account/', include('allauth.urls'))
 ]

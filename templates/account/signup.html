@@ -17,8 +17,17 @@
                 <h3 class="text-center font-weight-light my-4">{% trans "Sign Up" %}</h3>
               </div>
               <div class="card-body">
-                <form method="POST" id="signup_form" action="{% url 'account_signup' %}">
+                <form method="POST" id="signup_form">
                   {% csrf_token %}
+                  {% if form.non_field_errors %}
+                  <div class="alert alert-danger">
+                    <ul>
+                      {% for error in form.non_field_errors %}
+                      <li>{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                  {% endif %}
                   {% if redirect_field_value %}
                   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                   {% endif %}

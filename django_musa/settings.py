@@ -69,7 +69,7 @@ AUTH_USER_MODEL = 'musa.UserProfile'
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'role_redirect'
-LOGOUT_REDIRECT_URL = '/account/login/'
+LOGOUT_REDIRECT_URL = '/login/'
 
 ACCOUNT_LOGIN_ON_SIGNUP = True
 ACCOUNT_LOGIN_REDIRECT_URL = 'role_redirect'

@@ -1,5 +1,5 @@
 from django.contrib.auth.views import PasswordChangeView
-from allauth.account.views import LoginView
+from allauth.account.views import LoginView, SignupView, LogoutView
 from django.views import View, generic
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import get_object_or_404, redirect
@@ -9,6 +9,7 @@ from django import forms
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import logout
+from .forms import CustomSignupForm, CustomLoginForm
 
 # GENERAL
 
@@ -43,10 +44,21 @@ class BaseListView(generic.ListView):
 
 class CustomLoginView(LoginView):
     """Custom login view that redirects users to their dashboard after login."""
+    form_class = CustomLoginForm
+    template_name = 'account/login.html'
 
     def get_success_url(self):
         user_id = self.request.user.id
         return reverse_lazy('user_dashboard', kwargs={'pk': user_id})
+
+
+class CustomSignupView(SignupView):
+    form_class = CustomSignupForm
+    template_name = 'account/signup.html'
+
+
+class CustomLogoutView(LogoutView):
+    template_name = 'account/logout.html'
 
 # USER
 
