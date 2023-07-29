@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as: <strong>{{ user_settings.username }}</strong></div>
+                    <div class="small">Logged in as: <strong>{{ request.user.username }}</strong></div>
                 </div>
             </nav>
         </div>
@@ -138,7 +138,6 @@
                                 {% if form.non_field_errors %}
                                 <div class="errors">{{ form.non_field_errors }}</div>
                                 {% endif %}
-
                                 <!-- Title  -->
                                 <div class="mb-3">
                                     <label for="{{ form.title.id_for_label }}"
@@ -153,18 +152,19 @@
 
                                 <!-- Author -->
                                 <div class="mb-3">
-                                    <label for="{{ form.author.id_for_label }}"
-                                        class="form-label"><strong>{{ form.author.label }}</strong></label>
-                                    <input type="text" name="{{ form.author.name }}" class="form-control"
-                                        id="{{ form.author.id_for_label }}" value="{{ request.user.username }}"
-                                        disabled>
+                                    <label class="form-label d-none"><strong>{{ form.author.label }} ID</strong></label>
+                                    <input type="hidden" name="{{ form.author.name }}"
+                                        class="form-control bg-light bg-gradient" value="{{ form.author.value }}"
+                                        id="{{ form.author.id_for_label }}" readonly>
+
                                     {% if form.author.errors %}
                                     <div class="errors">{{ form.author.errors }}</div>
                                     {% endif %}
                                     <div class="form-text">{{ form.author.help_text }}</div>
                                 </div>
 
-                                <!--  Category-->
+
+                                <!-- Category -->
                                 <div class="mb-3">
                                     <label for="{{ form.category.id_for_label }}"
                                         class="form-label"><strong>{{ form.category.label }}</strong></label>
@@ -213,6 +213,7 @@
                                     {% endif %}
                                     <div class="form-text">{{ form.description.help_text }}</div>
                                 </div>
+
                                 <!-- Expire -->
                                 <div class="mb-3">
                                     <label for="{{ form.expire.id_for_label }}"
@@ -235,8 +236,10 @@
                                     {% endif %}
                                     <div class="form-text">{{ form.event_image.help_text }}</div>
                                 </div>
+
                                 <h3 class="text-center">Candidates</h3>
                                 <div id="candidates-container">
+                                    {{ person_formset.management_form }}
                                     {% for person_form in person_formset %}
                                     <div class="mb-3 candidate-input">
                                         <label for="{{ person_form.name.id_for_label }}"
@@ -251,13 +254,12 @@
                                     </div>
                                     {% endfor %}
                                 </div>
+                                <div class="my-4">
+                                    <button type="button" id="add-candidate-btn" class="btn btn-primary">Add
+                                        Candidate</button>
 
-                                <button type="button" id="add-candidate-btn" class="btn btn-primary">Add
-                                    Candidate</button>
-
-
-
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -266,4 +268,4 @@
         </div>
     </div>
 
-{% endblock %}
+    {% endblock %}

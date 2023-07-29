@@ -61,16 +61,18 @@ class VoteCardCreationForm(forms.ModelForm):
         }
 
         labels = {
-            'title': 'Event Title',
-            'author': 'Event Author',
-            'category': 'Event Category',
+            'title': 'Title',
+            'author': 'Author',
+            'category': 'Category',
+            'mission': 'Mission'
         }
 
         help_texts = {
-            'title': 'Enter the title for the event. Must be unique.',
+            'title': 'Enter the title for the event. Must be unique and descriptive.',
             'expire': 'Enter the date the event will expire.',
             'description': 'Enter a catchy description',
-            'location': 'Enter your target location'
+            'location': 'Enter your target location',
+            'mission': 'Enter your formal mission'
         }
 
 

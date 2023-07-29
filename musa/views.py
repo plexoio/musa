@@ -148,9 +148,9 @@ class VoteCardCreation(View):
     template_name = 'backend/user-dashboard/create.html'
 
     def get(self, request, *args, **kwargs):
-        form = VoteCardCreationForm()
+        form = VoteCardCreationForm(initial={'author': request.user})
         ElectedPersonFormSet = inlineformset_factory(
-            VoteCard, ElectedPerson, form=ElectedPersonForm, extra=4)
+            VoteCard, ElectedPerson, form=ElectedPersonForm, extra=0)
         person_formset = ElectedPersonFormSet(
             queryset=ElectedPerson.objects.none())
         return render(request, self.template_name, {'form': form, 'person_formset': person_formset})
@@ -158,7 +158,7 @@ class VoteCardCreation(View):
     def post(self, request, *args, **kwargs):
         form = VoteCardCreationForm(request.POST, request.FILES)
         ElectedPersonFormSet = inlineformset_factory(
-            VoteCard, ElectedPerson, form=ElectedPersonForm, extra=4)
+            VoteCard, ElectedPerson, form=ElectedPersonForm, extra=0)
         person_formset = ElectedPersonFormSet(
             request.POST, queryset=ElectedPerson.objects.none())
 
