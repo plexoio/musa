@@ -55,8 +55,10 @@ class VoteCard(models.Model):
     description = models.TextField(max_length=400)
     expire = models.DateField()
     event_image = CloudinaryField('image', default='placeholder')
-    vote_record = models.ManyToManyField(
-        UserProfile, through='VoteRecord', related_name='user_votes', blank=True)
+    vote_record = models.ManyToManyField(UserProfile, through='VoteRecord',
+                                         related_name='user_votes', blank=True)
+    candidates = models.ManyToManyField('ElectedPerson', related_name='vote_cards',
+                                        blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
     excerpt = models.TextField(blank=True)
     created_on = models.DateField(auto_now_add=True)
@@ -74,11 +76,13 @@ class VoteCard(models.Model):
 
 class VoteRecord(models.Model):
     """Model representing the record of a single vote by a user."""
-    voter = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="voter_record")
+    voter = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, related_name="voter_record")
     vote_card = models.ForeignKey(
         VoteCard, on_delete=models.CASCADE, related_name="votecard_record")
-    elected_person = models.ForeignKey(
-        'ElectedPerson', on_delete=models.CASCADE, related_name="elected_record")
+    elected_person = models.ForeignKey('ElectedPerson',
+                                       on_delete=models.CASCADE,
+                                       related_name="elected_record")
     timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -92,6 +96,7 @@ class ElectedPerson(models.Model):
     """Model representing a person who can be elected in a vote."""
     name = models.CharField(max_length=80, unique=True)
     is_elected = models.BooleanField(default=False)
+    vote_card = models.ForeignKey('VoteCard', on_delete=models.CASCADE, related_name="vote_candidate", blank=True)
 
     class Meta:
         ordering = ['name']

@@ -4,14 +4,15 @@ from django.views import View, generic
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import VoteCard, UserProfile, VoteRecord
+from .models import VoteCard, UserProfile, VoteRecord, ElectedPerson
 from django import forms
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import logout
-from .forms import CustomSignupForm, CustomLoginForm, VoteCardCreationForm
+from .forms import CustomSignupForm, CustomLoginForm, VoteCardCreationForm, ElectedPersonForm
 from django.http import HttpResponseBadRequest
 from django.shortcuts import render
+from django.forms import inlineformset_factory
 
 # GENERAL
 
@@ -148,18 +149,30 @@ class VoteCardCreation(View):
 
     def get(self, request, *args, **kwargs):
         form = VoteCardCreationForm()
-        return render(request, self.template_name, {'form': form})
+        ElectedPersonFormSet = inlineformset_factory(
+            VoteCard, ElectedPerson, form=ElectedPersonForm, extra=4)
+        person_formset = ElectedPersonFormSet(
+            queryset=ElectedPerson.objects.none())
+        return render(request, self.template_name, {'form': form, 'person_formset': person_formset})
 
     def post(self, request, *args, **kwargs):
         form = VoteCardCreationForm(request.POST, request.FILES)
-        if form.is_valid():
+        ElectedPersonFormSet = inlineformset_factory(
+            VoteCard, ElectedPerson, form=ElectedPersonForm, extra=4)
+        person_formset = ElectedPersonFormSet(
+            request.POST, queryset=ElectedPerson.objects.none())
+
+        if form.is_valid() and person_formset.is_valid():
             vote_card = form.save(commit=False)
             vote_card.author = request.user
             vote_card.save()
+
+            person_formset.instance = vote_card
+            person_formset.save()
+
             return redirect('user_dashboard')
         else:
-            # Return a bad request response or render the form with errors
-            return HttpResponseBadRequest("Invalid form data")
+            return render(request, self.template_name, {'form': form, 'person_formset': person_formset})
 
 # ADMIN
 

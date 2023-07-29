@@ -1,5 +1,5 @@
 from cloudinary.forms import CloudinaryFileField
-from .models import VoteCard, UserProfile, Category
+from .models import VoteCard, UserProfile, Category, ElectedPerson
 from allauth.account.forms import LoginForm, SignupForm
 from django import forms
 from django.utils.text import slugify
@@ -25,13 +25,18 @@ CustomLoginForm = LoginForm
 
 
 class VoteCardCreationForm(forms.ModelForm):
-
     event_image = CloudinaryFileField(
         options={
             'crop': 'scale',
             'width': 400,
             'height': 300,
         },
+        required=False
+    )
+
+    candidates = forms.ModelMultipleChoiceField(
+        queryset=ElectedPerson.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
         required=False
     )
 
@@ -46,7 +51,7 @@ class VoteCardCreationForm(forms.ModelForm):
         model = VoteCard
         fields = [
             'title', 'author', 'category', 'mission',
-            'location', 'description', 'expire', 'event_image'
+            'location', 'description', 'expire', 'event_image', 'candidates'
         ]
 
         widgets = {
@@ -67,3 +72,9 @@ class VoteCardCreationForm(forms.ModelForm):
             'description': 'Enter a catchy description',
             'location': 'Enter your target location'
         }
+
+
+class ElectedPersonForm(forms.ModelForm):
+    class Meta:
+        model = ElectedPerson
+        fields = '__all__'

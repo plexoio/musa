@@ -131,120 +131,139 @@
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active">Create a voting event</li>
                     </ol>
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-6 d-inline-block">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% if form.non_field_errors %}
+                                <div class="errors">{{ form.non_field_errors }}</div>
+                                {% endif %}
 
-                    <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {% if form.non_field_errors %}
-                        <div class="errors">{{ form.non_field_errors }}</div>
-                        {% endif %}
+                                <!-- Title  -->
+                                <div class="mb-3">
+                                    <label for="{{ form.title.id_for_label }}"
+                                        class="form-label"><strong>{{ form.title.label }}</strong></label>
+                                    <input type="text" name="{{ form.title.name }}" class="form-control"
+                                        id="{{ form.title.id_for_label }}" value="{{ form.title.value|default:'' }}">
+                                    {% if form.title.errors %}
+                                    <div class="errors">{{ form.title.errors }}</div>
+                                    {% endif %}
+                                    <div class="form-text">{{ form.title.help_text }}</div>
+                                </div>
 
-                        <!-- Title  -->
-                        <div class="mb-3">
-                            <label for="{{ form.title.id_for_label }}" class="form-label">{{ form.title.label }}</label>
-                            <input type="text" name="{{ form.title.name }}" class="form-control"
-                                id="{{ form.title.id_for_label }}" value="{{ form.title.value|default:'' }}">
-                            {% if form.title.errors %}
-                            <div class="errors">{{ form.title.errors }}</div>
-                            {% endif %}
-                            <div class="form-text">{{ form.title.help_text }}</div>
+                                <!-- Author -->
+                                <div class="mb-3">
+                                    <label for="{{ form.author.id_for_label }}"
+                                        class="form-label"><strong>{{ form.author.label }}</strong></label>
+                                    <input type="text" name="{{ form.author.name }}" class="form-control"
+                                        id="{{ form.author.id_for_label }}" value="{{ request.user.username }}"
+                                        disabled>
+                                    {% if form.author.errors %}
+                                    <div class="errors">{{ form.author.errors }}</div>
+                                    {% endif %}
+                                    <div class="form-text">{{ form.author.help_text }}</div>
+                                </div>
+
+                                <!--  Category-->
+                                <div class="mb-3">
+                                    <label for="{{ form.category.id_for_label }}"
+                                        class="form-label"><strong>{{ form.category.label }}</strong></label>
+                                    {{ form.category }}
+                                    {% if form.category.errors %}
+                                    <div class="errors">{{ form.category.errors }}</div>
+                                    {% endif %}
+                                    <div class="form-text">{{ form.category.help_text }}</div>
+                                </div>
+
+                                <!-- Mission -->
+                                <div class="mb-3">
+                                    <label for="{{ form.mission.id_for_label }}"
+                                        class="form-label"><strong>{{ form.mission.label }}</strong></label>
+                                    <input type="text" name="{{ form.mission.name }}" class="form-control"
+                                        id="{{ form.mission.id_for_label }}"
+                                        value="{{ form.mission.value|default:'' }}">
+                                    {% if form.mission.errors %}
+                                    <div class="errors">{{ form.mission.errors }}</div>
+                                    {% endif %}
+                                    <div class="form-text">{{ form.mission.help_text }}</div>
+                                </div>
+
+                                <!-- Location -->
+                                <div class="mb-3">
+                                    <label for="{{ form.location.id_for_label }}"
+                                        class="form-label"><strong>{{ form.location.label }}</strong></label>
+                                    <input type="text" name="{{ form.location.name }}" class="form-control"
+                                        id="{{ form.location.id_for_label }}"
+                                        value="{{ form.location.value|default:'' }}">
+                                    {% if form.location.errors %}
+                                    <div class="errors">{{ form.location.errors }}</div>
+                                    {% endif %}
+                                    <div class="form-text">{{ form.location.help_text }}</div>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="mb-3">
+                                    <label for="{{ form.description.id_for_label }}"
+                                        class="form-label"><strong>{{ form.description.label }}</strong></label>
+                                    <textarea name="{{ form.description.name }}" class="form-control"
+                                        id="{{ form.description.id_for_label }}"
+                                        rows="4">{{ form.description.value|default:'' }}</textarea>
+                                    {% if form.description.errors %}
+                                    <div class="errors">{{ form.description.errors }}</div>
+                                    {% endif %}
+                                    <div class="form-text">{{ form.description.help_text }}</div>
+                                </div>
+                                <!-- Expire -->
+                                <div class="mb-3">
+                                    <label for="{{ form.expire.id_for_label }}"
+                                        class="form-label"><strong>{{ form.expire.label }}</strong></label>
+                                    <input type="date" name="{{ form.expire.name }}" class="form-control"
+                                        id="{{ form.expire.id_for_label }}" value="{{ form.expire.value|default:'' }}">
+                                    {% if form.expire.errors %}
+                                    <div class="errors">{{ form.expire.errors }}</div>
+                                    {% endif %}
+                                    <div class="form-text">{{ form.expire.help_text }}</div>
+                                </div>
+
+                                <!-- Image -->
+                                <div class="mb-3">
+                                    <label for="{{ form.event_image.id_for_label }}"
+                                        class="form-label"><strong>{{ form.event_image.label }}</strong></label>
+                                    {{ form.event_image }}
+                                    {% if form.event_image.errors %}
+                                    <div class="errors">{{ form.event_image.errors }}</div>
+                                    {% endif %}
+                                    <div class="form-text">{{ form.event_image.help_text }}</div>
+                                </div>
+                                <h3 class="text-center">Candidates</h3>
+                                <div id="candidates-container">
+                                    {% for person_form in person_formset %}
+                                    <div class="mb-3 candidate-input">
+                                        <label for="{{ person_form.name.id_for_label }}"
+                                            class="form-label">{{ person_form.name.label }}</label>
+                                        <input type="text" name="{{ person_form.name.name }}" class="form-control"
+                                            id="{{ person_form.name.id_for_label }}"
+                                            value="{{ person_form.name.value|default:'' }}">
+                                        {% if person_form.name.errors %}
+                                        <div class="errors">{{ person_form.name.errors }}</div>
+                                        {% endif %}
+                                        <div class="form-text">{{ person_form.name.help_text }}</div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+
+                                <button type="button" id="add-candidate-btn" class="btn btn-primary">Add
+                                    Candidate</button>
+
+
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
                         </div>
-
-                        <!-- Author -->
-                        <div class="mb-3">
-                            <label for="{{ form.author.id_for_label }}"
-                                class="form-label">{{ form.author.label }}</label>
-                            {{ form.author }}
-                            {% if form.author.errors %}
-                            <div class="errors">{{ form.author.errors }}</div>
-                            {% endif %}
-                            <div class="form-text">{{ form.author.help_text }}</div>
-                        </div>
-
-                        <!--  Category-->
-                        <div class="mb-3">
-                            <label for="{{ form.category.id_for_label }}"
-                                class="form-label">{{ form.category.label }}</label>
-                            {{ form.category }}
-                            {% if form.category.errors %}
-                            <div class="errors">{{ form.category.errors }}</div>
-                            {% endif %}
-                            <div class="form-text">{{ form.category.help_text }}</div>
-                        </div>
-
-                        <!-- Mission -->
-                        <div class="mb-3">
-                            <label for="{{ form.mission.id_for_label }}"
-                                class="form-label">{{ form.mission.label }}</label>
-                            <input type="text" name="{{ form.mission.name }}" class="form-control"
-                                id="{{ form.mission.id_for_label }}" value="{{ form.mission.value|default:'' }}">
-                            {% if form.mission.errors %}
-                            <div class="errors">{{ form.mission.errors }}</div>
-                            {% endif %}
-                            <div class="form-text">{{ form.mission.help_text }}</div>
-                        </div>
-
-                        <!-- Location -->
-                        <div class="mb-3">
-                            <label for="{{ form.location.id_for_label }}"
-                                class="form-label">{{ form.location.label }}</label>
-                            <input type="text" name="{{ form.location.name }}" class="form-control"
-                                id="{{ form.location.id_for_label }}" value="{{ form.location.value|default:'' }}">
-                            {% if form.location.errors %}
-                            <div class="errors">{{ form.location.errors }}</div>
-                            {% endif %}
-                            <div class="form-text">{{ form.location.help_text }}</div>
-                        </div>
-
-                        <!-- Description -->
-                        <div class="mb-3">
-                            <label for="{{ form.description.id_for_label }}"
-                                class="form-label">{{ form.description.label }}</label>
-                            <textarea name="{{ form.description.name }}" class="form-control"
-                                id="{{ form.description.id_for_label }}"
-                                rows="4">{{ form.description.value|default:'' }}</textarea>
-                            {% if form.description.errors %}
-                            <div class="errors">{{ form.description.errors }}</div>
-                            {% endif %}
-                            <div class="form-text">{{ form.description.help_text }}</div>
-                        </div>
-                        <!-- Expire -->
-                        <div class="mb-3">
-                            <label for="{{ form.expire.id_for_label }}"
-                                class="form-label">{{ form.expire.label }}</label>
-                            <input type="date" name="{{ form.expire.name }}" class="form-control"
-                                id="{{ form.expire.id_for_label }}" value="{{ form.expire.value|default:'' }}">
-                            {% if form.expire.errors %}
-                            <div class="errors">{{ form.expire.errors }}</div>
-                            {% endif %}
-                            <div class="form-text">{{ form.expire.help_text }}</div>
-                        </div>
-
-                        <!-- Image -->
-                        <div class="mb-3">
-                            <label for="{{ form.event_image.id_for_label }}"
-                                class="form-label">{{ form.event_image.label }}</label>
-                            {{ form.event_image }}
-                            {% if form.event_image.errors %}
-                            <div class="errors">{{ form.event_image.errors }}</div>
-                            {% endif %}
-                            <div class="form-text">{{ form.event_image.help_text }}</div>
-                        </div>
-
-                        <!-- Status -->
-                        <div class="mb-3">
-                            <label for="{{ form.status.id_for_label }}"
-                                class="form-label">{{ form.status.label }}</label>
-                            {{ form.status }}
-                            {% if form.status.errors %}
-                            <div class="errors">{{ form.status.errors }}</div>
-                            {% endif %}
-                            <div class="form-text">{{ form.status.help_text }}</div>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    </div>
                 </div>
             </main>
         </div>
     </div>
-    {% endblock %}
+
+{% endblock %}
