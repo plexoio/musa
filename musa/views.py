@@ -9,7 +9,9 @@ from django import forms
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import logout
-from .forms import CustomSignupForm, CustomLoginForm
+from .forms import CustomSignupForm, CustomLoginForm, VoteCardCreationForm
+from django.http import HttpResponseBadRequest
+from django.shortcuts import render
 
 # GENERAL
 
@@ -135,6 +137,30 @@ class UserPasswordChangeView(UserRequiredMixin, PasswordChangeView):
 
     def get_success_url(self):
         return reverse('user_settings')
+
+# USER Event Management
+
+# CREATE Event
+
+
+class VoteCardCreation(View):
+    template_name = 'backend/user-dashboard/create.html'
+
+    def get(self, request, *args, **kwargs):
+        form = VoteCardCreationForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = VoteCardCreationForm(request.POST, request.FILES)
+        if form.is_valid():
+            vote_card = form.save(commit=False)
+            vote_card.author = request.user
+            vote_card.save()
+            return redirect('user_dashboard')
+        else:
+            # Return a bad request response or render the form with errors
+            return HttpResponseBadRequest("Invalid form data")
+
 
 # ADMIN
 

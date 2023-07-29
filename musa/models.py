@@ -53,7 +53,7 @@ class VoteCard(models.Model):
     mission = models.CharField(max_length=80)
     location = models.CharField(max_length=80)
     description = models.TextField(max_length=400)
-    expire = models.DateField(auto_now_add=True)
+    expire = models.DateField()
     event_image = CloudinaryField('image', default='placeholder')
     vote_record = models.ManyToManyField(
         UserProfile, through='VoteRecord', related_name='user_votes', blank=True)
