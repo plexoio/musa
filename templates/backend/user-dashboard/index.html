@@ -184,7 +184,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            Events Overview
+                            Events you've created
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">
@@ -209,7 +209,7 @@
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    {% for event in user_dashboard.vote_cards.all %}
+                                    {% for event in user_dashboard.card_author.all %}
                                     <tr>
                                         <td>{{ event.title }}</td>
                                         <td>{{ event.author }}</td>

@@ -17,6 +17,8 @@ urlpatterns = [
     path('user/delete/', views.UserDelete.as_view(), name='user_delete'),
     path('user/create', views.VoteCardCreation.as_view(),
          name='event_creation'),
+    path('user/success', views.UserSuccess.as_view(),
+         name='user_success'),
 
     # OFFICE
     path('office/', views.AdminDashboard.as_view(),

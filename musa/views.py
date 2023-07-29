@@ -86,6 +86,15 @@ class UserDashboard(UserRequiredMixin, LoginRequiredMixin, generic.DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(UserProfile, pk=self.request.user.pk)
 
+    def get_context_data(self, **kwargs):
+        # Call the base implementation to get the context
+        context = super().get_context_data(**kwargs)
+        # Add the VoteCard instances to the context
+        user_profile = self.get_object()
+        context['vote_cards'] = user_profile.user_card.all()
+        print(user_profile.user_card.all())
+        return context
+
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
@@ -170,9 +179,16 @@ class VoteCardCreation(View):
             person_formset.instance = vote_card
             person_formset.save()
 
-            return redirect('user_dashboard')
+            return redirect('user_success')
         else:
             return render(request, self.template_name, {'form': form, 'person_formset': person_formset})
+
+# USER Success
+
+
+class UserSuccess(generic.ListView):
+    model = VoteCard
+    template_name = 'backend/user-dashboard/success.html'
 
 # ADMIN
 
