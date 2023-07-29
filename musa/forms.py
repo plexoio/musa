@@ -2,6 +2,7 @@ from cloudinary.forms import CloudinaryFileField
 from .models import VoteCard, UserProfile, Category
 from allauth.account.forms import LoginForm, SignupForm
 from django import forms
+from django.utils.text import slugify
 
 
 class CustomSignupForm(SignupForm):
@@ -34,12 +35,18 @@ class VoteCardCreationForm(forms.ModelForm):
         required=False
     )
 
+    def save(self, commit=True):
+        instance = super(VoteCardCreationForm, self).save(commit=False)
+        instance.slug = slugify(instance.title)
+        if commit:
+            instance.save()
+        return instance
+
     class Meta:
         model = VoteCard
         fields = [
             'title', 'author', 'category', 'mission',
-            'location', 'description', 'expire', 'event_image', 'status',
-            'excerpt'
+            'location', 'description', 'expire', 'event_image'
         ]
 
         widgets = {
@@ -58,6 +65,5 @@ class VoteCardCreationForm(forms.ModelForm):
             'title': 'Enter the title for the event. Must be unique.',
             'expire': 'Enter the date the event will expire.',
             'description': 'Enter a catchy description',
-            'excerpt': 'Enter a special comment on this event',
             'location': 'Enter your target location'
         }

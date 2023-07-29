@@ -161,7 +161,6 @@ class VoteCardCreation(View):
             # Return a bad request response or render the form with errors
             return HttpResponseBadRequest("Invalid form data")
 
-
 # ADMIN
 
 
