@@ -72,7 +72,8 @@ class VoteCardCreationForm(forms.ModelForm):
             'expire': 'Enter the date the event will expire.',
             'description': 'Enter a catchy description',
             'location': 'Enter your target location',
-            'mission': 'Enter your formal mission'
+            'mission': 'State clearly your mission',
+            'author': 'You are currently the author of this event'
         }
 
 

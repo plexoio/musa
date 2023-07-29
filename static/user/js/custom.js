@@ -7,8 +7,8 @@ $(document).ready(function () {
         const newCandidateInput = $(`
         <div class="mb-3 candidate-input">
             <label for="id_vote_candidate-${candidateIndex}-name" class="form-label">Candidate ${parseInt(candidateIndex) + 1}</label>
-            <input type="text" name="vote_candidate-${candidateIndex}-name" class="form-control" id="id_vote_candidate-${candidateIndex}-name">
-            <div class="form-text">Candidate ${parseInt(candidateIndex) + 1}'s name and profession</div>
+            <input type="text" name="vote_candidate-${candidateIndex}-name" class="form-control" id="id_vote_candidate-${candidateIndex}-name" required>
+            <div class="form-text">Insert name and profession</div>
         </div>
     `)
         candidatesContainer.append(newCandidateInput)
