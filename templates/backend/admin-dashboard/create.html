@@ -139,7 +139,7 @@
                     <div class="alert alert-warning text-center" role="alert">
                         In order to create a Voting Event you need to be an admin.
                     </div>
-                    {% elif request.user.role == 1%}
+                    {% elif request.user.role == 2%}
                     <div class="row d-flex justify-content-center align-items-center">
                         <div class="col-xl-6 col-md-12 d-inline-block">
                             <form method="POST" enctype="multipart/form-data">

@@ -5,6 +5,7 @@ from musa.forms import VoteCardCreationForm, ElectedPersonForm
 from django.forms import inlineformset_factory
 from user_profile.views import UserRequiredMixin
 from admin_profile.views import AdminRequiredMixin
+from django.shortcuts import get_object_or_404, redirect
 
 
 class VoteForCardView(View):
@@ -101,6 +102,7 @@ class AdminVoteCardCreation(AdminRequiredMixin, View):
         if form.is_valid() and person_formset.is_valid():
             vote_card = form.save(commit=False)
             vote_card.author = request.user
+            vote_card.status = 1
             vote_card.save()
 
             person_formset.instance = vote_card
