@@ -153,7 +153,7 @@ class UserPasswordChangeView(UserRequiredMixin, PasswordChangeView):
 # CREATE Event
 
 
-class VoteCardCreation(View):
+class VoteCardCreation(View, UserRequiredMixin):
     template_name = 'backend/user-dashboard/create.html'
 
     def get(self, request, *args, **kwargs):
@@ -187,8 +187,9 @@ class VoteCardCreation(View):
 
 
 class UserSuccess(generic.ListView):
-    model = VoteCard
+    model = UserProfile
     template_name = 'backend/user-dashboard/success.html'
+    context_object_name = 'user_success'
 
 # ADMIN
 
@@ -217,7 +218,7 @@ class AdminProfileForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email', 'username']
 
 
-class AdminSettings(UpdateView):
+class AdminSettings(AdminRequiredMixin, UpdateView):
     model = UserProfile
     form_class = AdminProfileForm
     template_name = 'backend/admin-dashboard/settings.html'

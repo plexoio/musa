@@ -16,8 +16,8 @@ urlpatterns = [
          name='user_change'),
     path('user/delete/', views.UserDelete.as_view(), name='user_delete'),
     path('user/create', views.VoteCardCreation.as_view(),
-         name='event_creation'),
-    path('user/success', views.UserSuccess.as_view(),
+         name='user_creation'),
+    path('success/', views.UserSuccess.as_view(),
          name='user_success'),
 
     # OFFICE
@@ -27,6 +27,9 @@ urlpatterns = [
          name='admin_settings'),
     path('office/password-change/', views.AdminPasswordChangeView.as_view(),
          name='admin_change'),
+    path('office/create', views.VoteCardCreation.as_view(),
+         name='admin_creation'),
+
     # ROLE
     path('role_redirect/', role_redirect.RoleRedirectView.as_view(),
          name='role_redirect'),

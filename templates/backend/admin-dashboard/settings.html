@@ -92,7 +92,7 @@
                                 <div class="collapse" id="pagesCollapseEvent" aria-labelledby="headingOne"
                                     data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="401.html">Create</a>
+                                        <a class="nav-link" href="{% url 'admin_creation' %}">Create</a>
                                         <a class="nav-link" href="404.html">Draft</a>
                                         <a class="nav-link" href="500.html">Published</a>
                                     </nav>
@@ -215,24 +215,6 @@
                         <div class="col-12 text-center">
                             <a class="btn btn-primary" href="{% url 'admin_change' %}">Change Password</a>
                         </div>
-                        {% if admin_settings.user_votes.all %}
-                        <div class="col-12 text-center">
-                            <p>Since you have participated in some event you cannot yet delete your account.<br>
-                                Wait until the event is deleted or contact the support team.
-                            </p>
-                            <ul class="list-group d-inline-block">
-                                <li class="list-group-item bg-dark text-white" aria-current="true">Account Activity</li>
-                                {% for voter in admin_settings.voter_record.all %}
-                                <li class="list-group-item">Voted for <strong>{{ voter.vote_card }} </strong>at
-                                    {{ voter.timestamp }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        {% else %}
-                        <div class="col-12 text-center">
-                            <a class="btn btn-danger" href="{% url 'user_delete' %}">Delete Account</a>
-                        </div>
-                        {% endif %}
                     </form>
                 </div>
             </main>

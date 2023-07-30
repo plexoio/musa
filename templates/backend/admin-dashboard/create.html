@@ -5,7 +5,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{% url 'user_dashboard' %}">Musa</a>
+        <a class="navbar-brand ps-3" href="{% url 'admin_dashboard' %}">Musa</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -24,7 +24,7 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'user_settings'%}">Settings</a></li>
+                    <li><a class="dropdown-item" href="{% url 'admin_settings'%}">Settings</a></li>
 
                     <li>
                         <hr class="dropdown-divider" />
@@ -40,7 +40,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="{% url 'user_dashboard' %}">
+                        <a class="nav-link" href="{% url 'admin_dashboard' %}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -54,7 +54,7 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{% url 'user_creation' %}">Create Event</a>
+                                <a class="nav-link" href="{% url 'admin_creation' %}">Create Event</a>
                                 <a class="nav-link" href="layout-static.html">My Events</a>
                                 <a class="nav-link" href="layout-sidenav-light.html">My Votes</a>
                             </nav>
@@ -131,9 +131,6 @@
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active">Create a voting event</li>
                     </ol>
-                    {% if request.user.role == 0 %}
-                    <p> Verify your account</p>
-                    {% elif request.user.role == 1%}
                     <div class="row d-flex justify-content-center align-items-center">
                         <div class="col-xl-6 col-md-12 d-inline-block">
                             <form method="POST" enctype="multipart/form-data">
@@ -271,8 +268,6 @@
                             </form>
                         </div>
                     </div>
-
-                    {% endif %}
                 </div>
             </main>
         </div>
