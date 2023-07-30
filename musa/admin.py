@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Category, UserProfile, VoteCard, VoteRecord, ElectedPerson
+from .models import UserProfile
+from vote_management.models import Category, VoteCard, VoteRecord, ElectedPerson
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -14,6 +15,5 @@ class VoteCardAdmin(SummernoteModelAdmin):
 
 admin.site.register(Category)
 admin.site.register(UserProfile)
-# admin.site.register(VoteCard)
 admin.site.register(VoteRecord)
 admin.site.register(ElectedPerson)

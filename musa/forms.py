@@ -1,5 +1,6 @@
 from cloudinary.forms import CloudinaryFileField
-from .models import VoteCard, UserProfile, Category, ElectedPerson
+from .models import UserProfile
+from vote_management.models import VoteCard, Category, ElectedPerson
 from allauth.account.forms import LoginForm, SignupForm
 from django import forms
 from django.utils.text import slugify

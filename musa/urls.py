@@ -1,33 +1,54 @@
+# Django imports
 from django.urls import path
+
+# Local relative imports
 from . import views, role_redirect
 
+# Authentication app imports
+from authentication.views import CustomLoginView, CustomSignupView, CustomLogoutView
+
+# User Profile app imports
+from user_profile.views import UserDashboard, UserSettings, UserPasswordChangeView, UserDelete
+
+# Admin Profile app imports
+from admin_profile.views import AdminDashboard, AdminSettings, AdminPasswordChangeView
+
+# Vote Management app imports
+from vote_management.views import UserVoteCardCreation, AdminVoteCardCreation, VoteForCardView
+
 urlpatterns = [
-    # BACKEND
-    path('login/', views.CustomLoginView.as_view(),
+    # AUTHENTICATION
+    path('login/', CustomLoginView.as_view(),
          name='account_login'),
-    path('signup/', views.CustomSignupView.as_view(), name='account_signup'),
-    path('logout/', views.CustomLogoutView.as_view(), name='logout'),
+    path('signup/', CustomSignupView.as_view(), name='account_signup'),
+    path('logout/', CustomLogoutView.as_view(), name='logout'),
+
     # USER
-    path('user/', views.UserDashboard.as_view(),
+    path('user/', UserDashboard.as_view(),
          name='user_dashboard'),
-    path('user/settings/', views.UserSettings.as_view(),
+    path('user/settings/', UserSettings.as_view(),
          name='user_settings'),
-    path('user/password-change/', views.UserPasswordChangeView.as_view(),
+    path('user/password-change/', UserPasswordChangeView.as_view(),
          name='user_change'),
-    path('user/delete/', views.UserDelete.as_view(), name='user_delete'),
-    path('user/create', views.VoteCardCreation.as_view(),
+    path('user/delete/', UserDelete.as_view(), name='user_delete'),
+
+    # VOTE MANAGEMENT
+    path('user/create', UserVoteCardCreation.as_view(),
          name='user_creation'),
+
+    # USER SUCCESS
     path('success/', views.UserSuccess.as_view(),
          name='user_success'),
 
     # OFFICE
-    path('office/', views.AdminDashboard.as_view(),
+    path('office/', AdminDashboard.as_view(),
          name='admin_dashboard'),
-    path('office/settings/', views.AdminSettings.as_view(),
+    path('office/settings/', AdminSettings.as_view(),
          name='admin_settings'),
-    path('office/password-change/', views.AdminPasswordChangeView.as_view(),
+    path('office/password-change/', AdminPasswordChangeView.as_view(),
          name='admin_change'),
-    path('office/create', views.VoteCardCreation.as_view(),
+
+    path('office/create', AdminVoteCardCreation.as_view(),
          name='admin_creation'),
 
     # ROLE
@@ -37,6 +58,6 @@ urlpatterns = [
     # FRONTEND
     path('', views.HomePage.as_view(),
          name='homepage'),
-    path('vote/<int:vote_card_id>/', views.VoteForCardView.as_view(),
+    path('vote/<int:vote_card_id>/', VoteForCardView.as_view(),
          name='vote_for_card')
 ]

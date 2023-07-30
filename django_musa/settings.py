@@ -56,7 +56,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'django_summernote',
-    'musa'
+    'musa',
+    'authentication',
+    'user_profile',
+    'vote_management',
+    'admin_profile'
 ]
 
 # Account Management

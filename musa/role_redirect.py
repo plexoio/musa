@@ -7,7 +7,7 @@ class RoleRedirectView(View):
     def get(self, request, *args, **kwargs):
         user = request.user
 
-        if user.role == 0:  # adjust  these based on your role values
+        if user.role == 0:  # adjust based on role values
             return redirect('/user/')
         elif user.role == 1:
             return redirect('/user/')
