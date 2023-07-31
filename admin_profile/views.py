@@ -61,3 +61,7 @@ class AdminPasswordChangeView(AdminRequiredMixin, PasswordChangeView):
 
     def get_success_url(self):
         return reverse('admin_settings')
+
+
+class AdminRole(AdminDashboard):
+    template_name = 'backend/admin-dashboard/role.html'

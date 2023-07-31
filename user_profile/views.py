@@ -1,13 +1,16 @@
-from django.contrib.auth.mixins import UserPassesTestMixin
-from django.views import generic
-from musa.models import UserProfile
-from django.shortcuts import get_object_or_404, redirect
-from django import forms
-from django.views.generic.edit import UpdateView, DeleteView
-from django.contrib.auth.forms import PasswordChangeForm
+# Django imports
 from django.contrib.auth import logout
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.views import PasswordChangeView
-from django.urls import reverse_lazy, reverse
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse, reverse_lazy
+from django.views import generic
+from django.views.generic.edit import UpdateView, DeleteView
+from django import forms
+
+# Local imports
+from musa.models import UserProfile
 
 
 class UserRequiredMixin(UserPassesTestMixin):
@@ -16,7 +19,8 @@ class UserRequiredMixin(UserPassesTestMixin):
     def test_func(self):
         user_profile = self.request.user
         return user_profile.is_authenticated and (
-            user_profile.role in [0, 1])
+            user_profile.role in [0, 1]
+        )
 
 
 class UserDashboard(UserRequiredMixin, generic.DetailView):
@@ -29,22 +33,23 @@ class UserDashboard(UserRequiredMixin, generic.DetailView):
         return get_object_or_404(UserProfile, pk=self.request.user.pk)
 
     def get_context_data(self, **kwargs):
-        # Call the base implementation to get the context
         context = super().get_context_data(**kwargs)
-        # Add the VoteCard instances to the context
         user_profile = self.get_object()
-        context['vote_cards'] = user_profile.user_card.order_by('-created_on').all()
-        print(user_profile.user_card.all())
+        context['vote_cards'] = user_profile.user_card.order_by(
+            '-created_on').all()
         return context
 
 
 class UserProfileForm(forms.ModelForm):
+    """Form for updating user profile."""
+
     class Meta:
         model = UserProfile
         fields = ['first_name', 'last_name', 'email']
 
 
 class UserSettings(UpdateView):
+    """View for updating user settings."""
     model = UserProfile
     form_class = UserProfileForm
     template_name = 'backend/user-dashboard/settings.html'
@@ -58,6 +63,7 @@ class UserSettings(UpdateView):
 
 
 class UserDelete(UserRequiredMixin, DeleteView):
+    """View for deleting the user profile."""
     model = UserProfile
     template_name = 'backend/user-dashboard/user_delete.html'
 
@@ -70,22 +76,26 @@ class UserDelete(UserRequiredMixin, DeleteView):
 
     def delete(self, request, *args, **kwargs):
         response = super().delete(request, *args, **kwargs)
-
-        # Log the user out after deletion
         logout(request)
-
         return response
 
 
 class UserPasswordChangeForm(PasswordChangeForm):
+    """Form for changing the user's password."""
+
     class Meta:
         fields = ['old_password', 'new_password1', 'new_password2']
 
 
 class UserPasswordChangeView(UserRequiredMixin, PasswordChangeView):
+    """View for changing the user's password."""
     template_name = 'backend/user-dashboard/password_change.html'
     form_class = UserPasswordChangeForm
     context_object_name = 'user_change'
 
     def get_success_url(self):
         return reverse('user_settings')
+
+
+class UserRole(UserDashboard):
+    template_name = 'backend/user-dashboard/role.html'

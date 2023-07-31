@@ -1,0 +1,32 @@
+{% extends "backend/admin-dashboard/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                        <div class="card-header">
+                            <h3 class="text-center font-weight-light my-4">My Role</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group my-4 text-center">
+                                <li class="list-group-item text-center text-white bg-success" aria-current="true">
+                                    <strong>{{ admin_dashboard.get_role_display }}</strong></li>
+                                <li class="list-group-item"><i class="fa-regular fa-pen-to-square"></i></li>
+                                <li class="list-group-item">You can create voting events</li>
+                                <li class="list-group-item">You can change your user data on settings</li>
+                                <li class="list-group-item">Your account has been verified</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

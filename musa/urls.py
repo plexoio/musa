@@ -8,10 +8,10 @@ from . import views, role_redirect
 from authentication.views import CustomLoginView, CustomSignupView, CustomLogoutView
 
 # User Profile app imports
-from user_profile.views import UserDashboard, UserSettings, UserPasswordChangeView, UserDelete
+from user_profile.views import UserDashboard, UserSettings, UserPasswordChangeView, UserDelete, UserRole
 
 # Admin Profile app imports
-from admin_profile.views import AdminDashboard, AdminSettings, AdminPasswordChangeView
+from admin_profile.views import AdminDashboard, AdminSettings, AdminPasswordChangeView, AdminRole
 
 # Vote Management app imports
 from vote_management.views import UserVoteCardCreation, AdminVoteCardCreation, VoteForCardView, AdminEventList, UserEventList
@@ -33,6 +33,8 @@ urlpatterns = [
     path('user/delete/', UserDelete.as_view(), name='user_delete'),
     path('user/all', UserEventList.as_view(),
          name='user_all_events'),
+    path('user/role', UserRole.as_view(),
+         name='user_role'),
 
     # VOTE MANAGEMENT
     path('user/create', UserVoteCardCreation.as_view(),
@@ -53,6 +55,8 @@ urlpatterns = [
          name='admin_creation'),
     path('office/all', AdminEventList.as_view(),
          name='admin_all_events'),
+    path('office/role', AdminRole.as_view(),
+         name='admin_role'),
 
     # ROLE
     path('role_redirect/', role_redirect.RoleRedirectView.as_view(),
