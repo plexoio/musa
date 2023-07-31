@@ -85,7 +85,19 @@
                                 <td>{{ event.get_status_display }}</td>
                                 <td>{{ event.location }}</td>
                                 <td>{{ event.created_on }}</td>
-                                <td>{{ event.expire }}</td>
+                                {% if event.expire|date:"Y-m-d" == current_date %}
+                                <td>{{ event.expire }}
+                                    <small class="text-warning fw-semibold">(Today)</small>
+                                </td>
+                                {% elif event.expire|date:"Y-m-d" < current_date %}
+                                <td>{{ event.expire }}
+                                    <small class="text-danger fw-semibold">(Expired)</small>
+                                </td>
+                                {% else %}
+                                <td>{{ event.expire }}
+                                    <small class="text-success fw-semibold">(Active)</small>
+                                </td>
+                                {% endif %}
                             </tr>
                             {% endfor %}
                         </tbody>

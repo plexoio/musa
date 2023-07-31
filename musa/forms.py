@@ -4,6 +4,7 @@ from vote_management.models import VoteCard, Category, ElectedPerson
 from allauth.account.forms import LoginForm, SignupForm
 from django import forms
 from django.utils.text import slugify
+from datetime import date
 
 
 class CustomSignupForm(SignupForm):
@@ -41,6 +42,13 @@ class UserVoteCardCreationForm(forms.ModelForm):
         required=False
     )
 
+    def clean_expire(self):
+        expire_date = self.cleaned_data.get('expire')
+        if expire_date and expire_date < date.today():
+            raise forms.ValidationError(
+                "The expiration date cannot be in the past.")
+        return expire_date
+
     def save(self, commit=True):
         instance = super(UserVoteCardCreationForm, self).save(commit=False)
         instance.slug = slugify(instance.title)
@@ -56,7 +64,8 @@ class UserVoteCardCreationForm(forms.ModelForm):
         ]
 
         widgets = {
-            'expire': forms.DateInput(attrs={'type': 'date'}),
+            'expire': forms.DateInput(attrs={'type': 'date', 'min': date.today(
+            )}),
             'description': forms.Textarea(attrs={'rows': 4}),
             'excerpt': forms.Textarea(attrs={'rows': 3}),
         }
@@ -69,7 +78,7 @@ class UserVoteCardCreationForm(forms.ModelForm):
         }
 
         help_texts = {
-            'title': 'Enter the title for the event. Must be unique and descriptive.',
+            'title': 'Enter a unique & descriptive the title for the event.',
             'expire': 'Enter the date the event will expire.',
             'description': 'Enter a catchy description',
             'location': 'Enter your target location',
@@ -96,6 +105,13 @@ class AdminVoteCardCreationForm(forms.ModelForm):
         required=False
     )
 
+    def clean_expire(self):
+        expire_date = self.cleaned_data.get('expire')
+        if expire_date and expire_date < date.today():
+            raise forms.ValidationError(
+                "The expiration date cannot be in the past.")
+        return expire_date
+
     def save(self, commit=True):
         instance = super(AdminVoteCardCreationForm, self).save(commit=False)
         instance.slug = slugify(instance.title)
@@ -107,11 +123,13 @@ class AdminVoteCardCreationForm(forms.ModelForm):
         model = VoteCard
         fields = [
             'title', 'author', 'category', 'mission',
-            'location', 'description', 'expire', 'event_image', 'candidates', 'status',
+            'location', 'description', 'expire',
+            'event_image', 'candidates', 'status',
         ]
 
         widgets = {
-            'expire': forms.DateInput(attrs={'type': 'date'}),
+            'expire': forms.DateInput(attrs={'type': 'date', 'min': date.today(
+            )}),
             'description': forms.Textarea(attrs={'rows': 4}),
             'excerpt': forms.Textarea(attrs={'rows': 3}),
         }
@@ -124,7 +142,7 @@ class AdminVoteCardCreationForm(forms.ModelForm):
         }
 
         help_texts = {
-            'title': 'Enter the title for the event. Must be unique and descriptive.',
+            'title': 'Enter a unique & descriptive the title for the event.',
             'expire': 'Enter the date the event will expire.',
             'description': 'Enter a catchy description',
             'location': 'Enter your target location',

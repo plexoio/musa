@@ -58,32 +58,39 @@
                                 <td>{{ event.category.category_name }}</td>
                                 {% if event.status == 1 %}
                                 <td>
-                                    <p class="text-success my-0 py-0">
-                                        <strong>
+                                    <p class="text-success my-0 py-0 fw-semibold">
+
                                             {{ event.get_status_display }}
-                                        </strong>
                                     </p>
                                 </td>
                                 {% elif event.status == 2%}
                                 <td>
-                                    <p class="text-danger my-0 py-0">
-                                        <strong>
+                                    <p class="text-danger my-0 py-0 fw-semibold">
                                             {{ event.get_status_display }}
-                                        </strong>
                                     </p>
                                 </td>
                                 {% else %}
                                 <td>
-                                    <p class="text-primary my-0 py-0">
-                                        <strong>
+                                    <p class="text-primary my-0 py-0 fw-semibold">
                                             {{ event.get_status_display }}
-                                        </strong>
                                     </p>
                                 </td>
                                 {% endif %}
                                 <td>{{ event.location }}</td>
                                 <td>{{ event.created_on }}</td>
-                                <td>{{ event.expire }}</td>
+                                {% if event.expire|date:"Y-m-d" == current_date %}
+                                <td>{{ event.expire }}
+                                    <small class="text-warning fw-semibold">(Today)</small>
+                                </td>
+                                {% elif event.expire|date:"Y-m-d" < current_date %}
+                                <td>{{ event.expire }}
+                                    <small class="text-danger fw-semibold">(Expired)</small>
+                                </td>
+                                {% else %}
+                                <td>{{ event.expire }}
+                                    <small class="text-success fw-semibold">(Active)</small>
+                                </td>
+                                {% endif %}F
                             </tr>
                             {% endfor %}
                         </tbody>
