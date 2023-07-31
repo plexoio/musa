@@ -138,7 +138,16 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as: <strong>{{ user_dashboard.username }}</strong></div>
+                    <div class="small">Logged in as:
+                        <span class="px-1"><strong>{{ request.user.username }}
+                                {% if request.user.role == 0 %}
+                                <i class="fa-regular fa-user px-1 fs-4 text"></i>
+                                {% elif request.user.role == 1 %}
+                                <i class="fa-regular fa-pen-to-square px-1 fs-4 text"></i>
+                                {% endif %}
+                            </strong>
+                        </span>
+                    </div>
                 </div>
             </nav>
         </div>

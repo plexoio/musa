@@ -15,18 +15,29 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-group my-4 text-center">
+
                                 <li class="list-group-item text-center text-white bg-success" aria-current="true">
                                     {% if user_dashboard.role == 0 %}
-                                    <strong>{{ user_dashboard.get_role_display }}</strong></li>
+                                    <strong>{{ user_dashboard.get_role_display }}</strong>
                                     {% elif user_dashboard.role == 1 %}
-                                    <strong>{{ user_dashboard.get_role_display }}</strong></li>
+                                    <strong>{{ user_dashboard.get_role_display }}</strong>
                                     {% elif user_dashboard.role == 2 %}
-                                    <strong>{{ user_dashboard.get_role_display }}</strong></li>
+                                    <strong>{{ user_dashboard.get_role_display }}</strong>
+                                </li>
+                                {% endif %}
+                                <li class="list-group-item">
+                                    {% if user_dashboard.role == 0 %}
+                                    <i class="fa-regular fa-user fs-4 text"></i>
+                                    <li class="list-group-item">You can create voting events</li>
+                                    <li class="list-group-item">You can not change most of your data on settings</li>
+                                    <li class="list-group-item">Your account has <strong>not</strong> been verified</li>
+                                    {% elif user_dashboard.role == 1 %}
+                                    <i class="fa-regular fa-pen-to-square fs-4 text"></i>
+                                    <li class="list-group-item">You can create voting events</li>
+                                    <li class="list-group-item">You can change most of your data on settings</li>
+                                    <li class="list-group-item">Your account has been verified</li>
                                     {% endif %}
-                                <li class="list-group-item"><i class="fa-regular fa-pen-to-square"></i></li>
-                                <li class="list-group-item">You can create voting events</li>
-                                <li class="list-group-item">You can not change your user data on settings</li>
-                                <li class="list-group-item">Your account has been verified</li>
+                                </li>
                             </ul>
                         </div>
                     </div>
