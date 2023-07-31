@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View, generic
 from .models import VoteCard, VoteRecord, ElectedPerson
-from musa.forms import VoteCardCreationForm, ElectedPersonForm
+from musa.forms import UserVoteCardCreationForm, AdminVoteCardCreationForm, ElectedPersonForm
 from django.forms import inlineformset_factory
 from user_profile.views import UserRequiredMixin, UserDashboard
 from admin_profile.views import AdminRequiredMixin
@@ -53,7 +53,7 @@ class UserVoteCardCreation(UserRequiredMixin, View):
     template_name = 'backend/user-dashboard/create.html'
 
     def get(self, request, *args, **kwargs):
-        form = VoteCardCreationForm(initial={'author': request.user})
+        form = UserVoteCardCreationForm(initial={'author': request.user})
         ElectedPersonFormSet = inlineformset_factory(
             VoteCard, ElectedPerson, form=ElectedPersonForm, extra=0)
         person_formset = ElectedPersonFormSet(
@@ -63,7 +63,7 @@ class UserVoteCardCreation(UserRequiredMixin, View):
                                           'person_formset': person_formset})
 
     def post(self, request, *args, **kwargs):
-        form = VoteCardCreationForm(request.POST, request.FILES)
+        form = UserVoteCardCreationForm(request.POST, request.FILES)
         ElectedPersonFormSet = inlineformset_factory(
             VoteCard, ElectedPerson, form=ElectedPersonForm, extra=0)
         person_formset = ElectedPersonFormSet(
@@ -111,7 +111,7 @@ class AdminVoteCardCreation(AdminRequiredMixin, View):
     template_name = 'backend/admin-dashboard/create.html'
 
     def get(self, request, *args, **kwargs):
-        form = VoteCardCreationForm(initial={'author': request.user})
+        form = AdminVoteCardCreationForm(initial={'author': request.user})
         ElectedPersonFormSet = inlineformset_factory(
             VoteCard, ElectedPerson, form=ElectedPersonForm, extra=0)
         person_formset = ElectedPersonFormSet(
@@ -121,7 +121,7 @@ class AdminVoteCardCreation(AdminRequiredMixin, View):
                                           'person_formset': person_formset})
 
     def post(self, request, *args, **kwargs):
-        form = VoteCardCreationForm(request.POST, request.FILES)
+        form = AdminVoteCardCreationForm(request.POST, request.FILES)
         ElectedPersonFormSet = inlineformset_factory(
             VoteCard, ElectedPerson, form=ElectedPersonForm, extra=0)
         person_formset = ElectedPersonFormSet(

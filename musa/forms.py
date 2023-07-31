@@ -22,10 +22,10 @@ class CustomSignupForm(SignupForm):
 
 CustomLoginForm = LoginForm
 
-# CREATE Event
+# USER Create Event Form
 
 
-class VoteCardCreationForm(forms.ModelForm):
+class UserVoteCardCreationForm(forms.ModelForm):
     event_image = CloudinaryFileField(
         options={
             'crop': 'scale',
@@ -42,7 +42,62 @@ class VoteCardCreationForm(forms.ModelForm):
     )
 
     def save(self, commit=True):
-        instance = super(VoteCardCreationForm, self).save(commit=False)
+        instance = super(UserVoteCardCreationForm, self).save(commit=False)
+        instance.slug = slugify(instance.title)
+        if commit:
+            instance.save()
+        return instance
+
+    class Meta:
+        model = VoteCard
+        fields = [
+            'title', 'author', 'category', 'mission',
+            'location', 'description', 'expire', 'event_image', 'candidates',
+        ]
+
+        widgets = {
+            'expire': forms.DateInput(attrs={'type': 'date'}),
+            'description': forms.Textarea(attrs={'rows': 4}),
+            'excerpt': forms.Textarea(attrs={'rows': 3}),
+        }
+
+        labels = {
+            'title': 'Title',
+            'author': 'Author',
+            'category': 'Category',
+            'mission': 'Mission'
+        }
+
+        help_texts = {
+            'title': 'Enter the title for the event. Must be unique and descriptive.',
+            'expire': 'Enter the date the event will expire.',
+            'description': 'Enter a catchy description',
+            'location': 'Enter your target location',
+            'mission': 'State clearly your mission',
+            'author': 'You are currently the author of this event'
+        }
+
+# ADMIN Create Event Form
+
+
+class AdminVoteCardCreationForm(forms.ModelForm):
+    event_image = CloudinaryFileField(
+        options={
+            'crop': 'scale',
+            'width': 400,
+            'height': 300,
+        },
+        required=False
+    )
+
+    candidates = forms.ModelMultipleChoiceField(
+        queryset=ElectedPerson.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+
+    def save(self, commit=True):
+        instance = super(AdminVoteCardCreationForm, self).save(commit=False)
         instance.slug = slugify(instance.title)
         if commit:
             instance.save()

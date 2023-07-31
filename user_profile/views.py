@@ -33,7 +33,7 @@ class UserDashboard(UserRequiredMixin, generic.DetailView):
         context = super().get_context_data(**kwargs)
         # Add the VoteCard instances to the context
         user_profile = self.get_object()
-        context['vote_cards'] = user_profile.user_card.all()
+        context['vote_cards'] = user_profile.user_card.order_by('-created_on').all()
         print(user_profile.user_card.all())
         return context
 
