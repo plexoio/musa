@@ -2,221 +2,95 @@
 {% load i18n %}
 {% block content%}
 
-<body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{% url 'admin_dashboard' %}">Settings</a>
-        <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-                class="fas fa-bars"></i></button>
-        <!-- Navbar-->
-        <div class="d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'admin_settings'%}">Settings</a></li>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid p-5">
+            <h1 class="mt-4">Admin Settings</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Update your information or delete your account</li>
+            </ol>
 
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="{% url 'admin_dashboard' %}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Interface</div>
-
-                        <!-- User Management -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            User Management
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Badges</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Verification Requests</a>
-                            </nav>
-                        </div>
-
-                        <!--  Event Management -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-                            aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Event Management
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseEvent" aria-expanded="false"
-                                    aria-controls="pagesCollapseEvent">
-                                    Create Event
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseEvent" aria-labelledby="headingOne"
-                                    data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="{% url 'admin_creation' %}">Create</a>
-                                        <a class="nav-link" href="404.html">Draft</a>
-                                        <a class="nav-link" href="500.html">Published</a>
-                                    </nav>
-                                </div>
-
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Management
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
-                                    data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="{% url 'admin_all_events' %}">All Events</a>
-                                        <a class="nav-link" href="login.html">Approvals</a>
-                                        <a class="nav-link" href="register.html">Vote History</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div>
-
-                        <!--  Role -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRoles"
-                            aria-expanded="false" aria-controls="collapseRoles">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Role Management
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseRoles" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Control Roles</a>
-                            </nav>
-                        </div>
-
-                        <!--  Stats: -->
-                        <div class="sb-sidenav-menu-heading">Stats</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
+            <form class="row g-3 needs-validation" method="POST" action="{% url 'admin_settings' %}" novalidate>
+                {% csrf_token %}
+                {% if admin_settings.role == 2 %}
+                <div class="col-md-4">
+                    <label for="validationCustom01" class="form-label">First name</label>
+                    <input type="text" class="form-control" id="validationCustom01"
+                        value="{{ admin_settings.first_name}}" name="first_name" required>
+                    <div class="valid-feedback">
+                        Looks good!
                     </div>
                 </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as: <strong>{{ admin_dashboard.username }}</strong></div>
+                <div class="col-md-4">
+                    <label for="validationCustom02" class="form-label">Last name</label>
+                    <input type="text" class="form-control" id="validationCustom02"
+                        value="{{ admin_settings.last_name}}" name="last_name" required>
+
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
-            </nav>
-        </div>
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid p-5">
-                    <h1 class="mt-4">Admin Settings</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Update your information or delete your account</li>
-                    </ol>
-
-                    <form class="row g-3 needs-validation" method="POST" action="{% url 'admin_settings' %}" novalidate>
-                        {% csrf_token %}
-                        {% if admin_settings.role == 2 %}
-                        <div class="col-md-4">
-                            <label for="validationCustom01" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="validationCustom01"
-                                value="{{ admin_settings.first_name}}" name="first_name" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                {% endif %}
+                <div class="col-md-4">
+                    <label for="validationCustomUsername" class="form-label">Username</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" value="{{ admin_settings.username}}"
+                            class="form-control bg-light bg-gradient" id="validationCustomUsername" name="username"
+                            aria-describedby="inputGroupPrepend" required readonly>
+                        <div class="invalid-feedback">
+                            Please choose a username.
                         </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="validationCustom02"
-                                value="{{ admin_settings.last_name}}" name="last_name" required>
-
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        {% endif %}
-                        <div class="col-md-4">
-                            <label for="validationCustomUsername" class="form-label">Username</label>
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                <input type="text" value="{{ admin_settings.username}}"
-                                    class="form-control bg-light bg-gradient" id="validationCustomUsername"
-                                    name="username" aria-describedby="inputGroupPrepend" required readonly>
-                                <div class="invalid-feedback">
-                                    Please choose a username.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="validationCustom03" class="form-label">Email</label>
-                            <input type="email" value="{{ admin_settings.email}}"
-                                class="form-control {% if form.errors.email %}is-invalid{% endif %}"
-                                id="validationCustom03" name="email" required>
-                            {% if form.errors.email %}
-                            <div class="invalid-feedback">
-                                {% for error in form.errors.email %}
-                                {{ error }}
-                                {% endfor %}
-                            </div>
-                            {% else %}
-                            <div class="valid-feedback">
-                                {% trans "Looks good!" %}
-                            </div>
-                            {% endif %}
-                        </div>
-                        <div class="col-md-3">
-                            <label for="validationCustom04" class="form-label">Role</label>
-                            <input type="text" value="{{ admin_settings.get_role_display}}" name="role"
-                                class="form-control bg-light bg-gradient" id="validationCustom04" required readonly>
-
-
-                            <div class="invalid-feedback">
-                                Please select a valid state.
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="validationCustom05" class="form-label">Verified</label>
-                            <input type="text"
-                                value="{% if admin_settings.verified == 1 %} Verified {% else %} Not verified {% endif %}"
-                                name="verified" class="form-control bg-light bg-gradient" id="validationCustom05"
-                                required readonly>
-
-                            <div class="invalid-feedback">
-                                Please provide a valid zip.
-                            </div>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button class="btn btn-primary" type="submit">Update Account</button>
-                        </div>
-
-                        <div class="col-12 text-center">
-                            <a class="btn btn-primary" href="{% url 'admin_change' %}">Change Password</a>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </main>
+                <div class="col-md-6">
+                    <label for="validationCustom03" class="form-label">Email</label>
+                    <input type="email" value="{{ admin_settings.email}}"
+                        class="form-control {% if form.errors.email %}is-invalid{% endif %}" id="validationCustom03"
+                        name="email" required>
+                    {% if form.errors.email %}
+                    <div class="invalid-feedback">
+                        {% for error in form.errors.email %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="valid-feedback">
+                        {% trans "Looks good!" %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-3">
+                    <label for="validationCustom04" class="form-label">Role</label>
+                    <input type="text" value="{{ admin_settings.get_role_display}}" name="role"
+                        class="form-control bg-light bg-gradient" id="validationCustom04" required readonly>
+
+
+                    <div class="invalid-feedback">
+                        Please select a valid state.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationCustom05" class="form-label">Verified</label>
+                    <input type="text"
+                        value="{% if admin_settings.verified == 1 %} Verified {% else %} Not verified {% endif %}"
+                        name="verified" class="form-control bg-light bg-gradient" id="validationCustom05" required
+                        readonly>
+
+                    <div class="invalid-feedback">
+                        Please provide a valid zip.
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary" type="submit">Update Account</button>
+                </div>
+
+                <div class="col-12 text-center">
+                    <a class="btn btn-primary" href="{% url 'admin_change' %}">Change Password</a>
+                </div>
+            </form>
         </div>
-    </div>
-    {% endblock %}
+    </main>
+</div>
+
+{% endblock %}

@@ -1,286 +1,155 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content%}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-5">
+            <h1 class="mt-4">Event Creation</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Create a voting event</li>
+            </ol>
+            {% if request.user.role == 0 %}
+            <div class="alert alert-warning text-center" role="alert">
+                In order to create a Voting Event you need to be an admin.
+            </div>
+            {% elif request.user.role == 2%}
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-xl-6 col-md-12 d-inline-block">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% if form.non_field_errors %}
+                        <div class="errors">{{ form.non_field_errors }}</div>
+                        {% endif %}
+                        <hr />
+                        <!-- Author -->
+                        <div class="mb-3">
+                            <label class="form-label"><strong>{{ form.author.label }} ID</strong></label>
+                            <input type="text" class="form-control bg-light bg-gradient"
+                                value="{{ request.user.username }}" readonly>
+                            <input type="hidden" name="{{ form.author.name }}" class="form-control bg-light bg-gradient"
+                                value="{{ form.author.value }}" id="{{ form.author.id_for_label }}" readonly>
 
-<body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{% url 'admin_dashboard' %}">Create Event</a>
-        <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-                class="fas fa-bars"></i></button>
-        <!-- Navbar-->
-        <div class="d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'admin_settings'%}">Settings</a></li>
-
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="{% url 'admin_dashboard' %}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Interface</div>
-
-                        <!-- User Management -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            User Management
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Badges</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Verification Requests</a>
-                            </nav>
+                            {% if form.author.errors %}
+                            <div class="errors">{{ form.author.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">{{ form.author.help_text }}</div>
+                        </div>
+                        <hr />
+                        <!-- Title  -->
+                        <div class="mb-3">
+                            <label for="{{ form.title.id_for_label }}"
+                                class="form-label"><strong>{{ form.title.label }}</strong></label>
+                            <input type="text" name="{{ form.title.name }}" class="form-control"
+                                id="{{ form.title.id_for_label }}" value="{{ form.title.value|default:'' }}" required>
+                            {% if form.title.errors %}
+                            <div class="errors">{{ form.title.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">{{ form.title.help_text }}</div>
                         </div>
 
-                        <!--  Event Management -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-                            aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Event Management
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
 
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseEvent" aria-expanded="false"
-                                    aria-controls="pagesCollapseEvent">
-                                    Create Event
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseEvent" aria-labelledby="headingOne"
-                                    data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="{% url 'admin_creation' %}">Create</a>
-                                        <a class="nav-link" href="404.html">Draft</a>
-                                        <a class="nav-link" href="500.html">Published</a>
-                                    </nav>
-                                </div>
-
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Management
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
-                                    data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="{% url 'admin_all_events' %}">Events</a>
-                                        <a class="nav-link" href="login.html">Approvals</a>
-                                        <a class="nav-link" href="register.html">Vote History</a>
-                                    </nav>
-                                </div>
-                            </nav>
+                        <!-- Category -->
+                        <div class="mb-3">
+                            <label for="{{ form.category.id_for_label }}"
+                                class="form-label"><strong>{{ form.category.label }}</strong></label>
+                            {{ form.category }}
+                            {% if form.category.errors %}
+                            <div class="errors">{{ form.category.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">{{ form.category.help_text }}</div>
                         </div>
 
-                        <!--  Role -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRoles"
-                            aria-expanded="false" aria-controls="collapseRoles">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Role Management
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseRoles" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Control Roles</a>
-                            </nav>
+                        <!-- Mission -->
+                        <div class="mb-3">
+                            <label for="{{ form.mission.id_for_label }}"
+                                class="form-label"><strong>{{ form.mission.label }}</strong></label>
+                            <input type="text" name="{{ form.mission.name }}" class="form-control"
+                                id="{{ form.mission.id_for_label }}" value="{{ form.mission.value|default:'' }}"
+                                required>
+                            {% if form.mission.errors %}
+                            <div class="errors">{{ form.mission.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">{{ form.mission.help_text }}</div>
                         </div>
 
-                        <!--  Stats: -->
-                        <div class="sb-sidenav-menu-heading">Stats</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
-                    </div>
+                        <!-- Location -->
+                        <div class="mb-3">
+                            <label for="{{ form.location.id_for_label }}"
+                                class="form-label"><strong>{{ form.location.label }}</strong></label>
+                            <input type="text" name="{{ form.location.name }}" class="form-control"
+                                id="{{ form.location.id_for_label }}" value="{{ form.location.value|default:'' }}"
+                                required>
+                            {% if form.location.errors %}
+                            <div class="errors">{{ form.location.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">{{ form.location.help_text }}</div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label for="{{ form.description.id_for_label }}"
+                                class="form-label"><strong>{{ form.description.label }}</strong></label>
+                            <textarea name="{{ form.description.name }}" class="form-control"
+                                id="{{ form.description.id_for_label }}" rows="4"
+                                required>{{ form.description.value|default:'' }}</textarea>
+                            {% if form.description.errors %}
+                            <div class="errors">{{ form.description.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">{{ form.description.help_text }}</div>
+                        </div>
+
+                        <!-- Expire -->
+                        <div class="mb-3">
+                            <label for="{{ form.expire.id_for_label }}"
+                                class="form-label"><strong>{{ form.expire.label }}</strong></label>
+                            <input type="date" name="{{ form.expire.name }}" class="form-control"
+                                id="{{ form.expire.id_for_label }}" value="{{ form.expire.value|default:'' }}" required>
+                            {% if form.expire.errors %}
+                            <div class="errors">{{ form.expire.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">{{ form.expire.help_text }}</div>
+                        </div>
+
+                        <!-- Image -->
+                        <div class="mb-3">
+                            <label for="{{ form.event_image.id_for_label }}"
+                                class="form-label"><strong>{{ form.event_image.label }}</strong></label>
+                            {{ form.event_image }}
+                            {% if form.event_image.errors %}
+                            <div class="errors">{{ form.event_image.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">{{ form.event_image.help_text }}</div>
+                        </div>
+                        <hr />
+                        <h3 class="text-center">Candidates</h3>
+                        <div id="candidates-container">
+                            {{ person_formset.management_form }}
+                            {% for person_form in person_formset %}
+                            <!-- content fetched from custom.js -->
+                            {% if person_form.name.errors %}
+                            <div class="errors">{{ person_form.name.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">{{ person_form.name.help_text }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="row my-4 text-center">
+                            <div class="col-12 d-inline-block">
+                                <button type="button" id="add-candidate-btn" class="btn btn-primary">Add
+                                    Candidate</button>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row my-4 text-center">
+                            <div class="col-12 d-inline-block">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as: <strong>{{ admin_dashboard.username }}</strong></div>
-                </div>
-            </nav>
+            </div>
+            {% endif %}
         </div>
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-5">
-                    <h1 class="mt-4">Event Creation</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Create a voting event</li>
-                    </ol>
-                    {% if request.user.role == 0 %}
-                    <div class="alert alert-warning text-center" role="alert">
-                        In order to create a Voting Event you need to be an admin.
-                    </div>
-                    {% elif request.user.role == 2%}
-                    <div class="row d-flex justify-content-center align-items-center">
-                        <div class="col-xl-6 col-md-12 d-inline-block">
-                            <form method="POST" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                {% if form.non_field_errors %}
-                                <div class="errors">{{ form.non_field_errors }}</div>
-                                {% endif %}
-                                <hr />
-                                <!-- Author -->
-                                <div class="mb-3">
-                                    <label class="form-label"><strong>{{ form.author.label }} ID</strong></label>
-                                    <input type="text" class="form-control bg-light bg-gradient"
-                                        value="{{ request.user.username }}" readonly>
-                                    <input type="hidden" name="{{ form.author.name }}"
-                                        class="form-control bg-light bg-gradient" value="{{ form.author.value }}"
-                                        id="{{ form.author.id_for_label }}" readonly>
+    </main>
+</div>
 
-                                    {% if form.author.errors %}
-                                    <div class="errors">{{ form.author.errors }}</div>
-                                    {% endif %}
-                                    <div class="form-text">{{ form.author.help_text }}</div>
-                                </div>
-                                <hr />
-                                <!-- Title  -->
-                                <div class="mb-3">
-                                    <label for="{{ form.title.id_for_label }}"
-                                        class="form-label"><strong>{{ form.title.label }}</strong></label>
-                                    <input type="text" name="{{ form.title.name }}" class="form-control"
-                                        id="{{ form.title.id_for_label }}" value="{{ form.title.value|default:'' }}"
-                                        required>
-                                    {% if form.title.errors %}
-                                    <div class="errors">{{ form.title.errors }}</div>
-                                    {% endif %}
-                                    <div class="form-text">{{ form.title.help_text }}</div>
-                                </div>
-
-
-                                <!-- Category -->
-                                <div class="mb-3">
-                                    <label for="{{ form.category.id_for_label }}"
-                                        class="form-label"><strong>{{ form.category.label }}</strong></label>
-                                    {{ form.category }}
-                                    {% if form.category.errors %}
-                                    <div class="errors">{{ form.category.errors }}</div>
-                                    {% endif %}
-                                    <div class="form-text">{{ form.category.help_text }}</div>
-                                </div>
-
-                                <!-- Mission -->
-                                <div class="mb-3">
-                                    <label for="{{ form.mission.id_for_label }}"
-                                        class="form-label"><strong>{{ form.mission.label }}</strong></label>
-                                    <input type="text" name="{{ form.mission.name }}" class="form-control"
-                                        id="{{ form.mission.id_for_label }}" value="{{ form.mission.value|default:'' }}"
-                                        required>
-                                    {% if form.mission.errors %}
-                                    <div class="errors">{{ form.mission.errors }}</div>
-                                    {% endif %}
-                                    <div class="form-text">{{ form.mission.help_text }}</div>
-                                </div>
-
-                                <!-- Location -->
-                                <div class="mb-3">
-                                    <label for="{{ form.location.id_for_label }}"
-                                        class="form-label"><strong>{{ form.location.label }}</strong></label>
-                                    <input type="text" name="{{ form.location.name }}" class="form-control"
-                                        id="{{ form.location.id_for_label }}"
-                                        value="{{ form.location.value|default:'' }}" required>
-                                    {% if form.location.errors %}
-                                    <div class="errors">{{ form.location.errors }}</div>
-                                    {% endif %}
-                                    <div class="form-text">{{ form.location.help_text }}</div>
-                                </div>
-
-                                <!-- Description -->
-                                <div class="mb-3">
-                                    <label for="{{ form.description.id_for_label }}"
-                                        class="form-label"><strong>{{ form.description.label }}</strong></label>
-                                    <textarea name="{{ form.description.name }}" class="form-control"
-                                        id="{{ form.description.id_for_label }}" rows="4"
-                                        required>{{ form.description.value|default:'' }}</textarea>
-                                    {% if form.description.errors %}
-                                    <div class="errors">{{ form.description.errors }}</div>
-                                    {% endif %}
-                                    <div class="form-text">{{ form.description.help_text }}</div>
-                                </div>
-
-                                <!-- Expire -->
-                                <div class="mb-3">
-                                    <label for="{{ form.expire.id_for_label }}"
-                                        class="form-label"><strong>{{ form.expire.label }}</strong></label>
-                                    <input type="date" name="{{ form.expire.name }}" class="form-control"
-                                        id="{{ form.expire.id_for_label }}" value="{{ form.expire.value|default:'' }}"
-                                        required>
-                                    {% if form.expire.errors %}
-                                    <div class="errors">{{ form.expire.errors }}</div>
-                                    {% endif %}
-                                    <div class="form-text">{{ form.expire.help_text }}</div>
-                                </div>
-
-                                <!-- Image -->
-                                <div class="mb-3">
-                                    <label for="{{ form.event_image.id_for_label }}"
-                                        class="form-label"><strong>{{ form.event_image.label }}</strong></label>
-                                    {{ form.event_image }}
-                                    {% if form.event_image.errors %}
-                                    <div class="errors">{{ form.event_image.errors }}</div>
-                                    {% endif %}
-                                    <div class="form-text">{{ form.event_image.help_text }}</div>
-                                </div>
-                                <hr />
-                                <h3 class="text-center">Candidates</h3>
-                                <div id="candidates-container">
-                                    {{ person_formset.management_form }}
-                                    {% for person_form in person_formset %}
-                                    <!-- content fetched from custom.js -->
-                                    {% if person_form.name.errors %}
-                                    <div class="errors">{{ person_form.name.errors }}</div>
-                                    {% endif %}
-                                    <div class="form-text">{{ person_form.name.help_text }}</div>
-                                    {% endfor %}
-                                </div>
-                                <div class="row my-4 text-center">
-                                    <div class="col-12 d-inline-block">
-                                        <button type="button" id="add-candidate-btn" class="btn btn-primary">Add
-                                            Candidate</button>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div class="row my-4 text-center">
-                                    <div class="col-12 d-inline-block">
-                                        <button type="submit" class="btn btn-success">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
-            </main>
-        </div>
-    </div>
-
-    {% endblock %}
+{% endblock %}
