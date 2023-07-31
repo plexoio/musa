@@ -29,7 +29,7 @@ class VoteForCardView(View):
 class BaseListView(generic.ListView):
     """Base view for listing VoteCards based on certain conditions."""
     model = VoteCard
-    paginate_by = 10
+    paginate_by = 6
 
     def get_queryset(self):
         """Return VoteCards with a status of 1, ordered by creation date."""
@@ -130,7 +130,6 @@ class AdminVoteCardCreation(AdminRequiredMixin, View):
         if form.is_valid() and person_formset.is_valid():
             vote_card = form.save(commit=False)
             vote_card.author = request.user
-            vote_card.status = 1
             vote_card.save()
 
             person_formset.instance = vote_card

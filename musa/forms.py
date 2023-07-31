@@ -52,7 +52,7 @@ class VoteCardCreationForm(forms.ModelForm):
         model = VoteCard
         fields = [
             'title', 'author', 'category', 'mission',
-            'location', 'description', 'expire', 'event_image', 'candidates'
+            'location', 'description', 'expire', 'event_image', 'candidates', 'status',
         ]
 
         widgets = {
