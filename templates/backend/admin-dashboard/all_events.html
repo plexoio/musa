@@ -1,11 +1,10 @@
 {% extends "base.html" %}
-{% load i18n %}
 {% block content%}
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{% url 'admin_dashboard' %}">Settings</a>
+        <a class="navbar-brand ps-3" href="index.html">Dashboard</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -124,97 +123,99 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as: <strong>{{ admin_dashboard.username }}</strong></div>
+                    <div class="small">Logged in as: <strong>{{ request.user.username }}</strong></div>
                 </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid p-5">
-                    <h1 class="mt-4">Admin Settings</h1>
+                <div class="container-fluid p-4 pt-0">
+                    <h1 class="mt-4">All Events</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Update your information or delete your account</li>
+                        <li class="breadcrumb-item active">All created events in Musa's voting system</li>
                     </ol>
-
-                    <form class="row g-3 needs-validation" method="POST" action="{% url 'admin_settings' %}" novalidate>
-                        {% csrf_token %}
-                        {% if admin_settings.role == 2 %}
-                        <div class="col-md-4">
-                            <label for="validationCustom01" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="validationCustom01"
-                                value="{{ admin_settings.first_name}}" name="first_name" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Admin Created Events
                         </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="validationCustom02"
-                                value="{{ admin_settings.last_name}}" name="last_name" required>
-
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Location</th>
+                                        <th>Created On</th>
+                                        <th>Expire On</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Location</th>
+                                        <th>Created On</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {% for event in admin_all_events.all %}
+                                    <tr>
+                                        <td>{{ event.title }}</td>
+                                        {% if event.author.username == request.user.username %}
+                                        <td>
+                                            <p class="text-success my-0 py-0 fw-semibold text-center">
+                                                {{ event.author }}
+                                                <small><br>({{ event.author.get_role_display }})</small>
+                                            </p>
+                                        </td>
+                                        {% else %}
+                                        <td>
+                                            <p class="my-0 py-0 fw-semibold text-center">
+                                                {{ event.author }}
+                                                <small><br>({{ event.author.get_role_display }})</small>
+                                            </p>
+                                        </td>
+                                        {% endif %}
+                                        <td>{{ event.category.category_name }}</td>
+                                        {% if event.status == 1 %}
+                                        <td>
+                                            <p class="text-success my-0 py-0">
+                                                <strong>
+                                                    {{ event.get_status_display }}
+                                                </strong>
+                                            </p>
+                                        </td>
+                                        {% elif event.status == 2%}
+                                        <td>
+                                            <p class="text-danger my-0 py-0">
+                                                <strong>
+                                                    {{ event.get_status_display }}
+                                                </strong>
+                                            </p>
+                                        </td>
+                                        {% else %}
+                                        <td>
+                                            <p class="text-primary my-0 py-0">
+                                                <strong>
+                                                    {{ event.get_status_display }}
+                                                </strong>
+                                            </p>
+                                        </td>
+                                        {% endif %}
+                                        <td>{{ event.location }}</td>
+                                        <td>{{ event.created_on }}</td>
+                                        <td>{{ event.expire }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
-                        {% endif %}
-                        <div class="col-md-4">
-                            <label for="validationCustomUsername" class="form-label">Username</label>
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                <input type="text" value="{{ admin_settings.username}}"
-                                    class="form-control bg-light bg-gradient" id="validationCustomUsername"
-                                    name="username" aria-describedby="inputGroupPrepend" required readonly>
-                                <div class="invalid-feedback">
-                                    Please choose a username.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="validationCustom03" class="form-label">Email</label>
-                            <input type="email" value="{{ admin_settings.email}}"
-                                class="form-control {% if form.errors.email %}is-invalid{% endif %}"
-                                id="validationCustom03" name="email" required>
-                            {% if form.errors.email %}
-                            <div class="invalid-feedback">
-                                {% for error in form.errors.email %}
-                                {{ error }}
-                                {% endfor %}
-                            </div>
-                            {% else %}
-                            <div class="valid-feedback">
-                                {% trans "Looks good!" %}
-                            </div>
-                            {% endif %}
-                        </div>
-                        <div class="col-md-3">
-                            <label for="validationCustom04" class="form-label">Role</label>
-                            <input type="text" value="{{ admin_settings.get_role_display}}" name="role"
-                                class="form-control bg-light bg-gradient" id="validationCustom04" required readonly>
-
-
-                            <div class="invalid-feedback">
-                                Please select a valid state.
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="validationCustom05" class="form-label">Verified</label>
-                            <input type="text"
-                                value="{% if admin_settings.verified == 1 %} Verified {% else %} Not verified {% endif %}"
-                                name="verified" class="form-control bg-light bg-gradient" id="validationCustom05"
-                                required readonly>
-
-                            <div class="invalid-feedback">
-                                Please provide a valid zip.
-                            </div>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button class="btn btn-primary" type="submit">Update Account</button>
-                        </div>
-
-                        <div class="col-12 text-center">
-                            <a class="btn btn-primary" href="{% url 'admin_change' %}">Change Password</a>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </main>
         </div>

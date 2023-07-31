@@ -29,11 +29,12 @@ class VoteForCardView(View):
 class BaseListView(generic.ListView):
     """Base view for listing VoteCards based on certain conditions."""
     model = VoteCard
-    paginate_by = 6
+    paginate_by = 10
 
     def get_queryset(self):
         """Return VoteCards with a status of 1, ordered by creation date."""
-        return VoteCard.objects.filter(status=1).order_by('-created_on')
+        return VoteCard.objects.order_by('-created_on')
+
 
 # USER Event Management
 
@@ -41,6 +42,7 @@ class BaseListView(generic.ListView):
 
 
 class UserVoteCardCreation(UserRequiredMixin, View):
+    """ Create User's Vote Card instances for voting """
     template_name = 'backend/user-dashboard/create.html'
 
     def get(self, request, *args, **kwargs):
@@ -74,12 +76,21 @@ class UserVoteCardCreation(UserRequiredMixin, View):
                 request, self.template_name,
                 {'form': form, 'person_formset': person_formset})
 
-# USER Event Management
+# ADMIN Event Management
+
+# READ Event
+
+
+class AdminEventList(BaseListView):
+    """ Read all created Vote Cards on Admin's Dashboard"""
+    template_name = 'backend/admin-dashboard/all_events.html'
+    context_object_name = 'admin_all_events'
 
 # CREATE Event
 
 
 class AdminVoteCardCreation(AdminRequiredMixin, View):
+    """ Create Admin's Vote Card instances for voting """
     template_name = 'backend/admin-dashboard/create.html'
 
     def get(self, request, *args, **kwargs):

@@ -14,7 +14,7 @@ from user_profile.views import UserDashboard, UserSettings, UserPasswordChangeVi
 from admin_profile.views import AdminDashboard, AdminSettings, AdminPasswordChangeView
 
 # Vote Management app imports
-from vote_management.views import UserVoteCardCreation, AdminVoteCardCreation, VoteForCardView
+from vote_management.views import UserVoteCardCreation, AdminVoteCardCreation, VoteForCardView, AdminEventList
 
 urlpatterns = [
     # AUTHENTICATION
@@ -47,9 +47,10 @@ urlpatterns = [
          name='admin_settings'),
     path('office/password-change/', AdminPasswordChangeView.as_view(),
          name='admin_change'),
-
     path('office/create', AdminVoteCardCreation.as_view(),
          name='admin_creation'),
+    path('office/all', AdminEventList.as_view(),
+         name='admin_all_events'),
 
     # ROLE
     path('role_redirect/', role_redirect.RoleRedirectView.as_view(),
