@@ -107,16 +107,21 @@
                 <div class="col-12 text-center">
                     <a class="btn btn-primary" href="{% url 'user_change' %}">Change Password</a>
                 </div>
-                {% if user_settings.user_votes.all %}
+                {% if user_settings.user_votes.all or user_settings.card_author.exists %}
                 <div class="col-12 text-center">
-                    <p>Since you have participated in some event you cannot yet delete your account.<br>
-                        Wait until the event is deleted or contact the support team.
+                    <p>Since you have 'participated in some event' or 'created some event' you cannot yet delete your
+                        account.<br>
+                        Wait until the event and records are deleted or contact the support team.
                     </p>
                     <ul class="list-group d-inline-block">
                         <li class="list-group-item bg-dark text-white" aria-current="true">Account Activity</li>
                         {% for voter in user_settings.voter_record.all %}
                         <li class="list-group-item">Voted for <strong>{{ voter.vote_card }} </strong>at
                             {{ voter.timestamp }}</li>
+                        {% endfor %}
+                        {% for card in user_settings.card_author.all %}
+                        <li class="list-group-item">Created an event called <strong>{{ card.title }} </strong>at
+                            {{ card.created_on }}</li>
                         {% endfor %}
                     </ul>
                 </div>

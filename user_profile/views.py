@@ -75,6 +75,9 @@ class UserDelete(UserRequiredMixin, DeleteView):
         if user.user_votes.all():
             raise PermissionDenied(
                 "You do not have permission to delete your account.")
+        elif user.card_author.all():
+            raise PermissionDenied(
+                "You do not have permission to delete your account.")
         return super().dispatch(request, *args, **kwargs)
 
     def get_object(self, queryset=None):
