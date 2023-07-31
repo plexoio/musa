@@ -3,7 +3,7 @@ from django.views import View, generic
 from .models import VoteCard, VoteRecord, ElectedPerson
 from musa.forms import VoteCardCreationForm, ElectedPersonForm
 from django.forms import inlineformset_factory
-from user_profile.views import UserRequiredMixin
+from user_profile.views import UserRequiredMixin, UserDashboard
 from admin_profile.views import AdminRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 
@@ -33,10 +33,17 @@ class BaseListView(generic.ListView):
 
     def get_queryset(self):
         """Return VoteCards with a status of 1, ordered by creation date."""
-        return VoteCard.objects.order_by('-created_on')
+        return VoteCard.objects.filter(status=1).order_by('-created_on')
 
 
 # USER Event Management
+
+# READ Event
+
+class UserEventList(UserDashboard):
+    """ Read all created Vote Cards on Admin's Dashboard"""
+    template_name = 'backend/user-dashboard/all_events.html'
+    context_object_name = 'user_all_events'
 
 # CREATE Event
 
@@ -81,7 +88,17 @@ class UserVoteCardCreation(UserRequiredMixin, View):
 # READ Event
 
 
-class AdminEventList(BaseListView):
+class AdminBaseListView(generic.ListView):
+    """Base view for listing VoteCards based on certain conditions."""
+    model = VoteCard
+    paginate_by = 10
+
+    def get_queryset(self):
+        """Return VoteCards with a status of 1, ordered by creation date."""
+        return VoteCard.objects.order_by('-created_on')
+
+
+class AdminEventList(AdminRequiredMixin, AdminBaseListView):
     """ Read all created Vote Cards on Admin's Dashboard"""
     template_name = 'backend/admin-dashboard/all_events.html'
     context_object_name = 'admin_all_events'

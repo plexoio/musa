@@ -5,7 +5,7 @@
         <div class="container-fluid p-4 pt-0">
             <h1 class="mt-4">All Events</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">All created events in Musa's voting system</li>
+                <li class="breadcrumb-item active">All events you've created in Musa</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-header">
@@ -37,24 +37,14 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            {% for event in admin_all_events.all %}
+                            {% for event in user_all_events.card_author.all %}
                             <tr>
                                 <td>{{ event.title }}</td>
-                                {% if event.author.username == request.user.username %}
                                 <td>
                                     <p class="text-success my-0 py-0 fw-semibold text-center">
                                         {{ event.author }}
-                                        <small><br>({{ event.author.get_role_display }})</small>
                                     </p>
                                 </td>
-                                {% else %}
-                                <td>
-                                    <p class="my-0 py-0 fw-semibold text-center">
-                                        {{ event.author }}
-                                        <small><br>({{ event.author.get_role_display }})</small>
-                                    </p>
-                                </td>
-                                {% endif %}
                                 <td>{{ event.category.category_name }}</td>
                                 {% if event.status == 1 %}
                                 <td>

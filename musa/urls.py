@@ -14,7 +14,7 @@ from user_profile.views import UserDashboard, UserSettings, UserPasswordChangeVi
 from admin_profile.views import AdminDashboard, AdminSettings, AdminPasswordChangeView
 
 # Vote Management app imports
-from vote_management.views import UserVoteCardCreation, AdminVoteCardCreation, VoteForCardView, AdminEventList
+from vote_management.views import UserVoteCardCreation, AdminVoteCardCreation, VoteForCardView, AdminEventList, UserEventList
 
 urlpatterns = [
     # AUTHENTICATION
@@ -31,6 +31,8 @@ urlpatterns = [
     path('user/password-change/', UserPasswordChangeView.as_view(),
          name='user_change'),
     path('user/delete/', UserDelete.as_view(), name='user_delete'),
+    path('user/all', UserEventList.as_view(),
+         name='user_all_events'),
 
     # VOTE MANAGEMENT
     path('user/create', UserVoteCardCreation.as_view(),
