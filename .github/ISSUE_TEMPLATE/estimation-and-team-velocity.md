@@ -21,14 +21,14 @@ assignees: plexoio
 
 ## Prediction
 - Team Velocity: [Number of Stories Points per iteration]
-- Number of iterations required: [Number of iterations]
+- Iterations required: [Number of iterations]
 - Duration per iteration: [Duration per iteration]
 - Estimated release: [Estimated release]
 - Assumption: [Assumption]
 
 ## Note
 
-- Calculate the number of story points (S)
+- Calculate the number of story points (S) per iteration
 - Get average team velocity (T)
 - S/T = Iterations (I) to do
 - Get average time per iteration (A)
