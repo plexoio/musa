@@ -8,6 +8,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic.edit import UpdateView, DeleteView
 from django import forms
+from django.core.exceptions import PermissionDenied
 
 # Local imports
 from musa.models import UserProfile
@@ -67,11 +68,19 @@ class UserDelete(UserRequiredMixin, DeleteView):
     model = UserProfile
     template_name = 'backend/user-dashboard/user_delete.html'
 
+    allowed_roles = [0]
+
+    def dispatch(self, request, *args, **kwargs):
+        user = self.get_object()
+        if user.user_votes.all():
+            raise PermissionDenied(
+                "You do not have permission to delete your account.")
+        return super().dispatch(request, *args, **kwargs)
+
     def get_object(self, queryset=None):
         return self.request.user
 
     def get_success_url(self):
-        # Redirect to login after deletion
         return reverse_lazy('account_login')
 
     def delete(self, request, *args, **kwargs):
