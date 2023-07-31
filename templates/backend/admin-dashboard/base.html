@@ -120,7 +120,6 @@
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{% url 'admin_role' %}">Role</a>
-                                <a class="nav-link" href="layout-static.html">Badges</a>
                             </nav>
                         </div>
 
@@ -137,7 +136,12 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as: <strong>{{ request.user.username }}</strong></div>
+                    <div class="small">Logged in as: 
+                        <span class="px-1"><strong>{{ request.user.username }}
+                            {% if request.user.role == 2 %}
+                            <i class="fa-regular fa-pen-to-square px-1"></i>
+                            {% endif %}
+                        </strong></span></div>
                 </div>
             </nav>
         </div>
