@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 development = os.environ.get('DEVELOPMENT', False)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = development
+DEBUG = True
 
 if development:
     ALLOWED_HOSTS = ['8000-plexoio-musa-327b9ltgdbq.ws-eu102.gitpod.io',
