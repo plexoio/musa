@@ -20,7 +20,7 @@ assignees: plexoio
 | [Epic Description]           | #4 [User Story Description]  | [Priority] | [Story Point Estimation] | [Assumptions/rationale] |
 
 ## Prediction
-- Team Velocity: [Number of User Stories per iteration]
+- Team Velocity: [Number of Stories Points per iteration]
 - Number of iterations required: [Number of iterations]
 - Duration per iteration: [Duration per iteration]
 - Estimated release: [Estimated release]
