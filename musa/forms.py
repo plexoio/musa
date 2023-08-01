@@ -60,7 +60,8 @@ class UserVoteCardCreationForm(forms.ModelForm):
         model = VoteCard
         fields = [
             'title', 'author', 'category', 'mission',
-            'location', 'description', 'expire', 'event_image', 'candidates',
+            'location', 'description', 'expire',
+            'event_image', 'candidates', 'type'
         ]
 
         widgets = {
@@ -74,7 +75,8 @@ class UserVoteCardCreationForm(forms.ModelForm):
             'title': 'Title',
             'author': 'Author',
             'category': 'Category',
-            'mission': 'Mission'
+            'mission': 'Mission',
+            'type': 'Type'
         }
 
         help_texts = {
@@ -124,7 +126,7 @@ class AdminVoteCardCreationForm(forms.ModelForm):
         fields = [
             'title', 'author', 'category', 'mission',
             'location', 'description', 'expire',
-            'event_image', 'candidates', 'status',
+            'event_image', 'candidates', 'status', 'type'
         ]
 
         widgets = {
@@ -138,7 +140,9 @@ class AdminVoteCardCreationForm(forms.ModelForm):
             'title': 'Title',
             'author': 'Author',
             'category': 'Category',
-            'mission': 'Mission'
+            'mission': 'Mission',
+            'type': 'Type'
+
         }
 
         help_texts = {

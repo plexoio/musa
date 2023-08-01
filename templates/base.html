@@ -16,7 +16,7 @@
 <!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-5">
-        <a class="navbar-brand" href="#!">Musa</a>
+        <a class="navbar-brand" href="/">Musa</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
@@ -27,14 +27,14 @@
 
                 <!-- START Dropdown-->
                 <li class="nav-item dropdown mx-2">
-                    <button class="btn btn-light dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-light dropdown-toggle nav-link px-2" data-bs-toggle="dropdown" aria-expanded="false">
                         {% if user.is_authenticated %}
                         Account: <strong>{{ request.user.username }}</strong>
                         {% else %}
                         Account
                         {% endif %}
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-light">
+                    <ul class="dropdown-menu dropdown-menu-light mt-2">
                         {% if user.is_authenticated %}
                         <li><a class="dropdown-item" href="{% url 'account_login' %}">Dashboard</a></li>
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
@@ -45,10 +45,10 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown mx-2">
-                    <button class="btn btn-light dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-light dropdown-toggle nav-link px-2" data-bs-toggle="dropdown" aria-expanded="false">
                         Support
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-light">
+                    <ul class="dropdown-menu dropdown-menu-light mt-2">
                         <li><a class="dropdown-item" href="{% url 'account_login' %}">Contact</a></li>
                         <li><a class="dropdown-item" href="{% url 'account_signup' %}">FAQ</a></li>
                         <li><a class="dropdown-item" href="{% url 'logout' %}">System Status</a></li>
@@ -57,7 +57,7 @@
                 <!-- END Dropdown -->
             </ul>
         </div>
-    </div>zz
+    </div>
 </nav>
 {% block content %}
 

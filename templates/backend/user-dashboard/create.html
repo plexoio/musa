@@ -60,6 +60,17 @@
                             <div class="form-text">{{ form.category.help_text }}</div>
                         </div>
 
+                        <!-- Type -->
+                        <div class="mb-3">
+                            <label for="{{ form.type.id_for_label }}"
+                                class="form-label"><strong>{{ form.type.label }}</strong></label>
+                            {{ form.type }}
+                            {% if form.type.errors %}
+                            <div class="errors">{{ form.type.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">{{ form.type.help_text }}</div>
+                        </div>
+
                         <!-- Mission -->
                         <div class="mb-3">
                             <label for="{{ form.mission.id_for_label }}"

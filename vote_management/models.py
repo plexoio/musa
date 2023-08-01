@@ -8,6 +8,11 @@ STATUS = (
     (2, 'Disapproved')
 )
 
+CARD_TYPE = (
+    (0, 'Community'),
+    (1, 'Official')
+)
+
 
 class Category(models.Model):
     """Model representing a voting category, like "Best Artist"."""
@@ -40,6 +45,7 @@ class VoteCard(models.Model):
                                         blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
     excerpt = models.TextField(blank=True)
+    type = models.IntegerField(choices=CARD_TYPE, default=0)
     created_on = models.DateField(auto_now_add=True)
 
     class Meta:
