@@ -1,17 +1,17 @@
 /* Vote Card */
-#description{
+#description {
     min-height: 190px;
     text-align: justify;
 }
 
-.card-footer{
+.card-footer {
     background-color: #34495e;
     color: white;
     text-decoration: none;
     transition: 0.3s;
 }
 
-.card-footer:hover{
+.card-footer:hover {
     background-color: #f7f7f7;
     color: black;
     transition: 0.3s;
@@ -21,6 +21,21 @@
     background-color: #34495e;
 }
 
-.see-more{
+.see-more {
     border: 1px solid #dadada;
+}
+
+/* Buttons */
+
+.btn-main-blue {
+    background-color: #34495e;
+    border: 1px solid #dadada;
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-main-blue:hover {
+    border: 1px solid #dadada;
+    color: black;
+    transition: 0.3s;
 }
