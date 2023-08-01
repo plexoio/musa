@@ -36,9 +36,20 @@ class BaseListView(generic.ListView):
         return VoteCard.objects.filter(status=1).order_by('-created_on')
 
 
+class BaseListViewDetailed(BaseListView):
+    """Base view for listing VoteCards on the See More page."""
+    template_name = 'frontend/all_cards.html'
+    paginate_by = 6
+    context_object_name = 'see_more'
+
+    def get_queryset(self):
+        """Return VoteCards with a status of 1, ordered by creation date."""
+        return VoteCard.objects.filter(status=1).order_by('-created_on')
+
 # USER Event Management
 
 # READ Event
+
 
 class UserEventList(UserDashboard):
     """ Read all created Vote Cards on Admin's Dashboard"""

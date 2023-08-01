@@ -14,7 +14,12 @@ from user_profile.views import UserDashboard, UserSettings, UserPasswordChangeVi
 from admin_profile.views import AdminDashboard, AdminSettings, AdminPasswordChangeView, AdminRole
 
 # Vote Management app imports
-from vote_management.views import UserVoteCardCreation, AdminVoteCardCreation, VoteForCardView, AdminEventList, UserEventList
+from vote_management.views import (UserVoteCardCreation,
+                                   AdminVoteCardCreation,
+                                   VoteForCardView,
+                                   AdminEventList,
+                                   UserEventList,
+                                   BaseListViewDetailed)
 
 urlpatterns = [
     # AUTHENTICATION
@@ -65,6 +70,8 @@ urlpatterns = [
     # FRONTEND
     path('', views.HomePage.as_view(),
          name='homepage'),
+    path('all/', BaseListViewDetailed.as_view(),
+         name='see_more'),
     path('vote/<int:vote_card_id>/', VoteForCardView.as_view(),
          name='vote_for_card')
 ]
