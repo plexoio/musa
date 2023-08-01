@@ -56,9 +56,8 @@
 
                   <!-- Custom Last Name field -->
                   <div class="form-floating mb-3">
-                    <input type="text" name="{{ form.last_name.name }}" placeholder="Last Name"
-                      autocomplete="last_name" maxlength="{{ form.last_name.field.max_length }}" required
-                      id="{{ form.last_name.auto_id }}"
+                    <input type="text" name="{{ form.last_name.name }}" placeholder="Last Name" autocomplete="last_name"
+                      maxlength="{{ form.last_name.field.max_length }}" required id="{{ form.last_name.auto_id }}"
                       class="form-control {% if form.errors.last_name %}is-invalid{% endif %}">
                     <label for="{{ form.last_name.auto_id }}">{{ form.last_name.label }}</label>
                     {% if form.errors.last_name %}
@@ -121,7 +120,8 @@
               </div>
               <div class="card-footer text-center py-3">
                 <div class="small">
-                  {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign
+                  {% blocktrans %}Already have an account? Then please
+                  <a class="text-decoration-none fw-semibold text-warning" href="{{ login_url }}">sign
                     in</a>.{% endblocktrans %}
                 </div>
               </div>
