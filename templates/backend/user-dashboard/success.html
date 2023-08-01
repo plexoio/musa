@@ -1,70 +1,23 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="User Dashboard" />
-    <meta name="author" content="Frank Arellano" />
-    <title>Musa's Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="{% static 'user/css/styles.css' %}" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <div id="layoutSidenav_content">
-        <main>
-            <div class="container vh-100 d-flex justify-content-center align-items-center">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card shadow-lg border-0 rounded-lg mt-5">
-                            <div class="card-header">
-                                <h3 class="text-center font-weight-light my-4">Congratulations!</h3>
-                                <div class="col-12 text-center">
-                                    <a href="{% url 'account_login' %}" class="btn btn-success">Go back to
-                                        Dashboard</a>
-                                </div>
+{% block content%}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container vh-100 d-flex justify-content-center align-items-center">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                        <div class="card-header">
+                            <h3 class="text-center font-weight-light my-4">Congratulations!</h3>
+                            <div class="col-12 text-center">
+                                <a href="{% url 'account_login' %}" class="btn btn-success">Go back to
+                                    Dashboard</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
-
-    <footer class="py-4 bg-light mt-4">
-        <div class="container-fluid p-5">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Musa 2023</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
         </div>
-    </footer>
-
-    <!-- Bootstrap and Chart.js from CDNs -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <!-- Simple-datatables from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
-
-    <!-- Local JavaScript files -->
-    <script src="{% static 'user/assets/demo/chart-area-demo.js' %}"></script>
-    <script src="{% static 'user/assets/demo/chart-bar-demo.js' %}"></script>
-    <script src="{% static 'user/js/datatables-simple-demo.js' %}"></script>
-    <script src="{% static 'user/js/scripts.js' %}"></script>
-    <script src="{% static 'user/js/custom.js' %}"></script>
-
-</body>
-
-</html>
+    </main>
+</div>
+{% endblock content%}

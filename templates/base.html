@@ -22,21 +22,30 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">Vote</a></li>
-                <!-- Account Dropdown-->
+
+                <!-- START Dropdown-->
                 <li class="nav-item dropdown mx-2">
-                    <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-light dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% if user.is_authenticated %}
+                        Account: <strong>{{ request.user.username }}</strong>
+                        {% else %}
                         Account
+                        {% endif %}
                     </button>
                     <ul class="dropdown-menu dropdown-menu-light">
+                        {% if user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'account_login' %}">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
                         <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
                         <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a></li>
-                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        {% endif %}
                     </ul>
                 </li>
                 <li class="nav-item dropdown mx-2">
-                    <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-light dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
                         Support
                     </button>
                     <ul class="dropdown-menu dropdown-menu-light">
@@ -45,16 +54,17 @@
                         <li><a class="dropdown-item" href="{% url 'logout' %}">System Status</a></li>
                     </ul>
                 </li>
+                <!-- END Dropdown -->
             </ul>
         </div>
-    </div>
+    </div>zz
 </nav>
 {% block content %}
 
 {% endblock content %}
 
 <!-- Footer-->
-<footer class="py-5 bg-light">
+<footer class="py-5 bg-light mt-5">
     <div class="container px-4 px-lg-5">
         <p class="m-0 text-center">Copyright &copy; Your Website 2023</p>
     </div>
