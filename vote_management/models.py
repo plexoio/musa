@@ -36,7 +36,7 @@ class VoteCard(models.Model):
         Category, on_delete=models.CASCADE, related_name="categories")
     mission = models.CharField(max_length=80)
     location = models.CharField(max_length=80)
-    description = models.TextField(max_length=400)
+    description = models.TextField(max_length=264)
     expire = models.DateField()
     event_image = CloudinaryField('image', default='placeholder')
     vote_record = models.ManyToManyField('musa.UserProfile', through='VoteRecord',

@@ -67,7 +67,7 @@ class UserVoteCardCreationForm(forms.ModelForm):
         widgets = {
             'expire': forms.DateInput(attrs={'type': 'date', 'min': date.today(
             )}),
-            'description': forms.Textarea(attrs={'rows': 4}),
+            'description': forms.Textarea(attrs={'rows': 4, 'maxlength': 264}),
             'excerpt': forms.Textarea(attrs={'rows': 3}),
         }
 

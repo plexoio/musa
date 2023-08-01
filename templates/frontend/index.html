@@ -17,48 +17,58 @@
     </div>
 
     <!-- Call to Action-->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
+    <div class="card text-white quote my-5 py-4 text-center">
         <div class="card-body">
-            <p class="text-white m-0">This call to action card is a great place to showcase some important information
-                or display a clever tagline!</p>
+            <p class="text-white m-0">"One of the penalties for refusing to participate in politics is that you end up being governed by your inferiors." - Plato</p>
         </div>
     </div>
 
     <!-- Content Row-->
     <div class="row gx-4 gx-lg-5">
-        <p class="h2 text-center mb-5">Campaign</p>
+        <p class="h1 text-center mb-5">Campaign</p>
         {% for card in home_page %}
         <div class="col-md-4 mb-5">
             <div class="card h-100">
                 <div class="card-header text-center h4">{{ card.get_type_display}}</div>
-                <div class="card-body">
-                    <div class="image-container">
-                        {% if "placeholder" in card.event_image.url %}
-                        <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
-                            alt="code institute" class="card-img-top">
-                        {% else %}
-                        <img src="{{ card.event_image.url }}" alt="card image" class="card-img-top">
-                        {% endif %}
-                        <div class="image-flash">
-                            <p class="author"> Author: {{ card.author }}</p>
-                            <p class="category"> Category: {{ card.category }}</p>
-                            <p class="mission"> Mission: {{ card.mission }}</p>
-                            <p class="location"> Location: {{ card.location }}</p>
-                            <p class="description"> Description: {{ card.description }}</p>
+                <div class="card-body" style="min-height: 300px;">
+                    <!-- Card image & Data -->
+                    <div class="row mt-2">
+                        <div class="col-4 d-inline-block">
+                            {% if "placeholder" in card.event_image.url %}
+                            <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                                alt="code institute" class="img-fluid img-thumbnail rounded float-start mx-2"
+                                width="150" height="150">
+                            {% else %}
+                            <img src="{{ card.event_image.url }}" alt="card image"
+                                class="img-fluid img-thumbnail rounded float-start mx-2" width="150" height="150">
+                            {% endif %}
+                        </div>
+                        <div class="col-8 d-inline-block">
+                            <span class="">
+                                <h5 class="card-title">{{ card.title }}</h5>
+                                <p class="mission my-0 fs-6"> {{ card.mission }}</p>
+                                <small class="location my-0"> {{ card.location }}</small>
+                            </span>
                         </div>
                     </div>
-                    <h2 class="card-title">{{ card.title }}</h2>
-                    <p class="card-text">{{ card.excerpt }}</p>
+                    <!-- Card Description -->
+                    <div id="description" class="row mt-3">
+                        <div class="col">
+                            <p class="my-0">
+                                {{ card.description|safe }} <a href="#">Read More</a>
+                            </p>
+                        </div>
+                    </div>
                     <span class="card d-inline-block">
-                        <div class="card-body py-1 px-3">
-                            <span class="card-text text-center">{{ total_votes }}<br> Votes</span>
+                        <div class="card-body py-1 px-3 text-center">
+                            <span class="card-text">{{ card.number_of_votes }}<br> Votes</span>
                         </div>
                     </span>
                     <span class="card-text text-muted h6"> {{ card.expire }}
                         <i class="far fa-heart"></i>
                     </span>
                 </div>
-                <a class="card-footer text-center btn btn-sm fs-5 text" href="#!">VOTE</a>
+                <a class="card-footer text-center fs-5" href="#!">VOTE</a>
             </div>
         </div>
         {% if forloop.counter|divisibleby:3 %}

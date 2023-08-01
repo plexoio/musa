@@ -29,7 +29,7 @@ class VoteForCardView(View):
 class BaseListView(generic.ListView):
     """Base view for listing VoteCards based on certain conditions."""
     model = VoteCard
-    paginate_by = 6
+    paginate_by = 3
 
     def get_queryset(self):
         """Return VoteCards with a status of 1, ordered by creation date."""

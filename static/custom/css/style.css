@@ -1,0 +1,22 @@
+/* Vote Card */
+#description{
+    min-height: 190px;
+    text-align: justify;
+}
+
+.card-footer{
+    background-color: #34495e;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.card-footer:hover{
+    background-color: #f7f7f7;
+    color: black;
+    transition: 0.3s;
+}
+
+.quote {
+    background-color: #34495e;
+}
