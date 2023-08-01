@@ -1,0 +1,30 @@
+/* Custom CSS classes */
+
+/* Logo */
+
+.brand-logo{
+    padding-left: 10px !important;
+}
+/* All sides */
+.padding-tiny {
+    padding: 4px !important;
+}
+
+.padding-small {
+    padding: 8px !important;
+}
+
+.padding-medium {
+    padding: 16px !important;
+}
+
+.padding-large {
+    padding: 24px !important;
+}
+
+
+/* Dropdown */
+.dropdown-content {
+    top: 100% !important;
+    left: 5px;
+}
