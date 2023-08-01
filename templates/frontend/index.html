@@ -1,47 +1,71 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Page Content-->
+<div class="container px-4 px-lg-0">
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
+                src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
+        <div class="col-lg-5">
+            <h1 class="font-weight-light">Business Name or Tagline</h1>
+            <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it
+                makes a great use of the standard Bootstrap core components. Feel free to use this template for any
+                project you want!</p>
+            <a class="btn btn-primary" href="#!">Call to Action!</a>
+        </div>
+    </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for card in home_page %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h2 class="card-title">{{ card.title }}</h2>
-                            <p class="card-text">{{ card.excerpt }}</p>
-                            <div class="image-container">
-                                {% if "placeholder" in card.event_image.url %}
-                                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
-                                    alt="code institute" class="card-img-top">
-                                {% else %}
-                                <img src="{{ card.event_image.url }}" alt="card image" class="card-img-top">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author"> Author: {{ card.author }}</p>
-                                    <p class="category"> Category: {{ card.category }}</p>
-                                    <p class="mission"> Mission: {{ card.mission }}</p>
-                                    <p class="location"> Location: {{ card.location }}</p>
-                                    <p class="description"> Description: {{ card.description }}</p>
-                                </div>
-                            </div>
-                            <a href="#" class="post-link"></a>
-                            <hr/>
-                            <p class="card-text text-muted h6"> {{ card.created_on }}
-                                <i class="far fa-heart"></i>
-                            </p>
+    <!-- Call to Action-->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body">
+            <p class="text-white m-0">This call to action card is a great place to showcase some important information
+                or display a clever tagline!</p>
+        </div>
+    </div>
+
+    <!-- Content Row-->
+    <div class="row gx-4 gx-lg-5">
+        <p class="h2 text-center mb-5">Campaign</p>
+        {% for card in home_page %}
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-header text-center h4">{{ card.get_type_display}}</div>
+                <div class="card-body">
+                    <div class="image-container">
+                        {% if "placeholder" in card.event_image.url %}
+                        <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                            alt="code institute" class="card-img-top">
+                        {% else %}
+                        <img src="{{ card.event_image.url }}" alt="card image" class="card-img-top">
+                        {% endif %}
+                        <div class="image-flash">
+                            <p class="author"> Author: {{ card.author }}</p>
+                            <p class="category"> Category: {{ card.category }}</p>
+                            <p class="mission"> Mission: {{ card.mission }}</p>
+                            <p class="location"> Location: {{ card.location }}</p>
+                            <p class="description"> Description: {{ card.description }}</p>
                         </div>
                     </div>
+                    <h2 class="card-title">{{ card.title }}</h2>
+                    <p class="card-text">{{ card.excerpt }}</p>
+                    <span class="card d-inline-block">
+                        <div class="card-body py-1 px-3">
+                            <span class="card-text text-center">{{ total_votes }}<br> Votes</span>
+                        </div>
+                    </span>
+                    <span class="card-text text-muted h6"> {{ card.expire }}
+                        <i class="far fa-heart"></i>
+                    </span>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
+                <a class="card-footer text-center btn btn-sm fs-5 text" href="#!">VOTE</a>
             </div>
         </div>
+        {% if forloop.counter|divisibleby:3 %}
+    </div>
+    <div class="row">
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
 
