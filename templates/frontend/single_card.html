@@ -12,8 +12,8 @@
     </div>
 
     <!-- Campaign Row-->
-    <div class="row gx-4 gx-lg-5">
-        <div class="col-md-4 mb-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-6 mb-5">
             <div class="card h-100">
                 <div class="card-header text-center h4">{{ card.get_type_display}}</div>
                 <div class="card-body" style="min-height: 300px;">
@@ -38,26 +38,24 @@
                         </div>
                     </div>
                     <!-- Card Description -->
-                    <div id="description" class="row mt-3">
+                    <div id="description-single" class="row mt-3">
                         <div class="col">
                             <p class="my-0">
-                                {{ card.description|safe }} <a href="#">Read More</a>
+                                {{ card.description|safe }}
                             </p>
                         </div>
                     </div>
                     <!-- Card Description -->
-                    <div class="row mt-3">
+                    <div class="row mb-3">
                         <div class="col">
-                            <p class="my-0">
-                                <h6 class="text-center">Candidates</h6>
-                                <ul>
-                                    {% for candidate in card.vote_candidate.all %}
-                                    <li>
-                                        {{ candidate.name }}
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                            </p>
+                            <h6 class="text-center">Candidates</h6>
+                            <ul>
+                                {% for candidate in card.vote_candidate.all %}
+                                <li>
+                                    {{ candidate.name }}
+                                </li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                     <!-- Vote Action -->

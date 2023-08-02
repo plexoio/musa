@@ -1,6 +1,15 @@
+* {
+    color: #333333;
+}
+
 /* Vote Card */
 #description {
     min-height: 190px;
+    text-align: justify;
+}
+
+#description-single{
+    min-height: 120px;
     text-align: justify;
 }
 
@@ -13,7 +22,7 @@
 
 .card-footer:hover {
     background-color: #f7f7f7;
-    color: black;
+    color: #333333;
     transition: 0.3s;
 }
 
@@ -23,6 +32,7 @@
 
 .see-more {
     border: 1px solid #dadada;
+    color: #333333;
 }
 
 /* Buttons */
@@ -36,6 +46,6 @@
 
 .btn-main-blue:hover {
     border: 1px solid #dadada;
-    color: black;
+    color: #333333;
     transition: 0.3s;
 }
