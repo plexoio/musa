@@ -141,6 +141,66 @@
         {% endif %}
         {% endfor %}
     </div>
+
+    <!-- Community Row-->
+    <div class="row gx-4 gx-lg-5 mt-5">
+        <p class="h1 text-center mb-5">Community</p>
+        {% for card in community_vote_cards %}
+        {% if card.type == 0 %}
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-header text-center h4">{{ card.get_type_display}}</div>
+                <div class="card-body" style="min-height: 300px;">
+                    <!-- Card image & Data -->
+                    <div class="row mt-2">
+                        <div class="col-4 d-inline-block">
+                            {% if "placeholder" in card.event_image.url %}
+                            <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                                alt="code institute" class="img-fluid img-thumbnail rounded float-start mx-2"
+                                width="150" height="150">
+                            {% else %}
+                            <img src="{{ card.event_image.url }}" alt="card image"
+                                class="img-fluid img-thumbnail rounded float-start mx-2" width="150" height="150">
+                            {% endif %}
+                        </div>
+                        <div class="col-8 d-inline-block">
+                            <span class="">
+                                <h5 class="card-title">{{ card.title }}</h5>
+                                <p class="mission my-0 fs-6"> {{ card.mission }}</p>
+                                <small class="location my-0"> {{ card.location }}</small>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Card Description -->
+                    <div id="description" class="row mt-3">
+                        <div class="col">
+                            <p class="my-0">
+                                {{ card.description|safe }} <a href="{% url 'card_single' card.slug %}">Read More</a>
+                            </p>
+                        </div>
+                    </div>
+                    <span class="card d-inline-block">
+                        <div class="card-body py-1 px-3 text-center">
+                            <span class="card-text">{{ card.number_of_votes }}<br> Votes</span>
+                        </div>
+                    </span>
+                    <span class="card-text text-muted h6"> {{ card.expire }}
+                        <i class="far fa-heart"></i>
+                    </span>
+                </div>
+                <a class="card-footer text-center fs-5" href="{% url 'card_single' card.slug %}">VOTE</a>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
+        <div class="col-12 text-center">
+            <a href="{% url 'see_more_community' %}" class="btn btn-light see-more fs-5">See more</a>
+        </div>
+    </div>
+    <div class="row">
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock content %}

@@ -30,6 +30,7 @@ class HomePage(BaseListView):
 
         context = super().get_context_data(**kwargs)
 
-        context['official_vote_cards'] = VoteCard.objects.filter(type=1)
+        context['official_vote_cards'] = VoteCard.objects.filter(type=1)[:3]
+        context['community_vote_cards'] = VoteCard.objects.filter(type=0)[:3]
 
         return context

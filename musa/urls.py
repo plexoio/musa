@@ -21,7 +21,8 @@ from vote_management.views import (UserVoteCardCreation,
                                    UserEventList,
                                    ListViewDetailed,
                                    SingleView,
-                                   ListViewDetailedOfficial)
+                                   ListViewDetailedOfficial,
+                                   ListViewDetailedCommunity)
 
 urlpatterns = [
     # AUTHENTICATION
@@ -76,6 +77,8 @@ urlpatterns = [
          name='see_more'),
     path('all/official/', ListViewDetailedOfficial.as_view(),
          name='see_more_official'),
+    path('all/community/', ListViewDetailedCommunity.as_view(),
+         name='see_more_community'),
     path('<slug:slug>', SingleView.as_view(),
          name='card_single'),
     path('vote/<int:vote_card_id>/', VoteForCardView.as_view(),
