@@ -45,6 +45,22 @@
                             </p>
                         </div>
                     </div>
+                    <!-- Card Description -->
+                    <div class="row mt-3">
+                        <div class="col">
+                            <p class="my-0">
+                                <h6 class="text-center">Candidates</h6>
+                                <ul>
+                                    {% for candidate in card.vote_candidate.all %}
+                                    <li>
+                                        {{ candidate.name }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Vote Action -->
                     <span class="card d-inline-block">
                         <div class="card-body py-1 px-3 text-center">
                             <span class="card-text">{{ card.number_of_votes }}<br> Votes</span>
