@@ -35,6 +35,17 @@
     color: #333333;
 }
 
+/* Single Card */
+
+.card-header-green{
+    background-color: #2D4F2F;
+    color: white;
+}
+.card-header-red{
+    background-color: #763135;
+    color: white;
+}
+
 /* Buttons */
 
 .btn-main-blue {

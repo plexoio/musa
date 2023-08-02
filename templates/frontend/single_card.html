@@ -7,7 +7,10 @@
     <!-- Call to Action-->
     <div class="card bg-light my-5 py-4 text-center">
         <div class="card-body">
-            <p class="m-0">You are in a dedicated page for <strong>{{ card.title }}</strong></p>
+            <p class="m-0">You are in a dedicated page for <strong>{{ card.title }}
+                </strong>
+            </p>
+            <small>Created by: {{ card.author }} | Category: {{ card.category }}</small>
         </div>
     </div>
 
@@ -15,21 +18,26 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-6 mb-5">
             <div class="card h-100">
+                {% if card.status == 1 or card.status == 3 %}
+                <div class="card-header card-header-green text-center h6">{{ card.get_status_display }}</div>
+                {% elif card.status == 2%}
+                <div class="card-header text-center h6">{{ card.get_status_display }}</div>
+                {% endif %}
                 <div class="card-header text-center h4">{{ card.get_type_display}}</div>
                 <div class="card-body" style="min-height: 300px;">
                     <!-- Card image & Data -->
                     <div class="row mt-2">
-                        <div class="col-4 d-inline-block">
+                        <div class="col-5 d-inline-block">
                             {% if "placeholder" in card.event_image.url %}
                             <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
                                 alt="code institute" class="img-fluid img-thumbnail rounded float-start mx-2"
-                                width="150" height="150">
+                                width="200" height="200">
                             {% else %}
                             <img src="{{ card.event_image.url }}" alt="card image"
                                 class="img-fluid img-thumbnail rounded float-start mx-2" width="150" height="150">
                             {% endif %}
                         </div>
-                        <div class="col-8 d-inline-block">
+                        <div class="col-7 d-inline-block">
                             <span class="">
                                 <h5 class="card-title">{{ card.title }}</h5>
                                 <p class="mission my-0 fs-6"> {{ card.mission }}</p>

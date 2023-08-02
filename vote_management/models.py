@@ -4,8 +4,9 @@ from cloudinary.models import CloudinaryField
 
 STATUS = (
     (0, 'Draft'),
-    (1, 'Published'),
-    (2, 'Disapproved')
+    (1, 'Online'),
+    (2, 'Cancelled'),
+    (3, 'Completed')
 )
 
 CARD_TYPE = (
