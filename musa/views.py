@@ -22,9 +22,14 @@ class HomePage(BaseListView):
     template_name = 'frontend/index.html'
     context_object_name = 'home_page'
 
+    def get_queryset(self):
+        """Return all VoteCards."""
+        return VoteCard.objects.all()
+
     def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
+
         context = super().get_context_data(**kwargs)
-        # Add the total vote count to the context
-        context['total_votes'] = VoteRecord.objects.all().count()
+
+        context['official_vote_cards'] = VoteCard.objects.filter(type=1)
+
         return context

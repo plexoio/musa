@@ -19,8 +19,9 @@ from vote_management.views import (UserVoteCardCreation,
                                    VoteForCardView,
                                    AdminEventList,
                                    UserEventList,
-                                   BaseListViewDetailed,
-                                   SingleView)
+                                   ListViewDetailed,
+                                   SingleView,
+                                   ListViewDetailedOfficial)
 
 urlpatterns = [
     # AUTHENTICATION
@@ -71,8 +72,10 @@ urlpatterns = [
     # FRONTEND
     path('', views.HomePage.as_view(),
          name='homepage'),
-    path('all/', BaseListViewDetailed.as_view(),
+    path('all/', ListViewDetailed.as_view(),
          name='see_more'),
+    path('all/official/', ListViewDetailedOfficial.as_view(),
+         name='see_more_official'),
     path('<slug:slug>', SingleView.as_view(),
          name='card_single'),
     path('vote/<int:vote_card_id>/', VoteForCardView.as_view(),

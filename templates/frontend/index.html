@@ -85,7 +85,7 @@
     <!-- Official Row-->
     <div class="row gx-4 gx-lg-5 mt-5">
         <p class="h1 text-center mb-5">Official</p>
-        {% for card in home_page %}
+        {% for card in official_vote_cards %}
         {% if card.type == 1 %}
         <div class="col-md-4 mb-5">
             <div class="card h-100">
@@ -133,7 +133,7 @@
         </div>
         {% if forloop.counter|divisibleby:3 %}
         <div class="col-12 text-center">
-            <a href="{% url 'see_more' %}" class="btn btn-light see-more fs-5">See more</a>
+            <a href="{% url 'see_more_official' %}" class="btn btn-light see-more fs-5">See more</a>
         </div>
     </div>
     <div class="row">

@@ -40,8 +40,8 @@ class BaseListView(generic.ListView):
         return VoteCard.objects.filter(status=1).order_by('-created_on')
 
 
-class BaseListViewDetailed(BaseListView):
-    """Base view for listing VoteCards on the See More page."""
+class ListViewDetailed(BaseListView):
+    """Base view for listing VoteCards."""
     template_name = 'frontend/all_cards.html'
     paginate_by = 6
     context_object_name = 'see_more'
@@ -49,6 +49,17 @@ class BaseListViewDetailed(BaseListView):
     def get_queryset(self):
         """Return VoteCards with a status of 1, ordered by creation date."""
         return VoteCard.objects.filter(status=1).order_by('-created_on')
+
+
+class ListViewDetailedOfficial(BaseListView):
+    """Base view for listing Official VoteCards."""
+    template_name = 'frontend/official_cards.html'
+    paginate_by = 6
+    context_object_name = 'see_more_official'
+
+    def get_queryset(self):
+        """Return VoteCards with a status of 1, ordered by creation date."""
+        return VoteCard.objects.filter(type=1, status=1).order_by('-created_on')
 
 
 class SingleView(View):
