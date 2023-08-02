@@ -67,7 +67,7 @@
                         <i class="far fa-heart"></i>
                     </span>
                 </div>
-                <a class="card-footer text-center fs-5" href="#!">VOTE</a>
+                <a class="card-footer text-center fs-5" href="{% url 'card_single' card.slug %}">VOTE</a>
             </div>
         </div>
         {% if forloop.counter|divisibleby:3 %}

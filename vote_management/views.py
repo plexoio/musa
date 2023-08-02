@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views import View, generic
 from .models import VoteCard, VoteRecord, ElectedPerson
-from musa.forms import UserVoteCardCreationForm, AdminVoteCardCreationForm, ElectedPersonForm
+from musa.forms import (UserVoteCardCreationForm,
+                        AdminVoteCardCreationForm,
+                        ElectedPersonForm)
 from django.forms import inlineformset_factory
 from user_profile.views import UserRequiredMixin, UserDashboard
 from admin_profile.views import AdminRequiredMixin
@@ -25,6 +27,8 @@ class VoteForCardView(View):
 
         return redirect('vote_success')
 
+# HOMEPAGE
+
 
 class BaseListView(generic.ListView):
     """Base view for listing VoteCards based on certain conditions."""
@@ -45,6 +49,23 @@ class BaseListViewDetailed(BaseListView):
     def get_queryset(self):
         """Return VoteCards with a status of 1, ordered by creation date."""
         return VoteCard.objects.filter(status=1).order_by('-created_on')
+
+
+class SingleView(View):
+
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = VoteCard.objects.filter(status=1)
+
+        card = get_object_or_404(queryset, slug=slug)
+
+        candidates = card.candidates.all()
+
+        return render(request, "single_card.html",
+                      {
+                          "card": card,
+                          "candidates": candidates,
+                      })
 
 # USER Event Management
 

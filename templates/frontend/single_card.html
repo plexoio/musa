@@ -7,14 +7,12 @@
     <!-- Call to Action-->
     <div class="card bg-light my-5 py-4 text-center">
         <div class="card-body">
-            <p class="m-0">You are in a dedicated page for all cards in <strong>Campaign</strong></p>
+            <p class="m-0">You are in a dedicated page for <strong>{{ card.title }}</strong></p>
         </div>
     </div>
 
     <!-- Campaign Row-->
     <div class="row gx-4 gx-lg-5">
-        <p class="h1 text-center mb-5">Campaign</p>
-        {% for card in see_more %}
         <div class="col-md-4 mb-5">
             <div class="card h-100">
                 <div class="card-header text-center h4">{{ card.get_type_display}}</div>
@@ -59,25 +57,7 @@
                 <a class="card-footer text-center fs-5" href="{% url 'card_single' card.slug %}">VOTE</a>
             </div>
         </div>
-        {% if forloop.counter|divisibleby:3 %}
     </div>
-    <div class="row">
-        {% endif %}
-        {% endfor %}
-    </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
 </div>
 
 {% endblock content %}
