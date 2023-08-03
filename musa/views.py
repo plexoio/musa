@@ -3,6 +3,7 @@ from .models import UserProfile
 from vote_management.models import VoteCard, VoteRecord, ElectedPerson
 from vote_management.views import BaseListView
 from django.views import View, generic
+from django.utils import timezone
 
 # USER
 
@@ -32,5 +33,6 @@ class HomePage(BaseListView):
 
         context['official_vote_cards'] = VoteCard.objects.filter(type=1)[:3]
         context['community_vote_cards'] = VoteCard.objects.filter(type=0)[:3]
+        context['now'] = timezone.now()
 
         return context

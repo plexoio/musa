@@ -1,10 +1,14 @@
+a {
+    text-decoration: none;
+}
+
 /* Vote Card */
 #description {
     min-height: 190px;
     text-align: justify;
 }
 
-#description-single{
+#description-single {
     min-height: 120px;
     text-align: justify;
 }
@@ -33,11 +37,12 @@
 
 /* Single Card */
 
-.card-header-green{
+.card-header-green {
     background-color: #2D4F2F;
     color: white;
 }
-.card-header-red{
+
+.card-header-red {
     background-color: #763135;
     color: white;
 }
@@ -58,3 +63,8 @@
 }
 
 /* User & Admin Dashboard colors */
+
+/* Footer */
+i {
+    color: #34495e;
+}
