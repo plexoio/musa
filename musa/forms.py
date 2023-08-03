@@ -156,6 +156,24 @@ class AdminVoteCardCreationForm(forms.ModelForm):
 
 
 class ElectedPersonForm(forms.ModelForm):
+
     class Meta:
         model = ElectedPerson
         fields = '__all__'
+
+
+# class VoteForm(forms.ModelForm):
+
+#     candidates = forms.ModelMultipleChoiceField(
+#         queryset=ElectedPerson.objects.all(),
+#         widget=forms.CheckboxSelectMultiple,
+#         required=False
+#     )
+
+#     def save(self, commit=True):
+#         instance = super(VoteForm, self).save(commit=False)
+#         return instance
+
+#     class Meta:
+#         model = ElectedPerson
+#         fields = ['name']

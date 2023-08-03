@@ -13,7 +13,16 @@
             <small>Created by: {{ card.author }} | Category: {{ card.category }}</small>
         </div>
     </div>
-
+    <!-- Messages -->
+    {% if messages %}
+    <div class="card quote my-5 py-4 text-center text-white">
+        <div class="card-body">
+            {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }} mb-0" {% endif %}>{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
     <!-- Campaign Row-->
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-6 mb-5">
@@ -53,17 +62,29 @@
                             </p>
                         </div>
                     </div>
-                    <!-- Card Description -->
+                    <!-- Candidates -->
                     <div class="row mb-3">
                         <div class="col">
                             <h6 class="text-center">Candidates</h6>
-                            <ul>
+                            {% if user_authenticated %}
+                            {% if not has_voted %}
+                            <form method="post">
+                                {% csrf_token %}
+                                <h2>Select a candidate:</h2>
                                 {% for candidate in card.vote_candidate.all %}
-                                <li>
+                                <label>
+                                    <input type="radio" name="elected_person" value="{{ candidate.id }}">
                                     {{ candidate.name }}
-                                </li>
+                                </label><br>
                                 {% endfor %}
-                            </ul>
+                                <input type="submit" value="Vote">
+                            </form>
+                            {% else %}
+                            <p>You have already voted for this card. Thank you for participating!</p>
+                            {% endif %}
+                            {% else %}
+                            <p>You need to <a href="{% url 'account_login' %}">log in</a> to vote.</p>
+                            {% endif %}
                         </div>
                     </div>
                     <!-- Vote Action -->

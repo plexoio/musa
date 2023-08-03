@@ -8,6 +8,7 @@ from django.forms import inlineformset_factory
 from user_profile.views import UserRequiredMixin, UserDashboard
 from admin_profile.views import AdminRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
+from django.contrib import messages
 
 
 class VoteForCardView(View):
@@ -80,16 +81,43 @@ class SingleView(View):
     def get(self, request, slug, *args, **kwargs):
 
         queryset = VoteCard.objects.filter(status=1)
-
         card = get_object_or_404(queryset, slug=slug)
-
         candidates = card.candidates.all()
+
+        if request.user.is_authenticated:
+            has_voted = VoteRecord.objects.filter(
+                voter=request.user, vote_card=card).exists()
+        else:
+            has_voted = False
 
         return render(request, "single_card.html",
                       {
                           "card": card,
                           "candidates": candidates,
+                          "has_voted": has_voted,
+                          "user_authenticated": request.user.is_authenticated
                       })
+
+    def post(self, request, slug, *args, **kwargs):
+
+        card = get_object_or_404(VoteCard, slug=slug, status=1)
+
+        elected_person_id = request.POST.get('elected_person')
+
+        if VoteRecord.objects.filter(
+                voter=request.user, vote_card=card).exists():
+            messages.error(request, "You have already voted for this card!")
+            return redirect('card_single', slug=card.slug)
+
+        elected_person = ElectedPerson.objects.get(id=elected_person_id)
+
+        VoteRecord.objects.create(
+            voter=request.user, vote_card=card, elected_person=elected_person)
+
+        messages.success(
+            request, "Congratulations! Your vote has been recorded!")
+        return redirect('card_single', slug=card.slug)
+
 
 # USER Event Management
 
