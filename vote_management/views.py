@@ -1,3 +1,4 @@
+from django.shortcuts import get_list_or_404
 from django.shortcuts import render
 from django.views import View, generic
 from .models import VoteCard, VoteRecord, ElectedPerson
@@ -5,7 +6,7 @@ from musa.forms import (UserVoteCardCreationForm,
                         AdminVoteCardCreationForm,
                         ElectedPersonForm)
 from django.forms import inlineformset_factory
-from user_profile.views import UserRequiredMixin, UserDashboard
+from user_profile.views import UserRequiredMixin, UserDashboard, UserProfile
 from admin_profile.views import AdminRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
@@ -28,11 +29,11 @@ class VoteForCardView(View):
 
         return redirect('vote_success')
 
-# HOMEPAGE
+# HOMEPAGE DISPLAY
 
 
 class BaseListView(generic.ListView):
-    """Base view for listing VoteCards based on certain conditions."""
+    """Base view for listing VoteCards based on these conditions."""
     model = VoteCard
     paginate_by = 3
 
@@ -42,7 +43,7 @@ class BaseListView(generic.ListView):
 
 
 class ListViewDetailed(BaseListView):
-    """Base view for listing VoteCards."""
+    """Base view for listing ALL VoteCards."""
     template_name = 'frontend/all_cards.html'
     paginate_by = 6
     context_object_name = 'see_more'
@@ -53,33 +54,31 @@ class ListViewDetailed(BaseListView):
 
 
 class ListViewDetailedOfficial(BaseListView):
-    """Base view for listing Official VoteCards."""
+    """Base view for listing ONLY Official VoteCards."""
     template_name = 'frontend/official_cards.html'
     paginate_by = 6
     context_object_name = 'see_more_official'
 
     def get_queryset(self):
-        """VoteCards with a status of 1 and type 1, ordered by creation."""
         return VoteCard.objects.filter(
             type=1, status=1).order_by('-created_on')
 
 
 class ListViewDetailedCommunity(BaseListView):
-    """Base view for listing Official VoteCards."""
+    """Base view for listing ONLY Community VoteCards."""
     template_name = 'frontend/community_cards.html'
     paginate_by = 6
     context_object_name = 'see_more_community'
 
     def get_queryset(self):
-        """VoteCards with a status of 1 and type 0, ordered by creation."""
         return VoteCard.objects.filter(
             type=0, status=1).order_by('-created_on')
 
 
 class SingleView(View):
+    """View for listing SINGLE VoteCards."""
 
     def get(self, request, slug, *args, **kwargs):
-
         queryset = VoteCard.objects.filter(status=1)
         card = get_object_or_404(queryset, slug=slug)
         candidates = card.candidates.all()
@@ -99,9 +98,7 @@ class SingleView(View):
                       })
 
     def post(self, request, slug, *args, **kwargs):
-
         card = get_object_or_404(VoteCard, slug=slug, status=1)
-
         elected_person_id = request.POST.get('elected_person')
 
         if VoteRecord.objects.filter(
@@ -119,7 +116,7 @@ class SingleView(View):
         return redirect('card_single', slug=card.slug)
 
 
-# USER Event Management
+# USER Dashboard - Event Management
 
 # READ Event
 
@@ -167,7 +164,23 @@ class UserVoteCardCreation(UserRequiredMixin, View):
                 request, self.template_name,
                 {'form': form, 'person_formset': person_formset})
 
-# ADMIN Event Management
+# User VOTES
+
+
+class UserVotes(UserRequiredMixin, generic.ListView):
+    model = VoteRecord
+    template_name = 'backend/user-dashboard/user_votes.html'
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user_votes = VoteRecord.objects.filter(
+            voter=self.request.user).order_by('-timestamp')
+        context['user_votes'] = user_votes
+        return context
+
+
+# ADMIN Dashboard - Event Management
 
 # READ Event
 
@@ -224,3 +237,16 @@ class AdminVoteCardCreation(AdminRequiredMixin, View):
             return render(
                 request, self.template_name,
                 {'form': form, 'person_formset': person_formset})
+
+# Admin VOTES
+
+
+class AdminVotes(AdminRequiredMixin, generic.ListView):
+    model = VoteRecord
+    template_name = 'backend/admin-dashboard/admin_votes.html'
+    paginate_by = 10
+    context_object_name = 'admin_votes'
+
+    def get_queryset(self):
+        """Return VoteCards with a status of 1, ordered by creation date."""
+        return VoteRecord.objects.order_by('-timestamp')

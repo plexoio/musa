@@ -65,7 +65,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{% url 'user_creation' %}">Create Event</a>
                                 <a class="nav-link" href="{% url 'user_all_events' %}">My Events</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">My Votes</a>
+                                <a class="nav-link" href="{% url 'user_votes' %}">My Votes</a>
                             </nav>
                         </div>
 
@@ -126,16 +126,6 @@
                             </nav>
                         </div>
 
-                        <!--  Stats: -->
-                        <div class="sb-sidenav-menu-heading">Stats</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

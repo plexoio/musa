@@ -48,6 +48,8 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ['first_name', 'last_name', 'email']
 
+# UPDATE
+
 
 class UserSettings(UpdateView):
     """View for updating user settings."""
@@ -61,6 +63,8 @@ class UserSettings(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('user_settings')
+
+# DELETE
 
 
 class UserDelete(UserRequiredMixin, DeleteView):
@@ -107,6 +111,8 @@ class UserPasswordChangeView(UserRequiredMixin, PasswordChangeView):
 
     def get_success_url(self):
         return reverse('user_settings')
+
+# ROLE
 
 
 class UserRole(UserDashboard):

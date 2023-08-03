@@ -1,0 +1,47 @@
+{% extends "backend/admin-dashboard/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card shadow-lg border-0 rounded-lg my-5">
+                        <div class="card-header">
+                            <h3 class="text-center font-weight-light my-4">System Votes</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-center">Here you can see all votes executed so far</p>
+                            <ul class="list-group my-4">
+                                {% for vote in admin_votes.all %}
+                                <li class="list-group-item">
+                                    <strong>{{ vote.vote_card }}</strong><br>{{ vote.elected_person }}<br>
+                                    <small>{{ vote.timestamp }}</small>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% if is_paginated %}
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a>
+                            </li>
+                            {% endif %}
+                            {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

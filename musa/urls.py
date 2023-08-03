@@ -22,7 +22,9 @@ from vote_management.views import (UserVoteCardCreation,
                                    ListViewDetailed,
                                    SingleView,
                                    ListViewDetailedOfficial,
-                                   ListViewDetailedCommunity)
+                                   ListViewDetailedCommunity,
+                                   AdminVotes,
+                                   UserVotes)
 
 urlpatterns = [
     # AUTHENTICATION
@@ -43,6 +45,8 @@ urlpatterns = [
          name='user_all_events'),
     path('user/role', UserRole.as_view(),
          name='user_role'),
+    path('user/votes/', UserVotes.as_view(),
+         name='user_votes'),
 
     # VOTE MANAGEMENT
     path('user/create', UserVoteCardCreation.as_view(),
@@ -65,6 +69,8 @@ urlpatterns = [
          name='admin_all_events'),
     path('office/role', AdminRole.as_view(),
          name='admin_role'),
+    path('office/votes', AdminVotes.as_view(),
+         name='admin_votes'),
 
     # ROLE
     path('role_redirect/', role_redirect.RoleRedirectView.as_view(),
