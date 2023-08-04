@@ -1,0 +1,118 @@
+{% extends "backend/admin-dashboard/base.html" %}
+{% block content%}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid p-4 pt-0">
+            <h1 class="mt-4">Event Approval</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Approve created events by users</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    User's Created Events
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Location</th>
+                                <th>Created On</th>
+                                <th>Expire On</th>
+                                <th>Instance</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Location</th>
+                                <th>Created On</th>
+                                <th>Expire On</th>
+                                <th>Instance</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            {% for event in admin_approval_list.all %}
+                            {% if event.status == 0 %}
+                            <tr>
+                                <td>{{ event.title }}</td>
+                                {% if event.author.username == request.user.username %}
+                                <td>
+                                    <p class="text-success my-0 py-0 fw-semibold text-center">
+                                        {{ event.author }}
+                                        <small><br>({{ event.author.get_role_display }})</small>
+                                    </p>
+                                </td>
+                                {% else %}
+                                <td>
+                                    <p class="my-0 py-0 fw-semibold text-center">
+                                        {{ event.author }}
+                                        <small><br>({{ event.author.get_role_display }})</small>
+                                    </p>
+                                </td>
+                                {% endif %}
+                                <td>{{ event.category.category_name }}</td>
+                                {% if event.status == 1 %}
+                                <td>
+                                    <p class="text-success my-0 py-0 fw-semibold">
+
+                                        {{ event.get_status_display }}
+                                    </p>
+                                </td>
+                                {% elif event.status == 2%}
+                                <td>
+                                    <p class="text-danger my-0 py-0 fw-semibold">
+                                        {{ event.get_status_display }}
+                                    </p>
+                                </td>
+                                {% elif event.status == 0 %}
+                                <td>
+                                    <p class="text-warning my-0 py-0 fw-semibold">
+                                        {{ event.get_status_display }}
+                                    </p>
+                                </td>
+                                {% else %}
+                                <td>
+                                    <p class="text-primary my-0 py-0 fw-semibold">
+                                        {{ event.get_status_display }}
+                                    </p>
+                                </td>
+                                {% endif %}
+                                <td>{{ event.location }}</td>
+                                <td>{{ event.created_on }}</td>
+                                {% if event.expire|date:"Y-m-d" == current_date %}
+                                <td>{{ event.expire }}
+                                    <small class="text-warning fw-semibold">(Today)</small>
+                                </td>
+                                {% elif event.expire|date:"Y-m-d" < current_date %}
+                                <td>{{ event.expire }}
+                                    <small class="text-danger fw-semibold">(Expired)</small>
+                                </td>
+                                {% else %}
+                                <td>{{ event.expire }}
+                                    <small class="text-success fw-semibold">(Active)</small>
+                                </td>
+                                {% endif %}
+                                <td>
+                                    <a href="{% url 'admin_single' event.slug %}">View</a> |
+                                    <a href="{% url 'admin_approval' event.slug %}">Approve</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+{% endblock %}

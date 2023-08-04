@@ -212,7 +212,7 @@ class UserVotes(UserRequiredMixin, generic.ListView):
 # ADMIN READ Event
 
 
-class AdminBaseListView(generic.ListView):
+class AdminBaseListView(AdminRequiredMixin, generic.ListView):
     """Base view for listing VoteCards based on certain conditions."""
     model = VoteCard
     paginate_by = 10
@@ -222,10 +222,16 @@ class AdminBaseListView(generic.ListView):
         return VoteCard.objects.order_by('-created_on')
 
 
-class AdminEventList(AdminRequiredMixin, AdminBaseListView):
+class AdminEventList(AdminBaseListView):
     """ Read all created Vote Cards on Admin's Dashboard"""
     template_name = 'backend/admin-dashboard/all_events.html'
     context_object_name = 'admin_all_events'
+
+
+class AdminApprovalList(AdminBaseListView):
+    """ List to filter Vote Cards as draft for approval """
+    template_name = 'backend/admin-dashboard/list_approve.html'
+    context_object_name = 'admin_approval_list'
 
 # ADMIN UPDATE card & READ card
 
@@ -250,23 +256,31 @@ class AdminCardDetailView(AdminRequiredMixin, View):
 # ADMIN UPDATE
 
 
-class AdminVoteCardDetailView(AdminRequiredMixin, View):
-    """Update SINGLE created VoteCard from the admin Dashboard."""
-    template_name = 'backend/admin-dashboard/update.html'
+class BaseAdminVoteCardDetailView(AdminRequiredMixin, View):
+    """Base class for 'VoteCard detail view' with shared functionality."""
+
+    template_name = None
 
     def get(self, request, slug, *args, **kwargs):
+        context = self.get_context_data(slug)
+        return render(request, self.template_name, context)
+
+    def get_context_data(self, slug):
         queryset = VoteCard.objects.order_by('-created_on')
         event = get_object_or_404(queryset, slug=slug)
         status = STATUS
         candidates = event.candidates.all()
+        return {
+            "event": event,
+            "candidates": candidates,
+            "status": status,
+            "user_authenticated": self.request.user.is_authenticated
+        }
 
-        return render(request, "update.html",
-                      {
-                          "event": event,
-                          "candidates": candidates,
-                          "status": status,
-                          "user_authenticated": request.user.is_authenticated
-                      })
+
+class AdminVoteCardDetailView(BaseAdminVoteCardDetailView):
+    """Update SINGLE created VoteCard from the admin Dashboard."""
+    template_name = 'backend/admin-dashboard/update.html'
 
     def post(self, request, slug, *args, **kwargs):
         event = get_object_or_404(VoteCard, slug=slug)
@@ -285,6 +299,36 @@ class AdminVoteCardDetailView(AdminRequiredMixin, View):
             event.event_image = upload['url']
 
         event.save()
+        messages.success(
+            request, "Congratulations! The VoteCard has been Updated!")
+        return redirect('admin_card_update', slug=event.slug)
+
+# ADMIN Event Approval
+
+
+class EventApprovalDetailView(AdminVoteCardDetailView):
+    """Approve user's vote cards after on admin dashboard"""
+
+    template_name = 'backend/admin-dashboard/approval.html'
+
+    def post(self, request, slug, *args, **kwargs):
+        event = get_object_or_404(VoteCard, slug=slug)
+        event.title = request.POST.get('title')
+        status = request.POST.get('status')
+        event.status = int(status)
+        description = request.POST.get('description')
+        event.description = description[:264]
+        event.mission = request.POST.get('mission')
+        event.location = request.POST.get('location')
+
+        uploaded_image = request.FILES.get(
+            'event_image')
+        if uploaded_image:
+            upload = upload(uploaded_image)
+            event.event_image = upload['url']
+
+        event.save()
+        
         messages.success(
             request, "Congratulations! The VoteCard has been Updated!")
         return redirect('admin_card_update', slug=event.slug)

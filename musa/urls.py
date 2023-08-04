@@ -27,7 +27,10 @@ from vote_management.views import (UserVoteCardCreation, AdminVoteCardCreation,
                                    OfficialVoteCardsListView,
                                    CommunityVoteCardsListView,
                                    AdminVotes, UserVotes, UserSingleView,
-                                   AdminVoteCardDetailView, AdminCardDetailView)
+                                   AdminVoteCardDetailView,
+                                   AdminCardDetailView,
+                                   EventApprovalDetailView,
+                                   AdminApprovalList)
 
 urlpatterns = [
     # AUTHENTICATION
@@ -80,6 +83,10 @@ urlpatterns = [
          name='admin_single'),
     path('office/update/<slug:slug>/', AdminVoteCardDetailView.as_view(),
          name='admin_card_update'),
+    path('office/all/approve/', AdminApprovalList.as_view(),
+         name='admin_approval_list'),
+    path('office/approval/<slug:slug>/', EventApprovalDetailView.as_view(),
+         name='admin_approval'),
 
     # ROLE
     path('role_redirect/', role_redirect.RoleRedirectView.as_view(),

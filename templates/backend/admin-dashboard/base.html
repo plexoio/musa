@@ -79,7 +79,8 @@
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="{% url 'admin_all_events' %}">View all</a>
+                                <a class="nav-link" href="{% url 'admin_all_events' %}">Created</a>
+                                <a class="nav-link" href="{% url 'admin_approval_list' %}">Pending</a>
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                     data-bs-target="#pagesCollapseEvent" aria-expanded="false"
                                     aria-controls="pagesCollapseEvent">
@@ -102,7 +103,6 @@
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
                                     data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Approval</a>
                                         <a class="nav-link" href="{% url 'admin_votes' %}">Vote History</a>
                                     </nav>
                                 </div>
