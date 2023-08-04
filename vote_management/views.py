@@ -208,7 +208,27 @@ class AdminEventList(AdminRequiredMixin, AdminBaseListView):
     template_name = 'backend/admin-dashboard/all_events.html'
     context_object_name = 'admin_all_events'
 
-# UPDATE & READ
+# UPDATE card & READ card
+
+# READ Card
+
+
+class AdminSingleCardView(AdminRequiredMixin, View):
+    """View for listing SINGLE VoteCard on the user Dashboard."""
+    template_name = 'backend/admin-dashboard/single_card_admin.html'
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = VoteCard.objects.filter(status=1)
+        event = get_object_or_404(queryset, slug=slug)
+        candidates = event.candidates.all()
+
+        return render(request, "single_card_admin.html",
+                      {
+                          "event": event,
+                          "candidates": candidates,
+                          "user_authenticated": request.user.is_authenticated
+                      })
+# UPDATE
 
 
 class AdminSingleView(AdminRequiredMixin, View):

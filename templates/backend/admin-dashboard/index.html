@@ -6,42 +6,38 @@
         <div class="container-fluid p-4 pt-0">
             <h1 class="mt-4">Admin Dashboard</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">Welcome to your Admin Dashboard</li>
             </ol>
             <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
-                        <div class="card-body">Events</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="{% url 'admin_all_events' %}">View </a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        <div class="card-body">Event History</div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <a class="stretched-link" href="{% url 'admin_all_events' %}"></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-warning text-white mb-4">
-                        <div class="card-body">Approvals</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View </a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        <div class="card-body">Approval</div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <a class="stretched-link" href="#"></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-success text-white mb-4">
                         <div class="card-body">Verification</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View </a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <a class="stretched-link" href="#"></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-danger text-white mb-4">
-                        <div class="card-body">History</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View </a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        <div class="card-body">Vote History</div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <a class="stretched-link" href="{% url 'admin_votes' %}"></a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +46,8 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Admin Created Events
+                    Event Overview
+                    <small> (Admin Created)</small>
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">
