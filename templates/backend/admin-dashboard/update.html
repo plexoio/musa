@@ -68,8 +68,11 @@
 
                         <!-- Description -->
                         <div class="mb-3">
-                            <label for="description" class="form-label"><strong>Description</strong></label>
-                            <textarea name="description" class="form-control" id="description" rows="4"
+                            <label for="description" class="form-label">
+                                <strong>Description</strong>
+                                <small>(264 characters)</small>
+                            </label>
+                            <textarea name="description" class="form-control" id="description" maxlength="264" rows="4"
                                 required>{{ event.description}}</textarea>
                             {% if event.description.errors %}
                             <div class="errors">{{ event.description.errors }}</div>

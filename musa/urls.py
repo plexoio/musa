@@ -23,11 +23,11 @@ from admin_profile.views import (AdminDashboard, AdminSettings,
 # Vote Management app imports
 from vote_management.views import (UserVoteCardCreation, AdminVoteCardCreation,
                                    AdminEventList, UserEventList,
-                                   ListViewDetailed, SingleView,
-                                   ListViewDetailedOfficial,
-                                   ListViewDetailedCommunity,
+                                   AllVoteCardsListView, SingleView,
+                                   OfficialVoteCardsListView,
+                                   CommunityVoteCardsListView,
                                    AdminVotes, UserVotes, UserSingleView,
-                                   AdminSingleView, AdminSingleCardView)
+                                   AdminVoteCardDetailView, AdminCardDetailView)
 
 urlpatterns = [
     # AUTHENTICATION
@@ -76,9 +76,9 @@ urlpatterns = [
          name='admin_role'),
     path('office/votes', AdminVotes.as_view(),
          name='admin_votes'),
-    path('office/single/card/<slug:slug>/', AdminSingleCardView.as_view(),
+    path('office/single/card/<slug:slug>/', AdminCardDetailView.as_view(),
          name='admin_single'),
-    path('office/update/<slug:slug>/', AdminSingleView.as_view(),
+    path('office/update/<slug:slug>/', AdminVoteCardDetailView.as_view(),
          name='admin_card_update'),
 
     # ROLE
@@ -88,11 +88,11 @@ urlpatterns = [
     # FRONTEND
     path('', views.HomePage.as_view(),
          name='homepage'),
-    path('all/', ListViewDetailed.as_view(),
+    path('all/', AllVoteCardsListView.as_view(),
          name='see_more'),
-    path('all/official/', ListViewDetailedOfficial.as_view(),
+    path('all/official/', OfficialVoteCardsListView.as_view(),
          name='see_more_official'),
-    path('all/community/', ListViewDetailedCommunity.as_view(),
+    path('all/community/', CommunityVoteCardsListView.as_view(),
          name='see_more_community'),
     path('<slug:slug>', SingleView.as_view(),
          name='card_single'),

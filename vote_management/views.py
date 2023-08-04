@@ -14,7 +14,7 @@ from django.contrib import messages
 # HOMEPAGE DISPLAY
 
 
-class BaseListView(generic.ListView):
+class VoteCardBaseListView(generic.ListView):
     """Base view for listing VoteCards based on these conditions."""
     model = VoteCard
     paginate_by = 3
@@ -24,7 +24,7 @@ class BaseListView(generic.ListView):
         return VoteCard.objects.filter(status=1).order_by('-created_on')
 
 
-class ListViewDetailed(BaseListView):
+class AllVoteCardsListView(VoteCardBaseListView):
     """Base view for listing ALL VoteCards."""
     template_name = 'frontend/all_cards.html'
     paginate_by = 6
@@ -35,7 +35,7 @@ class ListViewDetailed(BaseListView):
         return VoteCard.objects.filter(status=1).order_by('-created_on')
 
 
-class ListViewDetailedOfficial(BaseListView):
+class OfficialVoteCardsListView(VoteCardBaseListView):
     """Base view for listing ONLY Official VoteCards."""
     template_name = 'frontend/official_cards.html'
     paginate_by = 6
@@ -46,7 +46,7 @@ class ListViewDetailedOfficial(BaseListView):
             type=1, status=1).order_by('-created_on')
 
 
-class ListViewDetailedCommunity(BaseListView):
+class CommunityVoteCardsListView(VoteCardBaseListView):
     """Base view for listing ONLY Community VoteCards."""
     template_name = 'frontend/community_cards.html'
     paginate_by = 6
@@ -100,7 +100,7 @@ class SingleView(View):
 
 # USER Dashboard - Event Management
 
-# READ Event
+# USER READ Event
 
 
 class UserEventList(UserDashboard):
@@ -108,7 +108,7 @@ class UserEventList(UserDashboard):
     template_name = 'backend/user-dashboard/all_events.html'
     context_object_name = 'user_all_events'
 
-# Single Card Display
+# USER Single Card Display
 
 
 class UserSingleView(UserRequiredMixin, View):
@@ -134,7 +134,7 @@ class UserSingleView(UserRequiredMixin, View):
                       })
 
 
-# CREATE Event
+# USER CREATE Event
 
 
 class UserVoteCardCreation(UserRequiredMixin, View):
@@ -172,7 +172,7 @@ class UserVoteCardCreation(UserRequiredMixin, View):
                 request, self.template_name,
                 {'form': form, 'person_formset': person_formset})
 
-# User VOTES
+# USER Votes Display
 
 
 class UserVotes(UserRequiredMixin, generic.ListView):
@@ -190,7 +190,7 @@ class UserVotes(UserRequiredMixin, generic.ListView):
 
 # ADMIN Dashboard - Event Management
 
-# READ Event
+# ADMIN READ Event
 
 
 class AdminBaseListView(generic.ListView):
@@ -208,13 +208,13 @@ class AdminEventList(AdminRequiredMixin, AdminBaseListView):
     template_name = 'backend/admin-dashboard/all_events.html'
     context_object_name = 'admin_all_events'
 
-# UPDATE card & READ card
+# ADMIN UPDATE card & READ card
 
-# READ Card
+# ADMIN READ Card
 
 
-class AdminSingleCardView(AdminRequiredMixin, View):
-    """View for listing SINGLE VoteCard on the user Dashboard."""
+class AdminCardDetailView(AdminRequiredMixin, View):
+    """View SINGLE created VoteCard from the admin Dashboard."""
     template_name = 'backend/admin-dashboard/single_card_admin.html'
 
     def get(self, request, slug, *args, **kwargs):
@@ -228,11 +228,11 @@ class AdminSingleCardView(AdminRequiredMixin, View):
                           "candidates": candidates,
                           "user_authenticated": request.user.is_authenticated
                       })
-# UPDATE
+# ADMIN UPDATE
 
 
-class AdminSingleView(AdminRequiredMixin, View):
-    """View for listing SINGLE VoteCard on the user Dashboard."""
+class AdminVoteCardDetailView(AdminRequiredMixin, View):
+    """Update SINGLE created VoteCard from the admin Dashboard."""
     template_name = 'backend/admin-dashboard/update.html'
 
     def get(self, request, slug, *args, **kwargs):
@@ -249,7 +249,8 @@ class AdminSingleView(AdminRequiredMixin, View):
 
     def post(self, request, slug, *args, **kwargs):
         event = get_object_or_404(VoteCard, slug=slug, status=1)
-        event.description = request.POST.get('description')
+        description = request.POST.get('description')
+        event.description = description[:264]
         event.title = request.POST.get('title')
         event.mission = request.POST.get('mission')
         event.location = request.POST.get('location')
@@ -265,7 +266,7 @@ class AdminSingleView(AdminRequiredMixin, View):
             request, "Congratulations! The VoteCard has been Updated!")
         return redirect('admin_card_update', slug=event.slug)
 
-# CREATE Event
+# ADMIN CREATE Event
 
 
 class AdminVoteCardCreation(AdminRequiredMixin, View):
@@ -303,15 +304,19 @@ class AdminVoteCardCreation(AdminRequiredMixin, View):
                 request, self.template_name,
                 {'form': form, 'person_formset': person_formset})
 
-# Admin VOTES
+# ADMIN VOTES
 
 
 class AdminVotes(AdminRequiredMixin, generic.ListView):
+    """Return VoteCard Votes with a status of 1, ordered by creation date."""
     model = VoteRecord
     template_name = 'backend/admin-dashboard/admin_votes.html'
     paginate_by = 10
     context_object_name = 'admin_votes'
 
     def get_queryset(self):
-        """Return VoteCards with a status of 1, ordered by creation date."""
         return VoteRecord.objects.order_by('-timestamp')
+
+# ADMIN Created Events
+
+# class AdminVoteCards(AdminDashboard):
