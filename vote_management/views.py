@@ -57,8 +57,8 @@ class CommunityVoteCardsListView(VoteCardBaseListView):
             type=0, status=1).order_by('-created_on')
 
 
-class SingleView(View):
-    """View for listing SINGLE VoteCards."""
+class HomePageSingleView(View):
+    """View for listing SINGLE VoteCards in homepage."""
 
     def get(self, request, slug, *args, **kwargs):
         queryset = VoteCard.objects.filter(status=1)
@@ -316,7 +316,3 @@ class AdminVotes(AdminRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return VoteRecord.objects.order_by('-timestamp')
-
-# ADMIN Created Events
-
-# class AdminVoteCards(AdminDashboard):

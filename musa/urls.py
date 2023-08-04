@@ -23,7 +23,7 @@ from admin_profile.views import (AdminDashboard, AdminSettings,
 # Vote Management app imports
 from vote_management.views import (UserVoteCardCreation, AdminVoteCardCreation,
                                    AdminEventList, UserEventList,
-                                   AllVoteCardsListView, SingleView,
+                                   AllVoteCardsListView, HomePageSingleView,
                                    OfficialVoteCardsListView,
                                    CommunityVoteCardsListView,
                                    AdminVotes, UserVotes, UserSingleView,
@@ -94,6 +94,6 @@ urlpatterns = [
          name='see_more_official'),
     path('all/community/', CommunityVoteCardsListView.as_view(),
          name='see_more_community'),
-    path('<slug:slug>', SingleView.as_view(),
+    path('<slug:slug>', HomePageSingleView.as_view(),
          name='card_single'),
 ]
