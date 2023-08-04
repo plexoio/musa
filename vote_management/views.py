@@ -95,11 +95,16 @@ class HomePageSingleView(View):
 
         elected_person = ElectedPerson.objects.get(id=elected_person_id)
 
-        VoteRecord.objects.create(
-            voter=request.user, vote_card=card, elected_person=elected_person)
+        if request.user.verified == 1:
+            VoteRecord.objects.create(
+                voter=request.user,
+                vote_card=card, elected_person=elected_person)
+            messages.success(
+                request, "Congratulations! Your vote has been recorded!")
+        else:
+            messages.success(
+                request, "Verify your account!")
 
-        messages.success(
-            request, "Congratulations! Your vote has been recorded!")
         return redirect('card_single', slug=card.slug)
 
 
