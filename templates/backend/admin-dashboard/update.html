@@ -45,6 +45,15 @@
                             {% endif %}
                         </div>
 
+                        <!-- Status -->
+                        <select name="status" class="form-select" aria-label="Default select example">
+                            <option value="{{ event.status }}" selected> {{ event.get_status_display }}</option>
+                            {% for status_int, status_str in status %}
+                            {% if status_int != event.status %}
+                            <option value="{{ status_int }}">{{ status_str }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
 
                         <!-- Mission -->
                         <div class="mb-3">

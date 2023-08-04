@@ -60,6 +60,12 @@
                                         {{ event.get_status_display }}
                                     </p>
                                 </td>
+                                {% elif event.status == 0 %}
+                                <td>
+                                    <p class="text-warning my-0 py-0 fw-semibold">
+                                        {{ event.get_status_display }}
+                                    </p>
+                                </td>
                                 {% else %}
                                 <td>
                                     <p class="text-primary my-0 py-0 fw-semibold">

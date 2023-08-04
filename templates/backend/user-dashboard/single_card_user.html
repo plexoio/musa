@@ -30,7 +30,9 @@
                 {% if event.status == 1 or event.status == 3 %}
                 <div class="card-header card-header-green text-center h6">{{ event.get_status_display }}</div>
                 {% elif event.status == 2%}
-                <div class="card-header text-center h6">{{ event.get_status_display }}</div>
+                <div class="card-header bg-danger text-center text-white h6">{{ event.get_status_display }}</div>
+                {% else %}
+                <div class="card-header bg-warning text-center text-white h6">{{ event.get_status_display }}</div>
                 {% endif %}
                 <div class="card-header text-center h4">{{ event.get_type_display}}</div>
                 <div class="card-body card-body-height pb-0">

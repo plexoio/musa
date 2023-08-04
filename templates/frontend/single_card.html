@@ -32,8 +32,10 @@
                 <div class="card h-100">
                     {% if card.status == 1 or card.status == 3 %}
                     <div class="card-header card-header-green text-center h6">{{ card.get_status_display }}</div>
-                    {% elif card.status == 2%}
-                    <div class="card-header text-center h6">{{ card.get_status_display }}</div>
+                    {% elif card.status == 2 %}
+                    <div class="card-header bg-danger text-center text-white h6">{{ card.get_status_display }}</div>
+                    {% else %}
+                    <div class="card-header bg-warning text-center text-white h6">{{ card.get_status_display }}</div>
                     {% endif %}
                     <div class="card-header text-center h4">{{ card.get_type_display}}</div>
                     <div class="card-body card-body-height pb-0">

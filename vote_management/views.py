@@ -1,15 +1,18 @@
+# Django Imports
 from django.shortcuts import get_list_or_404
 from django.shortcuts import render
 from django.views import View, generic
-from .models import VoteCard, VoteRecord, ElectedPerson
+from django.forms import inlineformset_factory
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib import messages
+
+# Local Imports
+from user_profile.views import UserRequiredMixin, UserDashboard, UserProfile
+from admin_profile.views import AdminRequiredMixin
+from .models import VoteCard, VoteRecord, ElectedPerson, STATUS
 from musa.forms import (UserVoteCardCreationForm,
                         AdminVoteCardCreationForm,
                         ElectedPersonForm)
-from django.forms import inlineformset_factory
-from user_profile.views import UserRequiredMixin, UserDashboard, UserProfile
-from admin_profile.views import AdminRequiredMixin
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib import messages
 
 # HOMEPAGE DISPLAY
 
@@ -57,11 +60,13 @@ class CommunityVoteCardsListView(VoteCardBaseListView):
             type=0, status=1).order_by('-created_on')
 
 
+# VOTE FUNCTIONALITY
+
 class HomePageSingleView(View):
     """View for listing SINGLE VoteCards in homepage."""
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = VoteCard.objects.filter(status=1)
+        queryset = VoteCard.objects.order_by('-created_on')
         card = get_object_or_404(queryset, slug=slug)
         candidates = card.candidates.all()
 
@@ -115,7 +120,7 @@ class UserSingleView(UserRequiredMixin, View):
     """View for listing SINGLE VoteCard on the user Dashboard."""
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = VoteCard.objects.filter(status=1)
+        queryset = VoteCard.objects.order_by('-created_on')
         event = get_object_or_404(queryset, slug=slug)
         candidates = event.candidates.all()
 
@@ -218,7 +223,7 @@ class AdminCardDetailView(AdminRequiredMixin, View):
     template_name = 'backend/admin-dashboard/single_card_admin.html'
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = VoteCard.objects.filter(status=1)
+        queryset = VoteCard.objects.order_by('-created_on')
         event = get_object_or_404(queryset, slug=slug)
         candidates = event.candidates.all()
 
@@ -236,22 +241,26 @@ class AdminVoteCardDetailView(AdminRequiredMixin, View):
     template_name = 'backend/admin-dashboard/update.html'
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = VoteCard.objects.filter(status=1)
+        queryset = VoteCard.objects.order_by('-created_on')
         event = get_object_or_404(queryset, slug=slug)
+        status = STATUS
         candidates = event.candidates.all()
 
         return render(request, "update.html",
                       {
                           "event": event,
                           "candidates": candidates,
+                          "status": status,
                           "user_authenticated": request.user.is_authenticated
                       })
 
     def post(self, request, slug, *args, **kwargs):
-        event = get_object_or_404(VoteCard, slug=slug, status=1)
+        event = get_object_or_404(VoteCard, slug=slug)
+        event.title = request.POST.get('title')
+        status = request.POST.get('status')
+        event.status = int(status)
         description = request.POST.get('description')
         event.description = description[:264]
-        event.title = request.POST.get('title')
         event.mission = request.POST.get('mission')
         event.location = request.POST.get('location')
 
