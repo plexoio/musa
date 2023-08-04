@@ -5,26 +5,28 @@ from django.urls import path
 from . import views, role_redirect
 
 # Authentication app imports
-from authentication.views import CustomLoginView, CustomSignupView, CustomLogoutView
+from authentication.views import (CustomLoginView, CustomSignupView,
+                                  CustomLogoutView)
 
 # User Profile app imports
-from user_profile.views import UserDashboard, UserSettings, UserPasswordChangeView, UserDelete, UserRole
+from user_profile.views import (UserDashboard,
+                                UserSettings,
+                                UserPasswordChangeView,
+                                UserDelete,
+                                UserRole)
 
 # Admin Profile app imports
-from admin_profile.views import AdminDashboard, AdminSettings, AdminPasswordChangeView, AdminRole
+from admin_profile.views import (AdminDashboard, AdminSettings,
+                                 AdminPasswordChangeView,
+                                 AdminRole)
 
 # Vote Management app imports
-from vote_management.views import (UserVoteCardCreation,
-                                   AdminVoteCardCreation,
-                                   VoteForCardView,
-                                   AdminEventList,
-                                   UserEventList,
-                                   ListViewDetailed,
-                                   SingleView,
+from vote_management.views import (UserVoteCardCreation, AdminVoteCardCreation,
+                                   VoteForCardView, AdminEventList,
+                                   UserEventList, ListViewDetailed, SingleView,
                                    ListViewDetailedOfficial,
                                    ListViewDetailedCommunity,
-                                   AdminVotes,
-                                   UserVotes)
+                                   AdminVotes, UserVotes, UserSingleView)
 
 urlpatterns = [
     # AUTHENTICATION
@@ -47,6 +49,8 @@ urlpatterns = [
          name='user_role'),
     path('user/votes/', UserVotes.as_view(),
          name='user_votes'),
+    path('user/single/<slug:slug>/', UserSingleView.as_view(),
+         name='user_single'),
 
     # VOTE MANAGEMENT
     path('user/create', UserVoteCardCreation.as_view(),

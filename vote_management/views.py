@@ -126,6 +126,32 @@ class UserEventList(UserDashboard):
     template_name = 'backend/user-dashboard/all_events.html'
     context_object_name = 'user_all_events'
 
+# Single Card Display
+
+
+class UserSingleView(UserRequiredMixin, View):
+    """View for listing SINGLE VoteCards."""
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = VoteCard.objects.filter(status=1)
+        event = get_object_or_404(queryset, slug=slug)
+        candidates = event.candidates.all()
+
+        if request.user.is_authenticated:
+            has_voted = VoteRecord.objects.filter(
+                voter=request.user, vote_card=event).exists()
+        else:
+            has_voted = False
+
+        return render(request, "single_card_user.html",
+                      {
+                          "event": event,
+                          "candidates": candidates,
+                          "has_voted": has_voted,
+                          "user_authenticated": request.user.is_authenticated
+                      })
+
+
 # CREATE Event
 
 

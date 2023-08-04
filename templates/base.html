@@ -41,6 +41,7 @@
                     <ul class="dropdown-menu dropdown-menu-light mt-2">
                         {% if user.is_authenticated %}
                         <li><a class="dropdown-item" href="{% url 'account_login' %}">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="{% url 'user_settings' %}">Settings</a></li>
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                         {% else %}
                         <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>

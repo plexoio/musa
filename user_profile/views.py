@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
-from django.views import generic
+from django.views import View, generic
 from django.views.generic.edit import UpdateView, DeleteView
 from django import forms
 from django.core.exceptions import PermissionDenied

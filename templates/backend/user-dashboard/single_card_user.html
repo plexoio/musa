@@ -1,0 +1,107 @@
+{% extends "backend/user-dashboard/base.html" %}
+
+{% block content %}
+<!-- Page Content-->
+<div class="container px-4 px-lg-0 mt-5">
+
+    <!-- Call to Action-->
+    <div class="card bg-light my-5 py-4 text-center">
+        <div class="card-body">
+            <p class="m-0">You are in a dedicated page for <strong>{{ event.title }}
+                </strong>
+            </p>
+            <small>Created by: {{ event.author }} | Category: {{ event.category }}</small>
+        </div>
+    </div>
+    <!-- Messages -->
+    {% if messages %}
+    <div class="card quote my-5 py-4 text-center text-white">
+        <div class="card-body">
+            {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }} mb-0" {% endif %}>{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <!-- Campaign Row-->
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-6 mb-5">
+            <div class="card h-100">
+                {% if event.status == 1 or event.status == 3 %}
+                <div class="card-header card-header-green text-center h6">{{ event.get_status_display }}</div>
+                {% elif event.status == 2%}
+                <div class="card-header text-center h6">{{ event.get_status_display }}</div>
+                {% endif %}
+                <div class="card-header text-center h4">{{ event.get_type_display}}</div>
+                <div class="card-body card-body-height pb-0">
+                    <!-- Card image & Data -->
+                    <div class="row mt-2">
+                        <div class="col-5 d-inline-block">
+                            {% if "placeholder" in event.event_image.url %}
+                            <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                                alt="code institute" class="img-fluid img-thumbnail rounded float-start mx-2"
+                                width="200" height="200">
+                            {% else %}
+                            <img src="{{ event.event_image.url }}" alt="card image"
+                                class="img-fluid img-thumbnail rounded float-start mx-2" width="150" height="150">
+                            {% endif %}
+                        </div>
+                        <div class="col-7 d-inline-block">
+                            <span class="">
+                                <h5 class="card-title">{{ event.title }}</h5>
+                                <p class="mission my-0 fs-6"> {{ event.mission }}</p>
+                                <small class="location my-0"> {{ event.location }}</small>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Card Description -->
+                    <div id="description-single" class="row mt-3">
+                        <div class="col">
+                            <p class="my-0">
+                                {{ event.description|safe }}
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Candidates -->
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="text-center mb-0">CANDIDATES</h6>
+                                </div>
+                                {% if user_authenticated %}
+                                <div class="card-body">
+                                    {% csrf_token %}
+                                    {% for candidate in event.vote_candidate.all %}
+                                    <label>
+                                        <input type="radio" name="elected_person" value="{{ candidate.id }}">
+                                        {{ candidate.name }}
+                                    </label><br>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Vote Action -->
+                        <div class="p-3 text-center">
+                            <span class="card d-inline-block">
+                                <div class="card-body py-1 px-3 text-center m-0">
+                                    <span class="card-text">{{ event.number_of_votes }}<br> Votes</span>
+                                </div>
+                            </span>
+                            <span class="card-text text-muted h6 m-0"> {{ event.expire }}
+                                <i class="far fa-heart"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <a href="{% url 'card_single' event.slug %}" class="card-footer text-center fs-5">VISIT</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
