@@ -23,6 +23,7 @@
                                 <th>Location</th>
                                 <th>Created On</th>
                                 <th>Expire On</th>
+                                <th>Instance</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -34,6 +35,7 @@
                                 <th>Location</th>
                                 <th>Created On</th>
                                 <th>Expire On</th>
+                                <th>Instance</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -60,19 +62,19 @@
                                 <td>
                                     <p class="text-success my-0 py-0 fw-semibold">
 
-                                            {{ event.get_status_display }}
+                                        {{ event.get_status_display }}
                                     </p>
                                 </td>
                                 {% elif event.status == 2%}
                                 <td>
                                     <p class="text-danger my-0 py-0 fw-semibold">
-                                            {{ event.get_status_display }}
+                                        {{ event.get_status_display }}
                                     </p>
                                 </td>
                                 {% else %}
                                 <td>
                                     <p class="text-primary my-0 py-0 fw-semibold">
-                                            {{ event.get_status_display }}
+                                        {{ event.get_status_display }}
                                     </p>
                                 </td>
                                 {% endif %}
@@ -91,6 +93,10 @@
                                     <small class="text-success fw-semibold">(Active)</small>
                                 </td>
                                 {% endif %}
+                                <td>
+                                    <a href="{% url 'admin_single' event.slug %}">View</a>
+                                    <a href="{% url 'admin_card_update' event.slug %}">Update</a>
+                                </td>
                             </tr>
                             {% endfor %}
                         </tbody>

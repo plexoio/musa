@@ -22,11 +22,12 @@ from admin_profile.views import (AdminDashboard, AdminSettings,
 
 # Vote Management app imports
 from vote_management.views import (UserVoteCardCreation, AdminVoteCardCreation,
-                                   VoteForCardView, AdminEventList,
-                                   UserEventList, ListViewDetailed, SingleView,
+                                   AdminEventList, UserEventList,
+                                   ListViewDetailed, SingleView,
                                    ListViewDetailedOfficial,
                                    ListViewDetailedCommunity,
-                                   AdminVotes, UserVotes, UserSingleView)
+                                   AdminVotes, UserVotes, UserSingleView,
+                                   AdminSingleView)
 
 urlpatterns = [
     # AUTHENTICATION
@@ -75,6 +76,10 @@ urlpatterns = [
          name='admin_role'),
     path('office/votes', AdminVotes.as_view(),
          name='admin_votes'),
+    path('office/single/<slug:slug>/', AdminSingleView.as_view(),
+         name='admin_single'),
+    path('office/update/<slug:slug>/', AdminSingleView.as_view(),
+         name='admin_card_update'),
 
     # ROLE
     path('role_redirect/', role_redirect.RoleRedirectView.as_view(),
@@ -91,6 +96,4 @@ urlpatterns = [
          name='see_more_community'),
     path('<slug:slug>', SingleView.as_view(),
          name='card_single'),
-    path('vote/<int:vote_card_id>/', VoteForCardView.as_view(),
-         name='vote_for_card')
 ]

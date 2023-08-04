@@ -13,6 +13,7 @@
             <small>Created by: {{ card.author }} | Category: {{ card.category }}</small>
         </div>
     </div>
+
     <!-- Messages -->
     {% if messages %}
     <div class="card quote my-5 py-4 text-center text-white">
@@ -23,6 +24,7 @@
         </div>
     </div>
     {% endif %}
+
     <!-- Campaign Row-->
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-6 mb-5">
@@ -35,6 +37,7 @@
                     {% endif %}
                     <div class="card-header text-center h4">{{ card.get_type_display}}</div>
                     <div class="card-body card-body-height pb-0">
+
                         <!-- Card image & Data -->
                         <div class="row mt-2">
                             <div class="col-5 d-inline-block">
@@ -55,6 +58,7 @@
                                 </span>
                             </div>
                         </div>
+
                         <!-- Card Description -->
                         <div id="description-single" class="row mt-3">
                             <div class="col">
@@ -63,6 +67,7 @@
                                 </p>
                             </div>
                         </div>
+                        
                         <!-- Candidates -->
                         <div class="row mb-3">
                             <div class="col">

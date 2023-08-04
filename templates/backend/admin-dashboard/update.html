@@ -1,0 +1,109 @@
+{% extends "backend/admin-dashboard/base.html" %}
+{% load i18n %}
+{% block content%}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-5">
+            <h1 class="mt-4">Event Update</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Limited Update</li>
+            </ol>
+
+            <!-- Role Alert -->
+            {% if request.user.role == 0 %}
+            <div class="alert alert-warning text-center" role="alert">
+                In order to update a Voting Event you need to be an admin.
+            </div>
+            {% elif request.user.role == 2%}
+
+            <!-- Form Container -->
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-xl-6 col-md-12 d-inline-block">
+                    <form method="POST" class="card p-5" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% if event.non_field_errors %}
+                        <div class="errors">{{ event.non_field_errors }}</div>
+                        {% endif %}
+
+                        <!-- Messages -->
+                        {% if messages %}
+                        <div class="card quote my-5 py-4 text-center text-white">
+                            <div class="card-body">
+                                {% for message in messages %}
+                                <p {% if message.tags %} class="{{ message.tags }} mb-0" {% endif %}>{{ message }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        <!-- Title  -->
+                        <div class="mb-3">
+                            <label for="title" class="form-label"><strong>Title</strong></label>
+                            <input type="text" name="title" class="form-control" id="title" value="{{ event.title }}"
+                                required>
+                            {% if event.title.errors %}
+                            <div class="errors">{{ event.title.errors }}</div>
+                            {% endif %}
+                        </div>
+
+
+                        <!-- Mission -->
+                        <div class="mb-3">
+                            <label for="mission" class="form-label"><strong>Mission</strong></label>
+                            <input type="text" name="mission" class="form-control" id="mission"
+                                value="{{ event.mission }}" required>
+                            {% if event.mission.errors %}
+                            <div class="errors">{{ event.mission.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Location -->
+                        <div class="mb-3">
+                            <label for="location" class="form-label"><strong>Location</strong></label>
+                            <input type="text" name="location" class="form-control" id="location"
+                                value="{{ event.location }}" required>
+                            {% if event.location.errors %}
+                            <div class="errors">{{ event.location.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label for="description" class="form-label"><strong>Description</strong></label>
+                            <textarea name="description" class="form-control" id="description" rows="4"
+                                required>{{ event.description}}</textarea>
+                            {% if event.description.errors %}
+                            <div class="errors">{{ event.description.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Image -->
+                        <div class="mb-3">
+                            <label for="event_image" class="form-label"><strong>Image</strong></label>
+                            <!-- Display the current image if it exists -->
+                            {% if event.event_image.value %}
+                            <div class="mb-2">
+                                <img src="{{ event.event_image.value }}" alt="Current Image" style="max-width: 200px;">
+                            </div>
+                            {% endif %}
+
+                            <!-- Input for new image upload -->
+                            <input type="file" name="event_image" id="event_image" class="form-control">
+
+                            {% if event.event_image.errors %}
+                            <div class="errors">{{ event.event_image.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="row my-4 text-center">
+                            <div class="col-12 d-inline-block">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+</div>
+
+{% endblock %}

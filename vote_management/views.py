@@ -11,24 +11,6 @@ from admin_profile.views import AdminRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 
-
-class VoteForCardView(View):
-    """Voting mechanism to handle the voting action for a particular card."""
-
-    def get(self, request, vote_card_id):
-        vote_card = get_object_or_404(VoteCard, id=vote_card_id)
-        user = request.user
-
-        # Check if the user has already voted for this VoteCard
-        if user in vote_card.vote_record.all():
-            return redirect('already_voted')
-
-        # Create a new VoteRecord instance if the user hasn't voted yet
-        VoteRecord.objects.create(
-            voter=user, vote_card=vote_card, elected_person=None)
-
-        return redirect('vote_success')
-
 # HOMEPAGE DISPLAY
 
 
@@ -130,7 +112,7 @@ class UserEventList(UserDashboard):
 
 
 class UserSingleView(UserRequiredMixin, View):
-    """View for listing SINGLE VoteCards."""
+    """View for listing SINGLE VoteCard on the user Dashboard."""
 
     def get(self, request, slug, *args, **kwargs):
         queryset = VoteCard.objects.filter(status=1)
@@ -225,6 +207,43 @@ class AdminEventList(AdminRequiredMixin, AdminBaseListView):
     """ Read all created Vote Cards on Admin's Dashboard"""
     template_name = 'backend/admin-dashboard/all_events.html'
     context_object_name = 'admin_all_events'
+
+# UPDATE & READ
+
+
+class AdminSingleView(AdminRequiredMixin, View):
+    """View for listing SINGLE VoteCard on the user Dashboard."""
+    template_name = 'backend/admin-dashboard/update.html'
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = VoteCard.objects.filter(status=1)
+        event = get_object_or_404(queryset, slug=slug)
+        candidates = event.candidates.all()
+
+        return render(request, "update.html",
+                      {
+                          "event": event,
+                          "candidates": candidates,
+                          "user_authenticated": request.user.is_authenticated
+                      })
+
+    def post(self, request, slug, *args, **kwargs):
+        event = get_object_or_404(VoteCard, slug=slug, status=1)
+        event.description = request.POST.get('description')
+        event.title = request.POST.get('title')
+        event.mission = request.POST.get('mission')
+        event.location = request.POST.get('location')
+
+        uploaded_image = request.FILES.get(
+            'event_image')
+        if uploaded_image:
+            upload = upload(uploaded_image)
+            event.event_image = upload['url']
+
+        event.save()
+        messages.success(
+            request, "Congratulations! The VoteCard has been Updated!")
+        return redirect('admin_card_update', slug=event.slug)
 
 # CREATE Event
 
