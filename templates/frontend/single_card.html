@@ -125,7 +125,7 @@
                         </div>
 
                     </div>
-                    {% if not has_voted and request.user.verified %}
+                    {% if not has_voted and request.user.verified and card.status == 1 %}
                     <input type="submit" value="VOTE" class="card-footer text-center fs-5"></input>
                     {% endif %}
                 </div>

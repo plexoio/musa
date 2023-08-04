@@ -88,13 +88,22 @@ class HomePageSingleView(View):
         card = get_object_or_404(VoteCard, slug=slug, status=1)
         elected_person_id = request.POST.get('elected_person')
 
+        # Check & Update Card if expired:
+        card.update_card()
+
+        if card.status == 3:
+            messages.error(
+                request, 'This event has expired, therefore COMPLETED!')
+            return redirect('card_single', slug=card.slug)
+
+        # Check if user has already voted:
         if VoteRecord.objects.filter(
                 voter=request.user, vote_card=card).exists():
             messages.error(request, "You have already voted for this card!")
             return redirect('card_single', slug=card.slug)
 
+        # Make a vote based on these conditions:
         elected_person = ElectedPerson.objects.get(id=elected_person_id)
-
         if request.user.verified == 1:
             VoteRecord.objects.create(
                 voter=request.user,
@@ -102,7 +111,7 @@ class HomePageSingleView(View):
             messages.success(
                 request, "Congratulations! Your vote has been recorded!")
         else:
-            messages.success(
+            messages.error(
                 request, "Verify your account!")
 
         return redirect('card_single', slug=card.slug)

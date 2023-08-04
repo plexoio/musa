@@ -1,6 +1,6 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
-# from musa.models import UserProfile
+from django.utils import timezone
 
 STATUS = (
     (0, 'Draft'),
@@ -48,6 +48,15 @@ class VoteCard(models.Model):
     excerpt = models.TextField(blank=True)
     type = models.IntegerField(choices=CARD_TYPE, default=0)
     created_on = models.DateField(auto_now_add=True)
+
+    def is_expired(self):
+        expired = self.expire <= timezone.now().date()
+        return expired
+
+    def update_card(self):
+        if self.is_expired() and self.status != 3:
+            self.status = 3
+            self.save()
 
     class Meta:
         ordering = ['-created_on']
