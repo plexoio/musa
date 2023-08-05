@@ -165,7 +165,7 @@ class HomePageSingleView(View):
 
             # Message when event is set to 'Completed'
             messages.error(
-                request, 'This event has expired, therefore COMPLETED!')
+                request, 'Event has expired & your vote was not recorded.')
             return redirect('card_single', slug=card.slug)
 
         # Check if user has already voted
