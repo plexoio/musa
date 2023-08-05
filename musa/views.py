@@ -34,8 +34,18 @@ class HomePage(VoteCardBaseListView):
 
         context = super().get_context_data(**kwargs)
         vote_cards = self.get_queryset()
-        context['official_vote_cards'] = [card for card in vote_cards if card.type == 1][:3]
-        context['community_vote_cards'] = [card for card in vote_cards if card.type == 0][:3]
+        context['official_vote_cards'] = [
+            card for card in vote_cards if card.type == 1][:3]
+        context['community_vote_cards'] = [
+            card for card in vote_cards if card.type == 0][:3]
         context['now'] = timezone.now()
 
         return context
+
+# CONTACT FORM
+
+
+class ContactView(generic.ListView):
+    model = UserProfile
+    template_name = "frontend/contact.html"
+    context_object_name = 'contact_form'

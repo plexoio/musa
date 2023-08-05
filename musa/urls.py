@@ -30,7 +30,8 @@ from vote_management.views import (UserVoteCardCreation, AdminVoteCardCreation,
                                    AdminVoteCardDetailView,
                                    AdminSingleView,
                                    EventApprovalDetailView,
-                                   AdminApprovalList)
+                                   AdminApprovalList,
+                                   CompletedVoteCardsListView)
 
 urlpatterns = [
     # AUTHENTICATION
@@ -95,12 +96,16 @@ urlpatterns = [
     # FRONTEND
     path('', views.HomePage.as_view(),
          name='homepage'),
+    path('<slug:slug>', HomePageSingleView.as_view(),
+         name='card_single'),
     path('all/', AllVoteCardsListView.as_view(),
          name='see_more'),
     path('all/official/', OfficialVoteCardsListView.as_view(),
          name='see_more_official'),
     path('all/community/', CommunityVoteCardsListView.as_view(),
          name='see_more_community'),
-    path('<slug:slug>', HomePageSingleView.as_view(),
-         name='card_single'),
+    path('all/completed/', CompletedVoteCardsListView.as_view(),
+         name='see_more_completed'),
+    path('contact/', views.ContactView.as_view(),
+         name='contact_form')
 ]

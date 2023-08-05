@@ -82,10 +82,10 @@ class CommunityVoteCardsListView(VoteCardBaseListView):
 
     def get_queryset(self):
 
-        offical_cards = VoteCard.objects.filter(
+        completed_cards = VoteCard.objects.filter(
             type=0, status=1).order_by('-created_on')
 
-        for vote_card in offical_cards:
+        for vote_card in completed_cards:
             now = timezone.now().date()
             total_duration = 0.01 + \
                 (vote_card.expire - vote_card.created_on).days
@@ -94,10 +94,32 @@ class CommunityVoteCardsListView(VoteCardBaseListView):
                 (elapsed_time / total_duration) * 100, '.0f')
             vote_card.time_left = format(
                 total_duration - elapsed_time, '.0f')
-        return offical_cards
+        return completed_cards
 
+
+class CompletedVoteCardsListView(VoteCardBaseListView):
+    """Base view for listing ONLY Community VoteCards."""
+    template_name = 'frontend/completed_cards.html'
+    paginate_by = 6
+    context_object_name = 'see_more_completed'
+
+    def get_queryset(self):
+
+        completed_cards = VoteCard.objects.filter(status=3).order_by('-created_on')
+
+        for vote_card in completed_cards:
+            now = timezone.now().date()
+            total_duration = 0.01 + \
+                (vote_card.expire - vote_card.created_on).days
+            elapsed_time = (now - vote_card.created_on).days
+            vote_card.progress = format(
+                (elapsed_time / total_duration) * 100, '.0f')
+            vote_card.time_left = format(
+                total_duration - elapsed_time, '.0f')
+        return completed_cards
 
 # VOTE FUNCTIONALITY
+
 
 class HomePageSingleView(View):
     """View for listing SINGLE VoteCards in homepage."""
@@ -329,7 +351,7 @@ class AdminSingleView(AdminRequiredMixin, View):
         queryset = VoteCard.objects.order_by('-created_on')
         event = get_object_or_404(queryset, slug=slug)
         candidates = event.candidates.all()
-        
+
         # Progress bar
         now = timezone.now().date()
         total_duration = 0.01 + \
