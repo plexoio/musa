@@ -44,7 +44,7 @@ a {
     border-radius: 15px;
 }
 .progress-bar {
-    background-color: #2D4F2F;
+    background-color: #34495E;
 }
 .progress-container{
     width: 40%;
@@ -60,6 +60,12 @@ a {
     background-color: #763135;
     color: white;
 }
+
+.card-header-blue {
+    background-color: #34495e;
+    color: white;
+}
+
 
 input {
     border: none;
