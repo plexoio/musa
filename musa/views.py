@@ -26,18 +26,15 @@ class HomePage(VoteCardBaseListView):
     template_name = 'frontend/index.html'
     context_object_name = 'home_page'
 
-    def get_queryset(self):
-        """Return all VoteCards."""
-        return VoteCard.objects.filter(status=1).all()
+    def some_method(self):
+        vote_cards = self.get_queryset()
 
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
-
-        context['official_vote_cards'] = VoteCard.objects.filter(type=1, status=1)[
-            :3]
-        context['community_vote_cards'] = VoteCard.objects.filter(type=0, status=1)[
-            :3]
+        vote_cards = self.get_queryset()
+        context['official_vote_cards'] = [card for card in vote_cards if card.type == 1][:3]
+        context['community_vote_cards'] = [card for card in vote_cards if card.type == 0][:3]
         context['now'] = timezone.now()
 
         return context

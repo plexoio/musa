@@ -39,6 +39,16 @@ a {
     color: #333333;
 }
 
+.progress{
+    height: 27px;
+    border-radius: 15px;
+}
+.progress-bar {
+    background-color: #2D4F2F;
+}
+.progress-container{
+    width: 40%;
+}
 /* Single Card */
 
 .card-header-green {

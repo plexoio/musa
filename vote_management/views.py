@@ -6,6 +6,8 @@ from django.forms import inlineformset_factory
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 from django.db.models import Count
+from django.utils import timezone
+
 
 # Local Imports
 from user_profile.views import UserRequiredMixin, UserDashboard, UserProfile
@@ -25,7 +27,17 @@ class VoteCardBaseListView(generic.ListView):
 
     def get_queryset(self):
         """Return VoteCards with a status of 1, ordered by creation date."""
-        return VoteCard.objects.filter(status=1).order_by('-created_on')
+        vote_cards = VoteCard.objects.filter(status=1).order_by('-created_on')
+
+        for vote_card in vote_cards:
+            now = timezone.now().date()
+            total_duration = 0.01 + \
+                (vote_card.expire - vote_card.created_on).days
+            elapsed_time = (now - vote_card.created_on).days
+            vote_card.progress = format(
+                (elapsed_time / total_duration) * 100, '.0f')
+            vote_card.time_left = format(total_duration - elapsed_time, '.0f')
+        return vote_cards
 
 
 class AllVoteCardsListView(VoteCardBaseListView):
@@ -33,10 +45,6 @@ class AllVoteCardsListView(VoteCardBaseListView):
     template_name = 'frontend/all_cards.html'
     paginate_by = 6
     context_object_name = 'see_more'
-
-    def get_queryset(self):
-        """Return VoteCards with a status of 1, ordered by creation date."""
-        return VoteCard.objects.filter(status=1).order_by('-created_on')
 
 
 class OfficialVoteCardsListView(VoteCardBaseListView):
@@ -46,8 +54,20 @@ class OfficialVoteCardsListView(VoteCardBaseListView):
     context_object_name = 'see_more_official'
 
     def get_queryset(self):
-        return VoteCard.objects.filter(
+
+        offical_cards = VoteCard.objects.filter(
             type=1, status=1).order_by('-created_on')
+
+        for vote_card in offical_cards:
+            now = timezone.now().date()
+            total_duration = 0.01 + \
+                (vote_card.expire - vote_card.created_on).days
+            elapsed_time = (now - vote_card.created_on).days
+            vote_card.progress = format(
+                (elapsed_time / total_duration) * 100, '.0f')
+            vote_card.time_left = format(
+                total_duration - elapsed_time, '.0f')
+        return vote_cards
 
 
 class CommunityVoteCardsListView(VoteCardBaseListView):
