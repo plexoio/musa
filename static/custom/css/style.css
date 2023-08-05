@@ -13,7 +13,7 @@ a {
 }
 
 #description-single {
-    min-height: 120px;
+    min-height: 100px;
     text-align: justify;
 }
 
@@ -88,6 +88,18 @@ input {
     border: 1px solid #dadada;
     color: #333333;
     transition: 0.3s;
+}
+
+.btn-primary-blue{
+    background-color: #34495e;
+    color: white;
+    transition: 0.3s;
+
+}
+
+.btn-primary-blue:hover{
+    transition: 0.3s;
+    border: 1px solid #dadada;
 }
 
 /* User & Admin Dashboard colors */

@@ -76,22 +76,14 @@
                             <div class="col">
                                 <!--  WINNER & CHALLENGERS -->
                                 {% if card.status == 3 %}
-
                                 <!-- WINNER -->
-                                <div class="card">
+                                <div class="card mt-3">
                                     <div class="card-header card-header-green text-center">
                                         Winner
                                     </div>
-                                    {% if winner%}
-                                    <ul class="list-group">
-                                        <li class="list-group-item text-center">
-                                            {{ winner.elected_person__name }} <strong>with</strong>
-                                            {{ winner.vote_count }} votes
-                                        </li>
-                                    </ul>
                                     <!-- If TIED Winner -->
-                                    {% elif card_winner.vote_count == winner.vote_count %}
                                     {% for card_winner in challengers %}
+                                    {% if card_winner.vote_count == winner.vote_count %}
                                     <ul class="list-group">
                                         <li class="list-group-item text-center">
                                             {{ card_winner.elected_person__name }}
@@ -101,12 +93,19 @@
                                             <strong>with</strong> {{ winner.vote_count }} votes
                                         </li>
                                     </ul>
-                                    {% endfor %}
+                                    {% elif winner %}
+                                    <ul class="list-group">
+                                        <li class="list-group-item text-center">
+                                            {{ winner.elected_person__name }} <strong>with</strong>
+                                            {{ winner.vote_count }} votes
+                                        </li>
+                                    </ul>
                                     {% endif %}
+                                    {% endfor %}
                                 </div>
 
                                 <!-- CHALLENGERS -->
-                                <div class="card my-4">
+                                <div class="card mt-4">
                                     <div class="card-header card-header-blue text-center text-white">
                                         Challengers
                                     </div>
@@ -137,9 +136,9 @@
                                     {% endfor %}
                                 </div>
                                 {% endif%}
-                                <div class="card">
-
-                                    {% if not has_voted and card.status != 3 %}
+                                {% if card.status != 3 %}
+                                <div class="card mt-3">
+                                    {% if not has_voted %}
                                     <div class="card-header">
                                         <h6 class="text-center mb-0">CANDIDATES</h6>
                                     </div>
@@ -169,11 +168,10 @@
                                         <p class="text-center my-3">You need to <a href="{% url 'account_login' %}">log
                                                 in</a> to vote.</p>
                                         {% endif %}
-
                                     </div>
                                 </div>
+                                {% endif %}
                             </div>
-
 
                             <!-- VOTES & PROGRESS BAR -->
                             <div class="text-center my-4">
@@ -193,7 +191,6 @@
                                 <small>{{ card.time_left }} days left</small>
                             </div>
                         </div>
-
                     </div>
                     {% if not has_voted and request.user.verified and card.status == 1 %}
                     <input type="submit" value="VOTE" class="card-footer text-center fs-5"></input>

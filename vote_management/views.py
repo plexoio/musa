@@ -210,6 +210,17 @@ class UserSingleView(UserRequiredMixin, View):
         event = get_object_or_404(queryset, slug=slug)
         candidates = event.candidates.all()
 
+        # Progress bar
+
+        now = timezone.now().date()
+        total_duration = 0.01 + \
+            (event.expire - event.created_on).days
+        elapsed_time = (now - event.created_on).days
+        event.progress = format(
+            (elapsed_time / total_duration) * 100, '.0f')
+        event.time_left = format(
+            total_duration - elapsed_time, '.0f')
+
         if request.user.is_authenticated:
             has_voted = VoteRecord.objects.filter(
                 voter=request.user, vote_card=event).exists()
@@ -310,7 +321,7 @@ class AdminApprovalList(AdminBaseListView):
 # ADMIN READ Card
 
 
-class AdminCardDetailView(AdminRequiredMixin, View):
+class AdminSingleView(AdminRequiredMixin, View):
     """View SINGLE created VoteCard from the admin Dashboard."""
     template_name = 'backend/admin-dashboard/single_card_admin.html'
 
@@ -318,6 +329,16 @@ class AdminCardDetailView(AdminRequiredMixin, View):
         queryset = VoteCard.objects.order_by('-created_on')
         event = get_object_or_404(queryset, slug=slug)
         candidates = event.candidates.all()
+        
+        # Progress bar
+        now = timezone.now().date()
+        total_duration = 0.01 + \
+            (event.expire - event.created_on).days
+        elapsed_time = (now - event.created_on).days
+        event.progress = format(
+            (elapsed_time / total_duration) * 100, '.0f')
+        event.time_left = format(
+            total_duration - elapsed_time, '.0f')
 
         return render(request, "single_card_admin.html",
                       {

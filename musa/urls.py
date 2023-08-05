@@ -28,7 +28,7 @@ from vote_management.views import (UserVoteCardCreation, AdminVoteCardCreation,
                                    CommunityVoteCardsListView,
                                    AdminVotes, UserVotes, UserSingleView,
                                    AdminVoteCardDetailView,
-                                   AdminCardDetailView,
+                                   AdminSingleView,
                                    EventApprovalDetailView,
                                    AdminApprovalList)
 
@@ -79,7 +79,7 @@ urlpatterns = [
          name='admin_role'),
     path('office/votes', AdminVotes.as_view(),
          name='admin_votes'),
-    path('office/single/card/<slug:slug>/', AdminCardDetailView.as_view(),
+    path('office/single/card/<slug:slug>/', AdminSingleView.as_view(),
          name='admin_single'),
     path('office/update/<slug:slug>/', AdminVoteCardDetailView.as_view(),
          name='admin_card_update'),

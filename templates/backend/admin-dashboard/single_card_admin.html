@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <!-- Candidates -->
-                    <div class="row mb-3">
+                    <div class="row">
                         <div class="col">
                             <div class="card">
                                 <div class="card-header">
@@ -86,17 +86,22 @@
                             </div>
                         </div>
 
-
-                        <!-- Vote Action -->
-                        <div class="p-3 text-center">
+                        <!-- VOTES & PROGRESS BAR -->
+                        <div class="text-center my-4">
                             <span class="card d-inline-block">
-                                <div class="card-body py-1 px-3 text-center m-0">
+                                <div class="card-body py-1 px-3 text-center">
                                     <span class="card-text">{{ event.number_of_votes }}<br> Votes</span>
                                 </div>
                             </span>
-                            <span class="card-text text-muted h6 m-0"> {{ event.expire }}
-                                <i class="far fa-heart"></i>
+                            <span class="d-inline-block px-3 progress-container">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: {{ event.progress }}%"
+                                        aria-valuenow="{{ event.progress }}" aria-valuemin="0" aria-valuemax="100">
+                                        <span style="padding-left: 10px;">{{ event.progress }}%</span>
+                                    </div>
+                                </div>
                             </span>
+                            <small>{{ event.time_left }} days left</small>
                         </div>
                     </div>
                 </div>
