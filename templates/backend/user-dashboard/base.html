@@ -1,5 +1,6 @@
 {% load static %}
 {% now "Y-m-d" as current_date %}
+{% now "Y" as copyright %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -150,7 +151,9 @@
     <footer class="py-4 bg-light mt-4">
         <div class="container-fluid p-5">
             <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Musa 2023</div>
+                <div class="text-muted"> © {{ copyright }} Copyright
+                    <a class="text-reset fw-bold" href="https://github.com/plexoio/musa">Musa</a>
+                </div>
                 <div>
                     <a href="#">Privacy Policy</a>
                     &middot;

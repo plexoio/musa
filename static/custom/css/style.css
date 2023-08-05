@@ -39,16 +39,19 @@ a {
     color: #333333;
 }
 
-.progress{
+.progress {
     height: 27px;
     border-radius: 15px;
 }
+
 .progress-bar {
     background-color: #34495E;
 }
-.progress-container{
+
+.progress-container {
     width: 40%;
 }
+
 /* Single Card */
 
 .card-header-green {
@@ -71,7 +74,7 @@ input {
     border: none;
 }
 
-.list-group{
+.list-group {
     border-radius: 0;
 }
 
@@ -90,14 +93,14 @@ input {
     transition: 0.3s;
 }
 
-.btn-primary-blue{
+.btn-primary-blue {
     background-color: #34495e;
     color: white;
     transition: 0.3s;
 
 }
 
-.btn-primary-blue:hover{
+.btn-primary-blue:hover {
     transition: 0.3s;
     border: 1px solid #dadada;
 }
@@ -107,4 +110,8 @@ input {
 /* Footer */
 i {
     color: #34495e;
+}
+
+.footer-bg {
+    background-color: rgba(0, 0, 0, 0.05);
 }
