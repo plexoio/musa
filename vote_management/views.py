@@ -5,6 +5,7 @@ from django.views import View, generic
 from django.forms import inlineformset_factory
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
+from django.db.models import Count
 
 # Local Imports
 from user_profile.views import UserRequiredMixin, UserDashboard, UserProfile
@@ -68,17 +69,28 @@ class HomePageSingleView(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = VoteCard.objects.order_by('-created_on')
         card = get_object_or_404(queryset, slug=slug)
-        candidates = card.candidates.all()
+        candidates = card.vote_candidate.all()
 
+        # Check if user voted or not
         if request.user.is_authenticated:
             has_voted = VoteRecord.objects.filter(
                 voter=request.user, vote_card=card).exists()
         else:
             has_voted = False
 
+        # Count the votes for each candidate
+        vote_counts = VoteRecord.objects.filter(vote_card=card).values(
+            'elected_person__name').annotate(vote_count=Count(
+                'elected_person')).order_by('-vote_count')
+
+        winner = vote_counts.first()
+        challengers = vote_counts[1:]
+
         return render(request, "single_card.html",
                       {
                           "card": card,
+                          "winner": winner,
+                          "challengers": challengers,
                           "candidates": candidates,
                           "has_voted": has_voted,
                           "user_authenticated": request.user.is_authenticated
@@ -88,21 +100,33 @@ class HomePageSingleView(View):
         card = get_object_or_404(VoteCard, slug=slug, status=1)
         elected_person_id = request.POST.get('elected_person')
 
-        # Check & Update Card if expired:
+        # Check & Update Card if expired and set to 'Complete':
         card.update_card()
 
         if card.status == 3:
+
+            # Selected winner based on higher votes
+            vote_counts = VoteRecord.objects.filter(vote_card=card).values(
+                'elected_person').annotate(vote_count=Count('elected_person')).order_by('-vote_count')
+
+            winner_id = vote_counts.first()['elected_person']
+
+            elected_person = ElectedPerson.objects.get(id=winner_id)
+            elected_person.is_elected = True
+            elected_person.save()
+
+            # Message when event is set to 'Completed'
             messages.error(
                 request, 'This event has expired, therefore COMPLETED!')
             return redirect('card_single', slug=card.slug)
 
-        # Check if user has already voted:
+        # Check if user has already voted
         if VoteRecord.objects.filter(
                 voter=request.user, vote_card=card).exists():
             messages.error(request, "You have already voted for this card!")
             return redirect('card_single', slug=card.slug)
 
-        # Make a vote based on these conditions:
+        # Make a vote based on these conditions or ask them to verify account
         elected_person = ElectedPerson.objects.get(id=elected_person_id)
         if request.user.verified == 1:
             VoteRecord.objects.create(
@@ -328,7 +352,7 @@ class EventApprovalDetailView(AdminVoteCardDetailView):
             event.event_image = upload['url']
 
         event.save()
-        
+
         messages.success(
             request, "Congratulations! The VoteCard has been Updated!")
         return redirect('admin_card_update', slug=event.slug)

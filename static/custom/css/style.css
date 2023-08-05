@@ -55,6 +55,10 @@ input {
     border: none;
 }
 
+.list-group{
+    border-radius: 0;
+}
+
 /* Buttons */
 
 .btn-main-blue {

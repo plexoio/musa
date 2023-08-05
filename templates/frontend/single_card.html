@@ -29,6 +29,7 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-6 mb-5">
             <form method="post">
+                {% csrf_token %}
                 <div class="card h-100">
                     {% if card.status == 1 or card.status == 3 %}
                     <div class="card-header card-header-green text-center h6">{{ card.get_status_display }}</div>
@@ -73,22 +74,83 @@
                         <!-- Candidates -->
                         <div class="row mb-3">
                             <div class="col">
+                                <!--  WINNER & CHALLENGERS -->
+                                {% if card.status == 3 %}
+
+                                <!-- WINNER -->
+                                <div class="card">
+                                    <div class="card-header card-header-green text-center">
+                                        Winner
+                                    </div>
+                                    {% if winner%}
+                                    <ul class="list-group">
+                                        <li class="list-group-item text-center">
+                                            {{ winner.elected_person__name }} <strong>with</strong>
+                                            {{ winner.vote_count }} votes
+                                        </li>
+                                    </ul>
+                                    <!-- If TIED Winner -->
+                                    {% elif card_winner.vote_count == winner.vote_count %}
+                                    {% for card_winner in challengers %}
+                                    <ul class="list-group">
+                                        <li class="list-group-item text-center">
+                                            {{ card_winner.elected_person__name }}
+                                            <strong>with</strong> {{ card_winner.vote_count }} votes
+                                            <br>&<br>
+                                            {{ winner.elected_person__name }}
+                                            <strong>with</strong> {{ winner.vote_count }} votes
+                                        </li>
+                                    </ul>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <!-- CHALLENGERS -->
+                                <div class="card my-5">
+                                    <div class="card-header quote text-center text-white">
+                                        Challengers
+                                    </div>
+                                    {% for challenger in challengers %}
+                                    <ul class="list-group">
+
+                                        <!-- If TIED Results -->
+                                        {% if challenger.vote_count == winner.vote_count %}
+                                        <li class="list-group-item disabled text-center" aria-disabled="true">
+                                            <p class="text-danger text-center">Please consider repeating the event.<br>
+                                                The following candidates achieved the same results:
+                                            </p>
+                                            {{ challenger.elected_person__name }}
+                                            <strong>with</strong> {{ challenger.vote_count }} votes
+                                            <br>&<br>
+                                            {{ winner.elected_person__name }}
+                                            <strong>with</strong> {{ winner.vote_count }} votes
+                                        </li>
+                                        {% else %}
+
+                                        <!-- All Challengers -->
+                                        <li class="list-group-item">{{ challenger.elected_person__name }} <strong>with</strong>
+                                            {{ challenger.vote_count }} votes
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                    {% endfor %}
+                                </div>
+                                {% endif%}
                                 <div class="card">
 
-                                    {% if not has_voted %}
+                                    {% if not has_voted and card.status != 3 %}
                                     <div class="card-header">
                                         <h6 class="text-center mb-0">CANDIDATES</h6>
                                     </div>
-                                    {% else %}
+                                    {% elif has_voted %}
                                     <div class="card-header card-header-red">
                                         <h6 class="text-center mb-0">VOTED</h6>
                                     </div>
                                     {% endif %}
 
-                                    {% if user_authenticated and request.user.verified and not has_voted%}
+                                    {% if user_authenticated and request.user.verified and not has_voted and card.status != 3 %}
                                     <div class="card-body">
-                                        {% csrf_token %}
-                                        {% for candidate in card.vote_candidate.all %}
+                                        {% for candidate in candidates %}
                                         <label>
                                             <input type="radio" name="elected_person" value="{{ candidate.id }}">
                                             {{ candidate.name }}
@@ -100,8 +162,9 @@
                                             for
                                             participating!</p>
                                         {% elif not request.user.verified %}
-                                        <p class="text-center my-3">You need to <a href="{% url 'account_login' %}">Verify</a> your account to vote.</p>
-                                        {% else %}
+                                        <p class="text-center my-3">You need to <a
+                                                href="{% url 'account_login' %}">Verify</a> your account to vote.</p>
+                                        {% elif not user_authenticated %}
                                         <p class="text-center my-3">You need to <a href="{% url 'account_login' %}">log
                                                 in</a> to vote.</p>
                                         {% endif %}
