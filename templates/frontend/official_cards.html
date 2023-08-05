@@ -18,7 +18,7 @@
         {% if card.type == 1 %}
         <div class="col-md-4 mb-5">
             <div class="card h-100">
-                <div class="card-header text-center h4">{{ card.get_type_display}}</div>
+                <div class="card-header card-header-blue text-center h4">{{ card.get_type_display}}</div>
                 <div class="card-body" style="min-height: 300px;">
                     <!-- Card image & Data -->
                     <div class="row mt-2">
@@ -48,14 +48,23 @@
                             </p>
                         </div>
                     </div>
-                    <span class="card d-inline-block">
-                        <div class="card-body py-1 px-3 text-center">
-                            <span class="card-text">{{ card.number_of_votes }}<br> Votes</span>
-                        </div>
-                    </span>
-                    <span class="card-text text-muted h6"> {{ card.expire }}
-                        <i class="far fa-heart"></i>
-                    </span>
+                    <!-- VOTES & PROGRESS BAR -->
+                    <div class="text-center">
+                        <span class="card d-inline-block">
+                            <div class="card-body py-1 px-3 text-center">
+                                <span class="card-text">{{ card.number_of_votes }}<br> Votes</span>
+                            </div>
+                        </span>
+                        <span class="d-inline-block px-3 progress-container">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: {{ card.progress }}%"
+                                    aria-valuenow="{{ card.progress }}" aria-valuemin="0" aria-valuemax="100">
+                                    <span style="padding-left: 10px;">{{ card.progress }}%</span>
+                                </div>
+                            </div>
+                        </span>
+                        <small>{{ card.time_left }} days left</small>
+                    </div>
                 </div>
                 <a class="card-footer text-center fs-5" href="{% url 'card_single' card.slug %}">VOTE</a>
             </div>

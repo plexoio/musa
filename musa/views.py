@@ -26,7 +26,8 @@ class HomePage(VoteCardBaseListView):
     template_name = 'frontend/index.html'
     context_object_name = 'home_page'
 
-    def some_method(self):
+    def progress_bar(self):
+        """ It passes de VoteCard objects and progress bar data"""
         vote_cards = self.get_queryset()
 
     def get_context_data(self, **kwargs):

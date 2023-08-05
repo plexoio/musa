@@ -46,6 +46,10 @@ class AllVoteCardsListView(VoteCardBaseListView):
     paginate_by = 6
     context_object_name = 'see_more'
 
+    def progress_bar(self):
+        """ It passes de VoteCard objects and progress bar data"""
+        vote_cards = self.get_queryset()
+
 
 class OfficialVoteCardsListView(VoteCardBaseListView):
     """Base view for listing ONLY Official VoteCards."""
@@ -67,7 +71,7 @@ class OfficialVoteCardsListView(VoteCardBaseListView):
                 (elapsed_time / total_duration) * 100, '.0f')
             vote_card.time_left = format(
                 total_duration - elapsed_time, '.0f')
-        return vote_cards
+        return offical_cards
 
 
 class CommunityVoteCardsListView(VoteCardBaseListView):
@@ -77,8 +81,20 @@ class CommunityVoteCardsListView(VoteCardBaseListView):
     context_object_name = 'see_more_community'
 
     def get_queryset(self):
-        return VoteCard.objects.filter(
+
+        offical_cards = VoteCard.objects.filter(
             type=0, status=1).order_by('-created_on')
+
+        for vote_card in offical_cards:
+            now = timezone.now().date()
+            total_duration = 0.01 + \
+                (vote_card.expire - vote_card.created_on).days
+            elapsed_time = (now - vote_card.created_on).days
+            vote_card.progress = format(
+                (elapsed_time / total_duration) * 100, '.0f')
+            vote_card.time_left = format(
+                total_duration - elapsed_time, '.0f')
+        return offical_cards
 
 
 # VOTE FUNCTIONALITY
@@ -90,6 +106,17 @@ class HomePageSingleView(View):
         queryset = VoteCard.objects.order_by('-created_on')
         card = get_object_or_404(queryset, slug=slug)
         candidates = card.vote_candidate.all()
+
+        # Progress bar
+
+        now = timezone.now().date()
+        total_duration = 0.01 + \
+            (card.expire - card.created_on).days
+        elapsed_time = (now - card.created_on).days
+        card.progress = format(
+            (elapsed_time / total_duration) * 100, '.0f')
+        card.time_left = format(
+            total_duration - elapsed_time, '.0f')
 
         # Check if user voted or not
         if request.user.is_authenticated:
@@ -127,7 +154,8 @@ class HomePageSingleView(View):
 
             # Selected winner based on higher votes
             vote_counts = VoteRecord.objects.filter(vote_card=card).values(
-                'elected_person').annotate(vote_count=Count('elected_person')).order_by('-vote_count')
+                'elected_person').annotate(vote_count=Count(
+                    'elected_person')).order_by('-vote_count')
 
             winner_id = vote_counts.first()['elected_person']
 

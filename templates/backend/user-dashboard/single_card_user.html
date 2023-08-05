@@ -15,7 +15,7 @@
     </div>
     <!-- Messages -->
     {% if messages %}
-    <div class="card quote my-5 py-4 text-center text-white">
+    <div class="card card-header-blue my-5 py-4 text-center text-white">
         <div class="card-body">
             {% for message in messages %}
             <p {% if message.tags %} class="{{ message.tags }} mb-0" {% endif %}>{{ message }}</p>
