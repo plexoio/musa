@@ -30,8 +30,12 @@
         {% for card in home_page %}
         <div class="col-md-4 mb-5">
             <div class="card h-100">
+                {% if card.type == 1%}
+                <div class="card-header quote text-center h4 text-white">{{ card.get_type_display}}</div>
+                {% else %}
                 <div class="card-header text-center h4">{{ card.get_type_display}}</div>
-                <div class="card-body my-3" style="min-height: 300px;">
+                {% endif %}
+                <div class="card-body mt-3 mb-4" style="min-height: 300px;">
 
                     <!-- Card image & Related Data -->
                     <div class="row mt-2">
@@ -58,7 +62,7 @@
                     <!-- Card Description -->
                     <div id="description" class="row mt-3">
                         <div class="col">
-                            <p class="my-0">
+                            <p class="mt-0 mb-4">
                                 {{ card.description|safe }} <a href="{% url 'card_single' card.slug %}">Read More</a>
                             </p>
                         </div>
@@ -102,7 +106,7 @@
         {% if official.type == 1 %}
         <div class="col-md-4 mb-5">
             <div class="card h-100">
-                <div class="card-header text-center h4">{{ official.get_type_display}}</div>
+                <div class="card-header quote text-center h4 text-white">{{ official.get_type_display}}</div>
                 <div class="card-body" style="min-height: 300px;">
                     <!-- Card image & Data -->
                     <div class="row mt-2">

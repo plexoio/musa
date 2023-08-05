@@ -29,15 +29,15 @@ class Category(models.Model):
 
 class VoteCard(models.Model):
     """Model representing a card where users can cast their votes."""
-    title = models.CharField(max_length=80, unique=True)
+    title = models.CharField(max_length=20, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
         'musa.UserProfile', on_delete=models.CASCADE, related_name="card_author")
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="categories")
-    mission = models.CharField(max_length=80)
-    location = models.CharField(max_length=80)
-    description = models.TextField(max_length=264)
+    mission = models.CharField(max_length=20)
+    location = models.CharField(max_length=20)
+    description = models.TextField(max_length=258)
     expire = models.DateField()
     event_image = CloudinaryField('image', default='placeholder')
     vote_record = models.ManyToManyField('musa.UserProfile', through='VoteRecord',
