@@ -1,5 +1,4 @@
 function sendMail(contactForm, event) { // as 'this' on the form tag
-    console.log('executed')
     event.preventDefault();
     emailjs.send("service_at381m9", "template_ba0oxqh", {
         "musa_name": contactForm.name.value,
@@ -13,5 +12,4 @@ function sendMail(contactForm, event) { // as 'this' on the form tag
             console.log('Failed', error);
         }
     );
-    return false;
 };
