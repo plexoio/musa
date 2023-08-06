@@ -84,23 +84,30 @@ a {
     width: 40%;
 }
 
+.padding-progress {
+    padding-left: 10px;
+}
+
 /* Single Card */
 
-.card-header-green {
-    background-color: #2D4F2F;
-    color: white;
-}
 
-.card-header-red {
-    background-color: #763135;
-    color: white;
-}
-
+/* Base Color */
 .card-header-blue {
     background-color: #34495e;
     color: white;
 }
 
+/* Secundary color */
+.card-header-green {
+    background-color: #2D4F2F;
+    color: white;
+}
+
+/* Secundary color */
+.card-header-red {
+    background-color: #763135;
+    color: white;
+}
 
 input {
     border: none;
@@ -112,7 +119,7 @@ input {
 
 /* Buttons */
 
-.btn-close{
+.btn-close {
     filter: invert(1);
 }
 

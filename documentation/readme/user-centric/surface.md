@@ -24,7 +24,7 @@ Every nuance matters for the project's success, and we are unyieldingly committe
 
 |                                                                  | Color Type      | Color Name      | Hex Code  |
 | ---------------------------------------------------------------- | --------------- | --------------- | --------- |
-| ![Color](https://via.placeholder.com/50x50/3498db/3498db?text=+) | Primary Color   | Shade of Blue   | `#3498db` |
+| ![Color](https://via.placeholder.com/50x50/34495e/34495e?text=+) | Primary Color   | Shade of Blue   | `#34495e` |
 | ![Color](https://via.placeholder.com/50x50/f5f5f5/f5f5f5?text=+) | Secondary Color | Whitesmoke      | `#f5f5f5` |
 | ![Color](https://via.placeholder.com/50x50/808080/808080?text=+) | Secondary Color | Shade of gray   | `#808080` |
 | ![Color](https://via.placeholder.com/50x50/3a3a3a/3a3a3a?text=+) | Secondary Color | Shade of Black  | `#3a3a3a` |
