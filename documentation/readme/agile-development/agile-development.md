@@ -1,4 +1,4 @@
-## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/readme/)
+## [HOME | RETURN](https://github.com/plexoio/musa)
 
 Agile Development prioritizes adaptability and swift responses to changing requirements. By promoting close collaboration between cross-functional teams and stakeholders, it ensures a clearer understanding of end-user needs. Frequent iterations and feedback loops result in a product that's more aligned with customer demands, often leading to higher satisfaction, improved quality, and faster time-to-market.
 
@@ -86,7 +86,7 @@ This strategy was paramount to our development workflow. It championed organic a
 For an in-depth perspective, please refer to:
 
 - [Project Boards (Sprints or Iterations)](https://github.com/plexoio/musa/projects?query=is%3Aopen)
-- [RELEASE: Estimation and Team Velocity]()
+- [RELEASE: Estimation and Team Velocity](https://github.com/plexoio/musa/issues/33)
 
 ## MoSCoW Prioritization
 
