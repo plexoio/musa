@@ -20,7 +20,11 @@
 2. [User-Centric Design](https://github.com/plexoio/musa/blob/main/documentation/readme/user-centric/user-centric.md)
 3. [Entity Relationship Diagram ERD](https://github.com/plexoio/musa/blob/main/documentation/readme/erd/erd.md)
 4. [Agile Development](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md)
-5. [Credits](https://github.com/plexoio/musa/blob/main/documentation/readme/credits.md)
+5. [Technologies Used](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/technologies.md)
+6. [Actual Features Explained](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/actual_features.md)
+7. [Future Features Explained](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/future_features.md)
+8. [Bugs, Testing & Security](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/bugs_testing.md)
+9. [Credits](https://github.com/plexoio/musa/blob/main/documentation/readme/credits.md)
 
 ## Badges
 
