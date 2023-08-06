@@ -1,4 +1,31 @@
+/* Local Google Fonts */
+
+@font-face {
+    font-family: "Fairplay";
+    src: url("../../font/playfair_display/PlayfairDisplay-Regular.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../../font/roboto/Roboto-Regular.ttf");
+    font-display: swap;
+}
+
 /* General */
+
+* {
+    font-family: 'Roboto', Fairplay, sans-serif;
+}
+
+h1 {
+    font-family: 'Fairplay', Roboto, sans-serif;
+}
+
+.fairplay-font {
+    font-family: 'Fairplay', Roboto, sans-serif;
+}
+
 a {
     text-decoration: none;
 }

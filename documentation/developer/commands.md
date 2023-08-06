@@ -1,6 +1,8 @@
 heroku run python manage.py createsuperuser
 python manage.py startapp app_name
 
+unzip static/font/roboto/roboto.zip
+
 python3 manage.py shell
 
 pip3 freeze --local > requirements.txt
