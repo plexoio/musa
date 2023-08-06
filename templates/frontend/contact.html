@@ -5,34 +5,34 @@
 <div class="container my-5">
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col col-md-6">
-            <div class="card p-5">
-                <div class="card-header  text-center h4">Musa's Contact Form</div>
-                <form id="contactForm" class="card-body" onsubmit="return sendMail(this, event);">
+            <div class="card">
+                <div class="card-header card-header-blue text-center h5">Musa's Contact Form</div>
+                <form id="contactForm" class="card-body p-5" onsubmit="return sendMail(this, event);">
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input name="name" type="text"
                             value="{% if user.is_authenticated %}{{ request.user.first_name }} {% endif %}"
-                            class="form-control" id="name" aria-describedby="name">
+                            class="form-control" id="name" aria-describedby="name" required>
                         <div id="nameHelp" class="form-text">Autofilled if already registered</div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input name="emailaddress" type="email"
                             value="{% if user.is_authenticated %}{{ request.user.email }} {% endif %}"
-                            class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
                         <label for="subject" class="form-label">Subject</label>
                         <input name="subject" type="text" value="MUSA: " class="form-control" id="subject"
-                            aria-describedby="subjectHelp">
+                            aria-describedby="subjectHelp" required>
                         <div id="subjectHelp" class="form-text">Give it a name</div>
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label">Message</label>
                         <textarea name="issue" type="text" class="form-control" id="message" rows="7" cols="7"
-                            aria-describedby="messageHelp">Dear support team, </textarea>
+                            aria-describedby="messageHelp" required>Dear support team, </textarea>
                         <div id="messageHelp" class="form-text">Express your ideas</div>
                     </div>
                     <div class="text-center">
