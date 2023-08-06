@@ -112,6 +112,10 @@ input {
 
 /* Buttons */
 
+.btn-close{
+    filter: invert(1);
+}
+
 .btn-main-blue {
     background-color: #34495e;
     border: 1px solid #dadada;

@@ -14,7 +14,7 @@ function sendMail(contactForm, event) { // as 'this' on the form tag
 
             // Frontend message
             $('#email_sent').html(`
-            <div class="alert alert-success alert-dismissible text-center" role="alert" tabindex="-1">
+            <div class="alert card-header-blue alert-dismissible text-center" role="alert" tabindex="-1">
                 <div>Your email has been sent successfully we'll be in touch with you shortly!</div>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>`);
@@ -25,7 +25,7 @@ function sendMail(contactForm, event) { // as 'this' on the form tag
 
             // Frontend message
             $('#email_sent').html(`
-            <div class="alert alert-danger alert-dismissible text-center" role="alert" tabindex="-1">
+            <div class="alert card-header-blue alert-dismissible text-center" role="alert" tabindex="-1">
            <div>STATUS: ${error.status} and ERROR: ${error.text}</div>
            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
            </div>`);
