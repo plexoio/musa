@@ -44,55 +44,94 @@ The following color palette was used as a reference throughout the project:
 
 ### Layout
 
-- The welcoming page features is a full-page banner with a `h2-sized` title and a `Swap` button to enter the system.
+#### Technologies Used
 
-- For the login section, `containers` and a `form` are used to manage it. All elements are well-connected and interactive, thanks to `JavaScript`.
+- Vendor templates (as seen in "Technologies Used")
+- Bootstrap
+- Custom Code
 
-- The swapping sections for `Fiat & Crypto` are `containers` holding `forms` for the swapping functionality. In every section where a `submit or call-to-action` is present, the same style is used to maintain consistency.
+#### Homepage
 
-- The `contact form` also follows the consistency of the containers and features a powerful form and a related `submit button`, as mentioned before.
+- Upon entry, users are greeted with an intuitive header. Below it is a call-to-action section featuring an image and text on the left side, along with a button prompting users to learn more about Musa's voting system.
+- Following the call-to-action section, voting events are displayed sequentially: Campaign (mixed cards), Official (official cards), Community (community cards).
+- Voting card sections are organized into rows, each containing 3 columns that showcase 3 cards (styled using Bootstrap), replete with pertinent information and associated call-to-action directives.
+- Notably, these cards comprise subparts: card, card header, card body, and card footer, each demarcated by their unique borders.
+- The footer consists of a row split into three columns, designated for: About, Useful Links, and Contact Information. Situated above this is a discreet row of social media icons.
+- All aforementioned elements are responsive, catering to a variety of screen dimensions.
 
-- Finally, the layouts will naturally adjust to different `sizes` when media queries are set for `responsive design`.
+#### Login
+
+- The login page employs columns and rows to maintain layout uniformity, replicating established patterns using Bootstrap's card system wherever feasible.
+- Input fields and buttons are provided.
+
+#### Sign Up
+
+- The sign-up page echoes the aesthetic of the homepage, leveraging Bootstrap's card style.
+- Input fields and a button are integrated.
+
+#### Single VoteCard
+
+- Presented on its dedicated page, the single VoteCard offers an in-depth rendition of the primary card observed on the homepage, complete with extensive details and voting functionalities.
+- A harmonious style is sustained throughout.
+
+#### Created, Completed & See More Pages
+
+- These pages adhere to the design framework set by the homepage.
+- The "Completed" page diverges slightly, featuring an additional card header signaling the conclusion of the voting event.
+- "See More" pages correspond to the categories delineated on the homepage: Campaign, Official, Community.
+
+#### User & Admin Dashboard
+
+- The admin dashboard, adapted from another vendor template, meshes perfectly with Musa's voting system.
+- We've made minor stylistic tweaks to this template to ensure coherence with the overarching software design.
+- Each card's presentation mirrors the ubiquitous VoteCard format, reinforcing consistency.
+
+#### Contact Page
+
+- The contact page harnesses Bootstrap's card design to encapsulate the form element.
+- Input fields and a button are present.
+- The familiar design reassures users of their continuity within Musa.
+
+#### FAQ
+
+- The FAQ page, while intriguing, remains true to established design and stylistic conventions.
+- It features collapsible buttons for each query, whether textual or video-based.
+- Authentic content has been embedded, and just like the rest of Musa's voting system, this page is fully responsive.
 
 ### Fonts
 
-- We used `Roboto` for all fonts until specified otherwise. 
-
-- We used `Poppins` for some titles and subtitles.
+- Our primary font is `Roboto`, except where specified.
+- `Fairplay Display` is employed for select titles and subtitles.
 
 ### Images
 
-- No additional images were needed, except for the `interactive logo` of a third-party service about `Metamask` on the login page.
+- Key images are found in the call-to-action section, favicon, and placeholders for votecards. Independent images for release events are hosted on Cloudinary.
 
-### Order
+### Page Order
 
-- We prioritized the elements as already described throughout the different planes: Welcome page > Login Page > Fiat or Crypto Swap > Contact page.
+- The sequence of main pages is as follows: Homepage > Single VoteCards > Active > Completed > Signup > Login > Dashboard > FAQ > Contact.
+- The navbar and footer are consistent across all pages.
+- At all times, we've incorporated the principle of progressive disclosure.
 
-- The navbar and footer are always present (sticky) after the welcome page.
+### Navigation Flow
 
-- For the Contact page, a container similar to the others was applied to maintain consistency.
+- Adhering to `progressive disclosure` enabled a seamless application experience. Users initially land on the `Homepage`. From there, they can choose to `Sign Up` or `Login`. Post login, they're seamlessly redirected to their dashboard. Queries can be addressed via the `Contact` page or the `FAQ`.
+- VoteCards are accessible from the `Homepage`, user's `Dashboard`, `Active` page, `Completed` page, and directly via their specific URLs.
 
-### Sequences
+Throughout the design, we emphasized simplicity, ensuring that crucial elements stand out. Recognizable patterns in layout and interactions enhance user familiarity. The design ensures readability, with contrasting colors and varied fonts employed judiciously.
 
-- Attention to the `progressive disclosure` allowed us to build a smooth application flow. Users see the `welcome page` first, then they can `log in` using either Fiat or Crypto methods. Once logged in, they can start `swapping` in a straightforward manner. If they have any inquiries, they can visit the `contact page` as well.
+Navigational clarity is paramount. We've ensured value is perceivable throughout the platform.
 
-- The `swapping pages` are the core of the project and what users are looking for in most cases. They are consistent and allow users to swap from one coin to another and `confirm` the swap with a submit `button`.
+**Key Design Principles:**
 
-For each section and interaction, economy had to be taken into account, with the most important elements easily recognized. We had already noticed many patterns throughout the product layouts and interactions. It was readable, with colors creating good contrasts, and different fonts were added when necessary.
-
-Users cannot get lost on the site as we have ensured that value is evident everywhere.
-
-**We had to be careful of the following concerns:**
-
+- Dynamism
 - Repetition
 - Contrast
 - Proximity
 - Alignment
 - Accessibility
 - Interaction
-- Visual engagement
-- Easy learning experience
+- Visual Engagement
+- User-Friendly Experience
 
-We focused on keeping things as simple as possible, presenting fewer choices to the users while highlighting concrete features and content.
-
-After considering these factors, we were able to turn our ideas from the skeleton and surface into code with ease. The coding process was less complicated and more enjoyable. This approach required less time, energy, and other resources, resulting in less human work and fewer errors, and ultimately, a nobler product.
+Our goal was straightforwardness. We aimed to present users with fewer, more impactful choices, accentuating specific features and content. This design philosophy facilitated a smoother transition from design to code. The development process was not only streamlined but also more engaging. This efficient approach conserved time, effort, and resources. It minimized human intervention and errors, leading to a refined end product.
