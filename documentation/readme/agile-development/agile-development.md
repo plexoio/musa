@@ -4,11 +4,18 @@ Agile Development prioritizes adaptability and swift responses to changing requi
 
 # Development Process
 
-An agile approach was used before, during and after development. We have used `user stories `and `product backlog`, `timeboxing` and `MoSCoW Prioritization`.
+An agile approach was used before, during and after development. We have used:
+
+- `User stories `and `Product Backlog`
+- `Timeboxing` and `MoSCoW Prioritization`.
 
 ## User Stories
 
 The user stories have undergone some modifications since their initial conception during the `user-centric design` phase at the `scope plane`. What follows is the finalized user story that guided our development process.
+
+- In total there are `34` user stories.
+- Only `24 must-have` user stories 
+- Only `10 won't have` user stories 
 
 ### Must-have
 
@@ -38,7 +45,7 @@ The user stories have undergone some modifications since their initial conceptio
 |                           | Assemble FAQ Section           | As a user, I want to find a FAQ section on the support page, to see videos or articles for troubleshooting or other questions related to the voting system. | **4** |
 |          Voting system    | Display winner and general results with numbers               | As a User I want to see displayed in a structured manner the winner, the challengers, and the vote numbers So that I have a transparent view of the event, especially for tied results. | **7** |
 
-### Won't have
+### Won't-have
 
 | Theme                 | Epics                                | User Stories | Story Point |
 |-----------------------|--------------------------------------|--------------|-------------|
@@ -53,5 +60,48 @@ The user stories have undergone some modifications since their initial conceptio
 
 
 ## Product Backlog
+
+These user stories have undergone several phases to arrive at their current iteration in this module. Their progression included:
+
+- Starting from `Theme`, transitioning to `Epic`, followed by `Brief` and `User Story`.
+
+Additionally, we adopted `Story Points` using a `modified Fibonacci sequence`, culminating in their `Complete` status.
+
+Simultaneously, each user story was structured using a comprehensive template that captures essential data, metadata, progress logs, and developer comments.
+
+To view the detailed journey of these user stories, visit:
+
+- [Musa's Github Issues](https://github.com/plexoio/musa/issues)
+
+
+
 ## Timeboxing
+
+Timeboxing in agile development involves allocating a fixed duration, termed "timebox", to a specific task. Regardless of whether the task is fully completed by the end of this period, the team proceeds to the next task. This methodology ensures consistent progress, on-time task management, and regular reprioritization.
+
+To facilitate this approach, we employed Github's project boards within the projects section. This board segmented tasks into `Todo`, `In progress`, and `Done` categories, effectively assisting us in sprint creation.
+
+This strategy was paramount to our development workflow. It championed organic and structured software development, while simultaneously emphasizing task prioritization and our predictive measures, as outlined in 'RELEASE: Estimation and Team Velocity'.
+
+For an in-depth perspective, please refer to:
+
+- [Project Boards (Sprints or Iterations)](https://github.com/plexoio/musa/projects?query=is%3Aopen)
+- [RELEASE: Estimation and Team Velocity]()
+
 ## MoSCoW Prioritization
+
+**MoSCoW Prioritization** in agile development is a technique used to prioritize requirements by categorizing them into:
+
+- **Must have**: Essential requirements necessary for a successful release.
+- **Should have**: Important but not vital; can be delayed if necessary.
+- **Could have**: Desirable features that are beneficial but not essential.
+- **Won't have**: Items agreed upon as not necessary for the current release but might be considered in the future.
+
+This method helped us clarify and agree on priorities, ensuring that the most crucial features were delivered first.
+
+We applied the `MoSCoW Prioritization` method as `labels` within our product backlog and during timeboxing. For a comprehensive overview of these labels in action, please visit:
+
+- [Musa's Labels](https://github.com/plexoio/musa/labels)
+- [Open Issues](https://github.com/plexoio/musa/issues)
+- [Closed Issues](https://github.com/plexoio/musa/issues?q=is%3Aissue+is%3Aclosed)
+- [Last Sprint](https://github.com/users/plexoio/projects/11)
