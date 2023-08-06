@@ -1,5 +1,10 @@
+/* General */
 a {
     text-decoration: none;
+}
+
+.text-justify {
+    text-align: justify;
 }
 
 /* Vote Card */
@@ -105,15 +110,18 @@ input {
     border: 1px solid #dadada;
 }
 
+/* FAQ */
+
 .btn-primary-blue-faq {
-    background-color: #34495e;
-    color: white;
     border-radius: 5px 5px 0 0;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dadada;
+    text-align: left;
 }
 
 .btn-primary-blue-faq:hover {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #dadada;
+    background-color: #34495e;
+    color: white;
 }
 
 

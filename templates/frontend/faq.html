@@ -5,16 +5,21 @@
 <div class="container my-5">
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col col-md-6">
-            <!-- User Feedback -->
-            <div id="email_sent" class="container my-4"></div>
             <div class="card">
-                <div class="card-header card-header-blue text-center h5">Musa's FAQ Section</div>
-                <div class="card-body">
-                    <p class="mb-0">
-                        In this section, you'll get the answers you need regarding Musa's voting system. This system is
+                <div class="card-header card-header-blue text-center h4">
+                    Musa's FAQ Section
+                </div>
+                <div class="card-body px-5 py-3">
+                    <p class="mb-0 text-justify">
+                        {% if request.user.username %}
+                        Hello <strong>{{ request.user.username }}</strong>, 
+                        {% else %}
+                        Hello dear visitor, 
+                        {% endif %}
+                        in this section, you'll get the answers you need regarding Musa's voting system. This system is
                         a set of rules about the way people vote and how the votes are counted. It is designed to be
                         secure, fair, accurate, and transparent.</p>
-                    <div>
+                    <div class="mt-3">
                         <p class="text-center">
                             <button class="btn btn-primary-blue" type="button" data-bs-toggle="collapse"
                                 data-bs-target=".multi-collapse" aria-expanded="false"
@@ -22,11 +27,16 @@
                         </p>
                     </div>
 
+                    <!-- FAQ QUESTIONS -->
+                    <div class="text-center h5 mb-3">
+                        FAQ Questions
+                    </div>
+
                     <!-- QUESTION 1 -->
                     <div class="row card">
-                        <button class="btn btn-primary-blue-faq card=header" type="button" data-bs-toggle="collapse"
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
                             data-bs-target="#multiCollapseExample1" aria-expanded="false"
-                            aria-controls="multiCollapseExample1">What is a VoteCard?</button>
+                            aria-controls="multiCollapseExample1">1. What is a VoteCard?</button>
                         <div class="col-12">
                             <div class="collapse multi-collapse" id="multiCollapseExample1">
                                 <div class="card-body">
@@ -39,13 +49,13 @@
 
                     <!-- QUESTION 2 -->
                     <div class="row card mt-3">
-                        <button class="btn btn-primary-blue-faq card=header" type="button" data-bs-toggle="collapse"
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
                             data-bs-target="#multiCollapseExample2" aria-expanded="false"
-                            aria-controls="multiCollapseExample2">How do I vote on a VoteCard?</button>
+                            aria-controls="multiCollapseExample2">2. How do I vote on a VoteCard?</button>
                         <div class="col-12">
                             <div class="collapse multi-collapse" id="multiCollapseExample2">
                                 <div class="card-body">
-                                    SNavigate to the desired VoteCard's page and select the candidate or option you want
+                                    Navigate to the desired VoteCard's page and select the candidate or option you want
                                     to vote for. Then, simply click on the "Vote" button. Remember, you must be logged
                                     in and verified to vote.
                                 </div>
@@ -55,9 +65,9 @@
 
                     <!-- QUESTION 3 -->
                     <div class="row card mt-3">
-                        <button class="btn btn-primary-blue-faq card=header" type="button" data-bs-toggle="collapse"
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
                             data-bs-target="#multiCollapseExample3" aria-expanded="false"
-                            aria-controls="multiCollapseExample3">Can I vote multiple times on a single
+                            aria-controls="multiCollapseExample3">3. Can I vote multiple times on a single
                             VoteCard?</button>
                         <div class="col-12">
                             <div class="collapse multi-collapse" id="multiCollapseExample3">
@@ -71,19 +81,166 @@
 
                     <!-- QUESTION 4 -->
                     <div class="row card mt-3">
-                        <button class="btn btn-primary-blue-faq card=header" type="button" data-bs-toggle="collapse"
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
                             data-bs-target="#multiCollapseExample4" aria-expanded="false"
-                            aria-controls="multiCollapseExample4">What do the statuses "Online", "Cancelled", and
-                            "Completed" indicate for a VoteCard?</button>
+                            aria-controls="multiCollapseExample4">4. What do the statuses "Draft", "Online",
+                            "Cancelled",
+                            and "Completed" indicate for a VoteCard?</button>
                         <div class="col-12">
                             <div class="collapse multi-collapse" id="multiCollapseExample4">
                                 <div class="card-body">
-                                    No, each user can only vote once on a particular VoteCard. Attempting to vote again
-                                    will show an error message.
+                                    "Draft" signifies the VoteCard is being prepared and is not yet visible to users.
+                                    "Online" means the VoteCard is active and users can vote on it. "Cancelled"
+                                    indicates the voting event has been rejected or terminated prematurely, and no
+                                    further voting is
+                                    possible. "Completed" signifies the voting period has ended and results are
+                                    finalized.
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- QUESTION 5 -->
+                    <div class="row card mt-3">
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample5" aria-expanded="false"
+                            aria-controls="multiCollapseExample5">5. How do I know who won the vote?</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample5">
+                                <div class="card-body">
+                                    Navigate to the VoteCard's page or to the 'Completed' entry in the 'Event' dropdown
+                                    menu to view the results. The candidate with the most
+                                    votes is declared the winner.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUESTION 6 -->
+                    <div class="row card mt-3">
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample6" aria-expanded="false"
+                            aria-controls="multiCollapseExample6">6. What happens in the event of a tied result on a
+                            VoteCard?</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample6">
+                                <div class="card-body">
+                                    In the event of a tie, where two or more candidates receive the same number of
+                                    votes, the system will recognize the result as a draw. Further action or resolution
+                                    methods (e.g., a runoff vote) might be decided upon by the event organizers or
+                                    administrators.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUESTION 7 -->
+                    <div class="row card mt-3">
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample7" aria-expanded="false"
+                            aria-controls="multiCollapseExample7">7. Why can't I vote on certain VoteCards?</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample7">
+                                <div class="card-body">
+                                    There could be several reasons. The VoteCard might be expired, or your account might
+                                    not be verified. Ensure you're logged in, your account is verified, and the VoteCard
+                                    is still active.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUESTION 8 -->
+                    <div class="row card mt-3">
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample8" aria-expanded="false"
+                            aria-controls="multiCollapseExample8">8. How is the progress of a VoteCard
+                            calculated?</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample8">
+                                <div class="card-body">
+                                    The progress of a VoteCard is calculated based on its creation date and expiration
+                                    date. It gives an idea of how much time is left before the voting period ends.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- QUESTION 9 -->
+                    <div class="row card mt-3">
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample9" aria-expanded="false"
+                            aria-controls="multiCollapseExample9">9. What are the differences between "Official" and
+                            "Community" VoteCards?</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample9">
+                                <div class="card-body">
+                                    Official VoteCards are events or topics that are recognized or organized by official
+                                    entities or the platform administrators. Community VoteCards, on the other hand, are
+                                    created by regular users and might represent informal or community-driven topics.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUESTION 10 -->
+                    <div class="row card mt-3">
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample10" aria-expanded="false"
+                            aria-controls="multiCollapseExample10">10. Can I create my own VoteCard?</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample10">
+                                <div class="card-body">
+                                    Yes, if you are a registered and verified user, you can create your own VoteCard.
+                                    Navigate to the Dashboard > Event Management and then select the "Create Event"
+                                    option.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ VIDEOS -->
+
+                    <div class="text-center h5 my-3">
+                        FAQ Videos
+                    </div>
+
+                    <!-- VIDEO 1 -->
+                    <div class="row card mt-3">
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample11" aria-expanded="false"
+                            aria-controls="multiCollapseExample11">1. History Of The Right to Vote</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample11">
+                                <div class="card-body">
+                                    <iframe width="100%" height="300" src="https://www.youtube.com/embed/9OWHVr1Bkjc"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VIDEO 2 -->
+                    <div class="row card mt-3">
+                        <button class="btn btn-primary-blue-faq card-header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample12" aria-expanded="false"
+                            aria-controls="multiCollapseExample12">2. History of Democracy</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample12">
+                                <div class="card-body">
+                                    <iframe width="100%" height="300" src="https://www.youtube.com/embed/yAy4AIVr1Xs"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
