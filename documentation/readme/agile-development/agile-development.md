@@ -1,4 +1,4 @@
-## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/readme/user-centric/user-centric.md)
+## [HOME | RETURN](https://github.com/plexoio/musa/blob/main/documentation/readme/)
 
 Agile Development prioritizes adaptability and swift responses to changing requirements. By promoting close collaboration between cross-functional teams and stakeholders, it ensures a clearer understanding of end-user needs. Frequent iterations and feedback loops result in a product that's more aligned with customer demands, often leading to higher satisfaction, improved quality, and faster time-to-market.
 
