@@ -49,3 +49,11 @@ class ContactView(generic.ListView):
     model = UserProfile
     template_name = "frontend/contact.html"
     context_object_name = 'contact_form'
+
+# FAQ
+
+
+class FAQView(generic.ListView):
+    model = UserProfile
+    template_name = "frontend/faq.html"
+    context_object_name = 'faq_page'

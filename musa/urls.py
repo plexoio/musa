@@ -107,5 +107,7 @@ urlpatterns = [
     path('all/completed/', CompletedVoteCardsListView.as_view(),
          name='see_more_completed'),
     path('contact/', views.ContactView.as_view(),
-         name='contact_form')
+         name='contact_form'),
+    path('faq/', views.FAQView.as_view(),
+         name='faq_page')
 ]

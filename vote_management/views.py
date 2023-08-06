@@ -172,7 +172,7 @@ class HomePageSingleView(View):
         # Check & Update Card if expired and set to 'Complete':
         card.update_card()
 
-        if card.status == 3:
+        if request.user.verified == 1 and card.status == 3:
 
             # Selected winner based on higher votes
             vote_counts = VoteRecord.objects.filter(vote_card=card).values(
@@ -198,7 +198,7 @@ class HomePageSingleView(View):
 
         # Make a vote based on these conditions or ask them to verify account
         elected_person = ElectedPerson.objects.get(id=elected_person_id)
-        if request.user.verified == 1:
+        if request.user.verified == 1 and card.status == 1:
             VoteRecord.objects.create(
                 voter=request.user,
                 vote_card=card, elected_person=elected_person)
@@ -206,7 +206,7 @@ class HomePageSingleView(View):
                 request, "Congratulations! Your vote has been recorded!")
         else:
             messages.error(
-                request, "Verify your account!")
+                request, "Is your account verified and VoteCard online?")
 
         return redirect('card_single', slug=card.slug)
 

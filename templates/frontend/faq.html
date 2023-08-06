@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Page Content-->
+<div class="container my-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col col-md-6">
+            <!-- User Feedback -->
+            <div id="email_sent" class="container my-4"></div>
+            <div class="card">
+                <div class="card-header card-header-blue text-center h5">Musa's FAQ Section</div>
+                <div class="card-body">
+                    <p class="mb-0">
+                        In this section, you'll get the answers you need regarding Musa's voting system. This system is
+                        a set of rules about the way people vote and how the votes are counted. It is designed to be
+                        secure, fair, accurate, and transparent.</p>
+                    <div>
+                        <p class="text-center">
+                            <button class="btn btn-primary-blue" type="button" data-bs-toggle="collapse"
+                                data-bs-target=".multi-collapse" aria-expanded="false"
+                                aria-controls="multiCollapseExample1 multiCollapseExample2">See All</button>
+                        </p>
+                    </div>
+
+                    <!-- QUESTION 1 -->
+                    <div class="row card">
+                        <button class="btn btn-primary-blue-faq card=header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample1" aria-expanded="false"
+                            aria-controls="multiCollapseExample1">What is a VoteCard?</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                <div class="card-body">
+                                    A VoteCard represents an event or topic on which users can vote. Each VoteCard may
+                                    have multiple candidates or choices.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUESTION 2 -->
+                    <div class="row card mt-3">
+                        <button class="btn btn-primary-blue-faq card=header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample2" aria-expanded="false"
+                            aria-controls="multiCollapseExample2">How do I vote on a VoteCard?</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                                <div class="card-body">
+                                    SNavigate to the desired VoteCard's page and select the candidate or option you want
+                                    to vote for. Then, simply click on the "Vote" button. Remember, you must be logged
+                                    in and verified to vote.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUESTION 3 -->
+                    <div class="row card mt-3">
+                        <button class="btn btn-primary-blue-faq card=header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample3" aria-expanded="false"
+                            aria-controls="multiCollapseExample3">Can I vote multiple times on a single
+                            VoteCard?</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample3">
+                                <div class="card-body">
+                                    No, each user can only vote once on a particular VoteCard. Attempting to vote again
+                                    will show an error message.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUESTION 4 -->
+                    <div class="row card mt-3">
+                        <button class="btn btn-primary-blue-faq card=header" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample4" aria-expanded="false"
+                            aria-controls="multiCollapseExample4">What do the statuses "Online", "Cancelled", and
+                            "Completed" indicate for a VoteCard?</button>
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="multiCollapseExample4">
+                                <div class="card-body">
+                                    No, each user can only vote once on a particular VoteCard. Attempting to vote again
+                                    will show an error message.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
