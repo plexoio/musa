@@ -25,19 +25,21 @@ Every nuance matters for the project's success, and we are unyieldingly committe
 |                                                                  | Color Type      | Color Name      | Hex Code  |
 | ---------------------------------------------------------------- | --------------- | --------------- | --------- |
 | ![Color](https://via.placeholder.com/50x50/34495e/34495e?text=+) | Primary Color   | Shade of Blue   | `#34495e` |
-| ![Color](https://via.placeholder.com/50x50/f5f5f5/f5f5f5?text=+) | Secondary Color | Whitesmoke      | `#f5f5f5` |
-| ![Color](https://via.placeholder.com/50x50/808080/808080?text=+) | Secondary Color | Shade of gray   | `#808080` |
-| ![Color](https://via.placeholder.com/50x50/3a3a3a/3a3a3a?text=+) | Secondary Color | Shade of Black  | `#3a3a3a` |
-| ![Color](https://via.placeholder.com/50x50/f2f2f2/f2f2f2?text=+) | Secondary Color | Shade of White  | `#f2f2f2` |
-| ![Color](https://via.placeholder.com/50x50/e46e54/e46e54?text=+) | Secondary Color | Shade of red    | `#E46E54` |
-| ![Color](https://via.placeholder.com/50x50/ff6600/ff6600?text=+) | Secondary Color | Shade of orange | `#ff6600` |
+| ![Color](https://via.placeholder.com/50x50/ffffff/ffffff?text=+) | Secondary Color | White   | `#ffffff` |
+| ![Color](https://via.placeholder.com/50x50/f8f9fa/f8f9fa?text=+) | Secondary Color | Shade of White      | `#f8f9fa` |
+| ![Color](https://via.placeholder.com/50x50/dadada/dadada?text=+) | Secondary Color | Shade of White      | `#dadada` |
+| ![Color](https://via.placeholder.com/50x50/333333/333333?text=+) | Secondary Color | Shade of Black  | `#333333` |
+| ![Color](https://via.placeholder.com/50x50/2D4F2F/2D4F2F?text=+) | Secondary Color | Shade of Green  | `#2D4F2F` |
+| ![Color](https://via.placeholder.com/50x50/763135/763135?text=+) | Secondary Color | Shade of red    | `#763135` |
+| ![Color](https://via.placeholder.com/50x50/ffbe00/ffbe00?text=+) | Secondary Color | Shade of orange | `#ffbe00` |
+| ![Color](https://via.placeholder.com/50x50/0000000d/0000000d?text=+) | Secondary Color | Shade of black | `#0000000d` |
 
 
 #### Pallet
 
 The following color palette was used as a reference throughout the project:
 
-- [My Color Space](https://mycolor.space/?hex=%233498DB&sub=1)
+- [My Color Space](https://mycolor.space/?hex=%2334495E&sub=1)
 
 
 ### Layout
