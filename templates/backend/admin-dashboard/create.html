@@ -149,7 +149,7 @@
                         <div id="candidates-container">
                             {{ person_formset.management_form }}
                             {% for person_form in person_formset %}
-                            <!-- content fetched from custom.js -->
+                            <!-- content fetched from candidates.js -->
                             {% if person_form.name.errors %}
                             <div class="errors">{{ person_form.name.errors }}</div>
                             {% endif %}
