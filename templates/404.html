@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="layoutError_content">
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center mt-4">
+                        <h1>404 - Not Found</h1>
+                        <i class="fa-solid fa-triangle-exclamation fs-4 text"></i>
+                        <p class="lead">Sorry, the page you're looking for cannot be found.</p>
+                        <a href="{% url 'account_login' %}">
+                            <i class="fas fa-arrow-left me-1"></i>Return to Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
