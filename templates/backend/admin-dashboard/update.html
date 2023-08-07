@@ -3,7 +3,7 @@
 {% block content%}
 <div id="layoutSidenav_content">
     <main>
-        <div class="container-fluid px-5">
+        <div class="container-fluid px-4">
             <h1 class="mt-4">Event Update</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Limited Update</li>
@@ -95,9 +95,9 @@
                         <div class="mb-3">
                             <label for="event_image" class="form-label"><strong>Image</strong></label>
                             <!-- Display the current image if it exists -->
-                            {% if event.event_image.value %}
-                            <div class="mb-2">
-                                <img src="{{ event.event_image.value }}" alt="Current Image" style="max-width: 200px;">
+                            {% if event.event_image %}
+                            <div class="mb-2 text-center">
+                                <img src="{{ event.event_image.url}}" alt="Current Image" style="max-width: 200px;">
                             </div>
                             {% endif %}
 

@@ -8,6 +8,8 @@ from django.contrib import messages
 from django.db.models import Count
 from django.utils import timezone
 
+from cloudinary.uploader import upload
+
 
 # Local Imports
 from user_profile.views import UserRequiredMixin, UserDashboard, UserProfile
@@ -410,8 +412,7 @@ class AdminVoteCardDetailView(BaseAdminVoteCardDetailView):
         uploaded_image = request.FILES.get(
             'event_image')
         if uploaded_image:
-            upload = upload(uploaded_image)
-            event.event_image = upload['url']
+            event.event_image = uploaded_image
 
         event.save()
         messages.success(
