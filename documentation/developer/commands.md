@@ -5,6 +5,8 @@ unzip static/font/roboto/roboto.zip
 
 python3 manage.py shell
 
+hey
+
 pip3 freeze --local > requirements.txt
 
 python3 manage.py makemigrations
