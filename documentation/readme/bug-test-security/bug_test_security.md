@@ -31,3 +31,5 @@ We have discovered that using the `user story` as the `expected result` in manua
 |       Use of contact form        |        As a user, I want a well-designed contact page to get in touch with the support team.         |        NA      |   PASS   |
 |       Use of FAQ        |        As a user, I want to find a FAQ section on the support page, to see videos or articles for troubleshooting or other questions related to the voting system.         |        NA      |   PASS   |
 |       Use of the full Voting Card        |        As a User I want to see displayed in a structured manner the winner, the challengers, and the vote numbers So that I have a transparent view of the event, especially for tied results.         |        NA      |   PASS   |
+
+N
