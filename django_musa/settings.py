@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import urllib.parse
 import cloudinary
 from pathlib import Path
 import os
@@ -169,11 +170,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 
+cloudinary_url = os.environ.get('CLOUDINARY_URL')
+parsed_url = urllib.parse.urlparse(cloudinary_url)
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': parsed_url.hostname,
+    'API_KEY': parsed_url.username,
+    'API_SECRET': parsed_url.password,
+}
+
+
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_STORAGE = 'musa.custom_storage.CustomCloudinaryStorage'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
