@@ -187,13 +187,7 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'musa.custom_storage.CustomCloudinaryStorage'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    BASE_DIR / 'static' / 'admin',
-    BASE_DIR / 'static' / 'custom',
-    BASE_DIR / 'static' / 'font',
-    BASE_DIR / 'static' / 'homepage',
-    BASE_DIR / 'static' / 'user',
-]
+    os.path.join(BASE_DIR, 'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
