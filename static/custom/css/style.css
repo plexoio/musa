@@ -1,5 +1,17 @@
 /* Local Google Fonts */
 
+@font-face {
+    font-family: "Fairplay";
+    src: url('../../font/playfair_display/PlayfairDisplay-Regular.ttf');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('../../font/roboto/Roboto-Regular.ttf');
+    font-display: swap;
+}
+
 
 /* General */
 
