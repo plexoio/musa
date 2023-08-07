@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+# import cloudinary
 from pathlib import Path
 import os
 import dj_database_url
@@ -42,6 +42,7 @@ if development:
                      os.environ.get('HEROKU_HOSTNAME')]
 else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
+
 
 # Application definition
 
@@ -125,6 +126,7 @@ if development:
         }
     }
 else:
+
     DATABASES = {'default': dj_database_url.parse(
         os.environ.get("DATABASE_URL"))
     }
@@ -171,7 +173,15 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / 'static' / 'admin',
+    BASE_DIR / 'static' / 'custom',
+    BASE_DIR / 'static' / 'font',
+    BASE_DIR / 'static' / 'homepage',
+    BASE_DIR / 'static' / 'user',
+]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
