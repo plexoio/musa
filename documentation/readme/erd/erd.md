@@ -1,9 +1,4 @@
 ## [INDEX](https://github.com/plexoio/musa/blob/main/)
-1. [Design Thinking](https://github.com/plexoio/musa/blob/main/documentation/readme/design-thinking/design-thinking.md)
-2. [User-Centric Design](https://github.com/plexoio/musa/blob/main/documentation/readme/user-centric/user-centric.md)
-3. [Entity Relationship Diagram ERD](https://github.com/plexoio/musa/blob/main/documentation/readme/erd/erd.md)
-4. [Agile Development](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md)
-5. [Credits](https://github.com/plexoio/musa/blob/main/documentation/readme/credits.md)
 
 # Entity Relationship Diagram ERD
 
