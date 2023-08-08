@@ -85,7 +85,7 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
 7. [Future Features Explained](https://github.com/plexoio/musa/blob/main/documentation/readme/future-features/future_features.md)
 8. [Technologies Used](https://github.com/plexoio/musa/blob/main/documentation/readme/tech-used/tech_used.md)
 9. [Workspace Set Up & Deployment Process](https://github.com/plexoio/musa/blob/main/documentation/readme/set-up-and-deployment/set_up_and_deployment.md)
-10. [Developer's needs](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/deployment.md)
+10. [Developer's Snack](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/deployment.md)
 
 ## Credits
 
