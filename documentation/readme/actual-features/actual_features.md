@@ -1,10 +1,12 @@
-## ![HOME | RETURN](https://github.com/plexoio/musa)
+## [HOME | RETURN](https://github.com/plexoio/musa)
 
 # Actual Features Explained
 
-We are quite pleased with our achievements, despite initial concerns about time constraints. Reflecting on the project, it's evident that all features can be enhanced and further developed in the future. This iteration has simplified design elements and provides all CRUD functionalities such as create event, read event, update event, delete accounts, performing vote & time calculations as well as proper feedback at all times.
+We are extremely pleased with our accomplishments, even in the face of initial concerns about time constraints due to personal reasons and external challenges like governmental decisions and the unexpected bug towards the end.
 
-The following main features proved essential for our Minimum Viable Product (MVP):
+Reflecting on the project, it's clear that every feature offers room for enhancement and future development. This iteration introduces simplified design elements and encompasses all CRUD functionalities: creating events, reading events, updating events, deleting accounts, performing vote and time calculations, and consistently providing appropriate feedback.
+
+The following main features were crucial for our Minimum Viable Product (MVP):
 
 ## Homepage
 
@@ -139,7 +141,7 @@ Process through which users can create and customize their voting events.
 ![Create Event](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual13.png)
 
 #### Admin Event Creation
-Process through which admins can create and customize their voting events(more extensive than the user's).
+Process through which admins can create and customize their voting events (more extensive than the user's).
 
 ![Admin Event Creation](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual24.png)
 
