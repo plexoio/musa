@@ -1,5 +1,9 @@
 ## **ERD & Code Recommendations & Voting System Architecture**
 
+## [HOME | RETURN](https://github.com/plexoio/musa)
+
+# Developer's Snack
+
 ### **Table of Contents**
 1. [Model Relationships](#model-relationships)
 2. [Preventing Duplicate Voting](#preventing-duplicate-voting)
