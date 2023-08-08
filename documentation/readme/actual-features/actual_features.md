@@ -77,8 +77,6 @@ Where users can adjust their personal information, preferences, and account sett
 #### Create Event (see more below)
 Allows users to initiate new voting events, setting up the necessary details and criteria.
 
-![Create Event](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual13.png)
-
 #### My Events
 Displays a list of events created by the user, showing their status and metrics.
 
@@ -140,12 +138,12 @@ Details the administrative permissions and capabilities.
 #### User Event Creation
 Process through which users can create and customize their voting events.
 
-![User Event Creation](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual24.png)
+![Create Event](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual13.png)
 
 #### Admin Event Creation
 Process through which admins can create and customize their voting events(more extensive than the user's).
 
-![User Event Creation](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual25.png)
+![Admin Event Creation](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual24.png)
 
 ---
 
@@ -154,12 +152,12 @@ Process through which admins can create and customize their voting events(more e
 ### FAQ
 A section containing frequently asked questions and videos about the platform, aiding users in troubleshooting common issues & learning more about democracy.
 
-![FAQ](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual23.png)
+![FAQ](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual25.png)
 
 ### Contact
 Provides users with the means to get in touch with platform support, whether for technical issues, feedback, or inquiries.
 
-![Contact](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual24.png)
+![Contact](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual26.png)
 
 
 ---
