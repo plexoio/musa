@@ -105,7 +105,8 @@ class CompletedVoteCardsListView(VoteCardBaseListView):
 
     def get_queryset(self):
 
-        completed_cards = VoteCard.objects.filter(status=3).order_by('-created_on')
+        completed_cards = VoteCard.objects.filter(
+            status=3).order_by('-created_on')
 
         for vote_card in completed_cards:
             now = timezone.now().date()

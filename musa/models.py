@@ -1,7 +1,6 @@
+# Django Imports
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-# from cloudinary.models import CloudinaryField
-# from vote_management.models import VoteCard, VoteRecord
 
 ROLES = (
     (0, 'User'),
@@ -15,7 +14,8 @@ class UserProfile(AbstractUser):
     verified = models.BooleanField(default=False)
     role = models.IntegerField(choices=ROLES, default=0)
     user_card = models.ManyToManyField(
-        'vote_management.VoteCard', through='vote_management.VoteRecord', related_name='user_cards')
+        'vote_management.VoteCard',
+        through='vote_management.VoteRecord', related_name='user_cards')
 
     class Meta:
         ordering = ['username']

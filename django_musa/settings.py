@@ -9,11 +9,14 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+# Libraries Imports
 import urllib.parse
 import cloudinary
 from pathlib import Path
-import os
 import dj_database_url
+
+# Python Imports
+import os
 if os.path.isfile('env.py'):
     import env
 
@@ -199,7 +202,7 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'musa.custom_storage.CustomCloudinaryStorage'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),]
+    os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type

@@ -1,3 +1,4 @@
+# Library Imports
 from cloudinary_storage.storage import StaticHashedCloudinaryStorage
 from cloudinary.api import resources_by_tag
 
@@ -9,7 +10,8 @@ class CustomCloudinaryStorage(StaticHashedCloudinaryStorage):
         Override this method to implement custom logic.
         """
         # Use Cloudinary's API to check if a file with the given name exists.
-        # This example uses the resources_by_tag method, assuming that 'name' can be used as a tag.
+        # This example uses the resources_by_tag method, assuming that
+        # 'name' can be used as a tag.
         # Modify the logic based on your needs and Cloudinary's available APIs.
         try:
             resources = resources_by_tag(name)

@@ -1,6 +1,13 @@
-from allauth.account.views import LoginView, SignupView, LogoutView
-from musa.forms import CustomSignupForm, CustomLoginForm
+# Django Imports
 from django.urls import reverse_lazy, reverse
+
+# Allauth library
+from allauth.account.views import LoginView, SignupView, LogoutView
+
+# Local Imports
+from musa.forms import CustomSignupForm, CustomLoginForm
+
+
 
 # LOGIN, SIGUNUP & LOGOUT
 

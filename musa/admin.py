@@ -1,7 +1,13 @@
+# Django Imports
 from django.contrib import admin
-from .models import UserProfile
-from vote_management.models import Category, VoteCard, VoteRecord, ElectedPerson
 from django_summernote.admin import SummernoteModelAdmin
+
+# Local imports
+from .models import UserProfile
+from vote_management.models import (Category,
+                                    VoteCard,
+                                    VoteRecord,
+                                    ElectedPerson)
 
 
 @admin.register(VoteCard)

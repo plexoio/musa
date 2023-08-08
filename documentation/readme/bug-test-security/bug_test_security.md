@@ -35,7 +35,10 @@ We have discovered that using the `user story` as the `expected result` in manua
 ### Google Developer's console
 We went through every page of the site analising any possible failures. We found only the favicon.ico mission on the admin & user's dashboard and the settings link on the menu that needed some logic based on user's role.
 
-###
+- All issues solved.
+
+### CI Python Linter by Code Institute
+
 ###
 ###
 

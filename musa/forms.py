@@ -1,10 +1,17 @@
-from cloudinary.forms import CloudinaryFileField
-from .models import UserProfile
-from vote_management.models import VoteCard, Category, ElectedPerson
-from allauth.account.forms import LoginForm, SignupForm
+# Django Imports
 from django import forms
 from django.utils.text import slugify
+
+# Python Imports
 from datetime import date
+
+# Libraries imports
+from allauth.account.forms import LoginForm, SignupForm
+from cloudinary.forms import CloudinaryFileField
+
+# Local Imports
+from .models import UserProfile
+from vote_management.models import VoteCard, Category, ElectedPerson
 
 
 class CustomSignupForm(SignupForm):
@@ -160,4 +167,3 @@ class ElectedPersonForm(forms.ModelForm):
     class Meta:
         model = ElectedPerson
         fields = '__all__'
-

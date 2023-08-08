@@ -1,6 +1,9 @@
+# Django Imports
 from django.db import models
-from cloudinary.models import CloudinaryField
 from django.utils import timezone
+
+# Library Imports
+from cloudinary.models import CloudinaryField
 
 STATUS = (
     (0, 'Draft'),
@@ -32,7 +35,8 @@ class VoteCard(models.Model):
     title = models.CharField(max_length=33, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-        'musa.UserProfile', on_delete=models.CASCADE, related_name="card_author")
+        'musa.UserProfile', on_delete=models.CASCADE,
+        related_name="card_author")
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="categories")
     mission = models.CharField(max_length=33)
@@ -40,9 +44,11 @@ class VoteCard(models.Model):
     description = models.TextField(max_length=258)
     expire = models.DateField()
     event_image = CloudinaryField('image', default='placeholder')
-    vote_record = models.ManyToManyField('musa.UserProfile', through='VoteRecord',
+    vote_record = models.ManyToManyField('musa.UserProfile',
+                                         through='VoteRecord',
                                          related_name='user_votes', blank=True)
-    candidates = models.ManyToManyField('ElectedPerson', related_name='vote_cards',
+    candidates = models.ManyToManyField('ElectedPerson',
+                                        related_name='vote_cards',
                                         blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
     excerpt = models.TextField(blank=True)
@@ -72,7 +78,8 @@ class VoteCard(models.Model):
 class VoteRecord(models.Model):
     """Model representing the record of a single vote by a user."""
     voter = models.ForeignKey(
-        'musa.UserProfile', on_delete=models.CASCADE, related_name="voter_record")
+        'musa.UserProfile', on_delete=models.CASCADE,
+        related_name="voter_record")
     vote_card = models.ForeignKey(
         VoteCard, on_delete=models.CASCADE, related_name="votecard_record")
     elected_person = models.ForeignKey('ElectedPerson',
@@ -92,7 +99,8 @@ class ElectedPerson(models.Model):
     name = models.CharField(max_length=80, unique=True)
     is_elected = models.BooleanField(default=False)
     vote_card = models.ForeignKey(
-        VoteCard, on_delete=models.CASCADE, related_name="vote_candidate", blank=True)
+        VoteCard, on_delete=models.CASCADE,
+        related_name="vote_candidate", blank=True)
 
     class Meta:
         ordering = ['name']
