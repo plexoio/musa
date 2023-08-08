@@ -74,8 +74,26 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
 5. [Bugs, Testing & Security](https://github.com/plexoio/musa/blob/main/documentation/readme/bug-test-security/bug_test_security.md)
 6. [Actual Features Explained](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/actual_features.md)
 7. [Future Features Explained](https://github.com/plexoio/musa/blob/main/documentation/readme/future-features/future_features.md)
-8. [Technologies Used](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/technologies.md)
+8. [Technologies Used](https://github.com/plexoio/musa/blob/main/documentation/readme/tech-used/tech_used.md)
 9. [Workspace Set Up & Deployment Process](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/deployment.md)
 10. [Developer's needs](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/deployment.md)
 
 ## Credits
+
+- [Technologies Used](https://github.com/plexoio/musa/blob/main/documentation/readme/tech-used/tech_used.md): All technologies and tools used to build this project as presented in this section.
+- **Brian O'Hare**: for his tips and scope presentation and mentoring me in general two times on this project.
+- [Unsplash's Authors](https://unsplash.com/): for providing high quality images for our vote card creation
+- [Stackoverflow](https://stackoverflow.com/): for in-depth consultation and checking user-created content (from experienced developers) or human opinion.
+- [Google](https://google.com): for programming queries.
+- [Code Institute](https://codeinstitute.net/): for providing proper education and a template this time. All the knowledge was applied throughout this project.
+- [Programminghub](https://programminghub.io/): where I learned the basics before joining Code Institute.
+- [ChatGPT](https://chat.openai.com/chat), was used for the following queries:
+    1. Used for general consulting.
+    2. Copywriting and proofreading.
+    3. Used to validate code.
+    4. Used to confirm whether or not my code snippet is correct after many minutes or even hours of self-debugging.
+    5. Understand the use of different keywords, know libraries and modules and more.
+
+## Authors 
+
+- [@plexoio](https://www.github.com/plexoio) | Frank Arellano

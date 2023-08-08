@@ -36,8 +36,8 @@
 
         <!-- Records found -->
         {% for card in home_page %}
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
+        <div class="col-lg-4 col-md-12 mb-5 col-sm-12">
+            <div class="card h-80">
                 {% if card.type == 1%}
                 <div class="card-header card-header-blue text-center h4">{{ card.get_type_display}}</div>
                 {% else %}
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                         </span>
-                        <small>{{ card.time_left }} days left</small>
+                        <small>{{ card.time_left }}</small>
                     </div>
                 </div>
                 <a class="card-footer text-center fs-5" href="{% url 'card_single' card.slug %}">VOTE</a>
@@ -119,8 +119,8 @@
         <!-- Records found -->
         {% for official in official_vote_cards %}
         {% if official.type == 1 %}
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
+        <div class="col-lg-4 col-md-12 mb-5 col-sm-12">
+            <div class="card h-80">
                 <div class="card-header card-header-blue text-center h4">{{ official.get_type_display}}</div>
                 <div class="card-body mt-3 mb-4 card-body-height">
                     <!-- Card image & Data -->
@@ -167,7 +167,7 @@
                                 </div>
                             </div>
                         </span>
-                        <small>{{ official.time_left }} days left</small>
+                        <small>{{ official.time_left }}</small>
                     </div>
                 </div>
                 <a class="card-footer text-center fs-5" href="{% url 'card_single' official.slug %}">VOTE</a>
@@ -196,8 +196,8 @@
         <!-- Records found -->
         {% for card in community_vote_cards %}
         {% if card.type == 0 %}
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
+        <div class="col-lg-4 col-md-12 mb-5 col-sm-12">
+            <div class="card h-80">
                 <div class="card-header card-header-blue text-center h4">{{ card.get_type_display}}</div>
                 <div class="card-body mt-3 mb-4 card-body-height">
                     <!-- Card image & Data -->
@@ -243,7 +243,7 @@
                                 </div>
                             </div>
                         </span>
-                        <small>{{ card.time_left }} days left</small>
+                        <small>{{ card.time_left }}</small>
                     </div>
                 </div>
                 <a class="card-footer text-center fs-5" href="{% url 'card_single' card.slug %}">VOTE</a>
