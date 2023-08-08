@@ -14,6 +14,13 @@
     <!-- Campaign Row-->
     <div class="row gx-4 gx-lg-5">
         <p class="h1 fairplay-font text-center mb-5">Community</p>
+
+        <!-- Records not found -->
+        {% if not see_more_community %}
+        <p class="text-center">No records found so far </p>
+        {% endif %}
+
+        <!-- Records found -->
         {% for card in see_more_community %}
         {% if card.type == 0 %}
         <div class="col-md-4 mb-5">

@@ -27,6 +27,13 @@
     <!-- Campaign Row-->
     <div class="row gx-4 gx-lg-5">
         <p class="h1 fairplay-font text-center mb-5">Campaign</p>
+
+        <!-- Records not found -->
+        {% if not home_page %}
+        <p class="text-center">No records found so far </p>
+        {% endif %}
+
+        <!-- Records found -->
         {% for card in home_page %}
         <div class="col-md-4 mb-5">
             <div class="card h-100">
@@ -102,6 +109,13 @@
     <!-- Official Row-->
     <div class="row gx-4 gx-lg-5 mt-5">
         <p class="h1 fairplay-font text-center mb-5">Official</p>
+
+        <!-- Records not found -->
+        {% if not official_vote_cards %}
+        <p class="text-center">No records found so far </p>
+        {% endif %}
+
+        <!-- Records found -->
         {% for official in official_vote_cards %}
         {% if official.type == 1 %}
         <div class="col-md-4 mb-5">
@@ -172,6 +186,13 @@
     <!-- Community Row-->
     <div class="row gx-4 gx-lg-5 mt-5">
         <p class="h1 fairplay-font text-center mb-5">Community</p>
+
+        <!-- Records not found -->
+        {% if not community_vote_cards %}
+        <p class="text-center">No records found so far </p>
+        {% endif %}
+
+        <!-- Records found -->
         {% for card in community_vote_cards %}
         {% if card.type == 0 %}
         <div class="col-md-4 mb-5">

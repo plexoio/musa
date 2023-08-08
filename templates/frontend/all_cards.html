@@ -14,12 +14,19 @@
     <!-- Campaign Row-->
     <div class="row gx-4 gx-lg-5">
         <p class="h1 fairplay-font text-center mb-5">Campaign</p>
+
+        <!-- Records not found -->
+        {% if not see_more %}
+        <p class="text-center">No records found so far </p>
+        {% endif %}
+
+        <!-- Records found -->
         {% for card in see_more %}
         <div class="col-md-4 mb-5">
             <div class="card h-100">
                 <div class="card-header card-header-blue text-center h4">{{ card.get_type_display}}</div>
                 <div class="card-body card-body-height">
-                    
+
                     <!-- Card image & Data -->
                     <div class="row mt-2">
                         <div class="col-4 d-inline-block">

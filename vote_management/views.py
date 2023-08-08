@@ -8,8 +8,6 @@ from django.contrib import messages
 from django.db.models import Count
 from django.utils import timezone
 
-from cloudinary.uploader import upload
-
 
 # Local Imports
 from user_profile.views import UserRequiredMixin, UserDashboard, UserProfile

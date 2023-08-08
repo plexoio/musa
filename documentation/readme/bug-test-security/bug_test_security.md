@@ -31,3 +31,35 @@ We have discovered that using the `user story` as the `expected result` in manua
 |       Use of contact form        |        As a user, I want a well-designed contact page to get in touch with the support team.         |        NA      |   PASS   |
 |       Use of FAQ        |        As a user, I want to find a FAQ section on the support page, to see videos or articles for troubleshooting or other questions related to the voting system.         |        NA      |   PASS   |
 |       Use of the full Voting Card        |        As a User I want to see displayed in a structured manner the winner, the challengers, and the vote numbers So that I have a transparent view of the event, especially for tied results.         |        NA      |   PASS   |
+
+## Bug
+
+As with any project, there may be some bugs that we have encountered. Here are some of the issues we've come across:
+
+#### a) Website is too slow
+
+We tried our best to keep everything on a single page, making a powerful web application that works efficiently on every device. However, we cannot guarantee that it will work the same on devices with low memory or processing capacities.
+
+#### b) ErrorKey: 'etag' from Cloudinary (third party service)
+
+For a reason we have encountered this error message that would not allow us to submit our project on time to Code Institute. After spending many hours of debugging with tutor support, the only solution was to bypass this issue by creating a 'custom_storage.py'.
+
+Error breakdown:
+
+`When we ran the collectstatic command, Django tried to collect and process static files. The cloudinary_storage package was being used to handle some or all of these static files. As part of its process, cloudinary_storage checks if a file with the same content already exists on Cloudinary to avoid redundant uploads. It does this by checking the ETAG header in the response from Cloudinary. However, in this case, it seems the ETAG header was not present in the response, leading to a KeyError.`
+
+#### d) The expired events only turn to complete after a user tries to vote
+
+It is normal and we have kept it like this of performance reasons, however in the future we may programically set it to be update it on loading as the vote count or progress bar.
+
+#### e) Social media issue
+
+Currently, social media buttons only point to the main pages for demonstration purposes.
+
+#### f) Vote Events would not be deleted by themselves
+
+That's correct, for this iteration VoteCards will be only set to completed and it will not allow any user to vote again. The VoteCard can be deleted only from a superuser or the site owner. Deleting one VoteCard will erase in cascade the elected persons and vote card records in the database, in short, all data related to that event will be erased as well.
+
+#### Other bugs
+
+For other related bugs, we recommend always refreshing the page or deleting cache files. The problem is not with the Musa project; it could be related to third-party issues or related to your own device settings and capabilities.
