@@ -33,8 +33,7 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
 5. **Future Deployment by Author**: Post evaluation by Code Institute, the author intends to host the software independently, aiming to facilitate community-driven voting events.
 
 ---
-
-![Responsive Mockup image](https://github.com/plexoio/musa/blob/main/documentation/assets/img/mockup.png)
+![Responsive Mockup image](https://github.com/plexoio/musa/blob/main/documentation/assets/img/mockup/mockup.png)
 
 ## Badges
 

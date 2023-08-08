@@ -38,9 +38,10 @@
         {% for card in home_page %}
         <div class="col-lg-4 col-md-12 mb-5 col-sm-12">
             <div class="card h-80">
+                <!-- In case different colors needed -->
                 {% if card.type == 1%}
                 <div class="card-header card-header-blue text-center h4">{{ card.get_type_display}}</div>
-                {% else %}
+                {% else %} 
                 <div class="card-header card-header-blue text-center h4">{{ card.get_type_display}}</div>
                 {% endif %}
                 <div class="card-body mt-3 mb-4 card-body-height">
@@ -91,7 +92,7 @@
                                 </div>
                             </div>
                         </span>
-                        <small>{{ card.time_left }}</small>
+                        <small>{{ card.time_left }} days</small>
                     </div>
                 </div>
                 <a class="card-footer text-center fs-5" href="{% url 'card_single' card.slug %}">VOTE</a>
@@ -167,7 +168,7 @@
                                 </div>
                             </div>
                         </span>
-                        <small>{{ official.time_left }}</small>
+                        <small>{{ official.time_left }} days</small>
                     </div>
                 </div>
                 <a class="card-footer text-center fs-5" href="{% url 'card_single' official.slug %}">VOTE</a>
@@ -194,29 +195,29 @@
         {% endif %}
 
         <!-- Records found -->
-        {% for card in community_vote_cards %}
-        {% if card.type == 0 %}
+        {% for community in community_vote_cards %}
+        {% if community.type == 0 %}
         <div class="col-lg-4 col-md-12 mb-5 col-sm-12">
             <div class="card h-80">
-                <div class="card-header card-header-blue text-center h4">{{ card.get_type_display}}</div>
+                <div class="card-header card-header-blue text-center h4">{{ community.get_type_display}}</div>
                 <div class="card-body mt-3 mb-4 card-body-height">
                     <!-- Card image & Data -->
                     <div class="row mt-2">
                         <div class="col-4 d-inline-block">
-                            {% if "placeholder" in card.event_image.url %}
+                            {% if "placeholder" in community.event_image.url %}
                             <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
                                 alt="code institute" class="img-fluid img-thumbnail rounded float-start mx-2"
                                 width="150" height="150">
                             {% else %}
-                            <img src="{{ card.event_image.url }}" alt="card image"
+                            <img src="{{ community.event_image.url }}" alt="card image"
                                 class="img-fluid img-thumbnail rounded float-start mx-2" width="150" height="150">
                             {% endif %}
                         </div>
                         <div class="col-8 d-inline-block">
                             <span class="">
-                                <h5 class="card-title">{{ card.title }}</h5>
-                                <p class="mission my-0 fs-6"> {{ card.mission }}</p>
-                                <small class="location my-0"> {{ card.location }}</small>
+                                <h5 class="card-title">{{ community.title }}</h5>
+                                <p class="mission my-0 fs-6"> {{ community.mission }}</p>
+                                <small class="location my-0"> {{ community.location }}</small>
                             </span>
                         </div>
                     </div>
@@ -224,7 +225,7 @@
                     <div id="description" class="row mt-3">
                         <div class="col">
                             <p class="my-0 mb-4">
-                                {{ card.description|safe }} <a href="{% url 'card_single' card.slug %}">Read More</a>
+                                {{ community.description|safe }} <a href="{% url 'card_single' community.slug %}">Read More</a>
                             </p>
                         </div>
                     </div>
@@ -232,21 +233,21 @@
                     <div class="text-center">
                         <span class="card d-inline-block">
                             <div class="card-body py-1 px-3 text-center">
-                                <span class="card-text">{{ card.number_of_votes }}<br> Votes</span>
+                                <span class="card-text">{{ community.number_of_votes }}<br> Votes</span>
                             </div>
                         </span>
                         <span class="d-inline-block px-3 progress-container">
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: {{ card.progress }}%"
-                                    aria-valuenow="{{ card.progress }}" aria-valuemin="0" aria-valuemax="100">
-                                    <span class="padding-progress">{{ card.progress }}%</span>
+                                <div class="progress-bar" role="progressbar" style="width: {{ community.progress }}%"
+                                    aria-valuenow="{{ community.progress }}" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="padding-progress">{{ community.progress }}%</span>
                                 </div>
                             </div>
                         </span>
-                        <small>{{ card.time_left }}</small>
+                        <small>{{ community.time_left }} days</small>
                     </div>
                 </div>
-                <a class="card-footer text-center fs-5" href="{% url 'card_single' card.slug %}">VOTE</a>
+                <a class="card-footer text-center fs-5" href="{% url 'card_single' community.slug %}">VOTE</a>
             </div>
         </div>
         {% if forloop.counter|divisibleby:3 %}
