@@ -1,8 +1,6 @@
 ## [HOME | RETURN](https://github.com/plexoio/musa)
 
-# Actual Features Explained
-
-## Technologies Used
+# Technologies Used
 
 Every project, including ours, relies on a combination of tools and practices to ensure efficient development and successful results. Below is a curated list of technologies we utilized throughout the project's lifecycle:
 
