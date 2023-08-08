@@ -38,8 +38,17 @@ We went through every page of the site analising any possible failures. We found
 - All issues solved.
 
 ### CI Python Linter by Code Institute
+Adhering to PEP8 standards 100% of the time can be challenging. Therefore, we regularly used the CI Python Linter during development. This tool was invaluable in maintaining code structure and enhancing the overall presentation.
 
-###
+At the end of the development we did again another round of CI Python Linter, making sure everything is okey and doing the necessary changes.
+
+![ERD Diagram Image](https://github.com/plexoio/musa/blob/main/documentation/assets/img/testing/cilinter.png)
+
+### Lighthouse
+
+Lighthouse provided analysis across several facets of our application. Although not mandatory, we complemented its use with GT-Metrix to ensure the delivery of a quality product. The results met our expectations.
+
+
 ###
 
 ## Bugs
