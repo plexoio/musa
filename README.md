@@ -1,5 +1,7 @@
 # Musa - A Modern Voting System for Communities 
 
+![Responsive Mockup image](https://github.com/plexoio/musa/blob/main/documentation/assets/img/mockup/mockup.png)
+
 **Musa's Voting System**: A Comprehensive Digital Balloting Platform
 
 Musa's Voting System is an intuitive, user-friendly digital platform designed to streamline the voting process, ensuring that every vote counts. Built with Django, it offers robust functionality, catering both to official voting events and community-based polls.
@@ -33,7 +35,6 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
 5. **Future Deployment by Author**: Post evaluation by Code Institute, the author intends to host the software independently, aiming to facilitate community-driven voting events.
 
 ---
-![Responsive Mockup image](https://github.com/plexoio/musa/blob/main/documentation/assets/img/mockup/mockup.png)
 
 ## Badges
 
