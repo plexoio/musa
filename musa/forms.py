@@ -2,10 +2,10 @@
 from django import forms
 from django.utils.text import slugify
 
-# Python Imports
+# Python imports
 from datetime import date
 
-# Libraries imports
+# Library Imports
 from allauth.account.forms import LoginForm, SignupForm
 from cloudinary.forms import CloudinaryFileField
 
@@ -83,7 +83,8 @@ class UserVoteCardCreationForm(forms.ModelForm):
             'author': 'Author',
             'category': 'Category',
             'mission': 'Mission',
-            'type': 'Type'
+            'type': 'Type',
+            'event_image': 'Image'
         }
 
         help_texts = {
@@ -92,7 +93,8 @@ class UserVoteCardCreationForm(forms.ModelForm):
             'description': 'Enter a catchy description',
             'location': 'Enter your target location',
             'mission': 'State clearly your mission',
-            'author': 'You are currently the author of this event'
+            'author': 'You are currently the author of this event',
+            'event_image': 'File size cannot exceed 500 KB'
         }
 
 # ADMIN Create Event Form
@@ -148,7 +150,8 @@ class AdminVoteCardCreationForm(forms.ModelForm):
             'author': 'Author',
             'category': 'Category',
             'mission': 'Mission',
-            'type': 'Type'
+            'type': 'Type',
+            'event_image': 'Image'
 
         }
 
@@ -158,7 +161,8 @@ class AdminVoteCardCreationForm(forms.ModelForm):
             'description': 'Enter a catchy description',
             'location': 'Enter your target location',
             'mission': 'State clearly your mission',
-            'author': 'You are currently the author of this event'
+            'author': 'You are currently the author of this event',
+            'event_image': 'File size cannot exceed 500 KB'
         }
 
 

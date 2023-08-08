@@ -43,7 +43,8 @@ class VoteCard(models.Model):
     location = models.CharField(max_length=33)
     description = models.TextField(max_length=258)
     expire = models.DateField()
-    event_image = CloudinaryField('image', default='placeholder')
+    event_image = CloudinaryField('image',
+                                  default='placeholder')
     vote_record = models.ManyToManyField('musa.UserProfile',
                                          through='VoteRecord',
                                          related_name='user_votes', blank=True)

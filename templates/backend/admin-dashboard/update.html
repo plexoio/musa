@@ -31,14 +31,18 @@
 
                         <!-- Messages -->
                         {% if messages %}
-                        <div class="card card-header-blue my-5 py-4 text-center text-white">
+                        <div class="alert card card-header-blue my-5 py-4 text-center text-white alert-dismissible"
+                            role="alert">
                             <div class="card-body">
                                 {% for message in messages %}
                                 <p {% if message.tags %} class="{{ message.tags }} mb-0" {% endif %}>{{ message }}</p>
                                 {% endfor %}
                             </div>
+                            <button type="button" class="btn-close text-white" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
                         </div>
                         {% endif %}
+                        
                         <!-- Title  -->
                         <div class="mb-3">
                             <label for="title" class="form-label"><strong>Title</strong></label>

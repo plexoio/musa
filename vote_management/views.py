@@ -16,6 +16,7 @@ from .models import VoteCard, VoteRecord, ElectedPerson, STATUS
 from musa.forms import (UserVoteCardCreationForm,
                         AdminVoteCardCreationForm,
                         ElectedPersonForm)
+from .image_validation import validate_image_size
 
 # HOMEPAGE DISPLAY
 
@@ -283,6 +284,14 @@ class UserVoteCardCreation(UserRequiredMixin, View):
         person_formset = ElectedPersonFormSet(
             request.POST, queryset=ElectedPerson.objects.none())
 
+        # Check the image size here
+        uploaded_image = request.FILES.get('event_image')
+        if uploaded_image:
+            max_upload_size = 500000
+            if uploaded_image.size > max_upload_size:
+                form.add_error('event_image',
+                               "File size must not exceed 500KB.")
+
         if form.is_valid() and person_formset.is_valid():
             vote_card = form.save(commit=False)
             vote_card.author = request.user
@@ -410,10 +419,11 @@ class AdminVoteCardDetailView(BaseAdminVoteCardDetailView):
 
         uploaded_image = request.FILES.get(
             'event_image')
-        if uploaded_image:
+        if uploaded_image and validate_image_size(request, uploaded_image):
             event.event_image = uploaded_image
 
         event.save()
+
         messages.success(
             request, "Congratulations! The VoteCard has been Updated!")
         return redirect('admin_card_update', slug=event.slug)
@@ -438,9 +448,8 @@ class EventApprovalDetailView(AdminVoteCardDetailView):
 
         uploaded_image = request.FILES.get(
             'event_image')
-        if uploaded_image:
-            upload = upload(uploaded_image)
-            event.event_image = upload['url']
+        if uploaded_image and validate_image_size(request, uploaded_image):
+            event.event_image = uploaded_image
 
         event.save()
 
@@ -471,6 +480,14 @@ class AdminVoteCardCreation(AdminRequiredMixin, View):
             VoteCard, ElectedPerson, form=ElectedPersonForm, extra=0)
         person_formset = ElectedPersonFormSet(
             request.POST, queryset=ElectedPerson.objects.none())
+
+        # Check the image size here
+        uploaded_image = request.FILES.get('event_image')
+        if uploaded_image:
+            max_upload_size = 500000
+            if uploaded_image.size > max_upload_size:
+                form.add_error('event_image',
+                               "File size must not exceed 500KB.")
 
         if form.is_valid() and person_formset.is_valid():
             vote_card = form.save(commit=False)

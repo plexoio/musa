@@ -48,6 +48,7 @@ At the end of the development we did again another round of CI Python Linter, ma
 
 Lighthouse provided analysis across several facets of our application. Although not mandatory, we complemented its use with GT-Metrix to ensure the delivery of a quality product. The results met our expectations.
 
+![ERD Diagram Image](https://github.com/plexoio/musa/blob/main/documentation/assets/img/testing/cilinter.png)
 
 ###
 
@@ -81,6 +82,8 @@ For other issues, we suggest refreshing the page or clearing cache files. If pro
 
 Concise explanation of why Django, Bootstrap, and PostgreSQL are considered safe:
 
+### Musa's system
+
 1. **Django**:
    - **Framework Design**: Django follows the "batteries-included" philosophy and provides built-in protection against many common security threats like SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF).
    - **Secure Defaults**: By default, Django configurations are set to be secure, ensuring developers don't accidentally expose vulnerabilities.
@@ -97,3 +100,51 @@ Concise explanation of why Django, Bootstrap, and PostgreSQL are considered safe
    - **Encryption**: PostgreSQL supports data encryption both at rest and in transit, protecting sensitive data from unauthorized access.
 
 All three tools prioritize security in their design and implementation. However, it's essential for us to stay updated with the latest versions and best practices to ensure maximum safety.
+
+### Extra security & Accessibility
+
+1. **`rel` attribute**: For links that lead to external websites (especially on a different domain), it's a good idea to add `rel="noopener noreferrer"` to the anchor tags. This ensures that the new page cannot access your `window` object via `window.opener`, and it doesn't leak referrer information to the new page. This is especially useful if you're linking to sites that you don't control.
+
+2. **`target` attribute**: If you want the links to open in a new tab or window, add `target="_blank"` to the anchor tags. This, combined with the `rel` attribute mentioned above, is a common combination for external links.
+
+3. **`aria-label` or `title` attribute**: To make your links more accessible, especially since they only contain icons and no text, you can use the `aria-label` attribute to describe the purpose of the link to screen readers. Alternatively, you can use the `title` attribute to provide a tooltip when users hover over the link.
+
+We have applied them to all external linking:
+
+```html
+<li class="me-4">
+   <a href="" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+   </a>
+</li>
+
+<li class="me-4">
+   <a href="" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+   </a>
+</li>
+
+<li class="me-4">
+   <a href="" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+   </a>
+</li>
+
+<li class="me-4">
+   <a href="" target="_blank" rel="noopener noreferrer" aria-label="Google">
+      <i class="fab fa-google"></i>
+   </a>
+</li>
+
+<li class="me-4">
+   <a href="" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+   </a>
+</li>
+
+<li class="me-4">
+   <a href="" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+   </a>
+</li>
+```
