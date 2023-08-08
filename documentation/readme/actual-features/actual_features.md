@@ -37,15 +37,17 @@ Contains essential links, platform information, and other resources for users to
 
 ## Voting Page
 
+![Voting Page](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual6.png)
+
 ### Card Features
 Details the specifics of a voting event, including its description, candidates, duration, and more.
 
-![Card Features](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual6.png)
+![Card Features](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual7.png)
 
 ### Vote Feedback
 Allows users to know the results of their actions taken related to the voting event.
 
-![Feedback](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual7.png)
+![Feedback](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual8.png)
 
 ---
 
@@ -54,41 +56,43 @@ Allows users to know the results of their actions taken related to the voting ev
 ### Login
 Provides a secure interface for users to access their accounts using their credentials.
 
-![Login](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual8.png)
+![Login](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual9.png)
 
 ### Signup
 Allows new users to join the platform by creating an account.
 
-![Signup](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual9.png)
+![Signup](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual10.png)
 
 ---
 
 ### User Dashboard
 
+![User Dashboard](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual11.png)
+
 #### Settings
 Where users can adjust their personal information, preferences, and account settings (limited).
 
-![Settings](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual10.png)
+![Settings](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual12.png)
 
 #### Create Event (see more below)
 Allows users to initiate new voting events, setting up the necessary details and criteria.
 
-![Create Event](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual11.png)
+![Create Event](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual13.png)
 
 #### My Events
 Displays a list of events created by the user, showing their status and metrics.
 
-![My Events](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual12.png)
+![My Events](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual14.png)
 
 #### My Votes
 Provides an overview of the events the user has participated in, detailing their choices (limiting data for privacy).
 
-![My Votes](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual13.png)
+![My Votes](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual15.png)
 
 #### My Role
 Describes the user's permissions, roles, and capabilities within the platform.
 
-![My Role](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual14.png)
+![My Role](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual16.png)
 
 ---
 
@@ -97,7 +101,7 @@ Describes the user's permissions, roles, and capabilities within the platform.
 #### Settings
 Where admins can adjust their personal information, preferences, and account settings (more extensive).
 
-![Settings](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual15.png)
+![Settings](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual17.png)
 
 #### User Management (Future Feature)
 - NA
@@ -105,17 +109,17 @@ Where admins can adjust their personal information, preferences, and account set
 #### Created
 Shows a list of events created by users & admins.
 
-![Created](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual16.png)
+![Created](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual18.png)
 
 #### Pending
 Lists events waiting for administrative review or approval.
 
-![Pending](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual17.png)
+![Pending](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual19.png)
 
 #### Admin - Create (See more below)
 Management tools specifically designed for administrative tasks like creating events.
 
-![Admin](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual18.png)
+![Admin](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual20.png)
 
 #### User - Vote History
 Allows the admin to view all votes made so far by users (limiting data for privacy).
