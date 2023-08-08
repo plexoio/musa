@@ -119,12 +119,10 @@ Lists events waiting for administrative review or approval.
 #### Admin - Create (See more below)
 Management tools specifically designed for administrative tasks like creating events.
 
-![Admin](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual21.png)
-
 #### User - Vote History
 Allows the admin to view all votes made so far by users (limiting data for privacy).
 
-![User](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual22.png)
+![Admin](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual21.png)
 
 #### My Role
 Details the administrative permissions and capabilities.
