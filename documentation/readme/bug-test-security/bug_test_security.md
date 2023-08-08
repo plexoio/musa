@@ -32,25 +32,35 @@ We have discovered that using the `user story` as the `expected result` in manua
 |       Use of FAQ        |        As a user, I want to find a FAQ section on the support page, to see videos or articles for troubleshooting or other questions related to the voting system.         |        NA      |   PASS   |
 |       Use of the full Voting Card        |        As a User I want to see displayed in a structured manner the winner, the challengers, and the vote numbers So that I have a transparent view of the event, especially for tied results.         |        NA      |   PASS   |
 
-### Google Developer's console
-We went through every page of the site analising any possible failures. We found only the favicon.ico mission on the admin & user's dashboard and the settings link on the menu that needed some logic based on user's role.
+### Google Developer's Console
+The Google Console played a pivotal role in diagnosing and resolving our 'etag' error. During the final testing phase, we monitored the console while running the app to detect potential errors. The results were impressive - no errors were detected, and the app functioned seamlessly.
 
-- All issues solved.
+We refreshed the page multiple times to simulate possible connection errors, but none were observed, affirming the app's stability.
+
+We meticulously reviewed every page of the site to identify any potential issues. We discovered a missing favicon.ico on both the admin and user dashboards. Additionally, the settings link in the menu required some logic adjustments based on the user's role.
+
+- All issues have been resolved.
 
 ### CI Python Linter by Code Institute
-Adhering to PEP8 standards 100% of the time can be challenging. Therefore, we regularly used the CI Python Linter during development. This tool was invaluable in maintaining code structure and enhancing the overall presentation.
+Consistently adhering to PEP8 standards can be a tall order. For this reason, we frequently utilized the CI Python Linter throughout the development process. This tool proved invaluable in upholding code structure and enhancing the code's overall aesthetics.
 
-At the end of the development we did again another round of CI Python Linter, making sure everything is okey and doing the necessary changes.
+At the development's conclusion, we performed another round with the CI Python Linter, ensuring everything was in order and implementing necessary adjustments.
 
-![ERD Diagram Image](https://github.com/plexoio/musa/blob/main/documentation/assets/img/testing/cilinter.png)
+![CI Python Linter](https://github.com/plexoio/musa/blob/main/documentation/assets/img/testing/cilinter.png)
 
 ### Lighthouse
+Lighthouse offered comprehensive analysis across various aspects of our application. Although its use wasn't obligatory, we paired it with GT-Metrix to guarantee a high-quality product delivery. The outcomes were in line with our expectations.
 
-Lighthouse provided analysis across several facets of our application. Although not mandatory, we complemented its use with GT-Metrix to ensure the delivery of a quality product. The results met our expectations.
+![Lighthouse](https://github.com/plexoio/musa/blob/main/documentation/assets/img/testing/lighthouse.png)
 
-![ERD Diagram Image](https://github.com/plexoio/musa/blob/main/documentation/assets/img/testing/cilinter.png)
+### GTMetrix
+Leveraging its distinct capabilities, GT-Metrix became an integral component of our testing regimen. It furnished us with invaluable recommendations, all of which were considered non-critical for this version. The app is performing optimally and is primed for release.
 
-###
+![GTMetrix](https://github.com/plexoio/musa/blob/main/documentation/assets/img/testing/gtmetrix.png)
+
+### Responsiveness
+
+We tested our app across various screen sizes both during and after development. This seamless adaptability can be attributed to the capabilities of Bootstrap and the vendor templates we employed.
 
 ## Bugs
 
