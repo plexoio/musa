@@ -98,10 +98,12 @@ Describes the user's permissions, roles, and capabilities within the platform.
 
 ### Admin Dashboard
 
+![Admin Dashboard](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual17.png)
+
 #### Settings
 Where admins can adjust their personal information, preferences, and account settings (more extensive).
 
-![Settings](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual17.png)
+![Settings](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual18.png)
 
 #### User Management (Future Feature)
 - NA
@@ -109,27 +111,27 @@ Where admins can adjust their personal information, preferences, and account set
 #### Created
 Shows a list of events created by users & admins.
 
-![Created](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual18.png)
+![Created](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual19.png)
 
 #### Pending
 Lists events waiting for administrative review or approval.
 
-![Pending](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual19.png)
+![Pending](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual20.png)
 
 #### Admin - Create (See more below)
 Management tools specifically designed for administrative tasks like creating events.
 
-![Admin](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual20.png)
+![Admin](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual21.png)
 
 #### User - Vote History
 Allows the admin to view all votes made so far by users (limiting data for privacy).
 
-![User](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual19.png)
+![User](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual22.png)
 
 #### My Role
 Details the administrative permissions and capabilities.
 
-![My Role](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual20.png)
+![My Role](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual23.png)
 
 ---
 
@@ -138,12 +140,12 @@ Details the administrative permissions and capabilities.
 #### User Event Creation
 Process through which users can create and customize their voting events.
 
-![User Event Creation](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual21.png)
+![User Event Creation](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual24.png)
 
 #### Admin Event Creation
 Process through which admins can create and customize their voting events(more extensive than the user's).
 
-![User Event Creation](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual22.png)
+![User Event Creation](https://github.com/plexoio/musa/blob/main/documentation/assets/img/actual-features/actual25.png)
 
 ---
 
