@@ -99,7 +99,7 @@ The content within this section isn't just a result of the author's expertise, b
 
 ### Dive Deeper:
 
-1. **[General Set up Instructions](https://github.com/plexoio/musa/blob/main/documentation/developer/instructions.md)**: 
+1. **[General Set up Instructions](https://github.com/plexoio/musa/blob/main/documentation/readme/set-up-and-deployment/set_up_and_deployment.md)**: 
    Begin your journey here. This guide provides step-by-step procedures on setting up the project, ensuring you can get started without any hiccups.
 
 2. **[ERD Reminder](https://github.com/plexoio/musa/blob/main/documentation/developer/reminder.md)**: 
