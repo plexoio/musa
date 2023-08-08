@@ -73,7 +73,7 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
 4. [Agile Development](https://github.com/plexoio/musa/blob/main/documentation/readme/agile-development/agile-development.md)
 5. [Bugs, Testing & Security](https://github.com/plexoio/musa/blob/main/documentation/readme/bug-test-security/bug_test_security.md)
 6. [Actual Features Explained](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/actual_features.md)
-7. [Future Features Explained](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/future_features.md)
+7. [Future Features Explained](https://github.com/plexoio/musa/blob/main/documentation/readme/future-features/future_features.md)
 8. [Technologies Used](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/technologies.md)
 9. [Workspace Set Up & Deployment Process](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/deployment.md)
 10. [Developer's needs](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/deployment.md)
