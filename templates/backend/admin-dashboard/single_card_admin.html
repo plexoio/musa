@@ -27,6 +27,10 @@
     <!-- Campaign Row-->
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-6 mb-5">
+            <div class="text-center">
+                <a class="my-0" href="{% url 'admin_all_events' %}">Return</a>
+            </div>
+            <hr>
             <div class="card h-100">
                 {% if event.status == 1 or event.status == 3 %}
                 <div class="card-header card-header-green text-center h6">{{ event.get_status_display }}</div>

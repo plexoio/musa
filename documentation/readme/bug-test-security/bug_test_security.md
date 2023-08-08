@@ -32,34 +32,54 @@ We have discovered that using the `user story` as the `expected result` in manua
 |       Use of FAQ        |        As a user, I want to find a FAQ section on the support page, to see videos or articles for troubleshooting or other questions related to the voting system.         |        NA      |   PASS   |
 |       Use of the full Voting Card        |        As a User I want to see displayed in a structured manner the winner, the challengers, and the vote numbers So that I have a transparent view of the event, especially for tied results.         |        NA      |   PASS   |
 
-## Bug
+### 
+###
+###
+###
 
-As with any project, there may be some bugs that we have encountered. Here are some of the issues we've come across:
+## Bugs
 
-#### a) Website is too slow
+Like any project, ours has had its share of bugs. Below are some of the challenges we've faced:
 
-We tried our best to keep everything on a single page, making a powerful web application that works efficiently on every device. However, we cannot guarantee that it will work the same on devices with low memory or processing capacities.
+#### a) Website Performance
+We endeavored to consolidate everything using Django, Bootstrap, JQuery, PostgreSQL database and other technologies, aiming for a robust web application that functions seamlessly across all devices. However, we cannot assure consistent performance on devices with limited memory or processing capabilities.
 
-#### b) ErrorKey: 'etag' from Cloudinary (third party service)
+#### b) Cloudinary Error: KeyError 'etag'
+We encountered an error that prevented us from submitting our project to the Code Institute on time. Despite many hours of debugging with tutor assistance, the only resolution was to create a 'custom_storage.py' file to circumvent the problem.
 
-For a reason we have encountered this error message that would not allow us to submit our project on time to Code Institute. After spending many hours of debugging with tutor support, the only solution was to bypass this issue by creating a 'custom_storage.py'.
+**Error breakdown:**
 
-Error breakdown:
+> During the execution of the `collectstatic` command, Django attempted to gather and process static files. The `cloudinary_storage` package managed some or all of these files. As part of its routine, `cloudinary_storage` checks for duplicate content on Cloudinary to avoid redundant uploads. It does this by verifying the ETAG header in Cloudinary's response. However, the ETAG header was absent, resulting in a KeyError.
 
-`When we ran the collectstatic command, Django tried to collect and process static files. The cloudinary_storage package was being used to handle some or all of these static files. As part of its process, cloudinary_storage checks if a file with the same content already exists on Cloudinary to avoid redundant uploads. It does this by checking the ETAG header in the response from Cloudinary. However, in this case, it seems the ETAG header was not present in the response, leading to a KeyError.`
+#### c) Event Completion Status
+Events marked as expired only transition to "complete" after a user attempts to vote. This behavior is intentional for performance reasons. In the future, we might programmatically update the status upon loading, similar to the vote count or progress bar.
 
-#### d) The expired events only turn to complete after a user tries to vote
+#### d) Social Media Links
+At the moment, social media buttons direct users to the primary pages, intended solely for demonstration.
 
-It is normal and we have kept it like this of performance reasons, however in the future we may programically set it to be update it on loading as the vote count or progress bar.
+#### e) Vote Events Deletion
+Indeed, in this version, VoteCards are only marked as completed, preventing further voting. Only a superuser or the website owner can delete a VoteCard. Deleting a VoteCard will also remove associated elected persons and vote card records, effectively erasing all data linked to that event.
 
-#### e) Social media issue
+#### Other Potential Bugs
+For other issues, we suggest refreshing the page or clearing cache files. If problems persist, it's likely not an issue with the Musa project but may pertain to third-party services or the specific settings and capabilities of your device.
 
-Currently, social media buttons only point to the main pages for demonstration purposes.
+## Security
 
-#### f) Vote Events would not be deleted by themselves
+Concise explanation of why Django, Bootstrap, and PostgreSQL are considered safe:
 
-That's correct, for this iteration VoteCards will be only set to completed and it will not allow any user to vote again. The VoteCard can be deleted only from a superuser or the site owner. Deleting one VoteCard will erase in cascade the elected persons and vote card records in the database, in short, all data related to that event will be erased as well.
+1. **Django**:
+   - **Framework Design**: Django follows the "batteries-included" philosophy and provides built-in protection against many common security threats like SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF).
+   - **Secure Defaults**: By default, Django configurations are set to be secure, ensuring developers don't accidentally expose vulnerabilities.
+   - **Regular Updates**: The Django team frequently releases updates and patches to address any identified security concerns.
 
-#### Other bugs
+2. **Bootstrap**:
+   - **Sanitized Inputs**: Bootstrap's JavaScript plugins are designed to automatically sanitize inputs to protect against XSS attacks.
+   - **Trusted Development**: Bootstrap is maintained by a dedicated team and has a large community that helps in identifying and fixing potential vulnerabilities.
+   - **Consistent Updates**: The Bootstrap team provides regular updates to keep the library secure against new threats.
 
-For other related bugs, we recommend always refreshing the page or deleting cache files. The problem is not with the Musa project; it could be related to third-party issues or related to your own device settings and capabilities.
+3. **PostgreSQL**:
+   - **Robust Access Controls**: PostgreSQL offers fine-grained access controls, allowing administrators to define who can access the database and what actions they can perform.
+   - **SQL Injection Prevention**: PostgreSQL has built-in measures to prevent SQL injection attacks, especially when developers use parameterized queries.
+   - **Encryption**: PostgreSQL supports data encryption both at rest and in transit, protecting sensitive data from unauthorized access.
+
+All three tools prioritize security in their design and implementation. However, it's essential for us to stay updated with the latest versions and best practices to ensure maximum safety.

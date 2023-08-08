@@ -4,6 +4,10 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
+            <div class="my-3">
+                <a class="my-0" href="{% url 'admin_all_events' %}">Return</a>
+            </div>
+            <hr>
             <h1 class="mt-4">Event Update</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Limited Update</li>
@@ -38,8 +42,8 @@
                         <!-- Title  -->
                         <div class="mb-3">
                             <label for="title" class="form-label"><strong>Title</strong></label>
-                            <input type="text" name="title" class="form-control" id="title" maxlength="20" value="{{ event.title }}"
-                                required>
+                            <input type="text" name="title" class="form-control" id="title" maxlength="20"
+                                value="{{ event.title }}" required>
                             {% if event.title.errors %}
                             <div class="errors">{{ event.title.errors }}</div>
                             {% endif %}
