@@ -43,25 +43,34 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
 
 - **Deployed Link**: [**Musa**](https://musa-voting-077e0d53fa15.herokuapp.com/)
 
-### User (set back to Not Verified for testing)
+### User
 
 - **Username**: user
 - **Password**: musa12345678
+- **Role**: Not Publisher, Not Admin & Not verified (set back to Not Verified for testing)
 
-### Publisher (Verified & Publisher)
+### Voter
+
+- **Username**: voter
+- **Password**: musa12345678
+- **Role**: Verified, Not Publisher
+
+### Publisher
 
 - **Username**: codeinstitute
 - **Password**: musa12345678
+- **Role**: Verified & Publisher
 
-### Administrator (Verified & Admin)
+### Administrator
 
 - **Username**: frank
 - **Password**: musa12345678
+- **Role**: Verified & Admin
 
 ### Superuser (Only for Code Institute)
 
 - **Username**: Musa
-- **Password**: `On project submission`
+- **Password**: `Sent on project submission`
 
 ---
 
