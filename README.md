@@ -84,7 +84,7 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
 6. [Actual Features Explained](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/actual_features.md)
 7. [Future Features Explained](https://github.com/plexoio/musa/blob/main/documentation/readme/future-features/future_features.md)
 8. [Technologies Used](https://github.com/plexoio/musa/blob/main/documentation/readme/tech-used/tech_used.md)
-9. [Workspace Set Up & Deployment Process](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/deployment.md)
+9. [Workspace Set Up & Deployment Process](https://github.com/plexoio/musa/blob/main/documentation/readme/set-up-and-deployment/set_up_and_deployment.md)
 10. [Developer's needs](https://github.com/plexoio/musa/blob/main/documentation/assets/readme/deployment.md)
 
 ## Credits
@@ -96,7 +96,7 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
 - [Google](https://google.com): for programming queries.
 - [Code Institute](https://codeinstitute.net/): for providing proper education and a template this time. All the knowledge was applied throughout this project.
 - [Programminghub](https://programminghub.io/): where I learned the basics before joining Code Institute.
-- [ChatGPT](https://chat.openai.com/chat), was used for the following queries:
+- [ChatGPT](https://chat.openai.com/chat): it was used for the following queries:
     1. Used for general consulting.
     2. Copywriting and proofreading.
     3. Used to validate code.

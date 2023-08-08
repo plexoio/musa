@@ -65,7 +65,7 @@ Ensure these top-level directories are in place:
 - `static`
 - `templates`
 
-## 4. Deployment to Heroku
+## 4. Deployment to Heroku (see more below for details)
 
 ### **Procfile Creation**
 ```bash
