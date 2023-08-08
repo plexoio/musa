@@ -32,7 +32,9 @@ We have discovered that using the `user story` as the `expected result` in manua
 |       Use of FAQ        |        As a user, I want to find a FAQ section on the support page, to see videos or articles for troubleshooting or other questions related to the voting system.         |        NA      |   PASS   |
 |       Use of the full Voting Card        |        As a User I want to see displayed in a structured manner the winner, the challengers, and the vote numbers So that I have a transparent view of the event, especially for tied results.         |        NA      |   PASS   |
 
-### 
+### Google Developer's console
+We went through every page of the site analising any possible failures. We found only the favicon.ico mission on the admin & user's dashboard and the settings link on the menu that needed some logic based on user's role.
+
 ###
 ###
 ###

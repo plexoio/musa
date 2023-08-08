@@ -74,8 +74,16 @@
                     <ul class="dropdown-menu dropdown-menu-light mt-2">
                         {% if user.is_authenticated %}
                         <li><a class="dropdown-item" href="{% url 'account_login' %}">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="{% url 'user_settings' %}">Settings</a></li>
-                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+
+                            {% if request.user.role == 0 %}
+                            <li><a class="dropdown-item" href="{% url 'user_settings' %}">Settings</a></li>
+                            {% elif request.user.role == 1  %}
+                            <li><a class="dropdown-item" href="{% url 'user_settings' %}">Settings</a></li>
+                            {% elif request.user.role == 2  %}
+                            <li><a class="dropdown-item" href="{% url 'admin_settings' %}">Settings</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                            {%endif%}
+                            
                         {% else %}
                         <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
                         <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a></li>
