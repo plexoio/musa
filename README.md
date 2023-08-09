@@ -32,7 +32,7 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
 
 4. **Deployment Restrictions**: This iteration is not meant for public deployment or utilization. Its primary goal is demonstration. Although the system is operational, it is recommended to wait for subsequent versions for broader use.
 
-5. **Future Deployment by Author**: Post evaluation by Code Institute, the author intends to host the software independently, aiming to facilitate community-driven voting events.
+5. **Future Deployment by Author**: Post evaluation by Code Institute, the author intends to host his software somewhere else, aiming to facilitate community-driven voting events, in a dedicated hosting and domain service.
 
 ---
 
@@ -103,6 +103,6 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
     4. Used to confirm whether or not my code snippet is correct after many minutes or even hours of self-debugging.
     5. Understand the use of different keywords, know libraries and modules and more.
 
-## Authors 
+## Author
 
 - [@plexoio](https://www.github.com/plexoio) | Frank Arellano
