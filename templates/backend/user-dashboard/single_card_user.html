@@ -54,11 +54,11 @@
                             {% endif %}
                         </div>
                         <div class="col-7 d-inline-block">
-                            <span class="">
-                                <h5 class="card-title">{{ event.title }}</h5>
+                            <div>
+                                <p class="card-title h5">{{ event.title }}</p>
                                 <p class="mission my-0 fs-6"> {{ event.mission }}</p>
                                 <small class="location my-0"> {{ event.location }}</small>
-                            </span>
+                            </div>
                         </div>
                     </div>
                     <!-- Card Description -->
@@ -98,14 +98,14 @@
                                     <span class="card-text">{{ event.number_of_votes }}<br> Votes</span>
                                 </div>
                             </span>
-                            <span class="d-inline-block px-3 progress-container">
+                            <div class="d-inline-block px-3 progress-container">
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" style="width: {{ event.progress }}%"
                                         aria-valuenow="{{ event.progress }}" aria-valuemin="0" aria-valuemax="100">
-                                        <span class="padding-progress">{{ event.progress }}%</span>
+                                        <span >{{ event.progress }}%</span>
                                     </div>
                                 </div>
-                            </span>
+                            </div>
                             <small>{{ event.time_left }} days</small>
                         </div>
                     </div>

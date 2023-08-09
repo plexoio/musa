@@ -58,13 +58,12 @@
                                 class="img-fluid img-thumbnail rounded float-start mx-2" width="150" height="150">
                             {% endif %}
                         </div>
-
                         <div class="col-8 d-inline-block">
-                            <span class="">
-                                <h5 class="card-title">{{ card.title }}</h5>
+                            <div>
+                                <p class="card-title h5">{{ card.title }}</p>
                                 <p class="mission my-0 fs-6"> {{ card.mission }}</p>
                                 <small class="location my-0"> {{ card.location }}</small>
-                            </span>
+                            </div>
                         </div>
                     </div>
 
@@ -79,19 +78,19 @@
 
                     <!-- VOTES & PROGRESS BAR -->
                     <div class="text-center">
-                        <span class="card d-inline-block">
-                            <div class="card-body py-1 px-3 text-center">
-                                <span class="card-text">{{ card.number_of_votes }}<br> Votes</span>
-                            </div>
+                        <span class="card d-inline-block py-3">
+                            <span class="card-body">
+                                <span class="card-text">{{ card.number_of_votes }} Votes</span>
+                            </span>
                         </span>
-                        <span class="d-inline-block px-3 progress-container">
+                        <div class="d-inline-block px-3 progress-container">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: {{ card.progress }}%"
                                     aria-valuenow="{{ card.progress }}" aria-valuemin="0" aria-valuemax="100">
-                                    <span class="padding-progress">{{ card.progress }}%</span>
+                                    <span >{{ card.progress }}%</span>
                                 </div>
                             </div>
-                        </span>
+                        </div>
                         <small>{{ card.time_left }} days</small>
                     </div>
                 </div>
@@ -137,11 +136,11 @@
                             {% endif %}
                         </div>
                         <div class="col-8 d-inline-block">
-                            <span class="">
-                                <h5 class="card-title">{{ official.title }}</h5>
+                            <div>
+                                <p class="card-title h5">{{ official.title }}</p>
                                 <p class="mission my-0 fs-6"> {{ official.mission }}</p>
                                 <small class="location my-0"> {{ official.location }}</small>
-                            </span>
+                            </div>
                         </div>
                     </div>
                     <!-- Card Description -->
@@ -155,19 +154,19 @@
                     </div>
                     <!-- VOTES & PROGRESS BAR -->
                     <div class="text-center">
-                        <span class="card d-inline-block">
-                            <div class="card-body py-1 px-3 text-center">
-                                <span class="card-text">{{ official.number_of_votes }}<br> Votes</span>
-                            </div>
+                        <span class="card d-inline-block py-3">
+                            <span class="card-body">
+                                <span class="card-text">{{ official.number_of_votes }} Votes</span>
+                            </span>
                         </span>
-                        <span class="d-inline-block px-3 progress-container">
+                        <div class="d-inline-block px-3 progress-container">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: {{ official.progress }}%"
                                     aria-valuenow="{{ official.progress }}" aria-valuemin="0" aria-valuemax="100">
-                                    <span class="padding-progress">{{ official.progress }}%</span>
+                                    <span >{{ official.progress }}%</span>
                                 </div>
                             </div>
-                        </span>
+                        </div>
                         <small>{{ official.time_left }} days</small>
                     </div>
                 </div>
@@ -214,11 +213,11 @@
                             {% endif %}
                         </div>
                         <div class="col-8 d-inline-block">
-                            <span class="">
-                                <h5 class="card-title">{{ community.title }}</h5>
+                            <div>
+                                <p class="card-title h5">{{ community.title }}</p>
                                 <p class="mission my-0 fs-6"> {{ community.mission }}</p>
                                 <small class="location my-0"> {{ community.location }}</small>
-                            </span>
+                            </div>
                         </div>
                     </div>
                     <!-- Card Description -->
@@ -231,19 +230,19 @@
                     </div>
                     <!-- VOTES & PROGRESS BAR -->
                     <div class="text-center">
-                        <span class="card d-inline-block">
-                            <div class="card-body py-1 px-3 text-center">
-                                <span class="card-text">{{ community.number_of_votes }}<br> Votes</span>
-                            </div>
+                        <span class="card d-inline-block py-3">
+                            <span class="card-body">
+                                <span class="card-text">{{ community.number_of_votes }} Votes</span>
+                            </span>
                         </span>
-                        <span class="d-inline-block px-3 progress-container">
+                        <div class="d-inline-block px-3 progress-container">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: {{ community.progress }}%"
                                     aria-valuenow="{{ community.progress }}" aria-valuemin="0" aria-valuemax="100">
-                                    <span class="padding-progress">{{ community.progress }}%</span>
+                                    <span >{{ community.progress }}%</span>
                                 </div>
                             </div>
-                        </span>
+                        </div>
                         <small>{{ community.time_left }} days</small>
                     </div>
                 </div>

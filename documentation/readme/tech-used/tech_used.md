@@ -21,6 +21,8 @@ Every project, including ours, relies on a combination of tools and practices to
 13. **[Google Translate](https://translate.google.com/)**: For refining English content.
 14. **[Code Institute](https://codeinstitute.net/)**: A primary resource for project knowledge and guidance.
 15. **[Stackoverflow](https://stackoverflow.com/)**: A go-to for troubleshooting and concept validation.
+16. **[HTML Validator](https://validator.w3.or)**: To validate our HTML templates.
+17. **[CSS Validator - W3C](https://jigsaw.w3.org/css-validator/validator)**: To validate our CSS custom file.
 
 ### Design Elements
 

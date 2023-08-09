@@ -1,8 +1,8 @@
-## **ERD & Code Recommendations & Voting System Architecture**
-
 ## [HOME | RETURN](https://github.com/plexoio/musa)
 
 # Developer's Snack
+
+## **ERD & Code Recommendations & Voting System Architecture**
 
 ### **Table of Contents**
 1. [Model Relationships](#model-relationships)

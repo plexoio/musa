@@ -40,11 +40,11 @@
                             {% endif %}
                         </div>
                         <div class="col-8 d-inline-block">
-                            <span class="">
-                                <h5 class="card-title">{{ card.title }}</h5>
+                            <div>
+                                <p class="card-title h5">{{ card.title }}</p>
                                 <p class="mission my-0 fs-6"> {{ card.mission }}</p>
                                 <small class="location my-0"> {{ card.location }}</small>
-                            </span>
+                            </div>
                         </div>
                     </div>
 
@@ -59,19 +59,19 @@
 
                     <!-- VOTES & PROGRESS BAR -->
                     <div class="text-center">
-                        <span class="card d-inline-block">
-                            <div class="card-body py-1 px-3 text-center">
-                                <span class="card-text">{{ card.number_of_votes }}<br> Votes</span>
-                            </div>
+                        <span class="card d-inline-block py-3">
+                            <span class="card-body">
+                                <span class="card-text">{{ card.number_of_votes }} Votes</span>
+                            </span>
                         </span>
-                        <span class="d-inline-block px-3 progress-container">
+                        <div class="d-inline-block px-3 progress-container">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: {{ card.progress }}%"
                                     aria-valuenow="{{ card.progress }}" aria-valuemin="0" aria-valuemax="100">
-                                    <span class="padding-progress">{{ card.progress }}%</span>
+                                    <span>{{ card.progress }}%</span>
                                 </div>
                             </div>
-                        </span>
+                        </div>
                         <small>{{ card.time_left }} days</small>
                     </div>
                 </div>

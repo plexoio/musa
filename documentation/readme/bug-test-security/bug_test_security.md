@@ -32,6 +32,14 @@ We have discovered that using the `user story` as the `expected result` in manua
 |       Use of FAQ        |        As a user, I want to find a FAQ section on the support page, to see videos or articles for troubleshooting or other questions related to the voting system.         |        NA      |   PASS   |
 |       Use of the full Voting Card        |        As a User I want to see displayed in a structured manner the winner, the challengers, and the vote numbers So that I have a transparent view of the event, especially for tied results.         |        NA      |   PASS   |
 
+### HTML Validator
+
+Many issues found and all were solved, Jinja templating language made it a bit hard at first.
+
+### CSS Validator - W3C
+
+No issues were found in our custom css at 'static/custom/css/style.css'.
+
 ### Google Developer's Console
 The Google Console played a pivotal role in diagnosing and resolving our 'etag' error. During the final testing phase, we monitored the console while running the app to detect potential errors. The results were impressive - no errors were detected, and the app functioned seamlessly.
 
