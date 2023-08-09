@@ -9,6 +9,19 @@
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Update your information or delete your account</li>
             </ol>
+            
+            <!-- Messages -->
+            {% if messages %}
+            <div class="row my-3 alert card card-header-green py-1 text-center text-white alert-dismissible"
+                role="alert">
+                <div class="col-12 card-body">
+                    {% for message in messages %}
+                    <p {% if message.tags %} class="{{ message.tags }} mb-0" {% endif %}>{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
 
             <form class="row g-3 needs-validation" method="POST" action="{% url 'user_settings' %}" novalidate>
                 {% csrf_token %}

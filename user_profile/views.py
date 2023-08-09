@@ -9,6 +9,7 @@ from django.views import View, generic
 from django.views.generic.edit import UpdateView, DeleteView
 from django import forms
 from django.core.exceptions import PermissionDenied
+from django.contrib import messages
 
 # Local imports
 from musa.models import UserProfile
@@ -62,7 +63,8 @@ class UserSettings(UpdateView):
         return self.request.user
 
     def get_success_url(self):
-        return reverse_lazy('user_settings')
+        messages.success(self.request, 'Your settings has been updated!')
+        return self.request.path
 
 # DELETE
 
@@ -88,6 +90,7 @@ class UserDelete(UserRequiredMixin, DeleteView):
         return self.request.user
 
     def get_success_url(self):
+        messages.success(self.request, 'Your account has been deleted!')
         return reverse_lazy('account_login')
 
     def delete(self, request, *args, **kwargs):
@@ -110,7 +113,8 @@ class UserPasswordChangeView(UserRequiredMixin, PasswordChangeView):
     context_object_name = 'user_change'
 
     def get_success_url(self):
-        return reverse('user_settings')
+        messages.success(self.request, 'Your password has changed!')
+        return self.request.path
 
 # ROLE
 

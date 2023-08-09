@@ -8,6 +8,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import logout
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy, reverse
+from django.contrib import messages
 
 # Local imports
 from musa.models import UserProfile
@@ -46,6 +47,8 @@ class AdminProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ['first_name', 'last_name', 'email', 'username']
 
+# UPDATE
+
 
 class AdminSettings(AdminRequiredMixin, UpdateView):
     """Handle Admin Data Update in settings"""
@@ -58,7 +61,9 @@ class AdminSettings(AdminRequiredMixin, UpdateView):
         return self.request.user
 
     def get_success_url(self):
-        return reverse('admin_settings')
+        messages.success(
+            self.request, 'Your account has been updated!')
+        return self.request.path
 
 
 class AdminPasswordChangeForm(PasswordChangeForm):
@@ -74,7 +79,9 @@ class AdminPasswordChangeView(AdminRequiredMixin, PasswordChangeView):
     context_object_name = 'admin_change'
 
     def get_success_url(self):
-        return reverse('admin_settings')
+        messages.success(
+            self.request, 'Your password has changed!')
+        return self.request.path
 
 # ROLE Display
 

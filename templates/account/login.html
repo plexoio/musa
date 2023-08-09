@@ -16,6 +16,22 @@
                             <div class="card-header">
                                 <h3 class="text-center font-weight-light my-4">{% trans "Sign In" %}</h3>
                             </div>
+
+                            <!-- Messages -->
+                            {% if messages %}
+                            <div class="alert m-3 card card-header-green py-1 text-center text-white alert-dismissible"
+                                role="alert">
+                                <div class="col-12 card-body">
+                                    {% for message in messages %}
+                                    <p {% if message.tags %} class="{{ message.tags }} mb-0" {% endif %}>{{ message }}
+                                    </p>
+                                    {% endfor %}
+                                </div>
+                                <button type="button" class="btn-close text-white" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                            {% endif %}
+
                             <div class="card-body">
 
                                 <form method="POST" action="{% url 'account_login' %}">
@@ -78,7 +94,8 @@
 
                                     <!-- Submit button -->
                                     <div class="col-12 text-center">
-                                        <button class="btn btn-primary-blue" type="submit">{% trans "Sign In" %}</button>
+                                        <button class="btn btn-primary-blue"
+                                            type="submit">{% trans "Sign In" %}</button>
                                     </div>
                                 </form>
 
@@ -86,7 +103,8 @@
                             <div class="card-footer text-center py-3">
                                 <div class="small">
                                     <p class="mb-0">{% blocktrans %}Not a member yet? Then please
-                                        <a class="text-decoration-none fw-semibold text-warning" href="{{ signup_url }}">sign up
+                                        <a class="text-decoration-none fw-semibold text-warning"
+                                            href="{{ signup_url }}">sign up
                                             now</a>{% endblocktrans %}
                                     </p>
                                 </div>
