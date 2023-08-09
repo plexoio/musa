@@ -35,17 +35,21 @@ In essence, Musa is harnessing the power of both Django and PostgreSQL to create
 | Attribute    | Type           | Unique  | Relationship    | Model Linked To                |
 |--------------|----------------|---------|-----------------|-------------------------------|
 | id           | PrimaryKey     | Yes     | -               | -                             |
-| title        | CharField(80)       | Yes     | -               | -                             |
+| title        | CharField(33)       | Yes     | -               | -                             |
 | category     | **ForeignKey**    | -       | One to many     | Category Model                |
-| mission      | CharField(80)       | -       | -               | -                             |
-| location     | CharField(80)       | -       | -               | -                             |
-| description  | TextField      | -       | -               | -                             |
-| image        | Cloudinary     | -       | -               | -                             |
-| vote_record  | **ManyToManyField**| -       | Many to many    | User Model through VoteRecord Model |
-| expire       | Datetime       | -       | -               | -                             |
+| mission      | CharField(33)       | -       | -               | -                             |
+| location     | CharField(33)       | -       | -               | -                             |
+| description  | TextField(258)     | -       | -               | -                             |
+| event_image  | CloudinaryField     | -       | -               | -                             |
+| vote_record  | **ManyToManyField**| -       | Many to many    | UserProfile Model through VoteRecord Model |
+| candidates  | **ManyToManyField**| -       | Many to many    | ElectedPerson Model |
+| expire       | DateField      | -       | -               | -                             |
 | author       | **ForeignKey**    | -       | One to many     | User Model                    |
-| slug         | SlugField      | Yes     | -               | -                             |
-| status       | Integer        | -       | -               | -                             |
+| slug         | SlugField(200)     | Yes     | -               | -                             |
+| status       | IntegerField        | -       | -               | -                             |
+| excerpt       | TextField        | -       | -               | -                             |
+| type       | IntegerField        | -       | -               | -                             |
+| created_on       | DataField        | -       | -               | -                             |
 
 ### Category Model
 
