@@ -81,7 +81,7 @@ class VoteRecord(models.Model):
     voter = models.ForeignKey(
         'musa.UserProfile', on_delete=models.CASCADE,
         related_name="voter_record")
-    vote_card = models.ForeignKey(
+    vote_card = models.ForeignKey(  # consider renaming in the future
         VoteCard, on_delete=models.CASCADE, related_name="votecard_record")
     elected_person = models.ForeignKey('ElectedPerson',
                                        on_delete=models.CASCADE,
@@ -96,10 +96,11 @@ class VoteRecord(models.Model):
 
 
 class ElectedPerson(models.Model):
-    """Model representing a person who can be elected in a vote."""
+    """Model representing a person who can be elected in a vote.
+    'name' can be False in the future if necessary"""
     name = models.CharField(max_length=80, unique=True)
     is_elected = models.BooleanField(default=False)
-    vote_card = models.ForeignKey(
+    vote_card = models.ForeignKey(  # consider renaming in the future
         VoteCard, on_delete=models.CASCADE,
         related_name="vote_candidate", blank=True)
 

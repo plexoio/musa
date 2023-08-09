@@ -28,6 +28,8 @@ In essence, Musa is harnessing the power of both Django and PostgreSQL to create
 
 ![ERD Diagram Image](https://github.com/plexoio/musa/blob/main/documentation/assets/img/erd/erd.png)
 
+- [Edrawmax](https://www.edrawmax.com/online/share.html?code=3cce5a7c28ec11ee94660a951ba8b83d): Check our ERD Online
+
 ## Markdown Table Models
 
 ### VoteCard Model
@@ -36,7 +38,7 @@ In essence, Musa is harnessing the power of both Django and PostgreSQL to create
 |--------------|----------------|---------|-----------------|-------------------------------|
 | id           | PrimaryKey     | Yes     | -               | -                             |
 | title        | CharField(33)       | Yes     | -               | -                             |
-| category     | **ForeignKey**    | -       | One to many     | Category Model                |
+| category     | **ForeignKey**    | -       | Many to one     | Category Model                |
 | mission      | CharField(33)       | -       | -               | -                             |
 | location     | CharField(33)       | -       | -               | -                             |
 | description  | TextField(258)     | -       | -               | -                             |
@@ -44,7 +46,7 @@ In essence, Musa is harnessing the power of both Django and PostgreSQL to create
 | vote_record  | **ManyToManyField**| -       | Many to many    | UserProfile Model through VoteRecord Model |
 | candidates  | **ManyToManyField**| -       | Many to many    | ElectedPerson Model |
 | expire       | DateField      | -       | -               | -                             |
-| author       | **ForeignKey**    | -       | One to many     | User Model                    |
+| author       | **ForeignKey**    | -       | Many to one    | UserProfile Model                    |
 | slug         | SlugField(200)     | Yes     | -               | -                             |
 | status       | IntegerField        | -       | -               | -                             |
 | excerpt       | TextField        | -       | -               | -                             |
@@ -58,19 +60,14 @@ In essence, Musa is harnessing the power of both Django and PostgreSQL to create
 | id            | PrimaryKey | Yes     | -            | -               |
 | category_name | CharField(50)   | Yes     | -            | -               |
 
-### User Model
+### UserProfile Model (AbstractUser)
 
 | Attribute   | Type           | Unique  | Relationship | Model Linked To                             |
 |-------------|----------------|---------|--------------|---------------------------------------------|
-| id          | PrimaryKey     | Yes     | -            | -                                           |
-| last_name   | CharField(80)  | -       | -            | -                                           |
-| first_name  | CharField(80)  | -       | -            | -                                           |
-| email       | EmailField     | Yes     | -            | -                                           |
+| id         | PrimaryKey    | Yes    | -            | -               |
 | verified    | BooleanField   | -       | -            | -                                           |
 | role        | IntegerField   | -       | -            | -                                           |
-| password    | PasswordField  | -       | -            | -                                           |
-| vote_cards  | **ManyToManyField**| -       | Many to many | VoteCard Model through VoteRecord Model    |
-| username    | CharField      | Yes     | -            | -                                           |
+| user_card  | **ManyToManyField**| -       | Many to many | VoteCard Model through VoteRecord Model    |
 
 ### ElectedPerson Model
 
@@ -79,6 +76,7 @@ In essence, Musa is harnessing the power of both Django and PostgreSQL to create
 | id         | PrimaryKey    | Yes    | -            | -               |
 | name       | CharField(80) | Yes    | -            | -               |
 | is_elected | BooleanField  | -      | -            | -               |
+| vote_card  | **ForeignKey**| -       | Many to one | VoteCard Model   |
 
 ### VoteRecord Model
 
@@ -86,7 +84,7 @@ In essence, Musa is harnessing the power of both Django and PostgreSQL to create
 |----------------|----------------|---------|--------------|-----------------|
 | id             | PrimaryKey     | Yes     | -            | -               |
 | vote_card      | **ForeignKey**    | -       | Many to one  | VoteCard Model  |
-| voter          | **ForeignKey**    | -       | Many to one  | User Model      |
+| voter          | **ForeignKey**    | -       | Many to one  | UserProfile Model      |
 | elected_person | **ForeignKey**    | -       | Many to one  | ElectedPerson Model |
 | timestamp      | DateTimeField  | -       | -            | -               |
 
