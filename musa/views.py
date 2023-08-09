@@ -43,6 +43,24 @@ class HomePage(VoteCardBaseListView):
 
         return context
 
+# TERMS & CONDITIONS PAGE
+
+
+class TermsView(generic.ListView):
+    ''' Implemented terms & conditions view ready for adjustments '''
+    model = UserProfile
+    template_name = "frontend/terms_conditions.html"
+    context_object_name = 'terms_page'
+
+# PRIVACY POLICY PAGE
+
+
+class PrivacyView(generic.ListView):
+    ''' Implemented privacy policy view ready for adjustments '''
+    model = UserProfile
+    template_name = "frontend/privacy_policy.html"
+    context_object_name = 'privacy_page'
+
 # CONTACT FORM
 
 

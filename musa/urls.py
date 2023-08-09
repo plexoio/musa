@@ -109,5 +109,9 @@ urlpatterns = [
     path('contact/', views.ContactView.as_view(),
          name='contact_form'),
     path('faq/', views.FAQView.as_view(),
-         name='faq_page')
+         name='faq_page'),
+    path('terms/', views.TermsView.as_view(),
+         name='terms_page'),
+    path('policy/', views.PrivacyView.as_view(),
+         name='policy_page')
 ]

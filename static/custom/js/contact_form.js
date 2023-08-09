@@ -7,7 +7,7 @@ function sendMail(contactForm, event) { // as 'this' on the form tag
         "musa_name": contactForm.name.value,
         "musa_email": contactForm.emailaddress.value,
         "musa_subject": contactForm.subject.value,
-        "musa_message": contactForm.issue.value
+        "musa_message": contactForm.issue.value,
     }).then(  // Promise
         function (response) {
             console.log('Success', response);
@@ -32,4 +32,4 @@ function sendMail(contactForm, event) { // as 'this' on the form tag
             $('#email_sent .alert').focus()
         }
     );
-};
+}
