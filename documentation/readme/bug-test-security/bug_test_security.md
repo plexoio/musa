@@ -40,6 +40,13 @@ Many issues found and all were solved, Jinja templating language made it a bit h
 
 No issues were found in our custom css at 'static/custom/css/style.css'.
 
+### JSHint (API by Code Institute)
+
+No particular issues found in our custom JS files at:
+
+- 'static/custom/js/candidates.js'
+- 'static/custom/js/contact_form.js'
+
 ### Google Developer's Console
 The Google Console played a pivotal role in diagnosing and resolving our 'etag' error. During the final testing phase, we monitored the console while running the app to detect potential errors. The results were impressive - no errors were detected, and the app functioned seamlessly.
 

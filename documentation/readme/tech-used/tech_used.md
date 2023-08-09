@@ -23,6 +23,9 @@ Every project, including ours, relies on a combination of tools and practices to
 15. **[Stackoverflow](https://stackoverflow.com/)**: A go-to for troubleshooting and concept validation.
 16. **[HTML Validator](https://validator.w3.or)**: To validate our HTML templates.
 17. **[CSS Validator - W3C](https://jigsaw.w3.org/css-validator/validator)**: To validate our CSS custom file.
+18. **[EmailJS](https://www.emailjs.com/)**: Use to handle the contact form's requests.
+19. **[JSHint API](https://ci-jshint.herokuapp.com/)**: Javascript validator by code institute.
+20. **[JSHint APP](https://github.com/plexoio/plexo-js-hint)**: Developed by the author.
 
 ### Design Elements
 
