@@ -13,7 +13,7 @@ Musa's Voting System is an intuitive, user-friendly digital platform designed to
 - **Elegant Handling of Tied Votes**: Recognizes tied results and offers solutions for resolution.
 - **Flexible Voting Status**: VoteCards come with distinct statuses like "Draft", "Online", "Cancelled", and "Completed" for better management and clarity.
 - **Admin Dashboard**: A comprehensive dashboard for administrators to manage, update, and oversee voting events.
-- **User Dashboard**: Allows users to create, view, and manage their VoteCards and voting records(considering privacy, security and transparency).
+- **User Dashboard**: Allows users to create, view, and manage their VoteCards and voting records(considering privacy, security, and transparency).
 
 **FAQ Integration**: 
 For user convenience, the platform also offers an integrated FAQ section, addressing common queries and providing clear answers.
@@ -90,7 +90,7 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
 ## Credits
 
 - [Technologies Used](https://github.com/plexoio/musa/blob/main/documentation/readme/tech-used/tech_used.md): All technologies and tools used to build this project as presented in this section.
-- **Brian O'Hare**: for his tips and scope presentation and mentoring me in general two times on this project.
+- **Brian O'Hare**: for his tips and scope presentation and mentoring me, in general, two times on this project.
 - [Unsplash's Authors](https://unsplash.com/): for providing high quality images for our vote card creation
 - [Stackoverflow](https://stackoverflow.com/): for in-depth consultation and checking user-created content (from experienced developers) or human opinion.
 - [Google](https://google.com): for programming queries.
@@ -101,7 +101,7 @@ Musa's Voting System is a holistic solution for all voting needs, combining the 
     2. Copywriting and proofreading.
     3. Used to validate code.
     4. Used to confirm whether or not my code snippet is correct after many minutes or even hours of self-debugging.
-    5. Understand the use of different keywords, know libraries and modules and more.
+    5. Understand the use of different keywords, know libraries and modules, and more.
 
 ## Author
 
