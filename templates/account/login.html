@@ -42,7 +42,6 @@
                                     {% endif %}
 
                                     <!-- Custom username field -->
-                                    <!-- Custom username field -->
                                     {% with login_field=form.login %}
                                     <div class="form-floating mb-3">
                                         <input type="text" name="{{ login_field.name }}"
@@ -51,7 +50,7 @@
                                             id="{{ login_field.auto_id }}"
                                             class="form-control {% if form.non_field_errors %}is-invalid{% endif %}"
                                             {% if login_field.value %} value="{{ login_field.value }}" {% endif %}>
-                                        <label for="{{ login_field.auto_id }}">{{ login_field.label }}</label>
+                                        <label for="{{ login_field.auto_id }}">{{ login_field.label }} <small>(case sensitive)</small></label>
                                         {% if form.non_field_errors %}
                                         <div class="invalid-feedback">
                                             {% for error in form.non_field_errors %}

@@ -28,7 +28,7 @@
                       maxlength="{{ form.username.field.max_length }}" required id="{{ form.username.auto_id }}"
                       class="form-control {% if form.errors.username %}is-invalid{% endif %}"
                       {% if form.username.value %}value="{{ form.username.value }}" {% endif %}>
-                    <label for="{{ form.username.auto_id }}">{{ form.username.label }}</label>
+                    <label for="{{ form.username.auto_id }}">{{ form.username.label }} <small>(case sensitive)</small></label>
                     {% if form.errors.username %}
                     <div class="invalid-feedback">
                       {% for error in form.errors.username %}

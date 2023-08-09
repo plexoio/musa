@@ -8,12 +8,11 @@ from allauth.account.views import LoginView, SignupView, LogoutView
 from musa.forms import CustomSignupForm, CustomLoginForm
 
 
-
 # LOGIN, SIGUNUP & LOGOUT
 
 
 class CustomLoginView(LoginView):
-    """Custom login view that redirects users to  dashboard after login."""
+    """Custom login view that redirects users to dashboard after login."""
     form_class = CustomLoginForm
     template_name = 'account/login.html'
 
@@ -23,9 +22,11 @@ class CustomLoginView(LoginView):
 
 
 class CustomSignupView(SignupView):
+    """Custom signup view ready for adjustments."""
     form_class = CustomSignupForm
     template_name = 'account/signup.html'
 
 
 class CustomLogoutView(LogoutView):
+    """Custom logout view ready for adjustments."""
     template_name = 'account/logout.html'

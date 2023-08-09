@@ -48,7 +48,8 @@ class AllVoteCardsListView(VoteCardBaseListView):
     context_object_name = 'see_more'
 
     def progress_bar(self):
-        """ It passes de VoteCard objects and progress bar data"""
+        """ It passes de VoteCard objects and progress bar data
+        accessible with 'context_object_name' """
         vote_cards = self.get_queryset()
 
 
@@ -310,6 +311,7 @@ class UserVoteCardCreation(UserRequiredMixin, View):
 
 
 class UserVotes(UserRequiredMixin, generic.ListView):
+    ''' Display the votes a user has made based on authentication'''
     model = VoteRecord
     template_name = 'backend/user-dashboard/user_votes.html'
     paginate_by = 10
@@ -507,7 +509,8 @@ class AdminVoteCardCreation(AdminRequiredMixin, View):
 
 
 class AdminVotes(AdminRequiredMixin, generic.ListView):
-    """Return VoteCard Votes with a status of 1, ordered by creation date."""
+    """Return all system's votes with a status of 1,
+    ordered by creation date."""
     model = VoteRecord
     template_name = 'backend/admin-dashboard/admin_votes.html'
     paginate_by = 10

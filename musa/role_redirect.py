@@ -4,11 +4,12 @@ from django.views import View
 
 
 class RoleRedirectView(View):
+    '''' Redirect based on the user's role '''
 
     def get(self, request, *args, **kwargs):
         user = request.user
 
-        if user.role == 0:  # adjust based on role values
+        if user.role == 0:
             return redirect('/user/')
         elif user.role == 1:
             return redirect('/user/')

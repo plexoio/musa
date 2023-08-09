@@ -27,7 +27,8 @@ class HomePage(VoteCardBaseListView):
     context_object_name = 'home_page'
 
     def progress_bar(self):
-        """ It passes de VoteCard objects and progress bar data"""
+        """ It passes de VoteCard objects and progress bar data
+        accessible with 'context_object_name' """
         vote_cards = self.get_queryset()
 
     def get_context_data(self, **kwargs):
@@ -46,6 +47,7 @@ class HomePage(VoteCardBaseListView):
 
 
 class ContactView(generic.ListView):
+    ''' Implemented contact view ready for adjustments '''
     model = UserProfile
     template_name = "frontend/contact.html"
     context_object_name = 'contact_form'
@@ -54,6 +56,7 @@ class ContactView(generic.ListView):
 
 
 class FAQView(generic.ListView):
+    ''' Implemented FAQ view ready for adjustments '''
     model = UserProfile
     template_name = "frontend/faq.html"
     context_object_name = 'faq_page'
