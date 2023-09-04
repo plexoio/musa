@@ -98,6 +98,8 @@ class UserDelete(UserRequiredMixin, DeleteView):
         logout(request)
         return response
 
+# PASSWORD Change
+
 
 class UserPasswordChangeForm(PasswordChangeForm):
     """Form for changing the user's password."""
